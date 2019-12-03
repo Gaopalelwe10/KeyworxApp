@@ -75,4 +75,8 @@ export class ProfileService {
       console.log(error)
     })
   }
+
+  getUID(): string {
+    return this.afAuth.auth.currentUser.uid;
+  }
 }
