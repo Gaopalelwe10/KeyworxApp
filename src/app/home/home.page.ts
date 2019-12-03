@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 export class HomePage {
   propertyList;
 
+  slidesOptions={
+    slidesPerView:2.5,
+  }
+
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService) 
