@@ -33,7 +33,7 @@ export class PropertyService {
   }
 
   propertyList(){
-    return this.afs.collection("properties" ,ref=>ref.where('uid', '==' ,this.profileService.getUID() )).snapshotChanges()
+    return this.afs.collection("properties").snapshotChanges()
   }
   pushUpload(upload: Upload, propertyid) {
     let storageRef = firebase.storage().ref();
