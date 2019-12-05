@@ -30,6 +30,10 @@ export class HomePage {
       })
      }
 
+
+     fliter(){
+       this.router.navigateByUrl("filter")
+     }
   logout(){
     this.profileService.logout();
   }

@@ -1,0 +1,12 @@
+ion-toolber {
+  --background: transparent !important;
+}
+
+ion-item{
+    ion-button{
+        --border-radius: 50%;
+        padding-right: 10px;
+        width: 50px;
+        height: 50px;
+    }
+}
