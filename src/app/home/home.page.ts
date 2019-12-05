@@ -33,4 +33,10 @@ export class HomePage {
   logout(){
     this.profileService.logout();
   }
+
+  filt() {
+    this.router.navigateByUrl("filter")
+  }
+
+  
 }
