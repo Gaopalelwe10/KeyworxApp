@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-images',
@@ -7,37 +8,42 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./images.page.scss'],
 })
 export class ImagesPage implements OnInit {
-  items={
-    mainImage:"",
-    location:"",
-    description:"",
-    price:"",
-    bedrooms:"",
-    bathrooms:"",
+  items = {
+    mainImage: "",
+    location: "",
+    description: "",
+    price: "",
+    bedrooms: "",
+    bathrooms: "",
     garage: "",
   }
-
-  constructor(private route:ActivatedRoute) { 
+  propertyid
+  imageList
+  constructor(
+    private route: ActivatedRoute,
+    private propertyService: PropertyService
+  ) {
 
     this.route.queryParams
-    .subscribe(params =>
- {
-     
-      this.items.mainImage = params.mainImage;
-      this.items.location = params.location;
-      this.items.price = params.price;
-      this.items.description=params.description;
-     this.items.bedrooms = params.bedrooms;
-     this.items.bathrooms = params.bathrooms;
-      this.items.garage = params.garage;
-      console.log(this.items.mainImage,this.items.location,
-        this.items.price,this.items.description,
-        this.items.bedrooms,this.items.bathrooms,
-        this.items.garage)
-  });
+      .subscribe(params => {
+        this.propertyid = params.propertyid;
+        console.log(this.propertyid)
+      });
+
+
   }
 
   ngOnInit() {
+    this.propertyService.imageList(this.propertyid).subscribe((data)=>{
+      this.imageList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      })
+      console.log(this.imageList);
+    })
   }
+
 
 }
