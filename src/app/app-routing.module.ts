@@ -24,7 +24,19 @@ const routes: Routes = [
   {
     path: 'propertydetails',
     loadChildren: () => import('./pages/propertydetails/propertydetails.module').then( m => m.PropertydetailsPageModule)
+  },  {
+    path: 'filter',
+    loadChildren: () => import('./pages/filter/filter.module').then( m => m.FilterPageModule)
   },
+  {
+    path: 'details',
+    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'images',
+    loadChildren: () => import('./pages/images/images.module').then( m => m.ImagesPageModule)
+  },
+
 
 
 ];
