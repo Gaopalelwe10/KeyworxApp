@@ -16,7 +16,10 @@ export class DetailsPage implements OnInit {
     mainImage:"",
     location:"",
     description:"",
-    price:""
+    price:"",
+    bedrooms:"",
+    bathrooms:"",
+    garage: "",
   }
     constructor(private router:Router,
          private propertyService: PropertyService,
@@ -52,6 +55,18 @@ export class DetailsPage implements OnInit {
     ngOnInit() {
     }
   
-   
+    image(items) {
+      this.router.navigate(['/images'], {
+        queryParams: {
+          mainImage: items.mainImage,
+          uid: items.uid, propertyid: items.propertyid,
+          location: items.location, price: items.price,
+           description: items.description,
+           bedrooms: items.bedrooms,
+           bathrooms: items.bathrooms,
+           garage: items.garage
+        }
+      });
+    } 
 
 }
