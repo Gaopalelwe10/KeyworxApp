@@ -23,7 +23,7 @@ export class DetailsPage implements OnInit {
     propertyid:"",
 
   }
-  propertyid
+
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
@@ -45,8 +45,11 @@ export class DetailsPage implements OnInit {
         this.items.propertyid= params.propertyid
         this.items.mainImage = params.mainImage;
         this.items.location = params.location;
-        this.items.price = params.price
-        this.items.description = params.description
+        this.items.price = params.price;
+        this.items.bedrooms = params.bedrooms;
+        this.items.description = params.description;
+        this.items.bathrooms = params.bathrooms;
+        this.items.garage = params.garage;
         console.log(this.items.mainImage, this.items.location,
           this.items.price, this.items.description)
       });
