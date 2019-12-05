@@ -38,9 +38,15 @@ export class HomePage {
     this.profileService.logout();
   }
 
-  filt() {
-    this.router.navigateByUrl("filter")
+  detail(items) {
+    this.router.navigate(['/details'], {
+      queryParams: {
+        mainImage: items.mainImage,
+        uid: items.uid, propertyid: items.propertyid,
+        location: items.location, price: items.price, description: items.description
+      }
+    });
+
   }
 
-  
 }
