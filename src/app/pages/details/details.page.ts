@@ -12,46 +12,57 @@ import { PropertyService } from 'src/app/services/property.service';
 export class DetailsPage implements OnInit {
 
   propertyList: any;
-  items={
-    mainImage:"",
-    location:"",
-    description:"",
-    price:""
+  items = {
+    mainImage: "",
+    location: "",
+    description: "",
+    price: "",
+    bedrooms: "",
+    bathrooms: "",
+    garage: "",
+    propertyid:"",
+
   }
-    constructor(private router:Router,
-         private propertyService: PropertyService,
-      private profileService: ProfileService,  
-        private modalController: ModalController,
-        private route:ActivatedRoute
-      ) 
-      { 
-        this.propertyService.propertyList().subscribe(data => {
-          this.propertyList = data.map(e => {
-            return {
-              key: e.payload.doc.id,
-              ...e.payload.doc.data()
-            }
-          })
-          console.log(this.propertyList);
-        })
-  
-        this.route.queryParams
-        .subscribe(params =>
-     {
-         
-          this.items.mainImage = params.mainImage;
-          this.items.location = params.location;
-          this.items.price = params.price
-          this.items.description=params.description
-          console.log(this.items.mainImage,this.items.location,
-            this.items.price,this.items.description)
+  propertyid
+  constructor(private router: Router,
+    private propertyService: PropertyService,
+    private profileService: ProfileService,
+    private modalController: ModalController,
+    private route: ActivatedRoute
+  ) {
+    this.propertyService.propertyList().subscribe(data => {
+      this.propertyList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      })
+      console.log(this.propertyList);
+    })
+
+    this.route.queryParams
+      .subscribe(params => {
+        this.items.propertyid= params.propertyid
+        this.items.mainImage = params.mainImage;
+        this.items.location = params.location;
+        this.items.price = params.price
+        this.items.description = params.description
+        console.log(this.items.mainImage, this.items.location,
+          this.items.price, this.items.description)
       });
-       }
+  }
+
+
+  ngOnInit() {
+  }
+
+  image(items) {
+    this.router.navigate(['/images'], {
+      queryParams: {
+        propertyid: items.propertyid,
        
-  
-    ngOnInit() {
-    }
-  
-   
+      }
+    });
+  }
 
 }

@@ -15,6 +15,9 @@ export class HomePage {
     slidesPerView:2.5,
   }
 
+  slidesOpt={
+    slidesPerView:0.3,
+  }
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService) 
