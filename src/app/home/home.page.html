@@ -51,4 +51,28 @@
         </ion-slide>
     </ion-slides>
 
+    <ion-card *ngFor="let items of propertyList">
+        <div (click)="detail(items)">
+            <img src="{{items.mainImage}}">
+            <ion-card-content>
+                <ion-text color="primary">
+                    <h4>{{items.price}}</h4>
+                </ion-text>
+                <ion-text color="dark">
+                    <h4>{{items.description}}</h4>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <h4>
+                                    <ion-icon name="bed"></ion-icon> {{items.bedrooms}}
+                                    <ion-icon name="body"></ion-icon> {{items.bathrooms}}
+                                    <ion-icon name="car"></ion-icon> {{items.garage}} </h4>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+
+                </ion-text>
+            </ion-card-content>
+        </div>
+    </ion-card>
 </ion-content>
