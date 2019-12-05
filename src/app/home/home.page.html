@@ -13,7 +13,7 @@
 
     <ion-item lines="none">
         <p slot="start">Property</p>
-        <ion-icon name="arrow-forward" slot="end"> </ion-icon>
+       <h6 slot="end" color="medium">see all</h6><ion-icon name="arrow-forward" color="medium" slot="end"></ion-icon>
     </ion-item>
 
     <ion-slides [options]="slidesOptions">
@@ -51,14 +51,18 @@
         </ion-slide>
     </ion-slides>
 
-    <ion-card *ngFor="let items of propertyList">
+    <h3>{{propertyList?.category}}...</h3>
+
+    <ion-slides [options]="slidesOpt">
+        <ion-slide>
+    <ion-card *ngFor="let items of propertyList" class="catt">
         <div (click)="detail(items)">
         <img   src="{{items.mainImage}}" >
-      <ion-card-content>
-          <ion-text color="primary">
+      <ion-card-content slot="start">
+          <ion-text  color="primary">
               <h4>{{items.price}}</h4>
             </ion-text>
-            <ion-text color="dark">
+            <ion-text  color="dark">
                 <h4>{{items.description}}</h4>
               <ion-grid><ion-row>
                 <ion-col>
@@ -72,4 +76,6 @@
 </ion-card-content>
 </div>
   </ion-card>
+  </ion-slide>
+  </ion-slides>
 </ion-content>
