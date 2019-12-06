@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FullscreenPage implements OnInit {
  
-  items={
+  pic={
     downloadURL:"",
 }
   constructor(private route:ActivatedRoute,
@@ -16,8 +16,8 @@ export class FullscreenPage implements OnInit {
     
     this.route.queryParams
     .subscribe(params => {
-      this.items.downloadURL = params.downloadURL;
-      console.log(this.items.downloadURL)
+      this.pic.downloadURL = params.downloadURL;
+      console.log(this.pic.downloadURL)
     });
    }
 

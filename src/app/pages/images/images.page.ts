@@ -26,14 +26,11 @@ export class ImagesPage implements OnInit {
     private router:Router
     // private fullScreenImage: FullScreenImageOriginal
   ) {
-
     this.route.queryParams
       .subscribe(params => {
         this.propertyid = params.propertyid;
         console.log(this.propertyid)
       });
-
-
   }
 
   ngOnInit() {
@@ -54,11 +51,11 @@ export class ImagesPage implements OnInit {
 //   // .catch((error: any) => console.error(error));
 
 // }
-full(items){
+
+full(pic){
   this.router.navigate(['/fullscreen'], {
     queryParams: {
-      downloadURL: items.downloadURL,
-      
+      downloadURL: pic.downloadURL,
 }
 });
   }
