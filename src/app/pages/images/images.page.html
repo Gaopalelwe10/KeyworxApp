@@ -14,7 +14,7 @@
         <ion-row>
             <ion-col size="6" class="gallery" *ngFor="let pic of imageList ">
                 <!-- <div class="container"> -->
-                <img src="{{pic.downloadURL}}" width="200" height="150" size="100%" accept=".png,.jpg" imageViewer>
+                <img src="{{pic.downloadURL}}" (click)="full(items)" width="200" height="150" size="100%" accept=".png,.jpg" imageViewer>
                 <!-- </div> -->
 
             </ion-col>

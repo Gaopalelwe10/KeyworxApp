@@ -57,7 +57,8 @@ export class ImagesPage implements OnInit {
 full(items){
   this.router.navigate(['/fullscreen'], {
     queryParams: {
-      propertyid: items.propertyid,
+      downloadURL: items.downloadURL,
+      
 }
 });
   }
