@@ -5,6 +5,7 @@
         </ion-buttons>
         <ion-title>images</ion-title>
     </ion-toolbar>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
 </ion-header>
 
 <ion-content>
@@ -12,12 +13,20 @@
 
         <ion-row>
             <ion-col size="6" class="gallery" *ngFor="let pic of imageList ">
-
-                <img src="{{pic.downloadURL}}" width="200" height="150" size="100%" accept=".png,.jpg" imageViewer>
-
+                <div class="container">
+                    <img src="{{pic.downloadURL}}" width="200" height="150" size="100%" accept=".png,.jpg" imageViewer>
+                </div>
 
             </ion-col>
         </ion-row>
 
     </ion-grid>
+    <!-- 
+    <div class="modal image-modal transparent" ng-click="closeModal()">
+        <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true" active-slide="activeSlide">
+            <ion-slide *ngFor="let pic of imageList ">
+                <img ng-src="{{pic.downloadURL}}" class="fullscreen-image" />
+            </ion-slide>
+        </ion-slide-box>
+    </div> -->
 </ion-content>

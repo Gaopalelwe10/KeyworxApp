@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
+// import { FullScreenImage, FullScreenImageOriginal } from '@ionic-native/full-screen-image';
 
 @Component({
   selector: 'app-images',
@@ -21,7 +22,8 @@ export class ImagesPage implements OnInit {
   imageList
   constructor(
     private route: ActivatedRoute,
-    private propertyService: PropertyService
+    private propertyService: PropertyService,
+    // private fullScreenImage: FullScreenImageOriginal
   ) {
 
     this.route.queryParams
@@ -45,5 +47,10 @@ export class ImagesPage implements OnInit {
     })
   }
 
+// full(){
+//   this.fullScreenImage.showImageURL('imageList.key.downloadURL')
+//   // .then((data: any) => console.log(res))
+//   // .catch((error: any) => console.error(error));
 
+// }
 }
