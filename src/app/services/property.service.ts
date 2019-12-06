@@ -7,6 +7,8 @@ import { Upload } from '../uploads/shared/upload';
 import * as firebase from 'firebase'
 import { AngularFireList } from '@angular/fire/database';
 import { ProfileService } from './profile.service';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,15 +17,42 @@ export class PropertyService {
   uploads: AngularFireList<Upload[]>;
 
   imageURL
+
+  items$
+  sizeFilter$: BehaviorSubject<string|null>;
+  colorFilter$: BehaviorSubject<string|null>;
+
+
   constructor(
     private afs: AngularFirestore,
     private alertCtrl: AlertController,
     private storage: AngularFireStorage,
     private profileService: ProfileService 
   ) {
-
+    
   }
 
+  filterproperty(){
+    this.sizeFilter$ = new BehaviorSubject(null);
+    this.colorFilter$ = new BehaviorSubject(null);
+    return this.items$ = combineLatest(
+      this.sizeFilter$,
+      this.colorFilter$
+    ).pipe(
+      switchMap(([bedrooms, bathrooms]) => 
+        this.afs.collection('properties', ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
+          if (bathrooms) { query = query.where('color', '==', bathrooms) };
+          return query;
+        }).valueChanges()
+      )
+    );
+  }
+
+  filterBySize(size: string|null) {
+    this.sizeFilter$.next(size); 
+  }
   addproperty(propertyid, property) {
     return this.afs.collection("properties").doc(propertyid).set(property)
   }

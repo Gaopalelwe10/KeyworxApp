@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-filter',
@@ -10,16 +11,26 @@ export class FilterPage implements OnInit {
 
   constructor(
     private router: Router,
-  ) { }
+    public propertyService:PropertyService
+  ) { 
+    this.propertyService.filterproperty().subscribe(data=>{
+      console.log(data)
+    })
+
+  }
 
   ngOnInit() {
     // this.clickedButton(event, 1)
+  
   }
 
+  filter(){
+    this.propertyService.filterBySize("1")
+  }
   cancel() {
     this.router.navigateByUrl("tabs/home")
   }
-  
+
   clickedButton(event, value) {
     let temp = event.srcElement.parentNode;
     // console.log(event)
