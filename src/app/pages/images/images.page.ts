@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
 // import { FullScreenImage, FullScreenImageOriginal } from '@ionic-native/full-screen-image';
 
@@ -23,6 +23,7 @@ export class ImagesPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
+    private router:Router
     // private fullScreenImage: FullScreenImageOriginal
   ) {
 
@@ -53,4 +54,12 @@ export class ImagesPage implements OnInit {
 //   // .catch((error: any) => console.error(error));
 
 // }
+full(items){
+  this.router.navigate(['/fullscreen'], {
+    queryParams: {
+      propertyid: items.propertyid,
+}
+});
+  }
+
 }
