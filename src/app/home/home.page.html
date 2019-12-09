@@ -55,12 +55,12 @@
     <h3>{{propertyList?.category}}...</h3>
 
     <ion-slides [options]="slidesOpt">
-        <ion-slide *ngFor="let items of propertyList">
-            <ion-card  class="catt">
-                <div (click)="detail(items)">
-                    <img src="{{items.mainImage}}">
+        <ion-slide *ngFor="let details of propertyList">
+            <ion-card class="catt">
+                <div (click)="detail(details)">
+                    <img src="{{details.mainImage}}">
                     <ion-card-content slot="start">
-                        <ion-text color="primary">
+                        <!-- <ion-text color="primary">
                             <h4>{{items.price}}</h4>
                         </ion-text>
                         <ion-text color="dark">
@@ -76,7 +76,23 @@
                                 </ion-row>
                             </ion-grid>
 
-                        </ion-text>
+                        </ion-text> -->
+                        <div class="action">
+                            <ion-icon float-right name="heart" color="danger"></ion-icon>
+                        </div>
+                        <p>{{details.price}}</p>
+                        <p>{{details.location}}</p>
+                        <div>
+                            <i class="fa fa-bed" aria-hidden="true"><ion-icon name="bed"></ion-icon>
+                                                <span class="pad-value">{{details.bedrooms}}</span>
+                                            </i>
+                            <i class="fa fa-bath" aria-hidden="true"><ion-icon name="body"></ion-icon>
+                                                <span class="pad-value"> {{details.bathrooms}}</span>
+                                            </i>
+                            <i class="fa fa-car" aria-hidden="true"><ion-icon name="car"></ion-icon> 
+                                                <span class="pad-value">  {{details.garage}}</span>
+                                            </i>
+                        </div>
                     </ion-card-content>
                 </div>
             </ion-card>
