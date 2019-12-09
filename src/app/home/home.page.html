@@ -52,10 +52,12 @@
         </ion-slide>
     </ion-slides>
 
-    <h3>{{propertyList?.category}}...</h3>
 
     <ion-slides [options]="slidesOpt">
         <ion-slide *ngFor="let details of propertyList">
+            <h1><b>{{details.category}}</b></h1>
+            <br><br>
+
             <ion-card class="catt">
                 <div (click)="detail(details)">
                     <img src="{{details.mainImage}}">
