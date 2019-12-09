@@ -94,6 +94,6 @@ export class FilterPage implements OnInit {
 
   filter() {
     this.propertyService.filterBySize( this.bedrooms,this.bathrooms,this.garages)
-    this.router.navigateByUrl("tabs/home")
+    this.router.navigateByUrl("filteroutput")
   }
 }

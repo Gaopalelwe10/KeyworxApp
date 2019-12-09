@@ -23,7 +23,6 @@ ion-button.active {
 }
 
 :host {
- 
     ion-item {
         ion-button {
             --background-activated: #ffffff;
@@ -39,3 +38,7 @@ ion-button.active {
         }
     }
 }
+
+// ion-buttons>ion-back-button {
+//     display: none;
+// }

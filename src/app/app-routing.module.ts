@@ -40,6 +40,10 @@ const routes: Routes = [
     path: 'fullscreen',
     loadChildren: () => import('./pages/fullscreen/fullscreen.module').then( m => m.FullscreenPageModule)
   },
+  {
+    path: 'filteroutput',
+    loadChildren: () => import('./pages/filteroutput/filteroutput.module').then( m => m.FilteroutputPageModule)
+  },
 
 
 
