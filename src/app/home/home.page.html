@@ -1,62 +1,60 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-title>
             Home
         </ion-title>
         <ion-buttons slot="end" (click)=" fliter()">
-            <ion-icon name="book"></ion-icon>
+            <ion-icon name="options"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
     <ion-item lines="none">
-        <p slot="start">Property</p>
+        <p slot="start">Sale</p>
         <h6 slot="end" color="medium">see all</h6>
         <ion-icon name="arrow-forward" color="medium" slot="end"></ion-icon>
     </ion-item>
 
-    <ion-slides [options]="slidesOptions">
-        <ion-slide>
-            <ion-card class="cat">
-                <img src="https://images.prop24.com/224161361/Crop525x350" />
-                <ion-card-subtitle>Destination</ion-card-subtitle>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="cat">
-                <img src="https://images.prop24.com/218548631/Crop526x328" />
-                <ion-card-subtitle>Destination</ion-card-subtitle>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="cat">
-                <img src="https://images.prop24.com/224161361/Crop525x350" />
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="cat">
-                <img src="https://images.prop24.com/224161361/Crop525x350" />
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="cat">
-                <img src="https://images.prop24.com/224161361/Crop525x350" />
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="cat">
-                <img src="https://images.prop24.com/224161361/Crop525x350" />
+    <ion-slides [options]="slidesOpt">
+        <ion-slide *ngFor="let items of propertyList">
+            <ion-card class="catt">
+                <div (click)="detail(items)">
+                    <img src="{{items.mainImage}}">
+                    <ion-card-content slot="start">
+                        <ion-text color="primary">
+                            <h4>{{items.price}}</h4>
+                        </ion-text>
+                        <ion-text color="dark">
+                            <h4>{{items.description}}</h4>
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col>
+                                        <h4>
+                                            <ion-icon name="bed"></ion-icon> {{items.bedrooms}}
+                                            <ion-icon name="body"></ion-icon> {{items.bathrooms}}
+                                            <ion-icon name="car"></ion-icon> {{items.garage}} </h4>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+
+                        </ion-text>
+                    </ion-card-content>
+                </div>
             </ion-card>
         </ion-slide>
     </ion-slides>
 
+    <ion-item lines="none">
+        <p slot="start">Show</p>
+        <h6 slot="end" color="medium">see all</h6>
+        <ion-icon name="arrow-forward" color="medium" slot="end"></ion-icon>
+    </ion-item>
 
     <ion-slides [options]="slidesOpt">
+
         <ion-slide *ngFor="let details of propertyList">
-            <h1><b>{{details.category}}</b></h1>
-            <br><br>
 
             <ion-card class="catt">
                 <div (click)="detail(details)">
@@ -85,13 +83,13 @@
                         <p>{{details.price}}</p>
                         <p>{{details.location}}</p>
                         <div>
-                            <i class="fa fa-bed" aria-hidden="true"><ion-icon name="bed"></ion-icon>
+                            <i class="fa fa-bed" aria-hidden="true">
                                                 <span class="pad-value">{{details.bedrooms}}</span>
                                             </i>
-                            <i class="fa fa-bath" aria-hidden="true"><ion-icon name="body"></ion-icon>
+                            <i class="fa fa-bath" aria-hidden="true">
                                                 <span class="pad-value"> {{details.bathrooms}}</span>
                                             </i>
-                            <i class="fa fa-car" aria-hidden="true"><ion-icon name="car"></ion-icon> 
+                            <i class="fa fa-car" aria-hidden="true"> 
                                                 <span class="pad-value">  {{details.garage}}</span>
                                             </i>
                         </div>
@@ -99,5 +97,6 @@
                 </div>
             </ion-card>
         </ion-slide>
+
     </ion-slides>
 </ion-content>

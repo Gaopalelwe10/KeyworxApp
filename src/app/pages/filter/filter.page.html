@@ -1,13 +1,15 @@
 <ion-header no-border>
     <ion-toolbar>
-        <ion-buttons (click)="cancel()" slot="start">
+        <!-- <ion-buttons (click)="cancel()" slot="start">
             Cancel
+        </ion-buttons> -->
+        <ion-buttons slot="start">
+            <ion-back-button text="Cancel" icon=""></ion-back-button>
         </ion-buttons>
-     
         <ion-button color="primary" slot="end" (click)="filter()">Done</ion-button>
-    
+
     </ion-toolbar>
-    <ion-searchbar></ion-searchbar>
+    <!-- <ion-searchbar></ion-searchbar> -->
 </ion-header>
 
 <ion-content fullscreen>

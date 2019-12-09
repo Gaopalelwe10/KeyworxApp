@@ -24,18 +24,9 @@
         height: 170px;
     }
     
-    // .action {
-    //     float: right;
-    //     top: 50%;
-    //     transform: translate(-5%, -80%);
-    //     -ms-transform: translate(-5%, -80%);
-    //     background-color: #fff;
-    //     padding: 12px 24px;
-    //     border: none;
-    //     border-radius: 5px;
-    //     ion-icon {
-    //         padding-left: 15px;
-    //         font-size: 15px;
-    //         cursor: pointer;
-    //     }
-    // }
+    i {
+        padding-right: 10px;
+        .pad-value {
+            padding-left: 5px;
+        }
+    }
