@@ -11,17 +11,16 @@ import { Router } from '@angular/router';
 export class HomePage {
   propertyList;
 
-  slidesOptions={
-    slidesPerView:2.5,
+  slidesOptions = {
+    slidesPerView: 2.5,
   }
 
-  slidesOpt={
-    slidesPerView:0.3,
+  slidesOpt = {
+    slidesPerView: 1.5,
   }
   constructor(private router: Router,
     private propertyService: PropertyService,
-    private profileService: ProfileService) 
-    { 
+    private profileService: ProfileService) {
       this.propertyService.propertyList().subscribe(data => {
         this.propertyList = data.map(e => {
           return {
@@ -29,15 +28,17 @@ export class HomePage {
             ...e.payload.doc.data()
           }
         })
-        console.log(this.propertyList);
+        console.log("kk" + this.propertyList);
       })
-     }
+  }
+  ionViewDidEnter() {
+ 
+  }
 
-
-     fliter(){
-       this.router.navigateByUrl("filter")
-     }
-  logout(){
+  fliter() {
+    this.router.navigateByUrl("filter")
+  }
+  logout() {
     this.profileService.logout();
   }
 

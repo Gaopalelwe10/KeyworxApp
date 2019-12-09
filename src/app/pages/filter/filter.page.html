@@ -3,24 +3,20 @@
         <ion-buttons (click)="cancel()" slot="start">
             Cancel
         </ion-buttons>
-        <!-- <ion-title>filter</ion-title> -->
-        <!-- <ion-buttons (click)="done()" slot="end"> -->
+     
         <ion-button color="primary" slot="end" (click)="filter()">Done</ion-button>
-        <!-- </ion-buttons> -->
+    
     </ion-toolbar>
+    <ion-searchbar></ion-searchbar>
 </ion-header>
 
 <ion-content fullscreen>
-    <ion-searchbar></ion-searchbar>
-
     <ion-item lines="none">
         <ion-label>Price</ion-label>
     </ion-item>
     <ion-grid>
         <ion-row>
             <ion-col size="5">
-
-
                 <ion-select>
                     <ion-select-option value="100000">R100 000</ion-select-option>
                     <ion-select-option value="150000">R150 000</ion-select-option>
@@ -102,11 +98,11 @@
     </ion-item>
     <ion-item lines="none">
         <ion-button shape="round" (click)="BedButton($event,null)" value="1">Any</ion-button>
-        <ion-button shape="round" (click)="BedButton($event,1)" value="1">1+</ion-button>
-        <ion-button shape="round" (click)="BedButton($event,2)" value="2">2+</ion-button>
-        <ion-button shape="round" (click)="BedButton($event,3)" value="3">3+</ion-button>
-        <ion-button shape="round" (click)="BedButton($event,4)" value="4">4+</ion-button>
-        <ion-button shape="round" (click)="BedButton($event,5)" value="5">5+</ion-button>
+        <ion-button shape="round" (click)="BedButton($event,'1')" value="1">1+</ion-button>
+        <ion-button shape="round" (click)="BedButton($event,'2')" value="2">2+</ion-button>
+        <ion-button shape="round" (click)="BedButton($event,'3')" value="3">3+</ion-button>
+        <ion-button shape="round" (click)="BedButton($event,'4')" value="4">4+</ion-button>
+        <ion-button shape="round" (click)="BedButton($event,'5')" value="5">5+</ion-button>
     </ion-item>
 
     <ion-item lines="none">
@@ -115,10 +111,10 @@
 
     <ion-item lines="none">
         <ion-button shape="round" (click)="BathButton($event,null)" value="1">Any</ion-button>
-        <ion-button shape="round" (click)="BathButton($event,1)" value="1">1+</ion-button>
-        <ion-button shape="round" (click)="BathButton($event,2)" value="2">2+</ion-button>
-        <ion-button shape="round" (click)="BathButton($event,3)" value="3">3+</ion-button>
-        <ion-button shape="round" (click)="BathButton($event,4)" value="4">4+</ion-button>
+        <ion-button shape="round" (click)="BathButton($event,'1')" value="1">1+</ion-button>
+        <ion-button shape="round" (click)="BathButton($event,'2')" value="2">2+</ion-button>
+        <ion-button shape="round" (click)="BathButton($event,'3')" value="3">3+</ion-button>
+        <ion-button shape="round" (click)="BathButton($event,'4')" value="4">4+</ion-button>
     </ion-item>
 
     <ion-item lines="none">
@@ -126,10 +122,10 @@
     </ion-item>
     <ion-item lines="none">
         <ion-button shape="round" (click)="GARAGEButton($event,null)" value="1">Any</ion-button>
-        <ion-button shape="round" (click)="GARAGEButton($event,1)" value="1">1+</ion-button>
-        <ion-button shape="round" (click)="GARAGEButton($event,2)" value="2">2+</ion-button>
-        <ion-button shape="round" (click)="GARAGEButton($event,3)" value="3">3+</ion-button>
-        <ion-button shape="round" (click)="GARAGEButton($event,4)" value="4">4+</ion-button>
+        <ion-button shape="round" (click)="GARAGEButton($event,'1')" value="1">1+</ion-button>
+        <ion-button shape="round" (click)="GARAGEButton($event,'2')" value="2">2+</ion-button>
+        <ion-button shape="round" (click)="GARAGEButton($event,'3')" value="3">3+</ion-button>
+        <ion-button shape="round" (click)="GARAGEButton($event,'4')" value="4">4+</ion-button>
     </ion-item>
 
 
