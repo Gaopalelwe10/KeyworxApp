@@ -1,7 +1,9 @@
 * {
     box-sizing: border-box;
 }
-
+ion-header{
+    --background: #a02b2d;
+}
 .column {
     float: left;
     width: 25%;
