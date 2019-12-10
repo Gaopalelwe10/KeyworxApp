@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-filter',
@@ -7,43 +8,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./filter.page.scss'],
 })
 export class FilterPage implements OnInit {
+  min ;
+  max ;
+  bedrooms ;
+  bathrooms ;
+  garages:string ;
 
   constructor(
     private router: Router,
-  ) { }
+    public propertyService: PropertyService
+  ) {
+    this.propertyService.filterproperty().subscribe(data => {
+      console.log("fiter" +data)
+    })
+
+  }
 
   ngOnInit() {
     // this.clickedButton(event, 1)
+
   }
 
+  
   cancel() {
     this.router.navigateByUrl("tabs/home")
-  }
-  
-  clickedButton(event, value) {
-    let temp = event.srcElement.parentNode;
-    // console.log(event)
-    for (let i = 0; i < temp.childNodes.length; i++) {
-
-      if (temp.childNodes[1].nodeName === 'ION-BUTTON') {
-        console.log(temp.childNodes[i].nodeName + " " + value)
-        if (temp.childNodes[i].classList.contains('active')) {
-          temp.childNodes[i].classList.remove('active');
-        }
-
-      }
-    }
-    event.srcElement.classList.add('active')
-
   }
 
   BedButton(event, value) {
     let temp = event.srcElement.parentNode;
-    // console.log(event)
+    this.bedrooms = value
+    console.log(this.bedrooms)
+
     for (let i = 0; i < temp.childNodes.length; i++) {
 
       if (temp.childNodes[1].nodeName === 'ION-BUTTON') {
-        console.log(temp.childNodes[i].nodeName + " " + value)
+
         if (temp.childNodes[i].classList.contains('active')) {
           temp.childNodes[i].classList.remove('active');
         }
@@ -56,11 +55,13 @@ export class FilterPage implements OnInit {
 
   BathButton(event, value) {
     let temp = event.srcElement.parentNode;
-    // console.log(event)
+    this.bathrooms = value
+    console.log(this.bathrooms)
+
     for (let i = 0; i < temp.childNodes.length; i++) {
 
-      if (temp.childNodes[1].nodeName === 'ION-BUTTON') {
-        console.log(temp.childNodes[i].nodeName + " " + value)
+      if (temp.childNodes[i].nodeName === 'ION-BUTTON') {
+
         if (temp.childNodes[i].classList.contains('active')) {
           temp.childNodes[i].classList.remove('active');
         }
@@ -73,11 +74,14 @@ export class FilterPage implements OnInit {
 
   GARAGEButton(event, value) {
     let temp = event.srcElement.parentNode;
-    // console.log(event)
+    this.garages = value
+    console.log(this.garages)
+
     for (let i = 0; i < temp.childNodes.length; i++) {
 
-      if (temp.childNodes[1].nodeName === 'ION-BUTTON') {
-        console.log(temp.childNodes[i].nodeName + " " + value)
+      if (temp.childNodes[i].nodeName === 'ION-BUTTON') {
+
+      
         if (temp.childNodes[i].classList.contains('active')) {
           temp.childNodes[i].classList.remove('active');
         }
@@ -86,5 +90,10 @@ export class FilterPage implements OnInit {
     }
     event.srcElement.classList.add('active')
 
+  }
+
+  filter() {
+    this.propertyService.filterBySize( this.bedrooms,this.bathrooms,this.garages)
+    this.router.navigateByUrl("filteroutput")
   }
 }

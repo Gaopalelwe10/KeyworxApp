@@ -36,6 +36,14 @@ const routes: Routes = [
     path: 'images',
     loadChildren: () => import('./pages/images/images.module').then( m => m.ImagesPageModule)
   },
+  {
+    path: 'fullscreen',
+    loadChildren: () => import('./pages/fullscreen/fullscreen.module').then( m => m.FullscreenPageModule)
+  },
+  {
+    path: 'filteroutput',
+    loadChildren: () => import('./pages/filteroutput/filteroutput.module').then( m => m.FilteroutputPageModule)
+  },
 
 
 

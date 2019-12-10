@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+ion-header{
+    --background: #a02b2d;
+}
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 1650px) {
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        float: left;
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+i {
+    padding-right: 10px;
+    .pad-value {
+        padding-left: 5px;
+    }
+}
+
+ion-card {
+    border-radius: 10px;
+    img {
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 200px;
+    }
+}

@@ -7,6 +7,8 @@ import { Upload } from '../uploads/shared/upload';
 import * as firebase from 'firebase'
 import { AngularFireList } from '@angular/fire/database';
 import { ProfileService } from './profile.service';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,14 +17,51 @@ export class PropertyService {
   uploads: AngularFireList<Upload[]>;
 
   imageURL
+
+  items$
+  minFilter$: BehaviorSubject<string|null>;
+  maxFilter$: BehaviorSubject<string|null>;
+  bedroomsFilter$: BehaviorSubject<string|null>;
+  bathroomsFilter$: BehaviorSubject<string|null>;
+  garagesFilter$: BehaviorSubject<string|null>;
+
+
   constructor(
     private afs: AngularFirestore,
     private alertCtrl: AlertController,
     private storage: AngularFireStorage,
     private profileService: ProfileService 
   ) {
-
+    this.bedroomsFilter$ = new BehaviorSubject(null);
+    this.bathroomsFilter$ = new BehaviorSubject(null);
+    this.garagesFilter$ = new BehaviorSubject(null);
+    this.minFilter$ = new BehaviorSubject(null);
+    this.maxFilter$ = new BehaviorSubject(null);
   }
+
+  filterproperty(){
+    // this.sizeFilter$ = new BehaviorSubject(null);
+    // this.bathroomsFilter$ = new BehaviorSubject(null);
+    return this.items$ = combineLatest(
+      this.bedroomsFilter$,
+      this.bathroomsFilter$,
+      this.garagesFilter$,
+      this.minFilter$,
+      this.maxFilter$
+    ).pipe(
+      switchMap(([bedrooms, bathrooms,garages,min, max]) => 
+        this.afs.collection('properties', ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          // if (bedrooms) { query = (query.where('bedrooms', '==', bedrooms) &&query.where('bedrooms', '==', bedrooms))};
+          if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
+          if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
+          if (garages) { query = query.where('garage', '==', garages) };
+          return query;
+        }).valueChanges()
+      )
+    );
+  }
+
 
   addproperty(propertyid, property) {
     return this.afs.collection("properties").doc(propertyid).set(property)
@@ -33,7 +72,33 @@ export class PropertyService {
   }
 
   propertyList(){
-    return this.afs.collection("properties").snapshotChanges()
+   
+    return this.items$ = combineLatest(
+      this.bedroomsFilter$,
+      this.bathroomsFilter$,
+      this.garagesFilter$,
+      this.minFilter$,
+      this.maxFilter$
+    ).pipe(
+      switchMap(([bedrooms, bathrooms,garages,min, max]) => 
+        this.afs.collection('properties', ref => {
+          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          // if (bedrooms) { query = (query.where('bedrooms', '==', bedrooms) &&query.where('bedrooms', '==', bedrooms))};
+          if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
+          if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
+          if (garages) { query = query.where('garage', '==', garages) };
+          return query;
+        }).snapshotChanges()
+      )
+    );
+    // return this.afs.collection("properties").snapshotChanges()
+  }
+
+  filterBySize(bedrooms: string|null, bathrooms: string|null,garages: string|null) {
+    this.bedroomsFilter$.next(bedrooms);
+    this.bathroomsFilter$.next(bathrooms)
+    this.garagesFilter$.next(garages)
+    console.log("dx" + bedrooms)
   }
   pushUpload(upload: Upload, propertyid) {
     let storageRef = firebase.storage().ref();
