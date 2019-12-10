@@ -24,7 +24,7 @@
                     <img src="{{items.mainImage}}">
                     <ion-card-content slot="start">
                         <ion-text color="primary">
-                            <h4>{{items.price}}</h4>
+                            <h4>{{items.price | currency:'R'}}</h4>
                         </ion-text>
                         <ion-text color="dark">
                             <h4>{{items.description}}</h4>
@@ -80,7 +80,7 @@
                         <div class="action">
                             <ion-icon float-right name="heart" color="danger"></ion-icon>
                         </div>
-                        <p>{{details.price}}</p>
+                        <p>{{details.price | currency:'R'}}</p>
                         <p>{{details.location}}</p>
                         <div>
                             <i class="fa fa-bed" aria-hidden="true">

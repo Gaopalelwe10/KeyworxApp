@@ -15,7 +15,7 @@ export class FilteroutputPage implements OnInit {
     private propertyService: PropertyService,
     private profileService: ProfileService
   ) {
-    
+
     this.propertyService.propertyList().subscribe(data => {
       this.propertyList = data.map(e => {
         return {
@@ -24,7 +24,7 @@ export class FilteroutputPage implements OnInit {
         }
       })
 
-    
+
       console.log("filteroupput" + this.propertyList);
     })
 
@@ -77,5 +77,8 @@ export class FilteroutputPage implements OnInit {
   }
   fliter() {
     this.router.navigateByUrl("filter")
+  }
+  home() {
+    this.router.navigateByUrl("tabs/home")
   }
 }
