@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
@@ -18,7 +18,7 @@
         </div>
         <ion-card-content>
             <ion-text color="primary">
-                <h4>{{items.price}}</h4>
+                <h4>{{items.price | currency:'R'}}</h4>
             </ion-text>
             <ion-text color="dark">
                 <h4>{{items.description}}</h4>
@@ -55,12 +55,12 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button color="danger" expand="full">
+                <ion-button color="primary" expand="full">
                     <ion-icon name="call"></ion-icon>
                     Call </ion-button>
             </ion-col>
             <ion-col>
-                <ion-button color="danger" expand="full">
+                <ion-button color="primary" expand="full">
                     <ion-icon name="mail"></ion-icon>
                     Email</ion-button>
             </ion-col>

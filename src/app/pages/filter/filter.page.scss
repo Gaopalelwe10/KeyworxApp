@@ -17,11 +17,13 @@ ion-item {
 // }
 ion-button.active {
     // background-color: blue;
-    --background: #3880ff !important;
-    --color: white !important;
+    --background: #a02b2d !important;
+    --color: #ffffff !important;
     --color-activated: #ffffff !important;
 }
-
+// ion-label{
+//     --color:  #a02b2d  !important;
+// }
 :host {
     ion-item {
         ion-button {
