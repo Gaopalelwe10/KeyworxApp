@@ -18,7 +18,8 @@ export class ImagesPage implements OnInit {
     bathrooms: "",
     garage: "",
   }
-  
+
+
   propertyid
   imageList
   constructor(
