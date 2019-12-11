@@ -18,10 +18,10 @@
     </ion-item>
 
     <ion-slides [options]="slidesOpt">
-        <ion-slide *ngFor="let items of propertyList">
+        <ion-slide *ngFor="let items of propertyList  ">
             <ion-card class="catt">
                 <div (click)="detail(items)">
-                    <img src="{{items.mainImage}}">
+                    <img src="{{items.mainImage }}">
                     <ion-card-content slot="start">
                         <ion-text color="primary">
                             <h4>{{items.price}}</h4>
