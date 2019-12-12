@@ -13,13 +13,17 @@
     <ion-grid>
 
         <ion-row>
-            <ion-col size="6" class="gallery" *ngFor="let pic of imageList ">
+            <ion-col size="6" class="gallery-lightboxes" *ngFor="let pic of imageList ">
 
-                <a href="{{pic.downloadURL}}" data-lightbox="imge" href="../imge/" sliderViewer>
+                <a data-lightbox="imge" href="../imge/close.png" href="../imge/next.png" href="../imge/prev.png" href="{{pic.downloadURL}}" href="../imge/loading.gif" sliderViewer>
 
                     <img src="{{pic.downloadURL}}" style='width: 100%; height: 100%;' size="100%" accept=".png,.jpg" imageViewer>
+                    <!-- <div class="gallery-lightbox"> -->
+                    <!-- <div class="gallery-lightbox_content"> -->
+                    <!-- <a href="#" class="close"></a> -->
+                    <!-- </div>
+                    </div> -->
                 </a>
-
             </ion-col>
         </ion-row>
 
