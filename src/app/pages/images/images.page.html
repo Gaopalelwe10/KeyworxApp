@@ -15,7 +15,8 @@
         <ion-row>
             <ion-col size="6" class="gallery" *ngFor="let pic of imageList ">
 
-                <a href="{{pic.downloadURL}}" data-lightbox="assets/img">
+                <a href="{{pic.downloadURL}}" data-lightbox="imge" href="../imge/" sliderViewer>
+
                     <img src="{{pic.downloadURL}}" style='width: 100%; height: 100%;' size="100%" accept=".png,.jpg" imageViewer>
                 </a>
 

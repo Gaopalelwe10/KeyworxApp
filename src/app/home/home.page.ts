@@ -17,6 +17,8 @@ export class HomePage {
 
   slidesOpt = {
     slidesPerView: 1.5,
+    centerSlides:true,
+    spaceBetween:10,
   }
   constructor(private router: Router,
     private propertyService: PropertyService,

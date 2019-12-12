@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
+import { ModalController } from '@ionic/angular';
 // import { FullScreenImage, FullScreenImageOriginal } from '@ionic-native/full-screen-image';
 
 @Component({
@@ -19,14 +20,17 @@ export class ImagesPage implements OnInit {
     garage: "",
   }
 
+  imge={
 
+  }
   propertyid
   imageList
+  images: any;
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
-    private router:Router
-    // private fullScreenImage: FullScreenImageOriginal
+    private router:Router,
+    private modalCtrl: ModalController
   ) {
     this.route.queryParams
       .subscribe(params => {
@@ -62,4 +66,12 @@ full(pic){
 });
   }
 
+//   openGallery(){
+// let modal = this.modalCtrl.create(GalleryModel,{
+//   phothos:this.images,
+//   initialSlide:0,
+//   closeIcon:'back'
+// });
+// modal.present();
+//   }
 }
