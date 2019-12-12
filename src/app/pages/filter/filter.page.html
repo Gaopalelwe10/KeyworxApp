@@ -14,12 +14,12 @@
 
 <ion-content fullscreen>
     <ion-item lines="none">
-        <ion-label >Price</ion-label>
+        <ion-label>Price</ion-label>
     </ion-item>
     <ion-grid>
         <ion-row>
             <ion-col size="5">
-                <ion-select>
+                <ion-select [(ngModel)]="min">
                     <ion-select-option value="100000">R100 000</ion-select-option>
                     <ion-select-option value="150000">R150 000</ion-select-option>
                     <ion-select-option value="200000">R200 000</ion-select-option>
@@ -59,7 +59,7 @@
                 </ion-item>
             </ion-col>
             <ion-col size="5">
-                <ion-select>
+                <ion-select [(ngModel)]="max">
                     <ion-select-option value="100000">R100 000</ion-select-option>
                     <ion-select-option value="150000">R150 000</ion-select-option>
                     <ion-select-option value="200000">R200 000</ion-select-option>
