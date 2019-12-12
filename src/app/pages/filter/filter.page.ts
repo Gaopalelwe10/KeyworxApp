@@ -8,8 +8,8 @@ import { PropertyService } from 'src/app/services/property.service';
   styleUrls: ['./filter.page.scss'],
 })
 export class FilterPage implements OnInit {
-  min ;
-  max ;
+  min:number=0 ;
+  max:1000000000000000000;
   bedrooms ;
   bathrooms ;
   garages:string ;
@@ -35,6 +35,7 @@ export class FilterPage implements OnInit {
   }
 
   BedButton(event, value) {
+
     let temp = event.srcElement.parentNode;
     this.bedrooms = value
     console.log(this.bedrooms)
@@ -93,7 +94,10 @@ export class FilterPage implements OnInit {
   }
 
   filter() {
-    this.propertyService.filterBySize( this.bedrooms,this.bathrooms,this.garages)
+    console.log("min " + this.min)
+    console.log("max " + this.max)
+    this.propertyService.filterBySize( this.bedrooms,this.bathrooms,this.garages, this.min,this.max)
+
     this.router.navigateByUrl("filteroutput")
   }
 }

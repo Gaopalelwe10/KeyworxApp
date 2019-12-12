@@ -19,27 +19,27 @@ export class PropertyService {
   imageURL
 
   items$
-  minFilter$: BehaviorSubject<string|null>;
-  maxFilter$: BehaviorSubject<string|null>;
-  bedroomsFilter$: BehaviorSubject<string|null>;
-  bathroomsFilter$: BehaviorSubject<string|null>;
-  garagesFilter$: BehaviorSubject<string|null>;
+  minFilter$: BehaviorSubject<number>;
+  maxFilter$: BehaviorSubject<number>;
+  bedroomsFilter$: BehaviorSubject<string | null>;
+  bathroomsFilter$: BehaviorSubject<string | null>;
+  garagesFilter$: BehaviorSubject<string | null>;
 
 
   constructor(
     private afs: AngularFirestore,
     private alertCtrl: AlertController,
     private storage: AngularFireStorage,
-    private profileService: ProfileService 
+    private profileService: ProfileService
   ) {
     this.bedroomsFilter$ = new BehaviorSubject(null);
     this.bathroomsFilter$ = new BehaviorSubject(null);
     this.garagesFilter$ = new BehaviorSubject(null);
-    this.minFilter$ = new BehaviorSubject(null);
-    this.maxFilter$ = new BehaviorSubject(null);
+    this.minFilter$ = new BehaviorSubject(0);
+    this.maxFilter$ = new BehaviorSubject(1000000000000000);
   }
 
-  filterproperty(){
+  filterproperty() {
     // this.sizeFilter$ = new BehaviorSubject(null);
     // this.bathroomsFilter$ = new BehaviorSubject(null);
     return this.items$ = combineLatest(
@@ -49,10 +49,11 @@ export class PropertyService {
       this.minFilter$,
       this.maxFilter$
     ).pipe(
-      switchMap(([bedrooms, bathrooms,garages,min, max]) => 
+      switchMap(([bedrooms, bathrooms, garages, min, max]) =>
         this.afs.collection('properties', ref => {
-          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-          // if (bedrooms) { query = (query.where('bedrooms', '==', bedrooms) &&query.where('bedrooms', '==', bedrooms))};
+          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          if (min) { query = query.where('price', '>=', min) };
+          if (max) { query = query.where('price', '<=', max) }
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
           if (garages) { query = query.where('garage', '==', garages) };
@@ -67,12 +68,12 @@ export class PropertyService {
     return this.afs.collection("properties").doc(propertyid).set(property)
   }
 
-  imageList(propertyid){
+  imageList(propertyid) {
     return this.afs.collection("properties").doc(propertyid).collection("images").snapshotChanges()
   }
 
-  propertyList(){
-   
+  propertyList() {
+
     return this.items$ = combineLatest(
       this.bedroomsFilter$,
       this.bathroomsFilter$,
@@ -80,10 +81,11 @@ export class PropertyService {
       this.minFilter$,
       this.maxFilter$
     ).pipe(
-      switchMap(([bedrooms, bathrooms,garages,min, max]) => 
+      switchMap(([bedrooms, bathrooms, garages, min, max]) =>
         this.afs.collection('properties', ref => {
-          let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-          // if (bedrooms) { query = (query.where('bedrooms', '==', bedrooms) &&query.where('bedrooms', '==', bedrooms))};
+          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          if (min) { query = query.where('price', '>=', min) };
+          if (max) { query = query.where('price', '<=', max) };
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
           if (garages) { query = query.where('garage', '==', garages) };
@@ -94,10 +96,12 @@ export class PropertyService {
     // return this.afs.collection("properties").snapshotChanges()
   }
 
-  filterBySize(bedrooms: string|null, bathrooms: string|null,garages: string|null) {
+  filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min:number, max:number) {
     this.bedroomsFilter$.next(bedrooms);
-    this.bathroomsFilter$.next(bathrooms)
-    this.garagesFilter$.next(garages)
+    this.bathroomsFilter$.next(bathrooms);
+    this.garagesFilter$.next(garages);
+    this.minFilter$ = new BehaviorSubject(Number(min));
+    this.maxFilter$ = new BehaviorSubject(Number(max));
     console.log("dx" + bedrooms)
   }
   pushUpload(upload: Upload, propertyid) {
