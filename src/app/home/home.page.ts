@@ -12,7 +12,7 @@ export class HomePage {
   propertyList;
 
   slidesOptions = {
-    slidesPerView: 2.5,
+    slidesPerView: 2.0,
   }
 
   slidesOpt = {

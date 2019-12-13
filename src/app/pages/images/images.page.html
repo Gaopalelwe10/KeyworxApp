@@ -8,25 +8,37 @@
 </ion-header>
 
 <ion-content>
+
     <!-- <div zoom="true" maxZoom="20" style='width: 100%; height: 100%;'> -->
 
     <ion-grid>
 
         <ion-row>
-            <ion-col size="6" class="gallery-lightboxes" *ngFor="let pic of imageList ">
+            <ion-col size="6" class="gallery-lightboxes" *ngFor="let pic of imageList">
 
-                <a data-lightbox="imge" href="../imge/close.png" href="../imge/next.png" href="../imge/prev.png" href="{{pic.downloadURL}}" href="../imge/loading.gif" sliderViewer>
+                <img src="{{pic.downloadURL}}" style='width: 100%; height: 100%;' size="100%" accept=".png,.jpg" imageViewer onclick="document.getElementById('id01').style.display='block'">
 
-                    <img src="{{pic.downloadURL}}" style='width: 100%; height: 100%;' size="100%" accept=".png,.jpg" imageViewer>
-                    <!-- <div class="gallery-lightbox"> -->
-                    <!-- <div class="gallery-lightbox_content"> -->
-                    <!-- <a href="#" class="close"></a> -->
-                    <!-- </div>
-                    </div> -->
-                </a>
             </ion-col>
         </ion-row>
 
     </ion-grid>
 
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <br><br>
+                <ion-slides>
+                    <ion-slide *ngFor="let pic of imageList;let i index">
+
+                        <a class="w3-button w3-black w3-display-left">&#10094;</a>
+                        <img src="{{pic.downloadURL}}" style='width: 100%; height: 100%;' size="100%" accept=".png,.jpg">
+                        <a class="w3-button w3-black w3-display-right">&#10095;</a>
+
+                    </ion-slide>
+                </ion-slides>
+                <br><br>
+            </div>
+        </div>
+    </div>
 </ion-content>
