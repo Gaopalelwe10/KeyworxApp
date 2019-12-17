@@ -12,11 +12,13 @@ export class HomePage {
   propertyList;
 
   slidesOptions = {
-    slidesPerView: 2.5,
+    slidesPerView: 2.0,
   }
 
   slidesOpt = {
     slidesPerView: 1.5,
+    centerSlides:true,
+    spaceBetween:10,
   }
   constructor(private router: Router,
     private propertyService: PropertyService,

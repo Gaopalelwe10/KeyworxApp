@@ -18,14 +18,15 @@ export class ImagesPage implements OnInit {
     bathrooms: "",
     garage: "",
   }
-  
+
+  slideIndex = 1;
   propertyid
   imageList
+  images: any;
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
-    private router:Router
-    // private fullScreenImage: FullScreenImageOriginal
+    private router:Router,
   ) {
     this.route.queryParams
       .subscribe(params => {
@@ -61,4 +62,47 @@ full(pic){
 });
   }
 
+  // openModal() {
+  //   document.getElementById('id01').style.display="block"  
+  // }
+  // closeModal() {
+  //   document.getElementById("id01").style.display = "none";
+  // }
+
+  // plusSlides(n) {
+  //   this.showSlides(this.slideIndex += n);
+  // }
+  // currentSlide(n) {
+  //   this.showSlides(this.slideIndex = n);
+  // }
+  
+  // showSlides(slideIndex);
+  
+  // showSlides(n) {
+  //   var i;
+  //   var slides = document.getElementsByClassName("mySlides");
+  //   var dots = document.getElementsByClassName("demo");
+  //   var captionText = document.getElementById("caption");
+  //   if (n > slides.length) {this.slideIndex = 1}
+  //   if (n < 1) {this.slideIndex = slides.length}
+  //   for (i = 0; i < slides.length; i++) {
+  //     slides[i].style.display = "none";
+  //   }
+  //   for (i = 0; i < dots.length; i++) {
+  //     dots[i].className = dots[i].className.replace(" active", "");
+  //   }
+  //   slides[this.slideIndex-1].style.display = "block";
+  //   dots[this.slideIndex-1].className += " active";
+  //   captionText.innerHTML = dots[this.slideIndex-1].alt;
+  // }
+
+
+//   openGallery(){
+// let modal = this.modalCtrl.create(GalleryModel,{
+//   phothos:this.images,
+//   initialSlide:0,
+//   closeIcon:'back'
+// });
+// modal.present();
+//   }
 }
