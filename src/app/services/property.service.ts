@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from '@ionic/angular';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Upload } from '../uploads/shared/upload';
+
 import * as firebase from 'firebase'
 import { AngularFireList } from '@angular/fire/database';
 import { ProfileService } from './profile.service';
@@ -13,11 +13,8 @@ import { switchMap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PropertyService {
-  private basePath: string = '/uploads';
-  uploads: AngularFireList<Upload[]>;
 
   imageURL
-
   items$
   minFilter$: BehaviorSubject<number>;
   maxFilter$: BehaviorSubject<number>;
@@ -40,8 +37,7 @@ export class PropertyService {
   }
 
   filterproperty() {
-    // this.sizeFilter$ = new BehaviorSubject(null);
-    // this.bathroomsFilter$ = new BehaviorSubject(null);
+    // return this.afs.collection('properties', ref=>ref.orderBy('location')).valueChanges();
     return this.items$ = combineLatest(
       this.bedroomsFilter$,
       this.bathroomsFilter$,
@@ -72,28 +68,34 @@ export class PropertyService {
     return this.afs.collection("properties").doc(propertyid).collection("images").snapshotChanges()
   }
 
+  getpropertyDetails(propertyid){
+    return this.afs.collection("properties").doc(propertyid).valueChanges();
+  }
+  getpropertyFavourite(propertyid){
+    return this.afs.collection("properties").doc(propertyid).snapshotChanges()
+  }
   propertyList() {
 
-    return this.items$ = combineLatest(
-      this.bedroomsFilter$,
-      this.bathroomsFilter$,
-      this.garagesFilter$,
-      this.minFilter$,
-      this.maxFilter$
-    ).pipe(
-      switchMap(([bedrooms, bathrooms, garages, min, max]) =>
-        this.afs.collection('properties', ref => {
-          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-          if (min) { query = query.where('price', '>=', min) };
-          if (max) { query = query.where('price', '<=', max) };
-          if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
-          if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
-          if (garages) { query = query.where('garage', '==', garages) };
-          return query;
-        }).snapshotChanges()
-      )
-    );
-    // return this.afs.collection("properties").snapshotChanges()
+    // return this.items$ = combineLatest(
+    //   this.bedroomsFilter$,
+    //   this.bathroomsFilter$,
+    //   this.garagesFilter$,
+    //   this.minFilter$,
+    //   this.maxFilter$
+    // ).pipe(
+    //   switchMap(([bedrooms, bathrooms, garages, min, max]) =>
+    //     this.afs.collection('properties', ref => {
+    //       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+    //       if (min) { query = query.where('price', '>=', min) };
+    //       if (max) { query = query.where('price', '<=', max) };
+    //       if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
+    //       if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
+    //       if (garages) { query = query.where('garage', '==', garages) };
+    //       return query;
+    //     }).snapshotChanges()
+    //   )
+    // );
+    return this.afs.collection("properties",ref=>ref.orderBy('location')).snapshotChanges()
   }
 
   filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min:number, max:number) {
@@ -104,37 +106,5 @@ export class PropertyService {
     this.maxFilter$ = new BehaviorSubject(Number(max));
     console.log("dx" + bedrooms)
   }
-  pushUpload(upload: Upload, propertyid) {
-    let storageRef = firebase.storage().ref();
-    let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
-
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) => {
-        // upload in progress
-        upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      },
-      (error) => {
-        // upload failed
-        console.log(error)
-      },
-      () => {
-        // upload success
-        // upload.url = uploadTask.snapshot.downloadURL
-        upload.name = upload.file.name
-
-        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          console.log('File available at', downloadURL);
-
-          this.afs.collection("properties").doc(propertyid).collection("images").add({
-            downloadURL: downloadURL,
-            name: upload.file.name,
-
-          })
-        });
-
-
-
-      }
-    );
-  }
+ 
 }

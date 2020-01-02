@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
+import { IonSlides } from '@ionic/angular';
 // import { FullScreenImage, FullScreenImageOriginal } from '@ionic-native/full-screen-image';
 
 @Component({
@@ -9,6 +10,7 @@ import { PropertyService } from 'src/app/services/property.service';
   styleUrls: ['./images.page.scss'],
 })
 export class ImagesPage implements OnInit {
+  @ViewChild('slides', {static:true}) slides: IonSlides;
   items = {
     mainImage: "",
     location: "",
@@ -23,28 +25,54 @@ export class ImagesPage implements OnInit {
   propertyid
   imageList
   images: any;
+  slidesOptions = {
+    initialSlide: 1,
+    speed: 400,
+    zoom:{
+      maxRatio:3
+    }
+  }
+index=0;
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
     private router:Router,
   ) {
-    this.route.queryParams
-      .subscribe(params => {
-        this.propertyid = params.propertyid;
-        console.log(this.propertyid)
+    // this.route.queryParams
+    //   .subscribe(params => {
+    //     this.propertyid = params.propertyid;
+    //     console.log(this.propertyid)
+    //   });
+    // this.route.queryParams
+    //   .subscribe(params => {
+    //     this.imageList = params.array;
+    //     console.log(JSON.stringify(this.imageList))
+    //   });
+
+      this.route.queryParams.subscribe(params => {
+        if (params && params.imageList) {
+          this.index=JSON.parse(params.index)
+          this.imageList = JSON.parse(params.imageList);
+          
+          console.log(this.imageList)
+          console.log(this.index)
+        }
+        
       });
+
   }
 
   ngOnInit() {
-    this.propertyService.imageList(this.propertyid).subscribe((data)=>{
-      this.imageList = data.map(e => {
-        return {
-          key: e.payload.doc.id,
-          ...e.payload.doc.data()
-        }
-      })
-      console.log(this.imageList);
-    })
+    // this.propertyService.imageList(this.propertyid).subscribe((data)=>{
+    //   this.imageList = data.map(e => {
+    //     return {
+    //       key: e.payload.doc.id,
+    //       ...e.payload.doc.data()
+    //     }
+    //   })
+    //   console.log(this.imageList);
+    // })
+    // this.slides.slideTo(this.index)
   }
 
 // full(){

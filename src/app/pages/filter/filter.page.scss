@@ -7,23 +7,21 @@ ion-item {
         padding-right: 10px;
         width: 50px;
         height: 50px;
+        // width: 150px;
+        // height: 40px;
         // --background: white !important;
     }
 }
-
-// ion-button.active {
-//     color: red;
-//     --background: red;
-// }
+.lastbutton{
+ padding-right: 10px;
+}
 ion-button.active {
     // background-color: blue;
     --background: #a02b2d !important;
     --color: #ffffff !important;
     --color-activated: #ffffff !important;
 }
-// ion-label{
-//     --color:  #a02b2d  !important;
-// }
+
 :host {
     ion-item {
         ion-button {
@@ -33,7 +31,6 @@ ion-button.active {
         ion-button {
             --background: #ffffff;
             --background-focused: #ffffff;
-            // --background-hover: #ffffff --color: #ffffff;
             --color-activated: #ffffff;
             --color: black;
             --color-focused: #ffffff;
@@ -41,6 +38,12 @@ ion-button.active {
     }
 }
 
-// ion-buttons>ion-back-button {
-//     display: none;
-// }
+
+// .like {
+//     cursor: pointer;
+//     &.liked {
+//         --background: #a02b2d !important;
+//         --color: #ffffff !important;
+//         --color-activated: #ffffff !important;
+//     }
+//   }
