@@ -14,7 +14,7 @@
     
     <ion-item lines="none">
         <p slot="start"><b>FEATURED</b></p>
-        <p slot="end" color="medium">View all</p>
+        <p slot="end" color="medium" (click)="view()">View all</p>
     </ion-item>
 
     <ion-slides [options]="slidesOptions ">
@@ -48,7 +48,7 @@
 
     <ion-item lines="none">
         <p slot="start"><b>SALE</b></p>
-        <p slot="end" color="medium">View all</p>
+        <p slot="end" color="medium" (click)="view()">View all</p>
     </ion-item>
 
     <ion-slides [options]="slidesOpt">

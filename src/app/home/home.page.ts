@@ -103,6 +103,10 @@ export class HomePage {
     this.router.navigate(['details'], navigationExtras );
   }
 
+  view(){
+    this.router.navigateByUrl('sale')
+  }
+
   react(key, val) {
     const userID = this.profileService.getUID();
     if (val != 0) {
