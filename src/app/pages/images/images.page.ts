@@ -21,10 +21,7 @@ export class ImagesPage implements OnInit {
     garage: "",
   }
 
-  slidesOptions1 = {
-    initialSlide: 1,
-    speed: 400,
-  }
+ 
   
   slideIndex = 1;
   propertyid

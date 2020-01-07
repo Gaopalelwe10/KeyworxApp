@@ -32,13 +32,13 @@
             </ion-card>
         </ion-slide>
     </ion-slides> -->
-    <div id="id01" class="w3-modal">
+    <div id="id01" class="w3-modal" float="center">
         <div class="w3-modal-content">
             <div class="w3-container">
                 <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                 <br><br>
                 <ion-slides>
-                    <ion-slide *ngFor="let pic of imageList;let i index" pager [options]="slidesOptions1 ">
+                    <ion-slide *ngFor="let pic of imageList;let i index">
 
                         <!-- <a class="w3-button w3-black w3-display-left">&#10094;</a> -->
                         <img src="{{pic.downloadURL}}" style='width: 100%; height: 100%;' size="100%" accept=".png,.jpg">
