@@ -44,6 +44,14 @@ const routes: Routes = [
     path: 'filteroutput',
     loadChildren: () => import('./pages/filteroutput/filteroutput.module').then( m => m.FilteroutputPageModule)
   },
+  {
+    path: 'message',
+    loadChildren: () => import('./pages/message/message.module').then( m => m.MessagePageModule)
+  },
+  {
+    path: 'sale',
+    loadChildren: () => import('./pages/sale/sale.module').then( m => m.SalePageModule)
+  },
 
 
 

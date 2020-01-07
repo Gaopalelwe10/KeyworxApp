@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PropertyService } from 'src/app/services/property.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { FavouriteService } from 'src/app/services/favourite.service';
 
 @Component({
   selector: 'app-filteroutput',
@@ -11,12 +12,15 @@ import { Router } from '@angular/router';
 export class FilteroutputPage implements OnInit {
   propertyList
   propertyListLoaded
+  favouriteList
   constructor(private router: Router,
     private propertyService: PropertyService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private favouriteService: FavouriteService
   ) {
 
-    this.propertyService.propertyList().subscribe(data => {
+    this.propertyService.propertyList().subscribe((data: any) => {
+    
       this.propertyList = data.map(e => {
         return {
           key: e.payload.doc.id,
@@ -24,17 +28,41 @@ export class FilteroutputPage implements OnInit {
         }
       })
 
-
-      console.log("filteroupput" + this.propertyList);
-    })
-
-    this.propertyService.propertyList().subscribe(data => {
-      this.propertyListLoaded = data.map(e => {
+      this.propertyListLoaded=data.map(e => {
         return {
           key: e.payload.doc.id,
           ...e.payload.doc.data()
         }
       })
+
+      this.favouriteService.getfavouriteUser().subscribe((data: any) => {
+        this.favouriteList = data.map(e => {
+          return {
+            key: e.payload.doc.id,
+            ...e.payload.doc.data()
+          }
+        });
+
+        for (const reactionInfo of this.favouriteList) {
+
+          for (const property of this.propertyList) {
+            if (reactionInfo.key === property.key) {
+
+              this.favouriteService.count(property.key).subscribe((data: any) => {
+                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                property.userReaction = this.favouriteService.userfavourite(data);
+              })
+
+            }
+          }
+
+        }
+
+      });
+
+      console.log(this.propertyList)
+
+
     })
 
   }
@@ -46,14 +74,13 @@ export class FilteroutputPage implements OnInit {
     this.propertyList = this.propertyListLoaded;
   }
   detail(items) {
-    this.router.navigate(['/details'], {
+    const navigationExtras: NavigationExtras = {
       queryParams: {
-        mainImage: items.mainImage,
-        uid: items.uid,
-        propertyid: items.propertyid,
+        data: JSON.stringify(items),
+        
       }
-    });
-
+    };
+    this.router.navigate(['details'], navigationExtras );
   }
 
   filterList(evt) {
@@ -66,8 +93,8 @@ export class FilteroutputPage implements OnInit {
     }
 
     this.propertyList = this.propertyList.filter(currentProperty => {
-      if ((currentProperty.location && searchTerm)) {
-        if ((currentProperty.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)) {
+      if (currentProperty.location && searchTerm) {
+        if (currentProperty.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
           return true;
         }
         return false;
@@ -80,5 +107,14 @@ export class FilteroutputPage implements OnInit {
   }
   home() {
     this.router.navigateByUrl("tabs/home")
+  }
+
+  react(key, val) {
+    const userID = this.profileService.getUID();
+    if (val != 0) {
+      this.favouriteService.updatefavourite(key, userID, 0)
+    } else {
+      this.favouriteService.removefavourite(key, userID)
+    }
   }
 }

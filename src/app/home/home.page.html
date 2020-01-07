@@ -7,39 +7,39 @@
             <ion-icon name="options"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
+   
 </ion-header>
 
-<ion-content padding>
-
+<ion-content class="ion-padding">
+    
     <ion-item lines="none">
-        <p slot="start">Sale</p>
-        <h6 slot="end" color="medium">see all</h6>
-        <ion-icon name="arrow-forward" color="medium" slot="end"></ion-icon>
+        <p slot="start"><b>FEATURED</b></p>
+        <p slot="end" color="medium" (click)="view()">View all</p>
     </ion-item>
 
-    <ion-slides [options]="slidesOpt">
+    <ion-slides [options]="slidesOptions ">
         <ion-slide *ngFor="let items of propertyList  ">
-            <ion-card class="catt">
-                <div (click)="detail(items)">
-                    <img src="{{items.mainImage }}">
+            <ion-card class="cat">
+                <div >
+                    <img src="{{items.mainImage}}" (click)="detail(items)">
                     <ion-card-content slot="start">
-                        <ion-text color="primary">
-                            <h4>{{items.price | currency:'R'}}</h4>
-                        </ion-text>
-                        <ion-text color="dark">
-                            <h4>{{items.description}}</h4>
-                            <ion-grid>
-                                <ion-row>
-                                    <ion-col>
-                                        <h4>
-                                            <ion-icon name="bed"></ion-icon> {{items.bedrooms}}
-                                            <ion-icon name="body"></ion-icon> {{items.bathrooms}}
-                                            <ion-icon name="car"></ion-icon> {{items.garage}} </h4>
-                                    </ion-col>
-                                </ion-row>
-                            </ion-grid>
+                        <div class="action" class="like" (click)="react(items.key, items.userReaction)" [class.liked]="items.userReaction != null">
+                            <ion-icon  class="ion-float-right" name="heart"></ion-icon>
+                        </div>
+                        <div (click)="detail(items)">
+                            <p>{{items.price | currency:'R'}}</p>
+                            <p>{{items.location}}</p>
 
-                        </ion-text>
+                            <i class="fa fa-bed" aria-hidden="true">
+                                                <span class="pad-value">{{items.bedrooms}}</span>
+                                            </i>
+                            <i class="fa fa-bath" aria-hidden="true">
+                                                <span class="pad-value"> {{items.bathrooms}}</span>
+                                            </i>
+                            <i class="fa fa-car" aria-hidden="true"> 
+                                                <span class="pad-value">  {{items.garage}}</span>
+                                            </i>
+                        </div>
                     </ion-card-content>
                 </div>
             </ion-card>
@@ -47,9 +47,8 @@
     </ion-slides>
 
     <ion-item lines="none">
-        <p slot="start">Show</p>
-        <h6 slot="end" color="medium">see all</h6>
-        <ion-icon name="arrow-forward" color="medium" slot="end"></ion-icon>
+        <p slot="start"><b>SALE</b></p>
+        <p slot="end" color="medium" (click)="view()">View all</p>
     </ion-item>
 
     <ion-slides [options]="slidesOpt">
@@ -57,28 +56,11 @@
         <ion-slide *ngFor="let details of propertyList">
 
             <ion-card class="catt">
-                <div>
+                <div >
                     <img src="{{details.mainImage}}" (click)="detail(details)">
                     <ion-card-content slot="start">
-                        <!-- <ion-text color="primary">
-                            <h4>{{items.price}}</h4>
-                        </ion-text>
-                        <ion-text color="dark">
-                            <h4>{{items.description}}</h4>
-                            <ion-grid>
-                                <ion-row>
-                                    <ion-col>
-                                        <h4>
-                                            <ion-icon name="bed"></ion-icon> {{items.bedrooms}}
-                                            <ion-icon name="body"></ion-icon> {{items.bathrooms}}
-                                            <ion-icon name="car"></ion-icon> {{items.garage}} </h4>
-                                    </ion-col>
-                                </ion-row>
-                            </ion-grid>
-
-                        </ion-text> -->
-                        <div class="action">
-                            <ion-icon float-right name="heart" color="danger"></ion-icon>
+                        <div class="action" class="like" (click)="react(details.key, details.userReaction)" [class.liked]="details.userReaction != null">
+                            <ion-icon  class="ion-float-right" name="heart"></ion-icon>
                         </div>
                         <div (click)="detail(details)">
                             <p>{{details.price | currency:'R'}}</p>

@@ -18,11 +18,14 @@
     <div class="row">
         <div class="column" *ngFor="let items of propertyList">
 
-            <ion-card class="card" (click)="detail(items)">
-                <img src="{{items.mainImage}}" style="width:100%">
+            <ion-card class="card">
+                <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">
 
                 <ion-card-content>
-
+                    <div class="action" class="like" (click)="react(items.key, items.userReaction)" [class.liked]="items.userReaction != null">
+                        <ion-icon  class="ion-float-right" name="heart"></ion-icon>
+                    </div>
+                    <div (click)="detail(items)">
                     <p>{{items.price | currency:'R'}}</p>
                     <p>{{items.location}}</p>
                     <div>
@@ -36,6 +39,7 @@
                                             <span class="pad-value">  {{items.garage}}</span>
                                         </i>
                     </div>
+                </div>
                 </ion-card-content>
             </ion-card>
         </div>

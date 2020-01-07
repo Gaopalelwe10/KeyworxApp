@@ -8,19 +8,16 @@ import { PropertyService } from 'src/app/services/property.service';
   styleUrls: ['./filter.page.scss'],
 })
 export class FilterPage implements OnInit {
-  min:number=0 ;
-  max:1000000000000000000;
-  bedrooms ;
-  bathrooms ;
-  garages:string ;
+  min: number = 0;
+  max: 1000000000000000000;
+  bedrooms;
+  bathrooms;
+  garages;
 
   constructor(
     private router: Router,
     public propertyService: PropertyService
   ) {
-    this.propertyService.filterproperty().subscribe(data => {
-      console.log("fiter" +data)
-    })
 
   }
 
@@ -28,8 +25,8 @@ export class FilterPage implements OnInit {
     // this.clickedButton(event, 1)
 
   }
+  binding = 1
 
-  
   cancel() {
     this.router.navigateByUrl("tabs/home")
   }
@@ -37,7 +34,7 @@ export class FilterPage implements OnInit {
   BedButton(event, value) {
 
     let temp = event.srcElement.parentNode;
-    this.bedrooms = value
+    this.bedrooms = value;
     console.log(this.bedrooms)
 
     for (let i = 0; i < temp.childNodes.length; i++) {
@@ -82,7 +79,7 @@ export class FilterPage implements OnInit {
 
       if (temp.childNodes[i].nodeName === 'ION-BUTTON') {
 
-      
+
         if (temp.childNodes[i].classList.contains('active')) {
           temp.childNodes[i].classList.remove('active');
         }
@@ -96,8 +93,10 @@ export class FilterPage implements OnInit {
   filter() {
     console.log("min " + this.min)
     console.log("max " + this.max)
-    this.propertyService.filterBySize( this.bedrooms,this.bathrooms,this.garages, this.min,this.max)
+    this.propertyService.filterBySize(this.bedrooms, this.bathrooms, this.garages, this.min, this.max)
 
     this.router.navigateByUrl("filteroutput")
   }
+
+
 }
