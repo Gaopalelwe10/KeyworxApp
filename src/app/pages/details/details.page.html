@@ -7,7 +7,7 @@
 
         <!-- <ion-title>Details</ion-title> -->
 
-        <ion-buttons slot="end">
+        <ion-buttons slot="end" class="action" class="like" (click)="react(propertyList.key, propertyList.userReaction)" [class.liked]="propertyList.userReaction != null">
             <ion-icon name="heart"></ion-icon>
         </ion-buttons>
 

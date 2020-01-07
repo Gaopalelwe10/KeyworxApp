@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ModalController, IonSlides } from '@ionic/angular';
 import { PropertyService } from 'src/app/services/property.service';
+import { FavouriteService } from 'src/app/services/favourite.service';
 
 @Component({
   selector: 'app-details',
@@ -36,11 +37,13 @@ export class DetailsPage implements OnInit {
     speed: 400,
   }
   array
+  favouriteList
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
     private modalController: ModalController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private favouriteService: FavouriteService
   ) {
    
     this.route.queryParams.subscribe(params => {
@@ -51,6 +54,22 @@ export class DetailsPage implements OnInit {
       
       }
       
+    });
+    this.favouriteService.getfavourite().subscribe((data: any) => {
+      this.favouriteList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      });
+
+      for (const reactionInfo of this.favouriteList) {
+          if (reactionInfo.key ===  this.propertyid) {
+            this.favouriteService.count( this.propertyid).subscribe((data: any) => {
+              this.propertyList.userReaction = this.favouriteService.userfavourite(data);
+            })
+          }
+      }
     });
     // this.route.queryParams
     //   .subscribe(params => {
@@ -118,5 +137,14 @@ export class DetailsPage implements OnInit {
 
   message(){
     this.router.navigateByUrl("message")
+  }
+
+  react(key, val) {
+    const userID = this.profileService.getUID();
+    if (val != 0) {
+      this.favouriteService.updatefavourite(key, userID, 0)
+    } else {
+      this.favouriteService.removefavourite(key, userID)
+    }
   }
 }

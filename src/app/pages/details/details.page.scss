@@ -100,3 +100,12 @@ ion-card {
         color: white;
     }
 }
+
+.like {
+    cursor: pointer;
+    font-size: 20px;
+    &.liked {
+        font-weight: bold;
+        color: #a02b2d;
+    }
+}
