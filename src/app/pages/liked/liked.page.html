@@ -11,7 +11,7 @@
             <div class="column" *ngFor="let items of propertyList">
 
                 <ion-card class="card" *ngIf="favourite.key === items.key">
-                    <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">>
+                    <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">
 
                     <ion-card-content>
                         <div class="action" class="like" (click)="react(items.key, items.userReaction)" [class.liked]="items.userReaction != null">
