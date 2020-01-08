@@ -1,27 +1,47 @@
-<ion-header>
+<ion-header no-border no-shadow>
     <ion-toolbar color="primary">
+
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>details</ion-title>
+
+        <!-- <ion-title>Details</ion-title> -->
+
+        <ion-buttons slot="end" class="action" class="like" (click)="react(propertyList.key, propertyList.userReaction)" [class.liked]="propertyList.userReaction != null">
+            <ion-icon name="heart"></ion-icon>
+        </ion-buttons>
+
+        <ion-buttons slot="end">
+            <ion-icon name="share"></ion-icon>
+        </ion-buttons>
+
+
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
 
     <ion-card>
+
         <div class="container">
-            <ion-slides pager [options]="slidesOptions ">
+            <img src="{{propertyList.mainImage}}">
+            <div class="bottom-right" (click)="view(1)">
+                <i class="fa fa-picture-o" aria-hidden="true">
+                    Pictures
+                </i>
+            </div>
+        </div>
+        <!-- <ion-slides pager [options]="slidesOptions ">
                 <ion-slide>
                     <img src="{{propertyList.mainImage}}">
                 </ion-slide>
                 <ion-slide *ngFor="let pic of imageList; let i = index ">
                     <img src="{{pic.downloadURL}}" (click)="view(i)">
                 </ion-slide>
-            </ion-slides>
+            </ion-slides> -->
 
-            <!-- <div class="content">
-                 <h1>View Gallery</h1>
+        <!-- <div class="content">
+                <h1>View Gallery</h1>
 
                 <div (click)="detail(items)">
                     <div>{{items?.price | currency:'R'}} {{items?.location}}</div>
@@ -40,100 +60,95 @@
 
 
 
+
+
+        <ion-card-content>
             <!-- <ion-slides [options]="slidesOptions2 ">
-            <ion-slide *ngFor="let pic of imageList; let i = index ">
-                <ion-card class="cat">
-                    <img src="{{pic.downloadURL}}" (click)="view(i)">
-                </ion-card>
-            </ion-slide>
-        </ion-slides> -->
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <i class="fa fa-bed" aria-hidden="true">
-                      <br>  <span class="pad-value">{{propertyList?.bedrooms}}</span>
-                    </i>
-                </ion-col>
-                <ion-col>
-                    <i class="fa fa-bath" aria-hidden="true">
-                        <br> <span class="pad-value"> {{propertyList?.bathrooms}}</span>
-                    </i>
-                </ion-col>
-                <ion-col>
-                    <i class="fa fa-pagelines" aria-hidden="true">
-                      <br>  <span class="pad-value"> {{propertyList?.garage}}</span>
-                    </i>
-                </ion-col>
-                <ion-col>
-                    <i class="fa fa-car" aria-hidden="true">
-                     <br>   <span class="pad-value"> {{propertyList?.garage}}</span>
-                    </i>
-                </ion-col>
-                <ion-col>
-                    <i class="fa fa-car" aria-hidden="true">
-                      <br>  <span class="pad-value"> {{propertyList?.garage}}</span>
-                    </i>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-            <ion-card-content>
-    
-                <div>
-                    <div>{{items?.price | currency:'R'}} {{items?.location}}</div>
+                    <ion-slide *ngFor="let pic of imageList; let i = index ">
+                        <ion-card class="cat">
+                            <img src="{{pic.downloadURL}}" (click)="view(i)">
+                        </ion-card>
+                    </ion-slide>
+                </ion-slides> -->
+            <div>
+                <p>{{propertyList?.price | currency:'R'}}</p>
+                <p> {{propertyList?.location}}</p>
 
-                    <i class="fa fa-bed" aria-hidden="true">
-                        <span class="pad-value">{{propertyList?.bedrooms}}</span>
+                <i class="fa fa-bed" aria-hidden="true">
+                        <span class="pad-value">{{propertyList?.bedrooms}} Bed</span>
                     </i>
-                    <i class="fa fa-bath" aria-hidden="true">
-                        <span class="pad-value"> {{propertyList?.kitchens}}</span>
+                <i class="fa fa-bath" aria-hidden="true">
+                        <span class="pad-value"> {{propertyList?.bathrooms}} Bath</span>
                     </i>
-                    <i class="fa fa-car" aria-hidden="true">
-                        <span class="pad-value"> {{propertyList?.garage}}</span>
+                <i class="fa fa-car" aria-hidden="true">
+                        <span class="pad-value"> {{propertyList?.garage}} Garage</span>
                     </i>
-                </div>
-                <hr>
+            </div>
 
 
-                <p>Description : {{propertyList?.description}}</p>
-
-                <!-- <p>Type of Property : {{propertyList?.typeofproperty}}</p> -->
+            <!-- <hr> -->
 
 
-            </ion-card-content>
-            <ion-list lines="none">
-                <ion-list-header>
-                    Property Overview
-                </ion-list-header>
+            <!-- <p>Description : {{propertyList?.description}}</p> -->
 
-                <ion-item>
-                    <ion-note slot="end" color="primary">{{propertyList?.typeofproperty}}</ion-note>
-                    <ion-label>Type of Property</ion-label>
-                </ion-item>
-                <ion-item>
-                    <ion-note slot="end" color="primary">{{propertyList?.kitchens}}</ion-note>
-                    <ion-label>Kitchen</ion-label>
-                </ion-item>
-                <ion-item>
-                    <ion-note slot="end" color="primary">{{propertyList?.garden}}</ion-note>
-                    <ion-label>Garden</ion-label>
-                </ion-item>
-            </ion-list>
-        </div>
+            <!-- <p>Type of Property : {{propertyList?.typeofproperty}}</p> -->
+
+
+        </ion-card-content>
+
+
     </ion-card>
 
 
     <ion-card>
-
         <ion-card-content>
-
+            {{propertyList?.description}}
         </ion-card-content>
     </ion-card>
 
 
 
+    <ion-card>
+
+        <ion-card-content>
+            <b>Property Overview</b>
+        </ion-card-content>
+
+        <ion-list lines="none">
+            <ion-item>
+                <ion-note slot="end" color="primary">{{propertyList?.typeofproperty}}</ion-note>
+                <ion-label>Type of Property</ion-label>
+            </ion-item>
+            <ion-item *ngIf="propertyList.kitchens!=0">
+                <ion-note slot="end" color="primary">{{propertyList?.kitchens}}</ion-note>
+                <ion-label>Kitchen</ion-label>
+            </ion-item>
+            <ion-item *ngIf="propertyList.garden!=0">
+                <ion-note slot="end" color="primary">{{propertyList?.garden}}</ion-note>
+                <ion-label>Garden</ion-label>
+            </ion-item>
+            <ion-item *ngIf="propertyList.diningroom!=0">
+                <ion-note slot="end" color="primary">{{propertyList?.diningroom}}</ion-note>
+                <ion-label>Dining Room</ion-label>
+            </ion-item>
+            <ion-item *ngIf="propertyList.pool!=0">
+                <ion-note slot="end" color="primary">{{propertyList?.pool}}</ion-note>
+                <ion-label>Pool</ion-label>
+            </ion-item>
+            <ion-item *ngIf="propertyList.lounges!=0">
+                <ion-note slot="end" color="primary">{{propertyList?.lounges}}</ion-note>
+                <ion-label>Lounge</ion-label>
+            </ion-item>
+        </ion-list>
+
+    </ion-card>
 
 
 
+
+    <br>
+    <br>
+    <br>
 </ion-content>
 <ion-footer>
     <ion-grid>

@@ -21,6 +21,11 @@ export class ImagesPage implements OnInit {
     garage: "",
   }
 
+  slidesOptions1 = {
+    initialSlide: 1,
+    speed: 400,
+  }
+  
   slideIndex = 1;
   propertyid
   imageList
@@ -33,6 +38,8 @@ export class ImagesPage implements OnInit {
     }
   }
 index=0;
+
+
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
@@ -62,6 +69,8 @@ index=0;
 
   }
 
+
+  
   ngOnInit() {
     // this.propertyService.imageList(this.propertyid).subscribe((data)=>{
     //   this.imageList = data.map(e => {

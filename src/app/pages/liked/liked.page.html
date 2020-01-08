@@ -5,39 +5,39 @@
 </ion-header>
 
 <ion-content>
-  
-<div *ngFor="let favourite of favouriteList">
-    <div class="row">
-        <div class="column" *ngFor="let items of propertyList">
 
-            <ion-card class="card"  *ngIf="favourite.key === items.key">
-                <img src="{{items.mainImage}}" style="width:100%">
+    <div *ngFor="let favourite of favouriteList">
+        <div class="row">
+            <div class="column" *ngFor="let items of propertyList">
 
-                <ion-card-content>
-                    <div class="action" class="like" (click)="react(items.key, items.userReaction)" [class.liked]="items.userReaction != null">
-                        <ion-icon  class="ion-float-right" name="heart"></ion-icon>
-                    </div>
-                    <div (click)="detail(items)">
-                    <p>{{items.price | currency:'R'}}</p>
-                    <p>{{items.location}}</p>
-                    
-                        <i class="fa fa-bed" aria-hidden="true">
+                <ion-card class="card" *ngIf="favourite.key === items.key">
+                    <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">
+
+                    <ion-card-content>
+                        <div class="action" class="like" (click)="react(items.key, items.userReaction)" [class.liked]="items.userReaction != null">
+                            <ion-icon class="ion-float-right" name="heart"></ion-icon>
+                        </div>
+                        <div (click)="detail(items)">
+                            <p>{{items.price | currency:'R'}}</p>
+                            <p>{{items.location}}</p>
+
+                            <i class="fa fa-bed" aria-hidden="true">
                                             <span class="pad-value">{{items.bedrooms}}</span>
                                         </i>
-                        <i class="fa fa-bath" aria-hidden="true">
+                            <i class="fa fa-bath" aria-hidden="true">
                                             <span class="pad-value"> {{items.bathrooms}}</span>
                                         </i>
-                        <i class="fa fa-car" aria-hidden="true">
+                            <i class="fa fa-car" aria-hidden="true">
                                             <span class="pad-value">  {{items.garage}}</span>
                                         </i>
-                    </div>
-                </ion-card-content>
-            </ion-card>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
         </div>
+
     </div>
 
-</div>
 
-         
-   
+
 </ion-content>
