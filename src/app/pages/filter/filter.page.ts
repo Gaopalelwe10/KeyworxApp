@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
+import { Plugins } from '@capacitor/core';
 
+const { Storage } = Plugins;
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.page.html',
@@ -28,14 +30,21 @@ export class FilterPage implements OnInit {
     // this.clickedButton(event, 1)
 
   }
-
+  
+  async setItem() {
+    await Storage.set({
+      key: 'name',
+      value: 'Max'
+    });
+  }
+  
   
   cancel() {
     this.router.navigateByUrl("tabs/home")
   }
 
-  BedButton(event, value) {
-
+  async BedButton(event, value) {
+    
     let temp = event.srcElement.parentNode;
     this.bedrooms = value
     console.log(this.bedrooms)
@@ -50,11 +59,19 @@ export class FilterPage implements OnInit {
 
       }
     }
+    await Storage.set({
+      key: 'Bed',
+      value: value
+    });
     event.srcElement.classList.add('active')
-
+   
   }
-
+  async getItem() {
+    const { value } = await Storage.get({ key: 'Bed' });
+    console.log('Got item: ', value);
+  }
   BathButton(event, value) {
+    this.getItem()
     let temp = event.srcElement.parentNode;
     this.bathrooms = value
     console.log(this.bathrooms)
