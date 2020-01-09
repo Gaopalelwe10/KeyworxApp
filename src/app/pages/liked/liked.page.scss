@@ -1,12 +1,53 @@
 * {
     box-sizing: border-box;
 }
-ion-header{
+
+ion-header {
     --background: #a02b2d;
 }
 
-ion-title{
-  text-align: center;
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 1650px) {
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        float: left;
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+ion-header {
+    --background: #a02b2d;
+}
+
+ion-title {
+    text-align: center;
 }
 
 i {
@@ -15,13 +56,13 @@ i {
         padding-left: 5px;
     }
 }
-.column{
-  padding: 1px 10px;
+
+.column {
+    padding: 1px 10px;
 }
 
 ion-card {
     border-radius: 10px;
-   
     img {
         background-size: auto 100%;
         background-repeat: no-repeat;
@@ -30,29 +71,28 @@ ion-card {
     }
 }
 
-ion-card-content{
-  color: black; 
+ion-card-content {
+    color: black;
 }
-  i {
+
+i {
     padding-right: 10px;
     .pad-value {
-      padding-left: 5px;
+        padding-left: 5px;
     }
-  }
-  
-  .action {
+}
+
+.action {
     ion-icon {
-      font-size: 20px;
+        font-size: 20px;
     }
-  }
-  
-  .like {
+}
+
+.like {
     cursor: pointer;
     font-size: 20px;
     &.liked {
-      font-weight: bold;
-      color: #a02b2d;
-      
+        font-weight: bold;
+        color: #a02b2d;
     }
-  }
-  
+}

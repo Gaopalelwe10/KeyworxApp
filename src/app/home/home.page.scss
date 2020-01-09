@@ -1,74 +1,80 @@
-
-ion-title{
-  text-align: center;
+ion-title {
+    text-align: center;
 }
-.catt {
-  width: 270px;
-  height: 270px;
-  background-size: cover;
-  margin: 5px;
-  text-align: start;
-  color: black;
 
-  img {
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 170px;
-  }
-  .like {
-    cursor: pointer;
-    font-size: 20px;
-    &.liked {
-      font-weight: bold;
-      color: #a02b2d;
-      
+.catt {
+    width: 270px;
+    height: 270px;
+    background-size: cover;
+    margin: 5px;
+    text-align: start;
+    color: black;
+    img {
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 170px;
     }
-  }
+    .like {
+        cursor: pointer;
+        font-size: 20px;
+        &.liked {
+            font-weight: bold;
+            color: #a02b2d;
+        }
+    }
 }
 
 .cat {
-  width: 140px;
-  background-size: cover;
-  margin: 5px;
-  text-align: start;
-  --color: black;
-  p {
-    font-size: 3vw;
-  }
-  img {
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 90px;
-  }
-  i {
-    font-size: 3vw;
-    padding-right: 2vw;
-
-    .pad-value {
-      padding-left: 1vw;
+    width: 140px;
+    background-size: cover;
+    margin: 5px;
+    text-align: start;
+    --color: black;
+    p {
+        font-size: 13px;
     }
-  }
-  .like {
-    cursor: pointer;
-    font-size: 14px;
-    &.liked {
-      font-weight: bold;
-      color: #a02b2d;
-      
+    img {
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 90px;
     }
-  }
+    i {
+        font-size: 13px;
+        padding-right: 6px;
+        .pad-value {
+            padding-left: 3px;
+        }
+    }
+    .like {
+        cursor: pointer;
+        font-size: 14px;
+        &.liked {
+            font-weight: bold;
+            color: #a02b2d;
+        }
+    }
 }
-
 
 i {
-  padding-right: 10px;
-  .pad-value {
-    padding-left: 5px;
-  }
+    padding-right: 10px;
+    .pad-value {
+        padding-left: 5px;
+    }
 }
 
-
-
-
+@media screen and (max-width: 321px) {
+    .cat {
+        p {
+            font-size: 9px;
+        }
+        i {
+            font-size: 9px;
+            padding-right: 6px;
+            .pad-value {
+                padding-left: 3px;
+            }
+        }
+    }
+}

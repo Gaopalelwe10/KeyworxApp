@@ -24,7 +24,8 @@ const routes: Routes = [
   {
     path: 'propertydetails',
     loadChildren: () => import('./pages/propertydetails/propertydetails.module').then( m => m.PropertydetailsPageModule)
-  },  {
+  },
+  {
     path: 'filter',
     loadChildren: () => import('./pages/filter/filter.module').then( m => m.FilterPageModule)
   },
@@ -47,11 +48,16 @@ const routes: Routes = [
   {
     path: 'message',
     loadChildren: () => import('./pages/message/message.module').then( m => m.MessagePageModule)
+  },  {
+    path: 'category',
+    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
   },
   {
-    path: 'sale',
-    loadChildren: () => import('./pages/sale/sale.module').then( m => m.SalePageModule)
+    path: 'featured',
+    loadChildren: () => import('./pages/featured/featured.module').then( m => m.FeaturedPageModule)
   },
+
+ 
 
 
 

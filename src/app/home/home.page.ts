@@ -4,6 +4,7 @@ import { PropertyService } from '../services/property.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { FavouriteService } from '../services/favourite.service';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-home',
@@ -24,22 +25,27 @@ export class HomePage {
   }
   userReaction = null
   favouriteList
+
+  data = false;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
     public platform: Platform,
-    private favouriteService: FavouriteService
+    private favouriteService: FavouriteService,
+    private categoryService: CategoryService,
   ) {
 
-    // if (this.platform.is("ipad")) {
-    //   this.slidesOptions = {
-    //     slidesPerView: 4.2,
-    //   }
-    // } else {
-    //   this.slidesOptions = {
-    //     slidesPerView: 2.2,
-    //   }
-    // }
+    if (this.platform.is("ipad")) {
+      this.slidesOptions = {
+        slidesPerView: 4.2,
+        
+      }
+      this.slidesOpt = {
+        slidesPerView: 2.2,
+        centerSlides: true,
+        // spaceBetween: 10,
+      }
+    } 
     
     this.propertyService.propertyList().subscribe((data: any) => {
       this.propertyList = data.map(e => {
@@ -63,7 +69,6 @@ export class HomePage {
             if (reactionInfo.key === property.key) {
 
               this.favouriteService.count(property.key).subscribe((data: any) => {
-                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
                 property.userReaction = this.favouriteService.userfavourite(data);
               })
             }
@@ -72,7 +77,8 @@ export class HomePage {
         }
       });
       console.log(this.propertyList)
-    })
+      this.data = true;
+    });
   }
   ionViewDidEnter() {
 
@@ -103,10 +109,14 @@ export class HomePage {
     this.router.navigate(['details'], navigationExtras );
   }
 
-  view(){
-    this.router.navigateByUrl('sale')
+  viewFeatuered(){
+    this.router.navigateByUrl('featured')
   }
 
+  view(){
+    this.router.navigateByUrl('category')
+  }
+ 
   react(key, val) {
     const userID = this.profileService.getUID();
     if (val != 0) {

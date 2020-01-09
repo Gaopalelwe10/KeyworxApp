@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
+import { Plugins } from '@capacitor/core';
 
+const { Storage } = Plugins;
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.page.html',
   styleUrls: ['./filter.page.scss'],
 })
 export class FilterPage implements OnInit {
-  min: number = 0;
-  max: 1000000000000000000;
-  bedrooms;
-  bathrooms;
-  garages;
+  min:number=0 ;
+  max:1000000000000000000;
+  bedrooms ;
+  bathrooms ;
+  garages:string ;
 
   constructor(
     private router: Router,
     public propertyService: PropertyService
   ) {
+    this.propertyService.filterproperty().subscribe(data => {
+      console.log("fiter" +data)
+    })
 
   }
 
@@ -25,16 +30,23 @@ export class FilterPage implements OnInit {
     // this.clickedButton(event, 1)
 
   }
-  binding = 1
-
+  
+  async setItem() {
+    await Storage.set({
+      key: 'name',
+      value: 'Max'
+    });
+  }
+  
+  
   cancel() {
     this.router.navigateByUrl("tabs/home")
   }
 
-  BedButton(event, value) {
-
+  async BedButton(event, value) {
+    
     let temp = event.srcElement.parentNode;
-    this.bedrooms = value;
+    this.bedrooms = value
     console.log(this.bedrooms)
 
     for (let i = 0; i < temp.childNodes.length; i++) {
@@ -47,11 +59,19 @@ export class FilterPage implements OnInit {
 
       }
     }
+    await Storage.set({
+      key: 'Bed',
+      value: value
+    });
     event.srcElement.classList.add('active')
-
+   
   }
-
+  async getItem() {
+    const { value } = await Storage.get({ key: 'Bed' });
+    console.log('Got item: ', value);
+  }
   BathButton(event, value) {
+    this.getItem()
     let temp = event.srcElement.parentNode;
     this.bathrooms = value
     console.log(this.bathrooms)
@@ -75,11 +95,11 @@ export class FilterPage implements OnInit {
     this.garages = value
     console.log(this.garages)
 
-    for (let i = 0; i < temp.childNodes.length; i++) {
+    for (let i = 0; i < temp.childNodes.length; i++) { 
 
       if (temp.childNodes[i].nodeName === 'ION-BUTTON') {
 
-
+      
         if (temp.childNodes[i].classList.contains('active')) {
           temp.childNodes[i].classList.remove('active');
         }
@@ -93,10 +113,8 @@ export class FilterPage implements OnInit {
   filter() {
     console.log("min " + this.min)
     console.log("max " + this.max)
-    this.propertyService.filterBySize(this.bedrooms, this.bathrooms, this.garages, this.min, this.max)
+    this.propertyService.filterBySize( this.bedrooms,this.bathrooms,this.garages, this.min,this.max)
 
     this.router.navigateByUrl("filteroutput")
   }
-
-
 }
