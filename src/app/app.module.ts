@@ -17,6 +17,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TabsPage } from './pages/tabs/tabs.page';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
+import { PopoverMorePageModule } from './pages/popover-more/popover-more.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4CMD51Wz_G564J0h4HJeFG27-UI12Kkw",
@@ -41,6 +42,7 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireStorageModule,
     NgxIonicImageViewerModule,
+    PopoverMorePageModule
         // ZoomAreaModule,
   ],
   
