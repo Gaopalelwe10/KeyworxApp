@@ -10,13 +10,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+// import { ImageModalPageModule} from ''
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TabsPage } from './pages/tabs/tabs.page';
-import { PropertyFilterPipePipe } from './pipes/property-filter-pipe.pipe';
 import { PipesModule } from './pipes/pipes.module';
 
 const firebaseConfig = {

@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ImagesPageRoutingModule } from './images-routing.module';
 
 import { ImagesPage } from './images.page';
-
+import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ImagesPageRoutingModule
+    ImagesPageRoutingModule,
+    NgxIonicImageViewerModule
   ],
   declarations: [ImagesPage]
 })

@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
 import { IonSlides } from '@ionic/angular';
 // import { FullScreenImage, FullScreenImageOriginal } from '@ionic-native/full-screen-image';
+import {ModalController} from '@ionic/angular';
+import { IonToggle } from '@ionic/angular';
 
 @Component({
   selector: 'app-images',
@@ -20,6 +22,10 @@ export class ImagesPage implements OnInit {
     bathrooms: "",
     garage: "",
   }
+  prefersDark = false;
+
+  // imgUrl = `./../../assets/img/silhoutte.jpg`; // Use for local development
+  imgUrl = `https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?&q=80`;
 
   slidesOptions1 = {
     initialSlide: 1,
@@ -30,20 +36,22 @@ export class ImagesPage implements OnInit {
   propertyid
   imageList
   images: any;
-  slidesOptions = {
-    initialSlide: 1,
-    speed: 400,
-    zoom:{
-      maxRatio:3
-    }
-  }
+  // slidesOptions = {
+  //   initialSlide: 1,
+  //   speed: 400,
+  //   zoom:{
+  //     maxRatio:3
+  //   }
+  // }
 index=0;
 
+slideOptions={ zoom: { maxRatio: 7}}
 
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
     private router:Router,
+    private modalController:ModalController,
   ) {
     // this.route.queryParams
     //   .subscribe(params => {
@@ -68,10 +76,19 @@ index=0;
       });
 
   }
+//   openPreview(){
+// this.modalController.create({
+//   component:ImageModalPage,
+//   componentProps:{
 
+//   }
+// })
+//   }
 
-  
   ngOnInit() {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // this.toggleTheme();
+    }
     // this.propertyService.imageList(this.propertyid).subscribe((data)=>{
     //   this.imageList = data.map(e => {
     //     return {
@@ -83,6 +100,11 @@ index=0;
     // })
     // this.slides.slideTo(this.index)
   }
+
+  // toggleTheme() {
+  //   this.prefersDark = !this.prefersDark;
+  //   document.body.classList.toggle('dark', this.prefersDark);
+  // }
 
 // full(){
 //   this.fullScreenImage.showImageURL('imageList.key.downloadURL')
@@ -142,4 +164,6 @@ full(pic){
 // });
 // modal.present();
 //   }
+
+
 }
