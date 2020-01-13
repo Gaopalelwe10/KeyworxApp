@@ -19,7 +19,7 @@ export class FilteroutputPage implements OnInit {
     private favouriteService: FavouriteService
   ) {
 
-    this.propertyService.propertyList().subscribe((data: any) => {
+    this.propertyService.filterproperty().subscribe((data: any) => {
     
       this.propertyList = data.map(e => {
         return {
@@ -72,8 +72,6 @@ export class FilteroutputPage implements OnInit {
       });
 
       console.log(this.propertyList)
-
-
     })
 
   }
