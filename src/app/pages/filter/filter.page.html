@@ -20,7 +20,12 @@
     <ion-grid>
         <ion-row>
             <ion-col size="5">
-                <ion-select [(ngModel)]="min">
+                <ion-select [compareWith]="compareWith" value="price.id == 2">
+                    <div *ngFor="let price of prices">
+                        <ion-select-option value="{{price.value}}">{{price.value}}</ion-select-option>
+                    </div>
+                </ion-select>
+                <!-- <ion-select [(ngModel)]="min" [selectedText]="minv">
                     <ion-select-option value="100000">R100 000</ion-select-option>
                     <ion-select-option value="150000">R150 000</ion-select-option>
                     <ion-select-option value="200000">R200 000</ion-select-option>
@@ -49,7 +54,7 @@
                     <ion-select-option value="9000000">R9 000 000</ion-select-option>
                     <ion-select-option value="10000000">R10 000 000</ion-select-option>
                     <ion-select-option value="15000000">R15 000 000</ion-select-option>
-                </ion-select>
+                </ion-select> -->
                 <hr width="100%" color="dark">
                 <p style="text-align: center;">min</p>
 
@@ -101,8 +106,8 @@
     </ion-item>
     <ion-item lines="none">
         <div *ngFor="let value of list">
-            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(null)" >Any</ion-button>
-            <ion-button  *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} +</ion-button>
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} +</ion-button>
         </div>
     </ion-item>
 
@@ -112,8 +117,8 @@
 
     <ion-item lines="none">
         <div *ngFor="let value of list">
-            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bathrooms === value}" (click)="BathButton(null)" >Any</ion-button>
-            <ion-button  *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  bathrooms === value}" (click)="BathButton(value)">{{value}} +</ion-button>
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bathrooms === value}" (click)="BathButton(value)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  bathrooms === value}" (click)="BathButton(value)">{{value}} +</ion-button>
         </div>
     </ion-item>
 
@@ -122,8 +127,8 @@
     </ion-item>
     <ion-item lines="none">
         <div *ngFor="let value of list">
-            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': garages === value}" (click)="GARAGEButton(null)" >Any</ion-button>
-            <ion-button  *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  garages === value}" (click)="GARAGEButton(value)">{{value}} +</ion-button>
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': garages === value}" (click)="GARAGEButton(null)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  garages === value}" (click)="GARAGEButton(value)">{{value}} +</ion-button>
         </div>
         <!-- <ion-button shape="round" class="like" [class.liked]="garages == null" (click)="GARAGEButton($event,null)" value="1">Any</ion-button>
         <ion-button shape="round" (click)="GARAGEButton($event,'1')" value="1">1+</ion-button>

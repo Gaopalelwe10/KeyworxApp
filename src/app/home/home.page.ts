@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
 import { PropertyService } from '../services/property.service';
 import { Router, NavigationExtras } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform,  } from '@ionic/angular';
 import { FavouriteService } from '../services/favourite.service';
 import { CategoryService } from '../services/category.service';
+import { ActionSheetController } from '@ionic/angular';
+// import { popoverController } from '@ionic/core';
 
 @Component({
   selector: 'app-home',
@@ -25,8 +27,8 @@ export class HomePage implements OnInit{
     // spaceBetween: 10,
   }
   userReaction = null
-  favouriteList
-
+  favouriteList;
+ 
   data = false;
   propertySaleList
   textSearch;
@@ -36,6 +38,7 @@ export class HomePage implements OnInit{
     public platform: Platform,
     private favouriteService: FavouriteService,
     private categoryService: CategoryService,
+    public actionSheetController: ActionSheetController  ,
   ) {
 
     if (this.platform.is("ipad")) {
@@ -96,9 +99,11 @@ export class HomePage implements OnInit{
     
   }
 
+
   fliter() {
     this.router.navigateByUrl("filter")
   }
+
   logout() {
     this.profileService.logout();
   }
