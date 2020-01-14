@@ -17,12 +17,13 @@
     <ion-grid>
 
         <ion-row>
-            <ion-col size="6" class="gallery-lightboxes" *ngFor="let pic of imageList;let i = index">
+            <ion-col size="6" class="gallery-lightboxes" *ngFor="let pic of imageList">
 
+                <img src="{{pic.downloadURL}}" tappable (click)="OpenPreview(pic)">
                 <!-- <img src="{{pic.downloadURL}}"  size="100%" accept=".png,.jpg" imageViewer onclick="document.getElementById('id01').style.display='block'" > -->
-                <ion-img-viewer width="50" height="50" [src]="pic.downloadURL" [slideOptions]="{ zoom: { maxRatio: 8}}" style='width: 50%; height: 50%'>
+                <!-- <ion-img-viewer width="50" height="50" [src]="pic.downloadURL" [slideOptions]="{ zoom: { maxRatio: 8}}" style='width: 50%; height: 50%'>
 
-                </ion-img-viewer>
+                </ion-img-viewer> -->
 
             </ion-col>
         </ion-row>

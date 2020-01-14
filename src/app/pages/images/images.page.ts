@@ -5,6 +5,7 @@ import { IonSlides } from '@ionic/angular';
 // import { FullScreenImage, FullScreenImageOriginal } from '@ionic-native/full-screen-image';
 import {ModalController} from '@ionic/angular';
 import { IonToggle } from '@ionic/angular';
+import { ImageModalPage } from '../image-modal/image-modal.page';
 
 @Component({
   selector: 'app-images',
@@ -36,33 +37,28 @@ export class ImagesPage implements OnInit {
   propertyid
   imageList
   images: any;
-  // slidesOptions = {
-  //   initialSlide: 1,
-  //   speed: 400,
-  //   zoom:{
-  //     maxRatio:3
-  //   }
-  // }
+  sliderOpts = {
+    zoom: false,
+    slidesPerView: 1.5,
+  centeredslides: true,
+    spaceBetween:20
+  }
 index=0;
 
 slideOptions={ zoom: { maxRatio: 7}}
+  
+  
 
+pic={
+  downloadURL:"",
+}
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
     private router:Router,
     private modalController:ModalController,
   ) {
-    // this.route.queryParams
-    //   .subscribe(params => {
-    //     this.propertyid = params.propertyid;
-    //     console.log(this.propertyid)
-    //   });
-    // this.route.queryParams
-    //   .subscribe(params => {
-    //     this.imageList = params.array;
-    //     console.log(JSON.stringify(this.imageList))
-    //   });
+  
 
       this.route.queryParams.subscribe(params => {
         if (params && params.imageList) {
@@ -74,16 +70,16 @@ slideOptions={ zoom: { maxRatio: 7}}
         }
         
       });
-
+    
   }
-//   openPreview(){
-// this.modalController.create({
-//   component:ImageModalPage,
-//   componentProps:{
-
-//   }
-// })
-//   }
+  OpenPreview(pic){
+this.modalController.create({
+  component:ImageModalPage,
+  componentProps:{
+pic :pic
+  }
+}).then(modal =>modal.present())
+  }
 
   ngOnInit() {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
