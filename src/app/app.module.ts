@@ -12,8 +12,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 // import { ImageModalPageModule} from ''
 import { AngularFireModule } from '@angular/fire';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TabsPage } from './pages/tabs/tabs.page';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
@@ -21,21 +21,21 @@ import { PopoverMorePageModule } from './pages/popover-more/popover-more.module'
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4CMD51Wz_G564J0h4HJeFG27-UI12Kkw",
-    authDomain: "keyworkx.firebaseapp.com",
-    databaseURL: "https://keyworkx.firebaseio.com",
-    projectId: "keyworkx",
-    storageBucket: "keyworkx.appspot.com",
-    messagingSenderId: "128522126421",
-    appId: "1:128522126421:web:bf8e034c8207cdac6f40dc",
-    measurementId: "G-L60BJ3N668"
+  authDomain: "keyworkx.firebaseapp.com",
+  databaseURL: "https://keyworkx.firebaseio.com",
+  projectId: "keyworkx",
+  storageBucket: "keyworkx.appspot.com",
+  messagingSenderId: "128522126421",
+  appId: "1:128522126421:web:bf8e034c8207cdac6f40dc",
+  measurementId: "G-L60BJ3N668"
 };
 
 @NgModule({
-  declarations: [AppComponent,TabsPage],
+  declarations: [AppComponent, TabsPage],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
@@ -45,7 +45,7 @@ const firebaseConfig = {
     PopoverMorePageModule
         // ZoomAreaModule,
   ],
-  
+
   providers: [
     StatusBar,
     SplashScreen,
@@ -53,4 +53,4 @@ const firebaseConfig = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

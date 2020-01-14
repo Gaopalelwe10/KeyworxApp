@@ -19,7 +19,7 @@ export class FilteroutputPage implements OnInit {
     private favouriteService: FavouriteService
   ) {
 
-    this.propertyService.propertyList().subscribe((data: any) => {
+    this.propertyService.filterproperty().subscribe((data: any) => {
     
       this.propertyList = data.map(e => {
         return {
@@ -54,6 +54,17 @@ export class FilteroutputPage implements OnInit {
               })
 
             }
+
+            for (const property of this.propertyListLoaded) {
+              if (reactionInfo.key === property.key) {
+  
+                this.favouriteService.count(property.key).subscribe((data: any) => {
+                  // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                  property.userReaction = this.favouriteService.userfavourite(data);
+                })
+  
+              }
+            }
           }
 
         }
@@ -61,8 +72,6 @@ export class FilteroutputPage implements OnInit {
       });
 
       console.log(this.propertyList)
-
-
     })
 
   }

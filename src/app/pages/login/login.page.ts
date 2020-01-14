@@ -40,8 +40,9 @@ export class LoginPage implements OnInit {
 
   async login() {
     const loading = this.loadingCtrl.create({
-      message: 'Signing in, Please wait...',
+      // message: 'Signing in, Please wait...',
       // showBackdrop: false,
+      cssClass: 'custom-loader',
       spinner: "dots",
     });
     (await loading).present();

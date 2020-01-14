@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-popover-more',
@@ -10,12 +11,19 @@ export class PopoverMorePage implements OnInit {
 
   constructor(
     private profileService: ProfileService,
+    private popoverController:PopoverController
   ) { }
 
   ngOnInit() {
   }
 
   logout(){
-    this.profileService.logout();
+    this.profileService.logout().then(()=>{
+      
+    });
+    this.DismissClick();
+  }
+  async DismissClick() {
+    await this.popoverController.dismiss();
   }
 }
