@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from 'src/app/services/profile.service';
-import { ActionSheetController, AlertController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+import { PopoverMorePage } from '../popover-more/popover-more.page';
 
 @Component({
   selector: 'app-tabs',
@@ -9,52 +9,25 @@ import { ActionSheetController, AlertController } from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-  constructor(private profileService: ProfileService, 
-    private alertCtrl: AlertController,
-       public actionSheetController: ActionSheetController  
-    ) { }
+  constructor(
+    private popoverController: PopoverController,
+  ) { }
 
   ngOnInit() {
   }
-  async presentActionSheet() {
-    const alert  = await this.alertCtrl.create({
-      header: '.....',
-      buttons: [
-     
-      {
-        text: 'T&C APPLY',
-        role: 'cancel',
-        handler: () => {
-          console.log('T&C clicked');
-          // this.takePhoto()  
-        }
-      }, {
-        text: 'Contact Us',
-        role: 'cancel',
-        handler: () => {
-          console.log('Contact clicked');
-        
-        //  this.upload(event);
-        }
-       } , {
-        text: 'Settings',
-        role: 'cancel',
-        handler: () => {
-          console.log('Settings clicked');
-        
-        //  this.upload(event);
-        }
-       } , {
-          text: 'LogOut',
-          role: 'cancel',
-          handler: () => {
-            console.log('LogOut clicked');
-            this.profileService.logout()
-          }
-        
-      }]
-    });
-    alert.present();
+
+  async more(ev: any ){
+   
+      const popover= await this.popoverController.create({
+        component: PopoverMorePage,
+        event: ev,
+        // componentProps:{
+        //   comment:  comment,
+        //   spazauid: this.spazauid,
+        // },
+        // translucent: true
+      });
+      return await popover.present();
     
   }
 }

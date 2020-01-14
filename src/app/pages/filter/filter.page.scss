@@ -1,43 +1,47 @@
 ion-toolber {
-    --background: transparent !important;
+  --background: transparent !important;
 }
 
 ion-item {
-    ion-button {
-        padding-right: 10px;
-        width: 50px;
-        height: 50px;
-        // width: 150px;
-        // height: 40px;
-        // --background: white !important;
-    }
+  ion-button {
+    padding-right: 10px;
+    width: 50px;
+    height: 50px;
+    // width: 150px;
+    // height: 40px;
+    // --background: white !important;
+  }
 }
-.lastbutton{
- padding-right: 10px;
+.lastbutton {
+  padding-right: 10px;
 }
 ion-button.active {
-    // background-color: blue;
+  // background-color: blue;
+  --background: #a02b2d !important;
+  --color: #ffffff !important;
+  --color-activated: #ffffff !important;
+}
+.my-css-class {
     --background: #a02b2d !important;
     --color: #ffffff !important;
     --color-activated: #ffffff !important;
 }
-
 :host {
-    ion-item {
-        ion-button {
-            --background-activated: #ffffff;
-            --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-        }
-        ion-button {
-            --background: #ffffff;
-            --background-focused: #ffffff;
-            --color-activated: #ffffff;
-            --color: black;
-            --color-focused: #ffffff;
-        }
+  ion-item {
+    ion-button {
+      --background-activated: #ffffff;
+      --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+        0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     }
+    ion-button {
+      --background: #ffffff;
+      --background-focused: #ffffff;
+      --color-activated: #ffffff;
+      --color: black;
+      --color-focused: #ffffff;
+    }
+  }
 }
-
 
 // .like {
 //     cursor: pointer;

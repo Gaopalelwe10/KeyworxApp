@@ -53,6 +53,17 @@ export class CategoryPage implements OnInit {
               })
 
             }
+
+            for (const property of this.propertyListLoaded) {
+              if (reactionInfo.key === property.key) {
+  
+                this.favouriteService.count(property.key).subscribe((data: any) => {
+                  // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                  property.userReaction = this.favouriteService.userfavourite(data);
+                })
+  
+              }
+            }
           }
 
         }

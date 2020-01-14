@@ -57,10 +57,9 @@ const routes: Routes = [
     path: 'featured',
     loadChildren: () => import('./pages/featured/featured.module').then( m => m.FeaturedPageModule)
   },
-
   {
-    path: 'image-modal',
-    loadChildren: () => import('./pages/image-modal/image-modal.module').then( m => m.ImageModalPageModule)
+    path: 'popover-more',
+    loadChildren: () => import('./pages/popover-more/popover-more.module').then( m => m.PopoverMorePageModule)
   },
 
  

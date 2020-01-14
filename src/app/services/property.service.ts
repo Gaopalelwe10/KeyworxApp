@@ -49,12 +49,12 @@ export class PropertyService {
         this.afs.collection('properties', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
           if (min) { query = query.where('price', '>=', min) };
-          if (max) { query = query.where('price', '<=', max) }
+          if (max) { query = query.where('price', '<=', max) };
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
           if (garages) { query = query.where('garage', '==', garages) };
           return query;
-        }).valueChanges()
+        }).snapshotChanges()
       )
     );
   }
@@ -68,10 +68,10 @@ export class PropertyService {
     return this.afs.collection("properties").doc(propertyid).collection("images").snapshotChanges()
   }
 
-  getpropertyDetails(propertyid){
+  getpropertyDetails(propertyid) {
     return this.afs.collection("properties").doc(propertyid).valueChanges();
   }
-  getpropertyFavourite(propertyid){
+  getpropertyFavourite(propertyid) {
     return this.afs.collection("properties").doc(propertyid).snapshotChanges()
   }
   propertyList() {
@@ -95,16 +95,17 @@ export class PropertyService {
     //     }).snapshotChanges()
     //   )
     // );
-    return this.afs.collection("properties",ref=>ref.orderBy('location')).snapshotChanges()
+    return this.afs.collection("properties", ref => ref.orderBy('location')).snapshotChanges()
   }
 
-  filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min:number, max:number) {
+  filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min: number, max: number) {
     this.bedroomsFilter$.next(bedrooms);
-    this.bathroomsFilter$.next(bathrooms);
-    this.garagesFilter$.next(garages);
+    this.bathroomsFilter$.next((bathrooms));
+    this.garagesFilter$.next((garages));
+    console.log(bedrooms)
     this.minFilter$ = new BehaviorSubject(Number(min));
-    this.maxFilter$ = new BehaviorSubject(Number(max));
-    console.log("dx" + bedrooms)
+    this.maxFilter$ = new BehaviorSubject(Number(100000000000000000000));
+    console.log("dx" + max)
   }
- 
+
 }

@@ -33,7 +33,8 @@ export class ProfileService {
       this.alertCtrl.create({
         // message: 'You can not order more than six',
         subHeader: err.message,
-        buttons: ['Ok']
+        buttons: ['Ok'],
+        cssClass: 'custom-alert',
       }).then(
         alert => alert.present()
       );
