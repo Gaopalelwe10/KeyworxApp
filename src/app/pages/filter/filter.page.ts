@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
-
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 
@@ -11,108 +10,69 @@ const { Storage } = Plugins;
   styleUrls: ['./filter.page.scss'],
 })
 export class FilterPage implements OnInit {
-  min: number = 0;
+  min: number=100000;
   max: 1000000000000000000;
   bedrooms;
   bathrooms;
   garages;
-
+  minv
+  
   list = [0, 1, 2, 3, 4, 5];
-
+  // prices = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 6000000, 7000000, 8000000, 10000000, 15000000]
+  prices=[{id:1,value:100000},{id:2,value:150000}, {id:3,value:200000}, {id:4,value:250000}, {id:5,value:300000}, {id:6,value:350000}, {id:7,value:400000}, {id:8,value:500000}, {id:9,value:600000}, {id:10,value:700000}, {id:11,value:800000}, {id:12,value:900000}]
   constructor(
     private router: Router,
-    public propertyService: PropertyService
+    public propertyService: PropertyService,
+
   ) {
-    this.getItemBed();
-    this.getItemBath();
-    this.getItemG();
+    this.getFilterValues();
+    this.minv = 7
   }
 
   ngOnInit() {
     // this.clickedButton(event, 1)
   }
 
-  async getItemBed() {
-    const { value }: any = await Storage.get({ key: 'Bed' });
-    if (value != 'null') {
-      this.bedrooms = Number(value)
-      console.log('a ' + this.bedrooms)
-    } else {
-      this.bedrooms = 0
-    }
+  async getFilterValues() {
+    // const { value }: any = await Storage.get({ key: 'Bed' });
+
+    this.bedrooms = Number(this.propertyService.bed);
+    this.bathrooms = Number(this.propertyService.bath);
+    this.garages = Number(this.propertyService.garage);
+    console.log('Bed ' + this.bedrooms)
+    console.log('Bath ' + this.bathrooms)
+    console.log('Garage ' + this.garages)
   }
 
-  async getItemBath() {
-    const { value }: any = await Storage.get({ key: 'Bath' });
-    if (value != 'null') {
-      this.bathrooms = Number(value)
-      console.log('a ' + this.bathrooms)
-    } else {
-      this.bathrooms = 0
-    }
-  }
 
-  async getItemG() {
-    const { value }: any = await Storage.get({ key: 'Garage' });
-    if (value != 'null') {
-      this.garages = Number(value)
-      console.log('a ' + this.garages)
-    } else {
-      this.garages = 0
-    }
-  }
   cancel() {
     this.router.navigateByUrl("tabs/home")
   }
 
-  async BedButton(value) {
-    if (value != 'null') {
-      this.bedrooms = Number(value)
-    } else {
-      this.bedrooms = 0
-    }
-
-    console.log(this.bedrooms)
-    await Storage.set({
-      key: 'Bed',
-      value: this.bedrooms,
-    });
+  async BedButton(value1) {
+    this.bedrooms = Number(value1)
+    this.propertyService.bed = this.bedrooms
 
   }
- 
+
 
   async BathButton(value) {
-    if (value != 'null') {
-      this.bathrooms = Number(value)
-    } else {
-      this.bathrooms = 0
-    }
-
-    console.log(this.bathrooms)
-    await Storage.set({
-      key: 'Bath',
-      value: this.bathrooms,
-    });
+    this.bathrooms = Number(value)
+    this.propertyService.bath = this.bathrooms
   }
 
-  
+
 
   async GARAGEButton(value) {
-    if (value != 'null') {
-      this.garages = Number(value)
-    } else {
-      this.garages = 0
-    }
-
-    console.log(this.garages)
-    await Storage.set({
-      key: 'Garage',
-      value: this.garages,
-    });
-
+    this.garages = Number(value)
+    this.propertyService.garage = this.garages
   }
 
- 
+  compareWithFn = (o1, o2) => {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  };
+
+  compareWith = this.compareWithFn;
   filter() {
     let bedroomsValues
     let bathroomsValues
@@ -121,22 +81,22 @@ export class FilterPage implements OnInit {
     console.log("max " + this.max)
     console.log("bedrooms " + this.bedrooms)
 
-    if(this.bedrooms == 0){
-      bedroomsValues=null
-    }else{
-      bedroomsValues=String(this.bedrooms)
+    if (this.bedrooms == 0) {
+      bedroomsValues = null
+    } else {
+      bedroomsValues = String(this.bedrooms)
     }
 
-    if(this.bathrooms == 0){
-      bathroomsValues=null
-    }else{
-      bathroomsValues=String(this.bathrooms)
+    if (this.bathrooms == 0) {
+      bathroomsValues = null
+    } else {
+      bathroomsValues = String(this.bathrooms)
     }
 
-    if(this.garages == 0){
-      garagesValues=null
-    }else{
-      garagesValues=String(this.garages)
+    if (this.garages == 0) {
+      garagesValues = null
+    } else {
+      garagesValues = String(this.garages)
     }
 
     this.propertyService.filterBySize(bedroomsValues, bathroomsValues, garagesValues, this.min, this.max)
