@@ -20,9 +20,9 @@
     <ion-grid>
         <ion-row>
             <ion-col size="5">
-                <ion-select [compareWith]="compareWith" value="price.id == 2">
+                <ion-select [compareWith]="compareWith" value="{{MyDefaultYearIdValue}}">
                     <div *ngFor="let price of prices">
-                        <ion-select-option value="{{price.value}}">{{price.value}}</ion-select-option>
+                        <ion-select-option value="{{price.id}}">{{price.value}}</ion-select-option>
                     </div>
                 </ion-select>
                 <!-- <ion-select [(ngModel)]="min" [selectedText]="minv">

@@ -10,16 +10,18 @@ const { Storage } = Plugins;
   styleUrls: ['./filter.page.scss'],
 })
 export class FilterPage implements OnInit {
-  min: number=100000;
+  min: number = 100000;
   max: 1000000000000000000;
   bedrooms;
   bathrooms;
   garages;
   minv
-  
+
   list = [0, 1, 2, 3, 4, 5];
   // prices = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000, 1500000, 2000000, 2500000, 3000000, 3500000, 4000000, 4500000, 5000000, 6000000, 7000000, 8000000, 10000000, 15000000]
-  prices=[{id:1,value:100000},{id:2,value:150000}, {id:3,value:200000}, {id:4,value:250000}, {id:5,value:300000}, {id:6,value:350000}, {id:7,value:400000}, {id:8,value:500000}, {id:9,value:600000}, {id:10,value:700000}, {id:11,value:800000}, {id:12,value:900000}]
+  prices = [{ id: 1, value: 100000 }, { id: 2, value: 150000 }, { id: 3, value: 200000 }, { id: 4, value: 250000 }, { id: 5, value: 300000 }, { id: 6, value: 350000 }, { id: 7, value: 400000 }, { id: 8, value: 500000 }, { id: 9, value: 600000 }, { id: 10, value: 700000 }, { id: 11, value: 800000 }, { id: 12, value: 900000 }]
+  compareWith: any;
+  MyDefaultYearIdValue: string;
   constructor(
     private router: Router,
     public propertyService: PropertyService,
@@ -31,6 +33,8 @@ export class FilterPage implements OnInit {
 
   ngOnInit() {
     // this.clickedButton(event, 1)
+    this.MyDefaultYearIdValue = "2";
+    this.compareWith = this.compareWithFn;
   }
 
   async getFilterValues() {
@@ -67,12 +71,14 @@ export class FilterPage implements OnInit {
     this.garages = Number(value)
     this.propertyService.garage = this.garages
   }
-
-  compareWithFn = (o1, o2) => {
-    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  compareWithFn(o1, o2) {
+    return o1 === o2;
   };
+  // compareWithFn = (o1, o2) => {
+  //   return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  // };
 
-  compareWith = this.compareWithFn;
+  // compareWith = this.compareWithFn;
   filter() {
     let bedroomsValues
     let bathroomsValues
