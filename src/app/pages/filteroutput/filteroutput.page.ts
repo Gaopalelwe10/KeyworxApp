@@ -13,6 +13,11 @@ export class FilteroutputPage implements OnInit {
   propertyList
   propertyListLoaded
   favouriteList
+  SeachLocation = ''
+  data = false;
+  count;
+  show = false
+
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
@@ -20,7 +25,7 @@ export class FilteroutputPage implements OnInit {
   ) {
 
     this.propertyService.filterproperty().subscribe((data: any) => {
-    
+
       this.propertyList = data.map(e => {
         return {
           key: e.payload.doc.id,
@@ -28,7 +33,7 @@ export class FilteroutputPage implements OnInit {
         }
       })
 
-      this.propertyListLoaded=data.map(e => {
+      this.propertyListLoaded = data.map(e => {
         return {
           key: e.payload.doc.id,
           ...e.payload.doc.data()
@@ -57,12 +62,12 @@ export class FilteroutputPage implements OnInit {
 
             for (const property of this.propertyListLoaded) {
               if (reactionInfo.key === property.key) {
-  
+
                 this.favouriteService.count(property.key).subscribe((data: any) => {
                   // property.reactionCount = this.favouriteService.countfavourite(data)[0];
                   property.userReaction = this.favouriteService.userfavourite(data);
                 })
-  
+
               }
             }
           }
@@ -72,13 +77,24 @@ export class FilteroutputPage implements OnInit {
       });
 
       console.log(this.propertyList)
+      this.data = true;
     })
-
+    this.SeachLocation = this.propertyService.searchL
   }
 
   ngOnInit() {
+
   }
 
+  ionViewDidEnter() {
+    // if(this.data == true){
+    //   this.filterList(this.SeachLocation)
+    //   console.log("filterrr " +this.SeachLocation)
+    // }
+    if (this.count != 2) {
+      this.show = true
+    }
+  }
   initializeItems(): void {
     this.propertyList = this.propertyListLoaded;
   }
@@ -86,16 +102,16 @@ export class FilteroutputPage implements OnInit {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         data: JSON.stringify(items),
-        
+
       }
     };
-    this.router.navigate(['details'], navigationExtras );
+    this.router.navigate(['details'], navigationExtras);
   }
 
   filterList(evt) {
     this.initializeItems();
 
-    const searchTerm = evt.srcElement.value;
+    const searchTerm = evt
 
     if (!searchTerm) {
       return;
@@ -110,6 +126,10 @@ export class FilteroutputPage implements OnInit {
       }
     });
 
+  }
+
+  hide(v) {
+    this.count = v
   }
   fliter() {
     this.router.navigateByUrl("filter")

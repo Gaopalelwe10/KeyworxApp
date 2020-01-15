@@ -13,6 +13,7 @@ export class PropertyFilterPipePipe implements PipeTransform {
     return array.filter(item => {
       return item.category.toLowerCase().includes(text.toLowerCase());
     });
+    
   }
 
 }

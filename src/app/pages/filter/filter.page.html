@@ -10,86 +10,44 @@
         <ion-button color="primary" slot="end" (click)="filter()" class="lastbutton">Done</ion-button>
 
     </ion-toolbar>
-    <!-- <ion-searchbar></ion-searchbar> -->
+    <ion-toolbar>
+        <ion-searchbar [(ngModel)]="SeachLocation"></ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content >
     <ion-item lines="none">
         <ion-label>Price</ion-label>
     </ion-item>
     <ion-grid>
         <ion-row>
             <ion-col size="5">
-                <ion-select [(ngModel)]="min">
-                    <ion-select-option value="100000">R100 000</ion-select-option>
-                    <ion-select-option value="150000">R150 000</ion-select-option>
-                    <ion-select-option value="200000">R200 000</ion-select-option>
-                    <ion-select-option value="250000">R250 000</ion-select-option>
-                    <ion-select-option value="300000">R300 000</ion-select-option>
-                    <ion-select-option value="350000">R350 000</ion-select-option>
-                    <ion-select-option value="400000">R400 000</ion-select-option>
-                    <ion-select-option value="450000">R450 000</ion-select-option>
-                    <ion-select-option value="500000">R500 000</ion-select-option>
-                    <ion-select-option value="600000">R600 000</ion-select-option>
-                    <ion-select-option value="700000">R700 000</ion-select-option>
-                    <ion-select-option value="800000">R800 000</ion-select-option>
-                    <ion-select-option value="900000">R900 000</ion-select-option>
-                    <ion-select-option value="1000000">R1 000 000</ion-select-option>
-                    <ion-select-option value="1500000">R1 500 000</ion-select-option>
-                    <ion-select-option value="2000000">R2 000 000</ion-select-option>
-                    <ion-select-option value="2500000">R2 500 000</ion-select-option>
-                    <ion-select-option value="3000000">R3 000 000</ion-select-option>
-                    <ion-select-option value="3500000">R3 500 000</ion-select-option>
-                    <ion-select-option value="4000000">R4 000 000</ion-select-option>
-                    <ion-select-option value="4500000">R4 500 000</ion-select-option>
-                    <ion-select-option value="5000000">R5 000 000</ion-select-option>
-                    <ion-select-option value="6000000">R6 000 000</ion-select-option>
-                    <ion-select-option value="7000000">R7 000 000</ion-select-option>
-                    <ion-select-option value="8000000">R8 000 000</ion-select-option>
-                    <ion-select-option value="9000000">R9 000 000</ion-select-option>
-                    <ion-select-option value="10000000">R10 000 000</ion-select-option>
-                    <ion-select-option value="15000000">R15 000 000</ion-select-option>
+                <ion-select  (ionChange)="onSelectChangeMin($event)" [compareWith]="compareWithFnMin" value="{{MyDefaultMinPriceValue}}">
+                    <div *ngFor="let price of pricesMin">
+                        <ion-select-option *ngIf="price.value == 0" value="{{price.value}}"> Any </ion-select-option>
+                        <ion-select-option *ngIf="price.value != 0" value="{{price.value}}"> {{ price.value | currency : 'R' : 'symbol' : '1.0-0' }} </ion-select-option>
+                   
+                    </div>
                 </ion-select>
+                
                 <hr width="100%" color="dark">
                 <p style="text-align: center;">min</p>
 
             </ion-col>
-            <ion-col size="2">
-                <ion-item lines="none">
-                    To
-                </ion-item>
+            <ion-col size="2" text-center>
+               
+                    <p style="text-align: center;">To</p>
+               
             </ion-col>
             <ion-col size="5">
-                <ion-select [(ngModel)]="max">
-                    <ion-select-option value="100000">R100 000</ion-select-option>
-                    <ion-select-option value="150000">R150 000</ion-select-option>
-                    <ion-select-option value="200000">R200 000</ion-select-option>
-                    <ion-select-option value="250000">R250 000</ion-select-option>
-                    <ion-select-option value="300000">R300 000</ion-select-option>
-                    <ion-select-option value="350000">R350 000</ion-select-option>
-                    <ion-select-option value="400000">R400 000</ion-select-option>
-                    <ion-select-option value="450000">R450 000</ion-select-option>
-                    <ion-select-option value="500000">R500 000</ion-select-option>
-                    <ion-select-option value="600000">R600 000</ion-select-option>
-                    <ion-select-option value="700000">R700 000</ion-select-option>
-                    <ion-select-option value="800000">R800 000</ion-select-option>
-                    <ion-select-option value="900000">R900 000</ion-select-option>
-                    <ion-select-option value="1000000">R1 000 000</ion-select-option>
-                    <ion-select-option value="1500000">R1 500 000</ion-select-option>
-                    <ion-select-option value="2000000">R2 000 000</ion-select-option>
-                    <ion-select-option value="2500000">R2 500 000</ion-select-option>
-                    <ion-select-option value="3000000">R3 000 000</ion-select-option>
-                    <ion-select-option value="3500000">R3 500 000</ion-select-option>
-                    <ion-select-option value="4000000">R4 000 000</ion-select-option>
-                    <ion-select-option value="4500000">R4 500 000</ion-select-option>
-                    <ion-select-option value="5000000">R5 000 000</ion-select-option>
-                    <ion-select-option value="6000000">R6 000 000</ion-select-option>
-                    <ion-select-option value="7000000">R7 000 000</ion-select-option>
-                    <ion-select-option value="8000000">R8 000 000</ion-select-option>
-                    <ion-select-option value="9000000">R9 000 000</ion-select-option>
-                    <ion-select-option value="10000000">R10 000 000</ion-select-option>
-                    <ion-select-option value="15000000">R15 000 000</ion-select-option>
-                </ion-select>
+                <ion-select  (ionChange)="onSelectChangeMax($event)" [compareWith]="compareWithMax" value="{{MyDefaultMaxPriceValue}}">
+
+                <div *ngFor="let price of pricesMax">
+                    <ion-select-option *ngIf="price.value == 1000000000000000000" value="{{price.value}}"> Any </ion-select-option>
+                    <ion-select-option *ngIf="price.value != 1000000000000000000" value="{{price.value}}"> {{ price.value | currency : 'R' : 'symbol' : '1.0-0' }} </ion-select-option>
+               
+                </div>
+            </ion-select>
                 <hr width="100%" color="dark">
                 <p style="text-align: center;">max</p>
             </ion-col>
@@ -101,8 +59,8 @@
     </ion-item>
     <ion-item lines="none">
         <div *ngFor="let value of list">
-            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(null)" >Any</ion-button>
-            <ion-button  *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} +</ion-button>
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} + </ion-button>
         </div>
     </ion-item>
 
@@ -111,9 +69,9 @@
     </ion-item>
 
     <ion-item lines="none">
-        <div *ngFor="let value of list">
-            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bathrooms === value}" (click)="BathButton(null)" >Any</ion-button>
-            <ion-button  *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  bathrooms === value}" (click)="BathButton(value)">{{value}} +</ion-button>
+        <div *ngFor="let value of list | slice:0:5">
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bathrooms === value}" (click)="BathButton(value)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  bathrooms === value}" (click)="BathButton(value)">{{value}} + </ion-button>
         </div>
     </ion-item>
 
@@ -122,8 +80,8 @@
     </ion-item>
     <ion-item lines="none">
         <div *ngFor="let value of list">
-            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': garages === value}" (click)="GARAGEButton(null)" >Any</ion-button>
-            <ion-button  *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  garages === value}" (click)="GARAGEButton(value)">{{value}} +</ion-button>
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': garages === value}" (click)="GARAGEButton(null)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  garages === value}" (click)="GARAGEButton(value)">{{value}} + </ion-button>
         </div>
         <!-- <ion-button shape="round" class="like" [class.liked]="garages == null" (click)="GARAGEButton($event,null)" value="1">Any</ion-button>
         <ion-button shape="round" (click)="GARAGEButton($event,'1')" value="1">1+</ion-button>
