@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PropertyFilterPipePipe } from './property-filter-pipe.pipe';
+import { LocationFiterPipePipe } from './location-fiter-pipe.pipe';
 
 
 
 @NgModule({
-  declarations: [PropertyFilterPipePipe],
-  exports:[PropertyFilterPipePipe],
+  declarations: [PropertyFilterPipePipe, LocationFiterPipePipe],
+  exports:[PropertyFilterPipePipe, LocationFiterPipePipe],
   imports: [
     CommonModule
   ]

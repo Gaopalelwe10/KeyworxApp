@@ -104,7 +104,7 @@ export class PropertyService {
     this.garagesFilter$.next((garages));
     console.log(bedrooms)
     this.minFilter$ = new BehaviorSubject(Number(min));
-    this.maxFilter$ = new BehaviorSubject(Number(100000000000000000000));
+    this.maxFilter$ = new BehaviorSubject(Number(max));
     console.log("dx" + max)
   }
   minv
@@ -112,7 +112,20 @@ export class PropertyService {
   bedv
   bathv
   garagev
-  
+  searchL
+
+  set location(location) {
+    this.searchL = location
+  }
+
+  get location() {
+    if (this.searchL == null || this.searchL == '') {
+      return this.searchL = ''
+    } else {
+      return this.searchL= this.searchL
+    }
+  }
+
   set min(min) {
     this.minv = min
   }
@@ -131,7 +144,7 @@ export class PropertyService {
 
   get max() {
     if (this.maxv == null) {
-      return this.maxv = 0
+      return this.maxv = 1000000000000000000
     } else {
       return this.maxv = this.maxv
     }

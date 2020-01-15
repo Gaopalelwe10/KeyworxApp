@@ -8,15 +8,15 @@
             <ion-icon name="options"></ion-icon>
         </ion-buttons>
     </ion-toolbar>
-    <ion-toolbar color="primary">
+    <!-- <ion-toolbar color="primary">
         <ion-searchbar (ionInput)="filterList($event)" placeholder="location"></ion-searchbar>
-    </ion-toolbar>
+    </ion-toolbar> -->
 </ion-header>
 
 <ion-content>
 
-    <div class="row">
-        <div class="column" *ngFor="let items of propertyList">
+    <div class="row" *ngIf="data == true">
+        <div class="column" *ngFor="let items of propertyList | locationFiterPipe: SeachLocation">
 
             <ion-card class="card">
                 <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">

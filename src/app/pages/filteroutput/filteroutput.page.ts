@@ -13,6 +13,8 @@ export class FilteroutputPage implements OnInit {
   propertyList
   propertyListLoaded
   favouriteList
+  SeachLocation=''
+  data = false;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
@@ -72,8 +74,9 @@ export class FilteroutputPage implements OnInit {
       });
 
       console.log(this.propertyList)
+      this.data = true;
     })
-
+    this.SeachLocation=this.propertyService.searchL
   }
 
   ngOnInit() {
