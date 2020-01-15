@@ -1,14 +1,59 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
+    <ion-toolbar color="primary">
+        <ion-buttons>
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>fullscreen</ion-title>
+        <ion-title>Repayment Calculator</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <br>
+    <ion-label>Purchase Price</ion-label>
+    <ion-input [(ngModel)]="p">R</ion-input>
+    <br>
+    <ion-label>Interest rate</ion-label>
+    <ion-input [(ngModel)]="i"></ion-input>
+    <br>
+    <ion-label>Years to repay</ion-label>
+    <ion-select [(ngModel)]="t">
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+        <ion-select-option value="20">20</ion-select-option>
+        <ion-select-option value="30">30</ion-select-option>
+    </ion-select>
 
-    <img src="{{pic.downloadURL}}" accept=".png,.jpg">
+    <br>
+    <ion-label>Deposit</ion-label>
+    <ion-input [(ngModel)]="deposit"></ion-input>
+    <ion-button (click)="calculate()" onclick="document.getElementById('id01').style.display='block'">Calculate
+
+    </ion-button>
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <h3> <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
+                </h3>
+
+                <h4> Your monthly repayments</h4>
+                <h4>
+                    <ion-label>
+                        R{{M|number : '1.0-0'}}
+                    </ion-label>
+                </h4>
+
+                <h4> Total amount repayable</h4>
+
+                <h4>
+                    <ion-label>
+                        R{{total|number : '1.0-0'}}
+                    </ion-label>
+                </h4>
+                <br>
+            </div>
+        </div>
+    </div>
+
+
 
 </ion-content>

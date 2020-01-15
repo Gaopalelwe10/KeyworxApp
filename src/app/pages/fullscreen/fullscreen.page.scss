@@ -1,16 +1,38 @@
-.images {
-    display: block;
+ion-content {
+    position: absolute;
+    left: 10%;
+    right: 50%;
     margin: 0 auto;
-    text-align: center
+    margin-top: 0;
+    margin-left: 0;
+    top: 10%;
 }
 
-img {
+.w3-modal-content {
+    // height: 250px;
+    // width: 1600px;
+    // position: absolute;
+    // left: 10%;
+    top: 30%;
     margin: 0 auto;
-    justify-content: center;
-    display: block;
-    top: 0;
-    left: 0;
-    text-align: center;
-    height: 100%;
+    // margin-left: -50px;
+    // margin-top: -50px;
+    background-color: rgb(246, 244, 244);
+    color: #630707;
+}
+
+
+/* The Modal (background) */
+
+.modal {
     width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
 }
