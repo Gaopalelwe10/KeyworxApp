@@ -85,39 +85,38 @@
         <p slot="end" color="medium" (click)="view()">View all</p>
     </ion-item>
 
-    <ion-slides [options]="slidesOpt">
 
-        <ion-slide *ngFor="let details of propertyList">
+    <ion-slides [options]="slidesOpt" *ngIf="data == true">
+
+        <ion-slide *ngFor="let details of propertyList  | propertyFilterPipe: textSearch">
 
             <ion-card class="catt">
-                <div>
-                    <img src="{{details.mainImage}}" (click)="detail(details)">
-                    <ion-card-content slot="start">
-                        <div class="action" class="like" (click)="react(details.key, details.userReaction)" [class.liked]="details.userReaction != null">
-                            <ion-icon class="ion-float-right" name="heart"></ion-icon>
-                        </div>
-                        <div (click)="detail(details)">
-                            <p>{{details.price | currency:'R'}}</p>
-                            <p>{{details.location}}</p>
 
-                            <i class="fa fa-bed" aria-hidden="true">
+                <img src="{{details.mainImage}}" (click)="detail(details)">
+                <ion-card-content>
+                    <div class="action" class="like" (click)="react(details.key, details.userReaction)" [class.liked]="details.userReaction != null">
+                        <ion-icon class="ion-float-right" name="heart"></ion-icon>
+                    </div>
+                    <div (click)="detail(details)">
+                        <p>{{details.price | currency:'R'}}</p>
+                        <p>{{details.location}}</p>
+
+                        <i class="fa fa-bed" aria-hidden="true">
                                                 <span class="pad-value">{{details.bedrooms}}</span>
                                             </i>
-                            <i class="fa fa-bath" aria-hidden="true">
+                        <i class="fa fa-bath" aria-hidden="true">
                                                 <span class="pad-value"> {{details.bathrooms}}</span>
                                             </i>
-                            <i class="fa fa-car" aria-hidden="true"> 
+                        <i class="fa fa-car" aria-hidden="true"> 
                                                 <span class="pad-value">  {{details.garage}}</span>
                                             </i>
-                        </div>
-                    </ion-card-content>
-                </div>
+                    </div>
+                </ion-card-content>
+
             </ion-card>
         </ion-slide>
 
     </ion-slides>
-
-
 
 
 
@@ -153,8 +152,6 @@
             </ion-card>
         </ion-slide>
     </ion-slides>
-
-
 
 
 </ion-content>

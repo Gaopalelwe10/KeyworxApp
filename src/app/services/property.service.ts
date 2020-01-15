@@ -49,12 +49,12 @@ export class PropertyService {
         this.afs.collection('properties', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
           if (min) { query = query.where('price', '>=', min) };
-          if (max) { query = query.where('price', '<=', max) }
+          if (max) { query = query.where('price', '<=', max) };
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
           if (garages) { query = query.where('garage', '==', garages) };
           return query;
-        }).valueChanges()
+        }).snapshotChanges()
       )
     );
   }
@@ -68,10 +68,10 @@ export class PropertyService {
     return this.afs.collection("properties").doc(propertyid).collection("images").snapshotChanges()
   }
 
-  getpropertyDetails(propertyid){
+  getpropertyDetails(propertyid) {
     return this.afs.collection("properties").doc(propertyid).valueChanges();
   }
-  getpropertyFavourite(propertyid){
+  getpropertyFavourite(propertyid) {
     return this.afs.collection("properties").doc(propertyid).snapshotChanges()
   }
   propertyList() {
@@ -95,16 +95,96 @@ export class PropertyService {
     //     }).snapshotChanges()
     //   )
     // );
-    return this.afs.collection("properties",ref=>ref.orderBy('location')).snapshotChanges()
+    return this.afs.collection("properties", ref => ref.orderBy('location')).snapshotChanges()
   }
 
-  filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min:number, max:number) {
+  filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min: number, max: number) {
     this.bedroomsFilter$.next(bedrooms);
-    this.bathroomsFilter$.next(bathrooms);
-    this.garagesFilter$.next(garages);
+    this.bathroomsFilter$.next((bathrooms));
+    this.garagesFilter$.next((garages));
+    console.log(bedrooms)
     this.minFilter$ = new BehaviorSubject(Number(min));
     this.maxFilter$ = new BehaviorSubject(Number(max));
-    console.log("dx" + bedrooms)
+    console.log("dx" + max)
   }
- 
+  minv
+  maxv
+  bedv
+  bathv
+  garagev
+  searchL
+
+  set location(location) {
+    this.searchL = location
+  }
+
+  get location() {
+    if (this.searchL == null || this.searchL == '') {
+      return this.searchL = ''
+    } else {
+      return this.searchL= this.searchL
+    }
+  }
+
+  set min(min) {
+    this.minv = min
+  }
+
+  get min() {
+    if (this.minv == null) {
+      return this.minv = 0
+    } else {
+      return this.minv = this.minv
+    }
+  }
+
+  set max(max) {
+    this.maxv = max
+  }
+
+  get max() {
+    if (this.maxv == null) {
+      return this.maxv = 1000000000000000000
+    } else {
+      return this.maxv = this.maxv
+    }
+  }
+
+  set bed(bed) {
+    this.bedv = bed
+  }
+
+  get bed() {
+    if (this.bedv == null) {
+      return this.bedv = 0
+    } else {
+      return this.bedv = this.bedv
+    }
+  }
+
+
+  set bath(bath) {
+    this.bathv = bath
+  }
+
+  get bath() {
+    if (this.bathv == null) {
+      return this.bathv = 0
+    } else {
+      return this.bathv = this.bathv
+    }
+  }
+
+  set garage(garage) {
+    this.garagev = garage
+  }
+
+  get garage() {
+    if (this.garagev == null) {
+      return this.garagev = 0
+    } else {
+      return this.garagev = this.garagev
+    }
+  }
+
 }

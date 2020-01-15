@@ -13,13 +13,15 @@ export class FilteroutputPage implements OnInit {
   propertyList
   propertyListLoaded
   favouriteList
+  SeachLocation=''
+  data = false;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
     private favouriteService: FavouriteService
   ) {
 
-    this.propertyService.propertyList().subscribe((data: any) => {
+    this.propertyService.filterproperty().subscribe((data: any) => {
     
       this.propertyList = data.map(e => {
         return {
@@ -54,6 +56,17 @@ export class FilteroutputPage implements OnInit {
               })
 
             }
+
+            for (const property of this.propertyListLoaded) {
+              if (reactionInfo.key === property.key) {
+  
+                this.favouriteService.count(property.key).subscribe((data: any) => {
+                  // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                  property.userReaction = this.favouriteService.userfavourite(data);
+                })
+  
+              }
+            }
           }
 
         }
@@ -61,10 +74,9 @@ export class FilteroutputPage implements OnInit {
       });
 
       console.log(this.propertyList)
-
-
+      this.data = true;
     })
-
+    this.SeachLocation=this.propertyService.searchL
   }
 
   ngOnInit() {

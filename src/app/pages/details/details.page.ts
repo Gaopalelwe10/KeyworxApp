@@ -5,6 +5,9 @@ import { ModalController, IonSlides } from '@ionic/angular';
 import { PropertyService } from 'src/app/services/property.service';
 import { FavouriteService } from 'src/app/services/favourite.service';
 
+import { Plugins } from '@capacitor/core';
+const { Share } = Plugins;
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -104,6 +107,15 @@ export class DetailsPage implements OnInit {
       
       console.log(this.imageList);
     })
+  }
+
+  async share(){
+    let shareRet = await Share.share({
+      title: 'See cool stuff',
+      text: 'Really awesome thing you need to see right meow',
+      url: 'http://ionicframework.com/',
+      dialogTitle: 'Share with buddies'
+    });
   }
 
   image(items) {

@@ -48,13 +48,18 @@ const routes: Routes = [
   {
     path: 'message',
     loadChildren: () => import('./pages/message/message.module').then( m => m.MessagePageModule)
-  },  {
+  },
+  {
     path: 'category',
     loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
   },
   {
     path: 'featured',
     loadChildren: () => import('./pages/featured/featured.module').then( m => m.FeaturedPageModule)
+  },
+  {
+    path: 'popover-more',
+    loadChildren: () => import('./pages/popover-more/popover-more.module').then( m => m.PopoverMorePageModule)
   },
 
  
