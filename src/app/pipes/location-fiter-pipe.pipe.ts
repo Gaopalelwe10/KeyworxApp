@@ -9,7 +9,6 @@ export class LocationFiterPipePipe implements PipeTransform {
     console.log("text " + text);
 
     if (text === '' || text === null) {
-      console.log("not working")
       return array;
     }
 
