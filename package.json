@@ -29,6 +29,7 @@
     "@ionic-native/status-bar": "^5.19.1",
     "@ionic/angular": "^4.11.7",
     "cordova-android": "8.1.0",
+    "cordova-plugin-contacts": "^3.0.1",
     "core-js": "^2.6.11",
     "es.keensoft.fullscreenimage": "^0.2.10",
     "firebase": "^7.6.1",
@@ -85,7 +86,8 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-contacts": {}
     },
     "platforms": [
       "android"
