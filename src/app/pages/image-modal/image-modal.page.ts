@@ -16,6 +16,11 @@ export class ImageModalPage implements OnInit {
 slideIndex = 1;
   // @ViewChild('slider',{read : ElementRef})slider: ElementRef;
 
+  slidesOptions1 = {
+    initialSlide: 1,
+    speed: 400,
+  }
+  
   sliderOpts={ zoom: { maxRatio: 3}};
   index: any;
   imageList: any;

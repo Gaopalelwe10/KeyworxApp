@@ -11,7 +11,7 @@
             Back
         </ion-button>
 
-        <ion-button (click)="zoom(true)" fill="clear" color="Light">
+        <!-- <ion-button (click)="zoom(true)" fill="clear" color="Light">
             <ion-icon name="add" slot="start"></ion-icon>
             In
         </ion-button>
@@ -19,7 +19,7 @@
         <ion-button (click)="zoom(false)" fill="clear" color="Light">
             <ion-icon name="remove" slot="start"></ion-icon>
             Out
-        </ion-button>
+        </ion-button> -->
 
     </ion-item>
 
@@ -29,6 +29,14 @@
                 <img src="{{pic.downloadURL}}">
             </div>
         </ion-slide>
-    </ion-slides>
 
+        <ion-slide *ngFor="let pic of imageList" padding>
+            <div>
+                <!-- <a class="w3-button w3-black w3-display-left">&#10094;</a> -->
+                <img src="{{pic.downloadURL}}" style='width: 100%; ' size="100%" accept=".png,.jpg">
+                <!-- <a class="w3-button w3-black w3-display-right">&#10095;</a> -->
+            </div>
+        </ion-slide>
+
+    </ion-slides>
 </ion-content>
