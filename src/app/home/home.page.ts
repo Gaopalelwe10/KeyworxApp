@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
 import { PropertyService } from '../services/property.service';
 import { Router, NavigationExtras } from '@angular/router';
-import { Platform,  } from '@ionic/angular';
+import { Platform, NavController,  } from '@ionic/angular';
 import { FavouriteService } from '../services/favourite.service';
 import { CategoryService } from '../services/category.service';
 import { ActionSheetController } from '@ionic/angular';
@@ -32,6 +32,9 @@ export class HomePage implements OnInit{
   data = false;
   propertySaleList
   textSearch;
+
+
+
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
@@ -39,6 +42,8 @@ export class HomePage implements OnInit{
     private favouriteService: FavouriteService,
     private categoryService: CategoryService,
     public actionSheetController: ActionSheetController  ,
+    private navC: NavController,
+    
   ) {
 
     if (this.platform.is("ipad")) {
@@ -95,6 +100,9 @@ export class HomePage implements OnInit{
   ngOnInit(){
     this.textSearch="sale"
   }
+
+
+
   ionViewDidEnter() {
     
   }
@@ -127,12 +135,14 @@ export class HomePage implements OnInit{
   }
 
   viewFeatuered() {
-    this.router.navigateByUrl('featured')
+      this.router.navigateByUrl("filteroutput")
+    
   }
 
   view() {
     this.router.navigateByUrl('category')
   }
+
 
   react(key, val) {
     const userID = this.profileService.getUID();

@@ -60,7 +60,11 @@ const routes: Routes = [
   {
     path: 'popover-more',
     loadChildren: () => import('./pages/popover-more/popover-more.module').then( m => m.PopoverMorePageModule)
+  },  {
+    path: 'filter-category',
+    loadChildren: () => import('./pages/filter-category/filter-category.module').then( m => m.FilterCategoryPageModule)
   },
+
 
  
 

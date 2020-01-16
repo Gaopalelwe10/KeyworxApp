@@ -3,6 +3,7 @@ import { PropertyService } from 'src/app/services/property.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { FavouriteService } from 'src/app/services/favourite.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-filteroutput',
@@ -21,9 +22,18 @@ export class FilteroutputPage implements OnInit {
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
-    private favouriteService: FavouriteService
+    private favouriteService: FavouriteService,
+    private navC: NavController
+    
   ) {
+    
+    
+  }
 
+  ngOnInit() {
+
+  }
+  ionViewWillEnter(){
     this.propertyService.filterproperty().subscribe((data: any) => {
 
       this.propertyList = data.map(e => {
@@ -80,20 +90,23 @@ export class FilteroutputPage implements OnInit {
       this.data = true;
     })
     this.SeachLocation = this.propertyService.searchL
+    this.propertyAfterFilter()
   }
-
-  ngOnInit() {
-
-  }
-
   ionViewDidEnter() {
     // if(this.data == true){
     //   this.filterList(this.SeachLocation)
     //   console.log("filterrr " +this.SeachLocation)
     // }
-    if (this.count != 2) {
-      this.show = true
-    }
+   
+
+  }
+
+  propertyAfterFilter(){
+    setTimeout(()=>{
+      if (this.count != 2) {
+        this.show = true
+      }
+    },1000);   
   }
   initializeItems(): void {
     this.propertyList = this.propertyListLoaded;

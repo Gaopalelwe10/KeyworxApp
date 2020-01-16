@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
       // message: 'Signing in, Please wait...',
       // showBackdrop: false,
       cssClass: 'custom-loader',
-      spinner: "dots",
+      spinner: "crescent",
     });
     (await loading).present();
 
