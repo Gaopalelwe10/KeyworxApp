@@ -17,6 +17,7 @@ import { TabsPage } from './pages/tabs/tabs.page';
 import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { PopoverMorePageModule } from './pages/popover-more/popover-more.module';
 import { ImageModalPageModule } from './pages/image-modal/image-modal.module';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4CMD51Wz_G564J0h4HJeFG27-UI12Kkw",
@@ -48,6 +49,7 @@ const firebaseConfig = {
   ],
 
   providers: [
+    EmailComposer,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
