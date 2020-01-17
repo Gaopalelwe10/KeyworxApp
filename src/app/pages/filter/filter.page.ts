@@ -138,8 +138,7 @@ export class FilterPage implements OnInit {
 
     this.propertyService.filterBySize(bedroomsValues, bathroomsValues, garagesValues, this.min, this.max)
 
-    // this.router.navigateByUrl("filteroutput")
-    this.router.navigateByUrl('filteroutput', { skipLocationChange: false }).then(() =>
-      this.router.navigate(['filteroutput']));
+ 
+    this.router.navigateByUrl('filteroutput')
   }
 }

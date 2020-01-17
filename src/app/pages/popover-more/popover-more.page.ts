@@ -31,6 +31,7 @@ export class PopoverMorePage implements OnInit {
 
   repayments(){
     this.router.navigateByUrl("fullscreen")
+    this.DismissClick();
   }
 
   

@@ -15,18 +15,19 @@ export class CategoryService {
   items$
   minFilter$: BehaviorSubject<number>;
   maxFilter$: BehaviorSubject<number>;
+  categoryFilter$: BehaviorSubject<string | null>;
   bedroomsFilter$: BehaviorSubject<string | null>;
   bathroomsFilter$: BehaviorSubject<string | null>;
   garagesFilter$: BehaviorSubject<string | null>;
-  categoryFilter$: BehaviorSubject<string | null>;
+ 
 
   constructor(
     private afs: AngularFirestore,
   ) {
+    this.categoryFilter$=new BehaviorSubject(null);
     this.bedroomsFilter$ = new BehaviorSubject(null);
     this.bathroomsFilter$ = new BehaviorSubject(null);
     this.garagesFilter$ = new BehaviorSubject(null);
-    this.categoryFilter$=new BehaviorSubject(null);
     this.minFilter$ = new BehaviorSubject(0);
     this.maxFilter$ = new BehaviorSubject(1000000000000000);
   }
@@ -49,11 +50,11 @@ export class CategoryService {
         this.afs.collection('properties', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
           if (category) { query = query.where('category', '==', category) };
-          if (min) { query = query.where('price', '>=', min) };
-          if (max) { query = query.where('price', '<=', max) };
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
           if (garages) { query = query.where('garage', '==', garages) };
+          if (min) { query = query.where('price', '>=', min) };
+          if (max) { query = query.where('price', '<=', max) };
           return query;
         }).snapshotChanges()
       )
@@ -78,7 +79,7 @@ export class CategoryService {
   garagev
   searchL
 
-  set categrys(category) {
+  set categorys(category) {
     this.categoryV = category
   }
 

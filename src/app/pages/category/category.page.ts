@@ -19,7 +19,13 @@ export class CategoryPage implements OnInit {
     private favouriteService: FavouriteService,
     private router: Router,
   ) {
-    categoryService.category('sale').subscribe((data: any) => {
+
+   }
+
+  ngOnInit() {
+  }
+  ionViewWillEnter(){
+    this.categoryService.filterproperty().subscribe((data: any) => {
       this.propertyList = data.map(e => {
         return {
           key: e.payload.doc.id,
@@ -73,17 +79,13 @@ export class CategoryPage implements OnInit {
       console.log(this.propertyList)
 
     })
-   }
-
-  ngOnInit() {
   }
-
   initializeItems(): void {
     this.propertyList = this.propertyListLoaded;
   }
 
   fliter() {
-    this.router.navigateByUrl("filter")
+    this.router.navigateByUrl("filter-category")
   }
   
   detail(items) {
