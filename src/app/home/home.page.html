@@ -88,7 +88,7 @@
 
     <ion-slides [options]="slidesOpt" *ngIf="data == true">
 
-        <ion-slide *ngFor="let details of propertyList  | propertyFilterPipe: textSearch">
+        <ion-slide *ngFor="let details of propertyList ?.reverse() | propertyFilterPipe: textSearch">
 
             <ion-card class="catt">
 
