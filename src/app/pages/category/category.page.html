@@ -23,7 +23,7 @@
                 </ion-card-content>
             </ion-card>
         </div>
-        <div class="column" *ngFor="let items of propertyList">
+        <div class="column" *ngFor="let items of propertyList | categoryFilterPipe:">
             
             {{this.hide(2)}}
             <ion-card class="card">

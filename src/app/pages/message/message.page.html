@@ -9,7 +9,7 @@
 
 <ion-content class="ion-padding">
 
-  <form [formGroup]="messageForm">
+  <!-- <form [formGroup]="messageForm">
 
     <ion-item>
       <ion-label position="floating">Name</ion-label>
@@ -61,12 +61,33 @@
       Please input your message
     </div>
 
-
     <br>
-    <ion-button expand="block" color="primary" [disabled]="!messageForm.valid" (click)="message()">Send
+    <ion-button expand="block" color="primary" [disabled]="!messageForm.valid" (click)="message(store)">Send
       Message</ion-button>
 
+  </form> -->
 
-  </form>
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input required type="text" [(ngModel)]="store.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input required type="email" [(ngModel)]="store.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Number</ion-label>
+    <ion-input required type="text" [(ngModel)]="store.number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Message</ion-label>
+    <ion-input required type="text" [(ngModel)]="store.message"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="primary" (click)="message(store)">Send
+    Message</ion-button>
 
 </ion-content>
