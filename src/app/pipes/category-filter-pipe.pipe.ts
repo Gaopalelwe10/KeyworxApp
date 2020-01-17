@@ -5,8 +5,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryFilterPipePipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): any {
-    return null;
-  }
+ 
+  transform(array: any[], text: string = ''): any[] {
+    console.log("text " + text);
 
+    if (text === '' || text === null) {
+      return array;
+    }
+
+    
+    return array.filter(item => {
+      return item.location.toLowerCase().includes(text.toLowerCase());
+    });
+  }
 }

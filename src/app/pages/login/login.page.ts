@@ -52,6 +52,27 @@ export class LoginPage implements OnInit {
     });
 
   }
+  reset(){
+    this.profileService.sendPasswordResetEmail(this.forgotpasswordForm.value.email)
+    .then((success) => {
+      this.alertCtrl.create({
+        // message: 'You can not order more than six',
+        subHeader: 'Check your Email account',
+        buttons: ['Ok']
+      }).then(
+        alert => alert.present()
+      );
+      this.isForgotPassword = true;
+    }).catch((error) => {
+      this.alertCtrl.create({
+        // message: 'You can not order more than six',
+        subHeader: 'There is no user record corresponding to this identifier. The user may have been deleted',
+        buttons: ['Ok']
+      }).then(
+        alert => alert.present()
+      );
+    })
+  }
 
   registerPage() {
     this.route.navigateByUrl("register")

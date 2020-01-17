@@ -32,11 +32,7 @@
 .custom-loader {
     --background: transparent;
     
-	ion-backdrop {
-		background-color: #a02b2d;
-        opacity:  .9 !important;
-   
-	}
+	
 	.loading-wrapper {
 		-webkit-animation: ld-vortex-out 2s ease-out infinite;
 		animation: ld-vortex-out 2s ease-out infinite;
@@ -50,12 +46,5 @@
         min-height: 90px;
 		box-shadow: none;
 		-webkit-box-shadow: none;
-	}
-}
-.custom-alert{
-    ion-backdrop {
-		background-color: #a02b2d;
-        opacity:  .9 !important;
-    
 	}
 }
