@@ -47,23 +47,24 @@
     <div id="id01" class="w3-modal">
         <div class="w3-modal-content">
             <div class="w3-container">
-                <h3> <span onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
-                </h3>
-
-                <h4> Your monthly repayments</h4>
-                <h4>
-                    <ion-label>
-                        R{{M|number : '1.0-0'}}
-                    </ion-label>
+                <h4> <span slot="end" onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
                 </h4>
+                <div align="center">
+                    <h5> Your monthly repayments</h5>
+                    <h3>
+                        <ion-label>
+                            R {{M|number : '1.0-0'}}
+                        </ion-label>
+                    </h3>
 
-                <h4> Total amount repayable</h4>
+                    <h5> Total amount repayable</h5>
 
-                <h4>
-                    <ion-label>
-                        R{{total|number : '1.0-0'}}
-                    </ion-label>
-                </h4>
+                    <h3>
+                        <ion-label>
+                            R {{total|number : '1.0-0'}}
+                        </ion-label>
+                    </h3>
+                </div>
                 <br>
             </div>
         </div>

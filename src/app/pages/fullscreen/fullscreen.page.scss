@@ -7,7 +7,6 @@
 //     margin-left: 0;
 //     top: 10%;
 // }
-
 .w3-modal-content {
     // height: 250px;
     // width: 1600px;
@@ -18,7 +17,12 @@
     // margin-left: -50px;
     // margin-top: -50px;
     background-color: rgb(246, 244, 244);
-    color: #630707;
+    h3 {
+        color: #630707;
+    }
+    h5 {
+        color: #413e3e;
+    }
 }
 
 

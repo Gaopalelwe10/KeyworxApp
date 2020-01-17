@@ -5,18 +5,18 @@
     }
     // margin-top: 40px;
 }
+
 // ion-toolbar {
 //     --background: transparent;
 //     --background-color: transparent;
 //     --ion-color-base: transparent !important;
 // }
-:host{
+:host {
     ion-content {
-        --background: rgba(44, 39, 45, 0.084);
+        --background: rgba(58, 53, 59, 0.315);
         top: 0;
         position: absolute;
     }
-  
 }
 
 ion-slides {
