@@ -1,7 +1,8 @@
 <ion-header>
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-back-button>
+            </ion-back-button>
         </ion-buttons>
 
         <ion-title align="center">Bond Calculator</ion-title>
@@ -14,35 +15,35 @@
         <ion-label position="stacked">Purchase Price</ion-label>
         <ion-input [(ngModel)]="p">R</ion-input>
     </ion-item>
-    
+
     <ion-item>
         <ion-label position="stacked">Interest rate</ion-label>
-        <ion-input [(ngModel)]="i"></ion-input>
+        <ion-input [(ngModel)]="i" placeholder="%"></ion-input>
     </ion-item>
-  
-  
+
+
     <ion-item>
         <ion-label position="stacked">Years to repay</ion-label>
-    <ion-select [(ngModel)]="t">
-        <ion-select-option value="5">5</ion-select-option>
-        <ion-select-option value="10">10</ion-select-option>
-        <ion-select-option value="20">20</ion-select-option>
-        <ion-select-option value="30">30</ion-select-option>
-    </ion-select>
+        <ion-select [(ngModel)]="t" placeholder="e.g 20">
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="10">10</ion-select-option>
+            <ion-select-option value="20">20</ion-select-option>
+            <ion-select-option value="30">30</ion-select-option>
+        </ion-select>
     </ion-item>
-    
+
     <ion-item>
         <ion-label position="stacked">Deposit</ion-label>
-    <ion-input [(ngModel)]="deposit"></ion-input>
+        <ion-input [(ngModel)]="deposit"></ion-input>
     </ion-item>
-    
-   
 
-   <div class="ion-padding">
-    <ion-button expand="block"  class="ion-no-margin" (click)="calculate()" onclick="document.getElementById('id01').style.display='block'">
-        Calculate
-    </ion-button>
-  </div>
+
+
+    <div class="ion-padding">
+        <ion-button expand="block" class="ion-no-margin" (click)="calculate()" onclick="document.getElementById('id01').style.display='block'">
+            Calculate
+        </ion-button>
+    </div>
     <div id="id01" class="w3-modal">
         <div class="w3-modal-content">
             <div class="w3-container">
