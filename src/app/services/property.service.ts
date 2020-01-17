@@ -107,6 +107,7 @@ export class PropertyService {
     this.maxFilter$ = new BehaviorSubject(Number(max));
     console.log("dx" + max)
   }
+  
   minv
   maxv
   bedv

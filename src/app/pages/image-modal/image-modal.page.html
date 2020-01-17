@@ -1,9 +1,3 @@
-<ion-header>
-    <ion-toolbar color="primary">
-        <ion-title>image</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
     <ion-item class="close-fake" lines="none" text-center>
         <ion-button (click)="close()" fill="clear" color="Light">
@@ -25,10 +19,18 @@
 
     <ion-slides [options]="sliderOpts" #slider>
         <ion-slide>
-            <div class="swiper-zoom-container">
+            <div class="swiper-zoom-container" class="ion-padding">
                 <img src="{{pic.downloadURL}}">
             </div>
         </ion-slide>
-    </ion-slides>
 
+        <ion-slide *ngFor="let pic of imageList" class="ion-padding">
+            <div class="swiper-zoom-container">
+                <!-- <a class="w3-button w3-black w3-display-left">&#10094;</a> -->
+                <img src="{{pic.downloadURL}}" style='width: 100%; ' size="100%" accept=".png,.jpg">
+                <!-- <a class="w3-button w3-black w3-display-right">&#10095;</a> -->
+            </div>
+        </ion-slide>
+
+    </ion-slides>
 </ion-content>

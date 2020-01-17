@@ -14,9 +14,18 @@ export class ImageModalPage implements OnInit {
     downloadURL:"",
 }
 slideIndex = 1;
-  // @ViewChild('slider',{read : ElementRef})slider: ElementRef;
+  @ViewChild('slider',{read: ElementRef, static: true }) slider: ElementRef;
 
-  sliderOpts={ zoom: { maxRatio: 3}};
+  slidesOptions1 = {
+    initialSlide: 1,
+    speed: 400,
+  }
+  
+  sliderOpts={ 
+    zoom: { 
+      maxRatio: 3
+    }
+  };
   index: any;
   imageList: any;
   constructor(private navParams:NavParams,  private route:ActivatedRoute,  private modalController:ModalController,
@@ -39,12 +48,12 @@ slideIndex = 1;
   }
 
   zoom(zoomin:boolean){
-// let zoom = this.sliderOpts.nativeElement.zoom;
-// if(zoomin){
-//   zoom.in();
-// }else{
-//   zoom.out();
-// }
+    let zoom = this.slider.nativeElement.swiper.zoom;
+    if (zoomin) {
+      zoom.in(1);
+    } else {
+      zoom.out(1);
+    }
   }
 
   close(){
