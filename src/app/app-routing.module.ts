@@ -18,55 +18,61 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage, children: [
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
-      {path: 'liked',loadChildren: () => import('./pages/liked/liked.module').then(m => m.LikedPageModule)},
+      { path: 'liked', loadChildren: () => import('./pages/liked/liked.module').then(m => m.LikedPageModule) },
+      { path: 'map', loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule) },
     ]
   },
   {
     path: 'propertydetails',
-    loadChildren: () => import('./pages/propertydetails/propertydetails.module').then( m => m.PropertydetailsPageModule)
+    loadChildren: () => import('./pages/propertydetails/propertydetails.module').then(m => m.PropertydetailsPageModule)
   },
   {
     path: 'filter',
-    loadChildren: () => import('./pages/filter/filter.module').then( m => m.FilterPageModule)
+    loadChildren: () => import('./pages/filter/filter.module').then(m => m.FilterPageModule)
   },
   {
     path: 'details',
-    loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
+    loadChildren: () => import('./pages/details/details.module').then(m => m.DetailsPageModule)
   },
   {
     path: 'images',
-    loadChildren: () => import('./pages/images/images.module').then( m => m.ImagesPageModule)
+    loadChildren: () => import('./pages/images/images.module').then(m => m.ImagesPageModule)
   },
   {
     path: 'fullscreen',
-    loadChildren: () => import('./pages/fullscreen/fullscreen.module').then( m => m.FullscreenPageModule)
+    loadChildren: () => import('./pages/fullscreen/fullscreen.module').then(m => m.FullscreenPageModule)
   },
   {
     path: 'filteroutput',
-    loadChildren: () => import('./pages/filteroutput/filteroutput.module').then( m => m.FilteroutputPageModule)
+    loadChildren: () => import('./pages/filteroutput/filteroutput.module').then(m => m.FilteroutputPageModule)
   },
   {
     path: 'message',
-    loadChildren: () => import('./pages/message/message.module').then( m => m.MessagePageModule)
+    loadChildren: () => import('./pages/message/message.module').then(m => m.MessagePageModule)
   },
   {
     path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then( m => m.CategoryPageModule)
+    loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryPageModule)
   },
   {
     path: 'featured',
-    loadChildren: () => import('./pages/featured/featured.module').then( m => m.FeaturedPageModule)
+    loadChildren: () => import('./pages/featured/featured.module').then(m => m.FeaturedPageModule)
   },
   {
     path: 'popover-more',
-    loadChildren: () => import('./pages/popover-more/popover-more.module').then( m => m.PopoverMorePageModule)
-  },  {
+    loadChildren: () => import('./pages/popover-more/popover-more.module').then(m => m.PopoverMorePageModule)
+  },
+  {
     path: 'filter-category',
-    loadChildren: () => import('./pages/filter-category/filter-category.module').then( m => m.FilterCategoryPageModule)
+    loadChildren: () => import('./pages/filter-category/filter-category.module').then(m => m.FilterCategoryPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then(m => m.MapPageModule)
   },
 
 
- 
+
 
 
 

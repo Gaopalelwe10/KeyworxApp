@@ -14,7 +14,7 @@ export class LocationFiterPipePipe implements PipeTransform {
 
     
     return array.filter(item => {
-      return item.location.toLowerCase().includes(text.toLowerCase());
+      return item.location.toLowerCase(). includes(text.toLowerCase());
     });
   }
 

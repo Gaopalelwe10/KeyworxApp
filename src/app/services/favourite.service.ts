@@ -35,9 +35,9 @@ export class FavouriteService {
     return this.afs.collection('favourite').doc(feedId).valueChanges()
   }
 
-  // countfavourite(favourite) {
-  //   return _.mapValues(_.groupBy(favourite), 'length')
-  // }
+  countfavourite(favourite) {
+    return _.mapValues(_.groupBy(favourite), 'length')
+  }
 
   removefavourite(feedId, userid) {
     const data = { [userid]: firebase.firestore.FieldValue.delete() }
@@ -48,4 +48,6 @@ export class FavouriteService {
     const userID =this.profileService.getUID()
     return _.get(favourite, userID)
   }
+
+
 }

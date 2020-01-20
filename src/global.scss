@@ -28,23 +28,49 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
 .custom-loader {
     --background: transparent;
-    
-	
-	.loading-wrapper {
-		-webkit-animation: ld-vortex-out 2s ease-out infinite;
-		animation: ld-vortex-out 2s ease-out infinite;
-		animation-timing-function: cubic-bezier(0.05, 0, 3, 0.05);
-
-		// background-image:  url("/assets/img/baubap-logo-circle.svg");
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
-		min-width: 90px;
+    .loading-wrapper {
+        -webkit-animation: ld-vortex-out 2s ease-out infinite;
+        animation: ld-vortex-out 2s ease-out infinite;
+        animation-timing-function: cubic-bezier(0.05, 0, 3, 0.05);
+        // background-image:  url("/assets/img/baubap-logo-circle.svg");
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        min-width: 90px;
         min-height: 90px;
-		box-shadow: none;
-		-webkit-box-shadow: none;
-	}
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+}
+
+.mapboxgl-ctrl-top-right {
+    position: fixed;
+    // top: 60px;
+    max-width: 90%;
+    min-width: 90%;
+    margin-left: 0;
+    margin-right: 2%;
+}
+
+.geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    left: 50%;
+    margin-left: -25%;
+    top: 20px;
+}
+
+.mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+}
+
+.marker {
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
 }

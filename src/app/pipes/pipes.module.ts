@@ -8,7 +8,7 @@ import { CategoryFilterPipePipe } from './category-filter-pipe.pipe';
 
 @NgModule({
   declarations: [PropertyFilterPipePipe, LocationFiterPipePipe, CategoryFilterPipePipe],
-  exports:[PropertyFilterPipePipe, LocationFiterPipePipe],
+  exports:[PropertyFilterPipePipe, LocationFiterPipePipe,CategoryFilterPipePipe],
   imports: [
     CommonModule
   ]

@@ -23,8 +23,8 @@
                 </ion-card-content>
             </ion-card>
         </div>
-        <div class="column" *ngFor="let items of propertyList | categoryFilterPipe:">
-            
+        <div class="column" *ngFor="let items of propertyList | categoryFilterPipe: SeachLocation">
+
             {{this.hide(2)}}
             <ion-card class="card">
                 <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">

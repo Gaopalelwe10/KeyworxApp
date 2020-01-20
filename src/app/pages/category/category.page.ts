@@ -13,7 +13,7 @@ export class CategoryPage implements OnInit {
   propertyList
   favouriteList
   propertyListLoaded
-
+  SeachLocation=""
   data = false;
   count;
   show = false

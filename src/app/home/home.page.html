@@ -80,16 +80,86 @@
         </ion-slide>
     </ion-slides>
 
+
     <ion-item lines="none">
-        <p slot="start"><b>SALE</b></p>
+        <p slot="start"><b>POPULAR</b></p>
+        <p slot="end" color="medium" (click)="view()">View all</p>
+    </ion-item>
+
+
+    <ion-slides [options]="slidesOptions">
+        <ion-slide *ngFor="let details of propertyList?.reverse()  ">
+            <ion-card class="cat">
+                <div>
+                    <img src="{{details.mainImage}}" (click)="detail(details)">
+                    <ion-card-content slot="start">
+                        <div class="action" class="like" (click)="react(details.key, details.userReaction)" [class.liked]="details.userReaction != null">
+                            <ion-icon class="ion-float-right" name="heart"></ion-icon>
+                        </div>
+                        <div (click)="detail(details)">
+                            <p>{{details.price | currency:'R'}}</p>
+                            <p>{{details.location}}</p>
+
+                            <i class="fa fa-bed" aria-hidden="true">
+                                                <span class="pad-value">{{details.bedrooms}}</span>
+                                            </i>
+                            <i class="fa fa-bath" aria-hidden="true">
+                                                <span class="pad-value"> {{details.bathrooms}}</span>
+                                            </i>
+                            <i class="fa fa-car" aria-hidden="true"> 
+                                                <span class="pad-value">  {{details.garage}}</span>
+                                            </i>
+                        </div>
+                    </ion-card-content>
+                </div>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+    <ion-slides [options]="slidesOptions" *ngIf="data == false">
+        <ion-slide *ngFor="let i of [1,2,3,4,5,6,7] ">
+
+            <ion-card class="cat">
+                <ion-skeleton-text animated style="width: 100%; height: 90px"></ion-skeleton-text>
+                <ion-card-content>
+
+                    <ion-skeleton-text animated style="width: 5%; float: right;"></ion-skeleton-text>
+
+                    <div>
+                        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+
+                        <ion-grid class="ion-no-padding">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+
+                            </ion-row>
+                        </ion-grid>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+
+    <ion-item lines="none">
+        <p slot="start"><b>POPULAR</b></p>
         <p slot="end" color="medium" (click)="view()">View all</p>
     </ion-item>
 
 
     <ion-slides [options]="slidesOpt" *ngIf="data == true">
 
-        <ion-slide *ngFor="let details of propertyList ?.reverse() | propertyFilterPipe: textSearch">
-
+        <ion-slide *ngFor="let details of propertyList | propertyFilterPipe:'desc' : 'reactionCount'">
+            <!-- <ion-slide *ngFor="let details of propertyList?.reverse() "> -->
             <ion-card class="catt">
 
                 <img src="{{details.mainImage}}" (click)="detail(details)">

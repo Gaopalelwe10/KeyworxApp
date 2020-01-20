@@ -110,12 +110,15 @@ export class DetailsPage implements OnInit {
   }
 
   async share(){
-    let shareRet = await Share.share({
-      title: 'See cool stuff',
-      text: 'Really awesome thing you need to see right meow',
-      url: 'http://ionicframework.com/',
-      dialogTitle: 'Share with buddies'
-    });
+    // let shareRet = await Share.share({
+    //   title: 'See cool stuff',
+    //   text: 'Really awesome thing you need to see right meow',
+    //   url: 'http://ionicframework.com/',
+    //   dialogTitle: 'Share with buddies'
+    // });
+
+    console.log(this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx")
+    console.log("I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on the Keyworx App. Check it out:" )
   }
 
   image(items) {
