@@ -67,6 +67,10 @@ export class ProfileService {
     })
   }
 
+  async sendPasswordResetEmail(passwordResetEmail: string) {
+    return await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+  }
+  
   async logout() {
     await this.afAuth.auth.signOut().then((success) => {
       console.log(success);

@@ -13,6 +13,11 @@ export class CategoryPage implements OnInit {
   propertyList
   favouriteList
   propertyListLoaded
+
+  data = false;
+  count;
+  show = false
+
   constructor(
     private categoryService: CategoryService,
     private profileService: ProfileService,
@@ -20,11 +25,11 @@ export class CategoryPage implements OnInit {
     private router: Router,
   ) {
 
-   }
+  }
 
   ngOnInit() {
   }
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.categoryService.filterproperty().subscribe((data: any) => {
       this.propertyList = data.map(e => {
         return {
@@ -33,7 +38,7 @@ export class CategoryPage implements OnInit {
         }
       })
 
-      this.propertyListLoaded=data.map(e => {
+      this.propertyListLoaded = data.map(e => {
         return {
           key: e.payload.doc.id,
           ...e.payload.doc.data()
@@ -62,12 +67,12 @@ export class CategoryPage implements OnInit {
 
             for (const property of this.propertyListLoaded) {
               if (reactionInfo.key === property.key) {
-  
+
                 this.favouriteService.count(property.key).subscribe((data: any) => {
                   // property.reactionCount = this.favouriteService.countfavourite(data)[0];
                   property.userReaction = this.favouriteService.userfavourite(data);
                 })
-  
+
               }
             }
           }
@@ -75,9 +80,9 @@ export class CategoryPage implements OnInit {
         }
 
       });
-
+      this.data = true;
       console.log(this.propertyList)
-
+      this.propertyAfterFilter()
     })
   }
   initializeItems(): void {
@@ -87,7 +92,14 @@ export class CategoryPage implements OnInit {
   fliter() {
     this.router.navigateByUrl("filter-category")
   }
-  
+
+  propertyAfterFilter(){
+    setTimeout(()=>{
+      if (this.count != 2) {
+        this.show = true
+      }
+    },1000);   
+  }
   detail(items) {
     // this.router.navigate(['/details'], {
     //   queryParams: {
@@ -100,14 +112,16 @@ export class CategoryPage implements OnInit {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         data: JSON.stringify(items),
-        
+
       }
     };
-    this.router.navigate(['details'], navigationExtras );
+    this.router.navigate(['details'], navigationExtras);
   }
 
 
-
+  hide(v) {
+    this.count = v
+  }
   react(key, val) {
     const userID = this.profileService.getUID();
     if (val != 0) {

@@ -15,9 +15,17 @@
 
 <ion-content>
 
-    <div class="row">
-        <div class="column" *ngFor="let items of propertyList">
-
+    <div class="row" *ngIf="data == true">
+        <div [hidden]="propertyList.length >0 ">
+            <ion-card>
+                <ion-card-content>
+                    Property not Found
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <div class="column" *ngFor="let items of propertyList | categoryFilterPipe:">
+            
+            {{this.hide(2)}}
             <ion-card class="card">
                 <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">
 

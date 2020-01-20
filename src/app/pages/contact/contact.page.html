@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons>
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title align="center">Contact Us</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <h1 align="center">How can we help you?</h1>
+
+    <p align="center">You can enquire, if you need any assistance, We'd love to hear from you.</p>
+    <br>
+
+
+    <ion-item>
+        Name:
+        <ion-input required type="text" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+        Mobile Number:
+        <ion-input required type="text" name="number"></ion-input>
+    </ion-item>
+    <ion-item>
+        Email:
+        <ion-input required type="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+        Message:
+        <br><br>
+        <ion-textarea required type="text" row="4" name="message"></ion-textarea>
+        <br><br>
+    </ion-item>
+    <br>
+    <ion-button expand="block" color="primary" (click)="message(store)">Send Message
+    </ion-button>
+
+    <br><br>
+
+    <ion-card align="center">
+        <!-- <h3>For more info</h3> -->
+        <h4>Contact our support team</h4>
+        <h6><b>Tel:</b></h6>
+        <h6><b>Email:</b></h6>
+    </ion-card>
+</ion-content>

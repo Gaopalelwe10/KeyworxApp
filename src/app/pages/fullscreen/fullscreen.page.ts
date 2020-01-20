@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-fullscreen',
@@ -7,24 +8,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./fullscreen.page.scss'],
 })
 export class FullscreenPage implements OnInit {
-
+  calculator: FormGroup;
   pic = {
     downloadURL: "",
   }
   i: number
   t: number
   amt: number
-  p: number
+  p: number = 0
   r: number
   n: number
   deposit: number = 0
-  M: number
+  M: number 
   a: number
   d: number
   c: number
   total: number
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,  
+      // private fb: FormBuilder,
+
   ) {
 
     this.route.queryParams
@@ -32,7 +35,12 @@ export class FullscreenPage implements OnInit {
         this.pic.downloadURL = params.downloadURL;
         console.log(this.pic.downloadURL)
       });
-
+      // this.calculator = fb.group({
+      //   deposit: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.minLength(1), Validators.maxLength(10), Validators.required])],
+      //   // email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+       
+  
+      // });
   }
 
   ngOnInit() {

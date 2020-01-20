@@ -16,6 +16,7 @@
         <ion-input [(ngModel)]="p">R</ion-input>
     </ion-item>
 
+
     <ion-item>
         <ion-label position="stacked">Interest rate</ion-label>
         <ion-input [(ngModel)]="i" placeholder="%"></ion-input>
@@ -31,13 +32,18 @@
             <ion-select-option value="30">30</ion-select-option>
         </ion-select>
     </ion-item>
-
+    <!-- <form [formGroup]="calculator"> -->
     <ion-item>
         <ion-label position="stacked">Deposit</ion-label>
         <ion-input [(ngModel)]="deposit"></ion-input>
     </ion-item>
-
-
+    <!-- <div class="error" *ngIf="calculator.get('deposit').hasError('minlength') && calculator.get('deposit').touched">
+            Minimum 1 characters
+        </div>
+        <div class="error" *ngIf="calculator.get('deposit').hasError('maxlength') && calculator.get('deposit').touched">
+            Maximum 10 characters
+        </div>
+    </form> -->
 
     <div class="ion-padding">
         <ion-button expand="block" class="ion-no-margin" (click)="calculate()" onclick="document.getElementById('id01').style.display='block'">
@@ -47,8 +53,9 @@
     <div id="id01" class="w3-modal">
         <div class="w3-modal-content">
             <div class="w3-container">
-                <h4> <span slot="end" onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
-                </h4>
+                <h2> <span float-right onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn">&times;</span>
+                </h2>
+                <br>
                 <div align="center">
                     <h5> Your monthly repayments</h5>
                     <h3>

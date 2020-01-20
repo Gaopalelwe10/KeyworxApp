@@ -64,6 +64,10 @@ const routes: Routes = [
     path: 'filter-category',
     loadChildren: () => import('./pages/filter-category/filter-category.module').then( m => m.FilterCategoryPageModule)
   },
+  {
+    path: 'contact',
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+  },
 
 
  
