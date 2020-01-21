@@ -3,6 +3,12 @@ import { IonSlides } from '@ionic/angular';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { MapboxService } from 'src/app/services/mapbox.service';
+import { PropertyService } from 'src/app/services/property.service';
+
+import { Plugins } from '@capacitor/core';
+
+const { Geolocation } = Plugins;
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -34,12 +40,19 @@ export class MapPage implements OnInit {
   plotLat: string;
   coords: string;
 
-  constructor( private maboxServe: MapboxService) { 
-    this.  mapboxAccessToken=this.maboxServe.token()
+  constructor(
+    private maboxServe: MapboxService,
+) {
+    this.mapboxAccessToken = this.maboxServe.token();
+
+
+
+
+
   }
 
   ngOnInit() {
-   
+
   }
   ionViewDidEnter() {
     //   const loading = this.loadingCtrl.create({
@@ -48,11 +61,31 @@ export class MapPage implements OnInit {
     // (await loading).present();
     this.initializeMapBox();
     // this.slideChanged();
+
+    const coordinates = Geolocation.getCurrentPosition().then((response) => {
+      console.log("jjj" + response.timestamp)
+      this.startPosition = response.coords;
+      // this.originPosition= response.Address;
+      // this.map.setCenter([this.startPosition.longitude, this.startPosition.latitude]);
+
+      // const el = document.createElement('div');
+      // el.className = 'marker';
+      // el.style.backgroundImage = 'url(assets/img/home.jpg)';
+      // el.style.width = '40px';
+      // el.style.height = '40px';
+
+      // var marker = new mapboxgl.Marker(el)
+      //   .setLngLat([this.startPosition.longitude, this.startPosition.latitude])
+      //   .setPopup(new mapboxgl.Popup({ offset: 25 })
+      //     .setHTML('<p>' + 'You are here' + '</p> '))
+      //   .addTo(this.map);
+    })
+    console.log('Current', coordinates);
   }
 
   initializeMapBox() {
     // or "const mapboxgl = require('mapbox-gl');"
-  
+
     this.map = new mapboxgl.Map({
       container: this.mapNativeElement.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v11',
@@ -62,7 +95,7 @@ export class MapPage implements OnInit {
     });
 
     this.geocoder = new MapboxGeocoder({ // Initialize the geocoder
-      accessToken:   this.mapboxAccessToken, // Set the access token
+      accessToken: this.mapboxAccessToken, // Set the access token
       mapboxgl: mapboxgl, // Set the mapbox-gl instance
       marker: {
         color: 'orange'
@@ -104,25 +137,43 @@ export class MapPage implements OnInit {
     //       .addTo(this.map);
     //   })
 
+    Geolocation.getCurrentPosition().then((response) => {
+    
+      this.startPosition = response.coords;
+      this.map.setCenter([this.startPosition.longitude, this.startPosition.latitude]);
+ 
+      const el = document.createElement('div');
+      el.className = 'marker';
+      el.style.backgroundImage = 'url(assets/img/icon.jpg)';
+      el.style.width = '40px';
+      el.style.height = '40px';
+
+      var marker = new mapboxgl.Marker(el)
+        .setLngLat([this.startPosition.longitude, this.startPosition.latitude])
+        .setPopup(new mapboxgl.Popup({ offset: 25 })
+          .setHTML('<p>' + 'You are here' + '</p> '))
+        .addTo(this.map);
+    })
+
 
     // load coodinates from database
-    // this.spazaService.getSpazas().subscribe((markers: any) => {
-    //   markers.forEach(element => {
+    this.maboxServe.propertyList().subscribe((markers: any) => {
+      markers.forEach(element => {
 
-    //     const el = document.createElement('div');
-    //     el.className = 'marker';
-    //     el.style.backgroundImage = 'url(assets/img/icons8.png)';
-    //     el.style.width = '40px';
-    //     el.style.height = '40px';
+        const el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundImage = 'url(assets/img/home.png)';
+        el.style.width = '40px';
+        el.style.height = '40px';
 
-    //     console.log(element.lng, element.lat)
-    //     var marker = new mapboxgl.Marker(el)
-    //       .setLngLat([element.lng, element.lat])
-    //       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    //         .setHTML('<p>' + element.Address + '</p> <p>Spaza Name: ' + element.spazaName + '</p>'))
-    //       .addTo(this.map);
-    //   });
-    // })
+        console.log(element.lng, element.lat)
+        var marker = new mapboxgl.Marker(el)
+          .setLngLat([element.lng, element.lat])
+          .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<p>' + element.location + '</p>'))
+          .addTo(this.map);
+      });
+    })
 
 
   }

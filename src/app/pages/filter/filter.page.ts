@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
 import { Plugins } from '@capacitor/core';
 import { NavController } from '@ionic/angular';
+import { MapboxService, Feature } from 'src/app/services/mapbox.service';
 const { Storage } = Plugins;
 
 @Component({
@@ -32,10 +33,20 @@ export class FilterPage implements OnInit {
 
   MyDefaultMaxPriceValue: string;
   SelectedMaxPriceValue: any;
+
+  addresses: string[] = [];
+  coodinateses: string[] = [];
+
+  selectedAddress = null;
+  selectedcoodinates = null;
+  listMabox: any;
+  lng;
+  lat;
   constructor(
     private router: Router,
     public propertyService: PropertyService,
-    private navC: NavController
+    private navC: NavController,
+    public mapboxService: MapboxService,
 
   ) {
     this.getFilterValues();
@@ -54,7 +65,7 @@ export class FilterPage implements OnInit {
 
   async getFilterValues() {
     // const { value }: any = await Storage.get({ key: 'Bed' });
-    this.SeachLocation = this.propertyService.searchL
+    this.selectedAddress = this.propertyService.searchL
     this.bedrooms = Number(this.propertyService.bed);
     this.bathrooms = Number(this.propertyService.bath);
     this.garages = Number(this.propertyService.garage);
@@ -68,6 +79,47 @@ export class FilterPage implements OnInit {
     this.router.navigateByUrl("tabs/home")
   }
 
+  search(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm && searchTerm.length > 0) {
+      this.mapboxService.search_word(searchTerm)
+        .subscribe((features: Feature[]) => {
+          this.coodinateses = features.map(feat => feat.geometry)
+          this.addresses = features.map(feat => feat.place_name)
+          this.listMabox = features;
+          console.log(this.listMabox)
+        });
+    } else {
+      this.addresses = [];
+    }
+  }
+
+  onSelect(address, i) {
+    this.selectedAddress = address;
+    //  selectedcoodinates=
+
+    console.log("lng:" + JSON.stringify(this.listMabox[i].geometry.coordinates[0]))
+    console.log("lat:" + JSON.stringify(this.listMabox[i].geometry.coordinates[1]))
+    this.lng = JSON.stringify(this.listMabox[i].geometry.coordinates[0])
+    this.lat = JSON.stringify(this.listMabox[i].geometry.coordinates[1])
+
+    console.log("index =" + i)
+    console.log(this.selectedAddress)
+
+    //add to FireBase
+    // this.dog.collection('coordinate').add({
+    //   lat: this.temp.coordinates[1],
+    //   lng: this.temp.coordinates[0],
+    //   address: address,
+    // }).then(function (ref) {
+    //   console.log("document was written with ID : " + ref);
+    //   alert("physical address : " + address + " , saved successful..")
+    // }).catch(function (ee) {
+    //   console.log(ee)
+    //   console.log("error while processing ..")
+    // });
+    this.addresses = [];
+  }
   async BedButton(value1) {
     this.bedrooms = Number(value1)
     this.propertyService.bed = this.bedrooms
@@ -113,7 +165,7 @@ export class FilterPage implements OnInit {
     let garagesValues
     this.min = Number(this.SelectedMinPriceValue)
     this.max = Number(this.SelectedMaxPriceValue)
-    this.propertyService.searchL = this.SeachLocation
+    this.propertyService.searchL = this.selectedAddress
     console.log("min " + this.min)
     console.log("max " + this.max)
     console.log("bedrooms " + this.bedrooms)

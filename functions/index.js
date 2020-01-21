@@ -6,31 +6,26 @@ const functions = require('firebase-functions');
 // exports.helloWorld = functions.https.onRequest((request, response) => {
 //  response.send("Hello from Firebase!");
 // });
+var _ = require('lodash');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-exports.aggregateComments = functions.firestore
-    .document('spazashop/{spazaId}/comments/{commentId}')
+exports.aggregateReactions = functions.firestore
+    .document('favourite/{propertyId}')
     .onWrite((change, context) => {
 
-        const commentId = context.params.commentId;
-        const spazaId = context.params.spazaId;
-        console.log(spazaId + "===jjjj===" + commentId)
-            // ref to the parent document
-        const docRef = admin.firestore().collection('spazashop').doc(spazaId)
+        const propertyId = context.params.propertyId;
+        const docRef = admin.firestore().collection('properties').doc(propertyId)
 
-        // get all comments and aggregate
-        return docRef.collection('comments').orderBy('createdAt', 'desc')
-            .get()
-            .then(querySnapshot => {
+        admin.firestore().collection('favourite').doc(propertyId)
+            .onSnapshot(doc => {
+                console.log("Current data: ", doc.data());
 
-                // get the total comment count
-                const commentCount = querySnapshot.size
-
-                const data = { commentCount }
-                console.log(spazaId + "===jjjj===" + commentId)
+                const reactionCount = _.mapValues(_.groupBy(doc.data()), 'length')[0]
+                const data = { reactionCount }
+                console.log(propertyId + "===jjjj===" + data + "jjj =" + reactionCount)
                     // run update
                 return docRef.update(data)
-            })
-            .catch(err => console.log(err))
+            });
+
     });

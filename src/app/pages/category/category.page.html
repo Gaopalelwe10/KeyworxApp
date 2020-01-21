@@ -19,11 +19,11 @@
         <div [hidden]="propertyList.length >0 ">
             <ion-card>
                 <ion-card-content>
-                    Property not Found
+                    Please reduce your filter in order to see the property
                 </ion-card-content>
             </ion-card>
         </div>
-        <div class="column" *ngFor="let items of propertyList | categoryFilterPipe: SeachLocation">
+        <div class="column" *ngFor="let items of propertyList | propertyFilterPipe:{ property: 'reactionCount', descending: true }">
 
             {{this.hide(2)}}
             <ion-card class="card">

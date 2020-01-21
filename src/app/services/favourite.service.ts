@@ -22,26 +22,26 @@ export class FavouriteService {
   }
 
   
-  updatefavourite(feedId, userid, reaction = 0) {
+  updatefavourite(propertyId, userid, reaction = 0) {
     const data = { [userid]: reaction }
-    this.afs.collection('favourite').doc(feedId).update(data).then((data) => {
+    this.afs.collection('favourite').doc(propertyId).update(data).then((data) => {
 
     }).catch(() => {
-      this.afs.collection('favourite').doc(feedId).set(data)
+      this.afs.collection('favourite').doc(propertyId).set(data)
     })
   }
 
-  count(feedId) {
-    return this.afs.collection('favourite').doc(feedId).valueChanges()
+  count(propertyId) {
+    return this.afs.collection('favourite').doc(propertyId).valueChanges()
   }
 
   countfavourite(favourite) {
     return _.mapValues(_.groupBy(favourite), 'length')
   }
 
-  removefavourite(feedId, userid) {
+  removefavourite(propertyId, userid) {
     const data = { [userid]: firebase.firestore.FieldValue.delete() }
-    return this.afs.collection('favourite').doc(feedId).update(data);
+    return this.afs.collection('favourite').doc(propertyId).update(data);
   }
 
   userfavourite(favourite: Array<any>) {

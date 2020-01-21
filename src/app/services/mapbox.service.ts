@@ -24,7 +24,7 @@ export interface Geometry {
 })
 export class MapboxService {
 
-  constructor(private http: HttpClient, private dog: AngularFirestore) { }
+  constructor(private http: HttpClient, private afs: AngularFirestore) { }
 
   search_word(query: string) {
 
@@ -35,6 +35,9 @@ export class MapboxService {
       }))
   }
 
+  propertyList() {
+    return this.afs.collection("properties").valueChanges();
+  }
   token(){
    return mapboxgl.accessToken = 'pk.eyJ1Ijoibm51bnUiLCJhIjoiY2p4cTIxazB3MG0wYTNncm4wanF0cDVjaiJ9.v0khvZZss9z_U2MroA2PVQ';
   }
