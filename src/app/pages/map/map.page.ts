@@ -162,7 +162,7 @@ export class MapPage implements OnInit {
 
         const el = document.createElement('div');
         el.className = 'marker';
-        el.style.backgroundImage = 'url(assets/img/home.png)';
+        el.style.backgroundImage = 'url(assets/img/icons8.png)';
         el.style.width = '40px';
         el.style.height = '40px';
 
