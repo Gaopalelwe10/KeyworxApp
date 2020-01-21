@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { PopoverController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @Component({
   selector: 'app-popover-more',
@@ -13,7 +14,7 @@ export class PopoverMorePage implements OnInit {
   constructor(
     private profileService: ProfileService,
     private popoverController:PopoverController,
-    private router:Router
+    private router:Router, public composer:EmailComposer
   ) { }
 
   ngOnInit() {
@@ -34,5 +35,14 @@ export class PopoverMorePage implements OnInit {
     this.DismissClick();
   }
 
-  
+  contact(){
+    this.router.navigateByUrl("contact")
+    this.DismissClick();
+  }
+
+  OpenEmailComposer(){
+    this.composer.open({
+      to:'khodani1994@gmail.com'
+    })
+  }
 }

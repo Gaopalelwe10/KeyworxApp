@@ -19,6 +19,8 @@ import { PopoverMorePageModule } from './pages/popover-more/popover-more.module'
 import { ImageModalPageModule } from './pages/image-modal/image-modal.module';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import {HttpClientModule} from '@angular/common/http'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 const firebaseConfig = {
   apiKey: "AIzaSyA4CMD51Wz_G564J0h4HJeFG27-UI12Kkw",
   authDomain: "keyworkx.firebaseapp.com",
