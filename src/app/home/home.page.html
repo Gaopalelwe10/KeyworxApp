@@ -52,7 +52,7 @@
 
 
     <ion-slides [options]="slidesOptions">
-        <ion-slide *ngFor="let details of propertyList  ">
+        <ion-slide *ngFor="let details of propertyList">
             <ion-card class="cat">
                 <div>
                     <img src="{{details.mainImage}}" (click)="detail(details)">
@@ -62,7 +62,7 @@
                         </div>
                         <div (click)="detail(details)">
                             <p>{{details.price | currency:'R'}}</p>
-                            <p>{{details.location}}</p>
+                            <p>{{details.location | slice:0:12}}...</p>
 
                             <i class="fa fa-bed" aria-hidden="true">
                                                 <span class="pad-value">{{details.bedrooms}}</span>
@@ -88,7 +88,7 @@
 
 
     <ion-slides [options]="slidesOptions">
-        <ion-slide *ngFor="let details of propertyList?.reverse()  ">
+        <ion-slide *ngFor="let details of propertyPopularList | propertyFilterPipe:{ property: 'reactionCount', descending: true }">
             <ion-card class="cat">
                 <div>
                     <img src="{{details.mainImage}}" (click)="detail(details)">
@@ -98,7 +98,10 @@
                         </div>
                         <div (click)="detail(details)">
                             <p>{{details.price | currency:'R'}}</p>
-                            <p>{{details.location}}</p>
+                            <p>{{details.location | slice:0:12}}...</p>
+                            <!-- <ion-item class="ion-no-padding ion-no-margin location" lines="none" style="font-size:13px ;">
+                                <ion-label class="ion-no-padding ion-no-margin location">{{details.location}}</ion-label>
+                            </ion-item> -->
 
                             <i class="fa fa-bed" aria-hidden="true">
                                                 <span class="pad-value">{{details.bedrooms}}</span>
@@ -149,7 +152,7 @@
         </ion-slide>
     </ion-slides>
 
-
+    <!-- 
     <ion-item lines="none">
         <p slot="start"><b>POPULAR</b></p>
         <p slot="end" color="medium" (click)="view()">View all</p>
@@ -158,8 +161,7 @@
 
     <ion-slides [options]="slidesOpt" *ngIf="data == true">
 
-        <ion-slide *ngFor="let details of propertyList | propertyFilterPipe:'desc' : 'reactionCount'">
-            <!-- <ion-slide *ngFor="let details of propertyList?.reverse() "> -->
+        <ion-slide *ngFor="let details of propertyList ">
             <ion-card class="catt">
 
                 <img src="{{details.mainImage}}" (click)="detail(details)">
@@ -221,7 +223,7 @@
                 </ion-card-content>
             </ion-card>
         </ion-slide>
-    </ion-slides>
+    </ion-slides> -->
 
 
 </ion-content>

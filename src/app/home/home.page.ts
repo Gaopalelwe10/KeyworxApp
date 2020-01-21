@@ -30,7 +30,7 @@ export class HomePage implements OnInit{
   favouriteList;
  
   data = false;
-  propertySaleList
+  propertyPopularList
   textSearch;
 
 
@@ -59,13 +59,19 @@ export class HomePage implements OnInit{
     }
 
     this.propertyService.propertyList().subscribe((data: any) => {
-      this.propertyList = data.map(e => {
+      this.propertyPopularList=data.map(e => {
         return {
           key: e.payload.doc.id,
           ...e.payload.doc.data()
         }
       })
-
+      this.propertyList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      }).reverse()
+    
 
       this.favouriteService.getfavourite().subscribe((data: any) => {
         this.favouriteList = data.map(e => {
@@ -90,10 +96,26 @@ export class HomePage implements OnInit{
 
         }
 
+        for (const reactionInfo of this.favouriteList) {
+
+          for (const property of this.propertyPopularList) {
+            if (reactionInfo.key === property.key) {
+
+              this.favouriteService.count(property.key).subscribe((data: any) => {
+                property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                property.userReaction = this.favouriteService.userfavourite(data);
+              })
+
+            }
+          }
+
+        }
+
 
       });
 
       console.log(this.propertyList)
+      console.log(this.propertyPopularList)
       this.data = true;
     });
     

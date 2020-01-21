@@ -95,7 +95,7 @@ export class PropertyService {
     //     }).snapshotChanges()
     //   )
     // );
-    return this.afs.collection("properties", ref => ref.orderBy('location')).snapshotChanges()
+    return this.afs.collection("properties").snapshotChanges()
   }
 
   filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min: number, max: number) {
