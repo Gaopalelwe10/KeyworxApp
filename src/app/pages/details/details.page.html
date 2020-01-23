@@ -143,7 +143,22 @@
 
     </ion-card>
 
-
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <img src="{{profileData?.photoURL}}">
+                    </ion-avatar>
+                    <ion-label>
+                        <h2>{{profileData?.name}}</h2>
+                        <h3>{{profileData?.number}}</h3>
+                        <p>{{profileData?.email}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
 
 
     <br>

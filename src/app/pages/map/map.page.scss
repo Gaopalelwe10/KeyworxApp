@@ -4,3 +4,48 @@
     bottom: 0;
     width: 100%;
 }
+
+.bot {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+ion-card {
+    width: 90% !important;
+    --background: #ffffff;
+    height: 100px;
+    ion-col {
+        width: 90% !important;
+        height: 90px;
+    }
+    p {
+        font-size: 9px;
+    }
+    text-align: start;
+    --color: black;
+    p {
+        font-size: 13px;
+    }
+    i {
+        font-size: 13px;
+        padding-right: 6px;
+        .pad-value {
+            padding-left: 3px;
+        }
+    }
+    ion-card-content {
+        padding: 0;
+        margin: 0;
+        padding-top: 1px;
+    }
+}
+
+.like {
+    cursor: pointer;
+    font-size: 20px;
+    &.liked {
+        font-weight: bold;
+        color: #a02b2d;
+    }
+}

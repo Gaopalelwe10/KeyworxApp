@@ -27,7 +27,8 @@ export class MessagePage implements OnInit {
     email: '',
     number: '',
     message: '', 
-    uid: ''
+    uid: '',
+    isRead: false,
 
   }
   constructor(
@@ -66,7 +67,8 @@ export class MessagePage implements OnInit {
       email: this.userList.email,
       number: this.store.number,
       message: this.store.message,
-      uid: this.afAuth.auth.currentUser.uid
+      isRead: this.store.isRead,
+      uid: this.profileServ.getUID()
     });
     console.log(this.store)
    

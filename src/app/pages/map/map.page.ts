@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, Platform } from '@ionic/angular';
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { MapboxService } from 'src/app/services/mapbox.service';
 import { PropertyService } from 'src/app/services/property.service';
 
 import { Plugins } from '@capacitor/core';
+import { ProfileService } from 'src/app/services/profile.service';
+import { FavouriteService } from 'src/app/services/favourite.service';
+import { NavigationExtras, Router } from '@angular/router';
 
 const { Geolocation } = Plugins;
 
@@ -40,13 +43,91 @@ export class MapPage implements OnInit {
   plotLat: string;
   coords: string;
 
+  propertyList;
+  favouriteList;
+  propertyListLoaded;
+
+  data = false;
+
+  slidesOpt = {
+    slidesPerView: 1.1,
+
+  }
+
   constructor(
     private maboxServe: MapboxService,
-) {
+    private propertyService: PropertyService,
+    private profileService: ProfileService,
+    private favouriteService: FavouriteService,
+    private router: Router,
+    private platform: Platform
+  ) {
+
+    if (this.platform.is("ipad")) {
+      this.slidesOpt = {
+        slidesPerView: 2.1,
+
+      }
+
+    }
     this.mapboxAccessToken = this.maboxServe.token();
 
+   
+    this.propertyService.propertyList().subscribe((data: any) => {
+    
+      this.propertyList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      })
 
+      this.propertyListLoaded=data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      })
 
+      this.favouriteService.getfavouriteUser().subscribe((data: any) => {
+        this.favouriteList = data.map(e => {
+          return {
+            key: e.payload.doc.id,
+            ...e.payload.doc.data()
+          }
+        });
+
+        for (const reactionInfo of this.favouriteList) {
+
+          for (const property of this.propertyList) {
+            if (reactionInfo.key === property.key) {
+
+              this.favouriteService.count(property.key).subscribe((data: any) => {
+                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                property.userReaction = this.favouriteService.userfavourite(data);
+              })
+
+            }
+          }
+
+          for (const property of this.propertyListLoaded) {
+            if (reactionInfo.key === property.key) {
+
+              this.favouriteService.count(property.key).subscribe((data: any) => {
+                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                property.userReaction = this.favouriteService.userfavourite(data);
+              })
+
+            }
+          }
+        }
+
+      });
+
+      console.log(this.propertyList)
+
+      this.data = true;
+    })
 
 
   }
@@ -54,33 +135,14 @@ export class MapPage implements OnInit {
   ngOnInit() {
 
   }
+  
   ionViewDidEnter() {
-    //   const loading = this.loadingCtrl.create({
-    //   message: 'Signing in, Please wait...',
-    // });
-    // (await loading).present();
     this.initializeMapBox();
-    // this.slideChanged();
 
-    const coordinates = Geolocation.getCurrentPosition().then((response) => {
-      console.log("jjj" + response.timestamp)
-      this.startPosition = response.coords;
-      // this.originPosition= response.Address;
-      // this.map.setCenter([this.startPosition.longitude, this.startPosition.latitude]);
+  }
 
-      // const el = document.createElement('div');
-      // el.className = 'marker';
-      // el.style.backgroundImage = 'url(assets/img/home.jpg)';
-      // el.style.width = '40px';
-      // el.style.height = '40px';
-
-      // var marker = new mapboxgl.Marker(el)
-      //   .setLngLat([this.startPosition.longitude, this.startPosition.latitude])
-      //   .setPopup(new mapboxgl.Popup({ offset: 25 })
-      //     .setHTML('<p>' + 'You are here' + '</p> '))
-      //   .addTo(this.map);
-    })
-    console.log('Current', coordinates);
+  initializeItems(): void {
+    this.propertyList = this.propertyListLoaded;
   }
 
   initializeMapBox() {
@@ -101,7 +163,7 @@ export class MapPage implements OnInit {
         color: 'orange'
       },
       placeholder: 'Search for places ', // Placeholder text for the search bar
-      // Coordinates of UC Berkeley
+     
     });
 
 
@@ -110,43 +172,24 @@ export class MapPage implements OnInit {
     this.geocoder.on('result', (ev) => {
       console.log(ev.result.text)
       this.value = ev.result.text;
-      // this.search(ev.result.text)
+      this.search(ev.result.text)
       console.log("valu ll" + this.value)
       console.log("me")
       // map.getSource('single-point').setData(ev.result.geometry);
 
     });
 
-    // this.geolocation.getCurrentPosition()
-    //   .then((response) => {
-    //     console.log("jjj" + response.timestamp)
-    //     this.startPosition = response.coords;
-    //     // this.originPosition= response.Address;
-    //     this.map.setCenter([this.startPosition.longitude, this.startPosition.latitude]);
-
-    //     const el = document.createElement('div');
-    //     el.className = 'marker';
-    //     el.style.backgroundImage = 'url(assets/img/icon.jpg)';
-    //     el.style.width = '40px';
-    //     el.style.height = '40px';
-
-    //     var marker = new mapboxgl.Marker(el)
-    //       .setLngLat([this.startPosition.longitude, this.startPosition.latitude])
-    //       .setPopup(new mapboxgl.Popup({ offset: 25 })
-    //         .setHTML('<p>' + 'You are here' + '</p> '))
-    //       .addTo(this.map);
-    //   })
 
     Geolocation.getCurrentPosition().then((response) => {
-    
+
       this.startPosition = response.coords;
       this.map.setCenter([this.startPosition.longitude, this.startPosition.latitude]);
- 
+
       const el = document.createElement('div');
       el.className = 'marker';
-      el.style.backgroundImage = 'url(assets/img/icon.jpg)';
-      el.style.width = '40px';
-      el.style.height = '40px';
+      el.style.backgroundImage = 'url(assets/img/pin.png)';
+      el.style.width = '24px';
+      el.style.height = '24px';
 
       var marker = new mapboxgl.Marker(el)
         .setLngLat([this.startPosition.longitude, this.startPosition.latitude])
@@ -162,9 +205,9 @@ export class MapPage implements OnInit {
 
         const el = document.createElement('div');
         el.className = 'marker';
-        el.style.backgroundImage = 'url(assets/img/icons8.png)';
-        el.style.width = '40px';
-        el.style.height = '40px';
+        el.style.backgroundImage = 'url(assets/img/placeholder.png)';
+        el.style.width = '24px';
+        el.style.height = '24px';
 
         console.log(element.lng, element.lat)
         var marker = new mapboxgl.Marker(el)
@@ -175,6 +218,45 @@ export class MapPage implements OnInit {
       });
     })
 
+
+  }
+
+  detail(items) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: JSON.stringify(items),
+
+      }
+    };
+    this.router.navigate(['details'], navigationExtras);
+  }
+
+  react(key, val) {
+    const userID = this.profileService.getUID();
+    if (val != 0) {
+      this.favouriteService.updatefavourite(key, userID, 0)
+    } else {
+      this.favouriteService.removefavourite(key, userID)
+    }
+  }
+
+  search(evt) {
+    this.initializeItems();
+
+    const searchTerm = evt
+
+    if (!searchTerm) {
+      return;
+    }
+
+    this.propertyList = this.propertyList.filter(currentProperty => {
+      if (currentProperty.location && searchTerm) {
+        if (currentProperty.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
 
   }
 }
