@@ -14,7 +14,7 @@ export interface MapboxOutput {
 export interface Feature {
   place_name: string;
   geometry: string;
-
+  text:string;
 }
 export interface Geometry {
   coordinates: string;

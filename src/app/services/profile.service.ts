@@ -40,6 +40,7 @@ export class ProfileService {
       );
     })
   }
+   
   async signup(registerdetails, password) {
     const loading = this.loadingCtrl.create({
       message: 'Registering, Please wait...'
@@ -83,5 +84,9 @@ export class ProfileService {
 
   getUID(): string {
     return this.afAuth.auth.currentUser.uid;
+  }
+
+  agentProfile(agentUid){
+    return this.afs.collection('agent').doc(agentUid).valueChanges();
   }
 }

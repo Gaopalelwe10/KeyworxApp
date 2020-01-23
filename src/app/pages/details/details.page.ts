@@ -41,6 +41,8 @@ export class DetailsPage implements OnInit {
   }
   array
   favouriteList
+  agentUid
+  profileData:any;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
@@ -53,6 +55,7 @@ export class DetailsPage implements OnInit {
       if (params && params.data ){
         this.propertyList= JSON.parse(params.data);
         this.propertyid=this.propertyList.propertyid
+        this.agentUid=this.propertyList.uid;
         console.log(this.propertyList)
       
       }
@@ -106,6 +109,10 @@ export class DetailsPage implements OnInit {
       })
       
       console.log(this.imageList);
+    })
+    this.profileService.agentProfile(this.agentUid).subscribe((data)=>{
+      this.profileData=data
+      console.log(data);
     })
   }
 

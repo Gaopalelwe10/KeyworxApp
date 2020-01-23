@@ -40,6 +40,7 @@ export class FilterPage implements OnInit {
   selectedAddress = null;
   selectedcoodinates = null;
   listMabox: any;
+  listMaboxText:any;
   lng;
   lat;
   constructor(
@@ -87,6 +88,7 @@ export class FilterPage implements OnInit {
           this.coodinateses = features.map(feat => feat.geometry)
           this.addresses = features.map(feat => feat.place_name)
           this.listMabox = features;
+          this.listMaboxText=features.map(feat => feat.text)
           console.log(this.listMabox)
         });
     } else {
@@ -105,6 +107,7 @@ export class FilterPage implements OnInit {
 
     console.log("index =" + i)
     console.log(this.selectedAddress)
+    console.log(this.listMabox[i].text)
 
     //add to FireBase
     // this.dog.collection('coordinate').add({

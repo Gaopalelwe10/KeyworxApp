@@ -103,7 +103,7 @@
         <ion-label>GARAGES</ion-label>
     </ion-item>
     <ion-item lines="none">
-        <div *ngFor="let value of list">
+        <div *ngFor="let value of list |slice:0:4">
             <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': garages === value}" (click)="GARAGEButton(null)">Any</ion-button>
             <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  garages === value}" (click)="GARAGEButton(value)">{{value}} + </ion-button>
         </div>
