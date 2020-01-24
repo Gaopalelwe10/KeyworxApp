@@ -143,13 +143,13 @@
 
     </ion-card>
 
-    <ion-card>
+    <ion-card #triggerElement>
         <ion-card-content>
             <ion-list>
                 <ion-item>
-                    <ion-avatar slot="start">
+                    <ion-thumbnail slot="start">
                         <img src="{{profileData?.photoURL}}">
-                    </ion-avatar>
+                    </ion-thumbnail>
                     <ion-label>
                         <h2>{{profileData?.name}}</h2>
                         <h3>{{profileData?.number}}</h3>

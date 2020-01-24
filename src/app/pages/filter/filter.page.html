@@ -32,7 +32,7 @@
     </div> -->
 
 
-    <ion-list position="floating">
+    <ion-list position="floating" style="position: absolute; max-width: 100%; min-width: 100%; z-index: 999; ">
         <!-- <ion-item *ngFor="let album of albums | filtro: textBuscar: 'title'"> -->
 
         <ion-item *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)">
