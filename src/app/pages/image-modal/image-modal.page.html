@@ -1,18 +1,20 @@
 <ion-content>
     <ion-item class="close-fake" lines="none" text-center>
-        <ion-button (click)="close()" fill="clear" color="Light">
+        <ion-button slot="end" (click)="close()" fill="clear" color="Light">
             <ion-icon name="close" slot="start"></ion-icon>
-            Back
+            <!-- Back -->
         </ion-button>
+
 
         <ion-button (click)="zoom(true)" fill="clear" color="Light">
             <ion-icon name="add" slot="start"></ion-icon>
-            In
+            <!-- In -->
         </ion-button>
+
 
         <ion-button (click)="zoom(false)" fill="clear" color="Light">
             <ion-icon name="remove" slot="start"></ion-icon>
-            Out
+            <!-- Out -->
         </ion-button>
 
     </ion-item>
