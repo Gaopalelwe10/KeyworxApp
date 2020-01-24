@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { NavController, AlertController, LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
+
+  user: Observable<User>
+  private userDoc: AngularFirestoreDocument<User>
 
   constructor(
     private afs: AngularFirestore,
@@ -40,6 +44,7 @@ export class ProfileService {
       );
     })
   }
+   
   async signup(registerdetails, password) {
     const loading = this.loadingCtrl.create({
       message: 'Registering, Please wait...'
@@ -84,4 +89,13 @@ export class ProfileService {
   getUID(): string {
     return this.afAuth.auth.currentUser.uid;
   }
+
+  getUser(key){
+    this.userDoc = this.afs.doc<User>('users/' + key);
+    return this.userDoc.valueChanges();
+  }
+
+  agentProfile(agentUid){
+    return this.afs.collection('agent').doc(agentUid).valueChanges();
+}
 }

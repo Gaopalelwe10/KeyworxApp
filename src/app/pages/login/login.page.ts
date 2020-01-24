@@ -23,12 +23,12 @@ export class LoginPage implements OnInit {
     private profileService: ProfileService) {
 
     this.loginForm = fb.group({
-      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+      email:  ['', [Validators.required, Validators.email,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-.]+$')]],
       password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(12), Validators.required])],
     });
 
     this.forgotpasswordForm = fb.group({
-      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-.]+$'), Validators.required])],
     })
   }
 

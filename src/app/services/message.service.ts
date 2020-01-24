@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
+
+  user: Observable<User>
+  private userDoc : AngularFirestoreDocument<User>
+  
 
   constructor(
     private afs: AngularFirestore
@@ -13,4 +18,10 @@ export class MessageService {
   addMail(message){
     return this.afs.collection('messages').doc()
   }
+
+  getUser(key){
+    this.userDoc = this.afs.doc<User>('users/' + key);
+    return this.userDoc.valueChanges();
+  }
+  
 }

@@ -1,94 +1,103 @@
 <ion-header no-border>
-  <ion-toolbar>
-      <!-- <ion-buttons (click)="cancel()" slot="start">
+    <ion-toolbar>
+        <!-- <ion-buttons (click)="cancel()" slot="start">
           Cancel
       </ion-buttons> -->
-      <ion-buttons slot="start">
-          <ion-back-button text="Cancel" icon="" color="primary"></ion-back-button>
-      </ion-buttons>
+        <ion-buttons slot="start">
+            <ion-back-button text="Cancel" icon="" color="primary"></ion-back-button>
+        </ion-buttons>
 
-      <ion-button color="primary" slot="end" (click)="filter()" class="lastbutton">Done</ion-button>
+        <ion-button color="primary" slot="end" (click)="filter()" class="lastbutton">Done</ion-button>
 
-  </ion-toolbar>
-  <ion-toolbar>
-      <ion-searchbar [(ngModel)]="SeachLocation"></ion-searchbar>
-  </ion-toolbar>
+    </ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar (ionInput)="search($event)" [(ngModel)]="selectedAddress"></ion-searchbar>
+
+        <!-- <ion-input type="text" formControlName="Address" (ionInput)="search($event)" [value]="selectedAddress" clearInput></ion-input> -->
+    </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <ion-item lines="none">
-      <ion-label>Price</ion-label>
-  </ion-item>
-  <ion-grid>
-      <ion-row>
-          <ion-col size="5">
-              <ion-select  (ionChange)="onSelectChangeMin($event)" [compareWith]="compareWithFnMin" value="{{MyDefaultMinPriceValue}}">
-                  <div *ngFor="let price of pricesMin">
-                      <ion-select-option *ngIf="price.value == 0" value="{{price.value}}"> Any </ion-select-option>
-                      <ion-select-option *ngIf="price.value != 0" value="{{price.value}}"> {{ price.value | currency : 'R' : 'symbol' : '1.0-0' }} </ion-select-option>
-                 
-                  </div>
-              </ion-select>
-              
-              <hr width="100%" color="dark">
-              <p style="text-align: center;">min</p>
+<ion-content>
+    <ion-list position="floating" style="position: absolute; max-width: 100%; min-width: 100%; z-index: 999; ">
+        <!-- <ion-item *ngFor="let album of albums | filtro: textBuscar: 'title'"> -->
 
-          </ion-col>
-          <ion-col size="2" text-center>
-             
-                  <p style="text-align: center;">To</p>
-             
-          </ion-col>
-          <ion-col size="5">
-              <ion-select  (ionChange)="onSelectChangeMax($event)" [compareWith]="compareWithMax" value="{{MyDefaultMaxPriceValue}}">
+        <ion-item *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)">
+            <ion-label>{{ address}}</ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-item lines="none">
+        <ion-label>Price</ion-label>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="5">
+                <ion-select (ionChange)="onSelectChangeMin($event)" [compareWith]="compareWithFnMin" value="{{MyDefaultMinPriceValue}}">
+                    <div *ngFor="let price of pricesMin">
+                        <ion-select-option *ngIf="price.value == 0" value="{{price.value}}"> Any </ion-select-option>
+                        <ion-select-option *ngIf="price.value != 0" value="{{price.value}}"> {{ price.value | currency : 'R' : 'symbol' : '1.0-0' }} </ion-select-option>
 
-              <div *ngFor="let price of pricesMax">
-                  <ion-select-option *ngIf="price.value == 1000000000000000000" value="{{price.value}}"> Any </ion-select-option>
-                  <ion-select-option *ngIf="price.value != 1000000000000000000" value="{{price.value}}"> {{ price.value | currency : 'R' : 'symbol' : '1.0-0' }} </ion-select-option>
-             
-              </div>
-          </ion-select>
-              <hr width="100%" color="dark">
-              <p style="text-align: center;">max</p>
-          </ion-col>
-      </ion-row>
-  </ion-grid>
+                    </div>
+                </ion-select>
 
-  <ion-item lines="none">
-      <ion-label>BEDROOMS</ion-label>
-  </ion-item>
-  <ion-item lines="none">
-      <div *ngFor="let value of list">
-          <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">Any</ion-button>
-          <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} + </ion-button>
-      </div>
-  </ion-item>
+                <hr width="100%" color="dark">
+                <p style="text-align: center;">min</p>
 
-  <ion-item lines="none">
-      <ion-label>BATHROOMS</ion-label>
-  </ion-item>
+            </ion-col>
+            <ion-col size="2" text-center>
 
-  <ion-item lines="none">
-      <div *ngFor="let value of list | slice:0:5">
-          <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bathrooms === value}" (click)="BathButton(value)">Any</ion-button>
-          <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  bathrooms === value}" (click)="BathButton(value)">{{value}} + </ion-button>
-      </div>
-  </ion-item>
+                <p style="text-align: center;">To</p>
 
-  <ion-item lines="none">
-      <ion-label>GARAGES</ion-label>
-  </ion-item>
-  <ion-item lines="none">
-      <div *ngFor="let value of list">
-          <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': garages === value}" (click)="GARAGEButton(null)">Any</ion-button>
-          <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  garages === value}" (click)="GARAGEButton(value)">{{value}} + </ion-button>
-      </div>
-      <!-- <ion-button shape="round" class="like" [class.liked]="garages == null" (click)="GARAGEButton($event,null)" value="1">Any</ion-button>
+            </ion-col>
+            <ion-col size="5">
+                <ion-select (ionChange)="onSelectChangeMax($event)" [compareWith]="compareWithMax" value="{{MyDefaultMaxPriceValue}}">
+
+                    <div *ngFor="let price of pricesMax">
+                        <ion-select-option *ngIf="price.value == 1000000000000000000" value="{{price.value}}"> Any </ion-select-option>
+                        <ion-select-option *ngIf="price.value != 1000000000000000000" value="{{price.value}}"> {{ price.value | currency : 'R' : 'symbol' : '1.0-0' }} </ion-select-option>
+
+                    </div>
+                </ion-select>
+                <hr width="100%" color="dark">
+                <p style="text-align: center;">max</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-item lines="none">
+        <ion-label>BEDROOMS</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+        <div *ngFor="let value of list">
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} + </ion-button>
+        </div>
+    </ion-item>
+
+    <ion-item lines="none">
+        <ion-label>BATHROOMS</ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+        <div *ngFor="let value of list | slice:0:5">
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bathrooms === value}" (click)="BathButton(value)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  bathrooms === value}" (click)="BathButton(value)">{{value}} + </ion-button>
+        </div>
+    </ion-item>
+
+    <ion-item lines="none">
+        <ion-label>GARAGES</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+        <div *ngFor="let value of list | slice:0:4">
+            <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': garages === value}" (click)="GARAGEButton(null)">Any</ion-button>
+            <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class':  garages === value}" (click)="GARAGEButton(value)">{{value}} + </ion-button>
+        </div>
+        <!-- <ion-button shape="round" class="like" [class.liked]="garages == null" (click)="GARAGEButton($event,null)" value="1">Any</ion-button>
       <ion-button shape="round" (click)="GARAGEButton($event,'1')" value="1">1+</ion-button>
       <ion-button shape="round" (click)="GARAGEButton($event,'2')" value="2">2+</ion-button>
       <ion-button shape="round" (click)="GARAGEButton($event,'3')" value="3">3+</ion-button>
       <ion-button shape="round" (click)="GARAGEButton($event,'4')" value="4">4+</ion-button> -->
-  </ion-item>
+    </ion-item>
 
 
 </ion-content>

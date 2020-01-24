@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { MessageService } from 'src/app/services/message.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-message',
@@ -13,20 +14,28 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 })
 export class MessagePage implements OnInit {
   messageForm: FormGroup;
+  userList;
+  currentUser;
+  users: any;
+ 
 
+  private User: AngularFirestoreDocument
   currentImage = null;
 
   store = {
     name: '',
     email: '',
     number: '',
-    message: ''
+    message: '', 
+    uid: '',
+    isRead: false,
 
   }
   constructor(
     private fb: FormBuilder, 
     private afs: AngularFirestore,
     private messServ: MessageService,
+    private profileServ: ProfileService,
     private afAuth: AngularFireAuth,
     private router: Router,
     private emailComposer: EmailComposer,
@@ -37,18 +46,29 @@ export class MessagePage implements OnInit {
       number: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(10), Validators.required])],
       message: ['', Validators.required]
     });
+
+   const uid = this.profileServ.getUID();
+    
+   this.messServ.getUser(uid).subscribe(data => {
+      this.userList = data;
+      console.log(data)
+    })
+
   }
 
   ngOnInit() {
   }
   
   message(store){
-     this.afAuth.auth.currentUser.uid;
+   this.profileServ.getUID();
+
     this.afs.collection('message').doc(this.afAuth.auth.currentUser.uid).set({
-      name: this.store.name,
-      email: this.store.email,
+      name: this.userList.name,
+      email: this.userList.email,
       number: this.store.number,
-      message: this.store.message
+      message: this.store.message,
+      isRead: this.store.isRead,
+      uid: this.profileServ.getUID()
     });
     console.log(this.store)
    

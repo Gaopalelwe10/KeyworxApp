@@ -16,7 +16,9 @@ import { ActionSheetController } from '@ionic/angular';
 export class HomePage implements OnInit{
  
   propertyList;
-
+  propertyPopularList;
+  favouriteList;
+  
   slidesOptions = {
     slidesPerView: 2.3,
   }
@@ -27,10 +29,10 @@ export class HomePage implements OnInit{
     // spaceBetween: 10,
   }
   userReaction = null
-  favouriteList;
+
  
   data = false;
-  propertyPopularList
+
   textSearch;
 
 

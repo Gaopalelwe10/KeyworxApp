@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ModalController, IonSlides } from '@ionic/angular';
+import { ModalController, IonSlides, IonContent } from '@ionic/angular';
 import { PropertyService } from 'src/app/services/property.service';
 import { FavouriteService } from 'src/app/services/favourite.service';
 
@@ -15,6 +15,9 @@ const { Share } = Plugins;
 })
 export class DetailsPage implements OnInit {
   @ViewChild('slides', {static:true}) slides: IonSlides;
+  @ViewChild (IonContent, {read:ElementRef, static:true}) contentArea:ElementRef
+  @ViewChild ("triggerElement",{read: ElementRef, static:true}) triggerElement:ElementRef;
+  observer: IntersectionObserver;
   propertyid
   propertyList: any;
 
@@ -41,18 +44,22 @@ export class DetailsPage implements OnInit {
   }
   array
   favouriteList
+  agentUid
+  profileData:any;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
     private modalController: ModalController,
     private route: ActivatedRoute,
-    private favouriteService: FavouriteService
+    private favouriteService: FavouriteService,
+    private render: Renderer2
   ) {
    
     this.route.queryParams.subscribe(params => {
       if (params && params.data ){
         this.propertyList= JSON.parse(params.data);
         this.propertyid=this.propertyList.propertyid
+        this.agentUid=this.propertyList.uid;
         console.log(this.propertyList)
       
       }
@@ -107,6 +114,27 @@ export class DetailsPage implements OnInit {
       
       console.log(this.imageList);
     })
+    this.profileService.agentProfile(this.agentUid).subscribe((data)=>{
+      this.profileData=data
+      console.log(data);
+    })
+
+    //    this.observer = new IntersectionObserver((entries) => {
+
+    //   entries.forEach((entry: any) => {
+
+    //     if(entry.isIntersecting){
+    //       console.log("add")
+    //       this.render.addClass(this.contentArea.nativeElement,"no-transfrom")
+    //     } else {
+    //       this.render.removeClass(this.contentArea.nativeElement,"no-transfrom")
+    //       console.log("rev")
+    //     }
+    //   })
+
+    // });
+    // this.observer.observe(this.triggerElement.nativeElement);
+  
   }
 
   async share(){
