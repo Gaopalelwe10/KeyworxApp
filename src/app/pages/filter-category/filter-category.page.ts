@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { CategoryService } from 'src/app/services/category.service';
+import { MapboxService, Feature } from 'src/app/services/mapbox.service';
 
 @Component({
   selector: 'app-filter-category',
@@ -31,10 +32,22 @@ export class FilterCategoryPage implements OnInit {
 
   MyDefaultMaxPriceValue: string;
   SelectedMaxPriceValue: any;
+
+  
+  addresses: string[] = [];
+  coodinateses: string[] = [];
+
+  selectedAddress = null;
+  selectedcoodinates = null;
+  listMabox: any;
+  listMaboxText:any;
+  lng;
+  lat;
   constructor(
     private router: Router,
     public categoryService: CategoryService,
-    private navC: NavController
+    private navC: NavController,
+    public mapboxService: MapboxService,
 
   ) {
     this.getFilterValues();
@@ -67,6 +80,37 @@ export class FilterCategoryPage implements OnInit {
     this.router.navigateByUrl("tabs/home")
   }
 
+  search(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm && searchTerm.length > 0) {
+      this.mapboxService.search_word(searchTerm)
+        .subscribe((features: Feature[]) => {
+          this.addresses = features.map(feat => feat.place_name)
+          this.coodinateses = features.map(feat => feat.geometry)
+          this.listMabox = features;
+          this.listMaboxText=features.map(feat => feat.text)
+          console.log(this.listMabox)
+        });
+    } else {
+      this.addresses = [];
+    }
+  }
+
+  onSelect(address, i) {
+   
+    //  selectedcoodinates=
+
+    console.log("lng:" + JSON.stringify(this.listMabox[i].geometry.coordinates[0]))
+    console.log("lat:" + JSON.stringify(this.listMabox[i].geometry.coordinates[1]))
+    this.lng = JSON.stringify(this.listMabox[i].geometry.coordinates[0])
+    this.lat = JSON.stringify(this.listMabox[i].geometry.coordinates[1])
+
+    console.log("index =" + i)
+    console.log(address)
+    console.log(this.listMabox[i].text)
+    this.selectedAddress=this.listMabox[i].text
+    this.addresses = [];
+  }
   async BedButton(value1) {
     this.bedrooms = Number(value1)
     this.categoryService.bed = this.bedrooms

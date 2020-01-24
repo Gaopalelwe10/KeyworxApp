@@ -85,8 +85,8 @@ export class FilterPage implements OnInit {
     if (searchTerm && searchTerm.length > 0) {
       this.mapboxService.search_word(searchTerm)
         .subscribe((features: Feature[]) => {
-          this.coodinateses = features.map(feat => feat.geometry)
           this.addresses = features.map(feat => feat.place_name)
+          this.coodinateses = features.map(feat => feat.geometry)
           this.listMabox = features;
           this.listMaboxText=features.map(feat => feat.text)
           console.log(this.listMabox)
@@ -97,7 +97,7 @@ export class FilterPage implements OnInit {
   }
 
   onSelect(address, i) {
-    this.selectedAddress = address;
+   
     //  selectedcoodinates=
 
     console.log("lng:" + JSON.stringify(this.listMabox[i].geometry.coordinates[0]))
@@ -106,21 +106,9 @@ export class FilterPage implements OnInit {
     this.lat = JSON.stringify(this.listMabox[i].geometry.coordinates[1])
 
     console.log("index =" + i)
-    console.log(this.selectedAddress)
+    console.log(address)
     console.log(this.listMabox[i].text)
-
-    //add to FireBase
-    // this.dog.collection('coordinate').add({
-    //   lat: this.temp.coordinates[1],
-    //   lng: this.temp.coordinates[0],
-    //   address: address,
-    // }).then(function (ref) {
-    //   console.log("document was written with ID : " + ref);
-    //   alert("physical address : " + address + " , saved successful..")
-    // }).catch(function (ee) {
-    //   console.log(ee)
-    //   console.log("error while processing ..")
-    // });
+    this.selectedAddress=this.listMabox[i].text
     this.addresses = [];
   }
   async BedButton(value1) {
