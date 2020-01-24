@@ -85,7 +85,7 @@ export class MessagePage implements OnInit {
       number: this.store.number,
       message: this.store.message,
       isRead: this.store.isRead,
-      uid: this.propertyList.uid,
+      AgentUid: this.propertyList.uid,
       propertyid: this.propertyList.propertyid,
       date: new Date(),
     });
