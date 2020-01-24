@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" >
 
   <!-- <form [formGroup]="messageForm">
 
@@ -67,19 +67,19 @@
 
   </form> -->
 
-  <ion-item>
+  <ion-item >
     <ion-label position="stacked">Name</ion-label>
-    <ion-input required type="text" [(ngModel)]="store.name"></ion-input>
+    <ion-input readonly type="text" >{{userList?.name}}</ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="stacked">Email</ion-label>
-    <ion-input required type="email" [(ngModel)]="store.email"></ion-input>
+    <ion-input readonly type="email" >{{userList?.email}}</ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked">Number</ion-label>
-    <ion-input required type="text" [(ngModel)]="store.number"></ion-input>
+    <ion-label position="stacked">Contact Number</ion-label>
+    <ion-input required maxlength="10" type="tel" [(ngModel)]="store.number"></ion-input>
   </ion-item>
 
   <ion-item>
