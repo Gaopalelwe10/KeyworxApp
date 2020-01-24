@@ -3,9 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { MessageService } from 'src/app/services/message.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { ProfileService } from 'src/app/services/profile.service';
+import { PropertyService } from 'src/app/services/property.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-message',
@@ -15,8 +16,11 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class MessagePage implements OnInit {
   messageForm: FormGroup;
   userList;
+  propertyList;
   currentUser;
   users: any;
+  propertyid;
+  agentUid;
  
 
   private User: AngularFirestoreDocument
@@ -36,10 +40,22 @@ export class MessagePage implements OnInit {
     private afs: AngularFirestore,
     private messServ: MessageService,
     private profileServ: ProfileService,
+    private propertyServ: PropertyService,
     private afAuth: AngularFireAuth,
-    private router: Router,
     private emailComposer: EmailComposer,
+    private route: ActivatedRoute
   ) { 
+
+    this.route.queryParams.subscribe(params => {
+      if (params && params.propertyList){
+        this.propertyList= JSON.parse(params.propertyList);
+        this.propertyid=this.propertyList.propertyid
+        this.agentUid=this.propertyList.uid;
+        console.log(this.propertyList)
+      }
+
+  })
+
     this.messageForm = fb.group({
       name: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(30), Validators.required])],
       email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
@@ -54,21 +70,24 @@ export class MessagePage implements OnInit {
       console.log(data)
     })
 
-  }
+}
 
   ngOnInit() {
   }
   
   message(store){
    this.profileServ.getUID();
+  //  return this.afs.collection("properties").doc(propertyid).set(property)
 
-    this.afs.collection('message').doc(this.afAuth.auth.currentUser.uid).set({
+    this.afs.collection('message').add({
       name: this.userList.name,
       email: this.userList.email,
       number: this.store.number,
       message: this.store.message,
       isRead: this.store.isRead,
-      uid: this.profileServ.getUID()
+      uid: this.propertyList.uid,
+      propertyid: this.propertyList.propertyid,
+      date: new Date(),
     });
     console.log(this.store)
    

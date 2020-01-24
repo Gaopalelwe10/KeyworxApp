@@ -158,7 +158,15 @@ export class DetailsPage implements OnInit {
   }
 
   message(){
-    this.router.navigateByUrl("message")
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        propertyList: JSON.stringify(this.propertyList),
+      }
+    };
+
+
+    this.router.navigate(['message'], navigationExtras );
+    // this.router.navigateByUrl("message")
   }
 
   react(key, val) {
