@@ -12,9 +12,9 @@
 }
 
 ion-card {
-    width: 90% !important;
+    // width: 90% !important;
     --background: #ffffff;
-    height: 100px;
+    // height: 100px;
     ion-col {
         width: 90% !important;
         height: 90px;
@@ -48,4 +48,14 @@ ion-card {
         font-weight: bold;
         color: #a02b2d;
     }
+}
+
+ion-slide {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+ion-grid {
+    padding: 0 !important;
+    margin: 0 !important;
 }

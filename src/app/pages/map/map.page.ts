@@ -50,7 +50,7 @@ export class MapPage implements OnInit {
   data = false;
 
   slidesOpt = {
-    slidesPerView: 1.1,
+    slidesPerView: 1.2,
 
   }
 
@@ -239,7 +239,8 @@ export class MapPage implements OnInit {
       this.favouriteService.removefavourite(key, userID)
     }
   }
-
+ found=0
+ show ="true"
   search(evt) {
     this.initializeItems();
 
@@ -252,11 +253,24 @@ export class MapPage implements OnInit {
     this.propertyList = this.propertyList.filter(currentProperty => {
       if (currentProperty.location && searchTerm) {
         if (currentProperty.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          this.found+=1
+          
           return true;
         }
+      
         return false;
       }
     });
-
+    
+    if(this.found >=1){
+      this.show = "true";
+      console.log("found" + this.found)
+    }
+    if(this.found ==0){
+      console.log("Not found")
+      this.show = "false";
+    }
+   console.log("show " + this.show)
+    this.found=0;
   }
 }

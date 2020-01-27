@@ -29,7 +29,7 @@ export class MessagePage implements OnInit {
     message: '', 
     uid: '',
     isRead: false,
-
+    
   }
   constructor(
     private fb: FormBuilder, 

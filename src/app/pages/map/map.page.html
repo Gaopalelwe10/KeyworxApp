@@ -12,6 +12,7 @@
     <div class="bot">
         <ion-slides [options]="slidesOpt">
             <ion-slide *ngFor="let details of propertyList;let i = index">
+
                 <ion-grid>
                     <ion-card class="cat">
 
@@ -45,7 +46,28 @@
 
                     </ion-card>
                 </ion-grid>
+
+
             </ion-slide>
+
+            <ion-slide *ngIf="propertyList?.length == 0 ">
+                <ion-grid>
+                    <ion-card class="cat">
+
+                        <ion-row>
+
+                            <ion-col>
+                                <ion-card-content>
+                                    There are currently no Properties at your search location try a different location
+                                </ion-card-content>
+                            </ion-col>
+                        </ion-row>
+
+
+                    </ion-card>
+                </ion-grid>
+            </ion-slide>
+
         </ion-slides>
     </div>
 </ion-content>
