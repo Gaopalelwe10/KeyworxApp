@@ -16,6 +16,7 @@ export class RegisterPage implements OnInit {
     name:'',
     email:'',
     uid:'',
+    created:0,
   }
   constructor(
     private fb: FormBuilder,
@@ -40,6 +41,7 @@ export class RegisterPage implements OnInit {
   PersonRegister(){
     this.registerdetails.name=this.register.value.name;
     this.registerdetails.email=this.register.value.email;
+    this.registerdetails.created= Date.now()
 
     this.profileService.signup(this.registerdetails,this.register.value.password)
   }
