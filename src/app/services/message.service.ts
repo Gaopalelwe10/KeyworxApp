@@ -13,10 +13,8 @@ export class MessageService {
 
   constructor(
     private afs: AngularFirestore
-  ) { }
-
-  addMail(message){
-    return this.afs.collection('messages').doc()
+  ) { 
+    
   }
 
   getUser(key){
