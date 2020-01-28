@@ -140,13 +140,13 @@ export class DetailsPage implements OnInit {
   async share(){
     let shareRet = await Share.share({
       title: this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx",
-      text: "I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on the Keyworx App. Check it out:",
+      text: "I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on  Keyworx App. Check it out:",
       url:this.propertyList.mainImage,
       dialogTitle: 'Share with buddies'
     });
 
     console.log(this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx")
-    console.log("I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on the Keyworx App. Check it out:" )
+    console.log("I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on Keyworx App. Check it out:" )
   }
 
   image(items) {

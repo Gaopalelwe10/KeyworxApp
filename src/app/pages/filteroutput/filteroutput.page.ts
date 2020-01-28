@@ -100,7 +100,9 @@ export class FilteroutputPage implements OnInit {
    
 
   }
-
+  hide(v) {
+    this.count = v
+  }
   propertyAfterFilter(){
     setTimeout(()=>{
       if (this.count != 2) {
@@ -108,6 +110,7 @@ export class FilteroutputPage implements OnInit {
       }
     },1000);   
   }
+
   initializeItems(): void {
     this.propertyList = this.propertyListLoaded;
   }
@@ -141,9 +144,7 @@ export class FilteroutputPage implements OnInit {
 
   }
 
-  hide(v) {
-    this.count = v
-  }
+  
   fliter() {
     this.router.navigateByUrl("filter")
   }

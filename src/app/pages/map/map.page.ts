@@ -73,6 +73,24 @@ export class MapPage implements OnInit {
     this.mapboxAccessToken = this.maboxServe.token();
 
    
+   
+
+  }
+
+  ngOnInit() {
+
+  }
+  
+  ionViewDidEnter() {
+    this.initializeMapBox();
+    this.initializeSlides()
+  }
+
+  initializeItems(): void {
+    this.propertyList = this.propertyListLoaded;
+  }
+
+  initializeSlides(){
     this.propertyService.propertyList().subscribe((data: any) => {
     
       this.propertyList = data.map(e => {
@@ -129,22 +147,7 @@ export class MapPage implements OnInit {
       this.data = true;
     })
 
-
   }
-
-  ngOnInit() {
-
-  }
-  
-  ionViewDidEnter() {
-    this.initializeMapBox();
-
-  }
-
-  initializeItems(): void {
-    this.propertyList = this.propertyListLoaded;
-  }
-
   initializeMapBox() {
     // or "const mapboxgl = require('mapbox-gl');"
 
@@ -212,8 +215,8 @@ export class MapPage implements OnInit {
         console.log(element.lng, element.lat)
         var marker = new mapboxgl.Marker(el)
           .setLngLat([element.lng, element.lat])
-          .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML('<p>' + element.location + '</p>'))
+          .setPopup(new mapboxgl.Popup({ offset: 25 }, ) // add popups
+            .setHTML('<p> ' + element.location +  +'</p>'))
           .addTo(this.map);
       });
     })
@@ -221,6 +224,9 @@ export class MapPage implements OnInit {
 
   }
 
+  index(){
+    console.log("hh")
+  }
   detail(items) {
     const navigationExtras: NavigationExtras = {
       queryParams: {
