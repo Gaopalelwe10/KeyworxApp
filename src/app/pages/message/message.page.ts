@@ -36,13 +36,12 @@ export class MessagePage implements OnInit {
     
   }
   constructor(
-    private fb: FormBuilder, 
-    private afs: AngularFirestore,
+    private fb: FormBuilder, private afs: AngularFirestore,
     private messServ: MessageService,
     private profileServ: ProfileService,
     private propertyServ: PropertyService,
     private afAuth: AngularFireAuth,
-    private emailComposer: EmailComposer,
+    public composer: EmailComposer,
     private route: ActivatedRoute
   ) { 
 
@@ -91,16 +90,22 @@ export class MessagePage implements OnInit {
     });
     console.log(this.store)
    
-    let email = {
-      to: 'codersgroup2020@gmail.com',
-      attachments: [
-        this.currentImage
-      ],
+    this.composer.open({
+      to:  'codersgroup2020@gmail.com',
       subject: 'property',
       body: this.store.message,
       isHtml: true
-    };
-    this.emailComposer.open(email);
+    })
+    // let email = {
+    //   to: 'codersgroup2020@gmail.com',
+    //   attachments: [
+    //     this.currentImage
+    //   ],
+    //   subject: 'property',
+    //   body: this.store.message,
+    //   isHtml: true
+    // };
+    // this.composer.open(email);
   }
 
 }
