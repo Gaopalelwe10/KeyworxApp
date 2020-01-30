@@ -14,7 +14,8 @@ export class PopoverMorePage implements OnInit {
   constructor(
     private profileService: ProfileService,
     private popoverController:PopoverController,
-    private router:Router, public composer:EmailComposer
+    private router:Router, 
+    public composer:EmailComposer
   ) { }
 
   ngOnInit() {

@@ -6,6 +6,10 @@
     <param name="android-package" value="org.apache.cordova.contacts.ContactManager"/>
   </feature>
 
+  <feature name="EmailComposer">
+    <param name="android-package" value="de.appplant.cordova.emailcomposer.EmailComposer"/>
+  </feature>
+
   <feature name="FullScreenImage">
     <param name="android-package" value="es.keensoft.fullscreenimage.FullScreenImage"/>
   </feature>

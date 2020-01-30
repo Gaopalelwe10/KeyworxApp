@@ -7,6 +7,9 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { ProfileService } from 'src/app/services/profile.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+// import { Plugins } from '@capacitor/core';
+// const { EmailComposer } = Plugins;
 
 @Component({
   selector: 'app-message',
@@ -21,7 +24,8 @@ export class MessagePage implements OnInit {
   users: any;
   propertyid;
   agentUid;
- 
+
+  
 
   private User: AngularFirestoreDocument
   currentImage = null;
@@ -30,31 +34,32 @@ export class MessagePage implements OnInit {
     name: '',
     email: '',
     number: '',
-    message: '', 
+    message: '',
     uid: '',
     isRead: false,
-    
+
   }
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private afs: AngularFirestore,
     private messServ: MessageService,
     private profileServ: ProfileService,
     private propertyServ: PropertyService,
     private afAuth: AngularFireAuth,
     private emailComposer: EmailComposer,
-    private route: ActivatedRoute
-  ) { 
+    private route: ActivatedRoute,
+    private alertController: AlertController
+  ) {
 
     this.route.queryParams.subscribe(params => {
-      if (params && params.propertyList){
-        this.propertyList= JSON.parse(params.propertyList);
-        this.propertyid=this.propertyList.propertyid
-        this.agentUid=this.propertyList.uid;
+      if (params && params.propertyList) {
+        this.propertyList = JSON.parse(params.propertyList);
+        this.propertyid = this.propertyList.propertyid
+        this.agentUid = this.propertyList.uid;
         console.log(this.propertyList)
       }
 
-  })
+    })
 
     this.messageForm = fb.group({
       name: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(30), Validators.required])],
@@ -63,21 +68,22 @@ export class MessagePage implements OnInit {
       message: ['', Validators.required]
     });
 
-   const uid = this.profileServ.getUID();
-    
-   this.messServ.getUser(uid).subscribe(data => {
+    const uid = this.profileServ.getUID();
+
+    this.messServ.getUser(uid).subscribe(data => {
       this.userList = data;
       console.log(data)
     })
 
-}
+  }
 
   ngOnInit() {
+
   }
-  
-  message(store){
-   this.profileServ.getUID();
-  //  return this.afs.collection("properties").doc(propertyid).set(property)
+
+  async message(store) {
+    this.profileServ.getUID();
+    //  return this.afs.collection("properties").doc(propertyid).set(property)
 
     this.afs.collection('message').add({
       name: this.userList.name,
@@ -90,7 +96,7 @@ export class MessagePage implements OnInit {
       date: Date.now(),
     });
     console.log(this.store)
-   
+
     let email = {
       to: 'codersgroup2020@gmail.com',
       attachments: [
