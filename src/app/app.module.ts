@@ -5,8 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-// import { FullScreenImage } from '@ionic-native/full-screen-image';
-// import { ZoomAreaModule } from 'ionic2-zoom-are
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
@@ -18,8 +17,8 @@ import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { PopoverMorePageModule } from './pages/popover-more/popover-more.module';
 import { ImageModalPageModule } from './pages/image-modal/image-modal.module';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { HttpClientModule } from '@angular/common/http'
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4CMD51Wz_G564J0h4HJeFG27-UI12Kkw",
@@ -47,12 +46,12 @@ const firebaseConfig = {
     NgxIonicImageViewerModule,
     PopoverMorePageModule,
     HttpClientModule,
-    // ZoomAreaModule,
     ImageModalPageModule
   ],
 
   providers: [
     EmailComposer,
+    CallNumber,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

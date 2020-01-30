@@ -8,8 +8,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-// import { Plugins } from '@capacitor/core';
-// const { EmailComposer } = Plugins;
+
 
 @Component({
   selector: 'app-message',
@@ -96,7 +95,7 @@ export class MessagePage implements OnInit {
       date: Date.now(),
     });
     console.log(this.store)
-
+   
     let email = {
       to: 'codersgroup2020@gmail.com',
       attachments: [
