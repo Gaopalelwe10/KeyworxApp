@@ -15,29 +15,36 @@
 
 <ion-content>
 
+
+    <ion-grid style="height: 100%" *ngIf="show==true && propertyList?.length >0">
+        <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column; text-align: center;">
+            <p class="centerT">
+                There are currently no properties found at "{{SeachLocation}}" try a different location
+            </p>
+        </ion-row>
+    </ion-grid>
+    <ion-grid style="height: 100%" *ngIf=" !(propertyList?.length >0) ">
+        <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column; text-align: center;">
+
+            <p class="centerT">
+                Please reduce your filter in order to see the property
+            </p>
+        </ion-row>
+    </ion-grid>
+
     <div class="row" *ngIf="data == true">
 
-
-        <div *ngIf="show == true && propertyList.length >0">
-            <ion-card class="warning-card">
-                <ion-card-content>
-                    There are currently no properties found at "{{SeachLocation}}" try a different location
-                </ion-card-content>
-            </ion-card>
-        </div>
-
-        <div *ngIf="show == true && !(propertyList.length >0) ">
+        <!-- <div *ngIf="show == true && !(propertyList.length >0) ">
             <ion-card class="warning-card">
                 <ion-card-content>
                     Please reduce your filter in order to see the property
-                    <!-- There are currently no Properties at your search location try a different location -->
                 </ion-card-content>
             </ion-card>
-        </div>
+        </div> -->
 
 
         <div class="column" *ngFor="let items of propertyList | locationFiterPipe: SeachLocation">
-            {{this.hide(2)}} {{hh}}
+            {{this.hide(2)}}
             <ion-card class="card">
                 <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">
 

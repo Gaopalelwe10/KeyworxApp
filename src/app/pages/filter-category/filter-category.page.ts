@@ -66,7 +66,8 @@ export class FilterCategoryPage implements OnInit {
 
   async getFilterValues() {
     // const { value }: any = await Storage.get({ key: 'Bed' });
-    this.SeachLocation = this.categoryService.searchL
+    // this.SeachLocation = this.categoryService.searchL
+    this.selectedAddress = this.categoryService.searchL
     this.bedrooms = Number(this.categoryService.bed);
     this.bathrooms = Number(this.categoryService.bath);
     this.garages = Number(this.categoryService.garage);
@@ -156,7 +157,7 @@ export class FilterCategoryPage implements OnInit {
     let garagesValues
     this.min = Number(this.SelectedMinPriceValue)
     this.max = Number(this.SelectedMaxPriceValue)
-    this.categoryService.searchL = this.SeachLocation
+    this.categoryService.searchL = this.selectedAddress
     console.log("min " + this.min)
     console.log("max " + this.max)
     console.log("bedrooms " + this.bedrooms)

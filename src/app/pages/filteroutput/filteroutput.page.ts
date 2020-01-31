@@ -34,6 +34,7 @@ export class FilteroutputPage implements OnInit {
 
   }
   ionViewWillEnter(){
+    this.hide(0)
     this.propertyService.filterproperty().subscribe((data: any) => {
 
       this.propertyList = data.map(e => {
@@ -90,19 +91,18 @@ export class FilteroutputPage implements OnInit {
       this.data = true;
     })
     this.SeachLocation = this.propertyService.searchL
-    this.propertyAfterFilter()
-  }
-  ionViewDidEnter() {
-    // if(this.data == true){
-    //   this.filterList(this.SeachLocation)
-    //   console.log("filterrr " +this.SeachLocation)
-    // }
-   
-
+    this.show = false
+    if(this.SeachLocation == null || this.SeachLocation == ''){
+      this.hide(2) 
+      this.propertyAfterFilter()
+    }else{ 
+      this.propertyAfterFilter()
+    }
   }
   hide(v) {
     this.count = v
   }
+  
   propertyAfterFilter(){
     setTimeout(()=>{
       if (this.count != 2) {
@@ -114,6 +114,7 @@ export class FilteroutputPage implements OnInit {
   initializeItems(): void {
     this.propertyList = this.propertyListLoaded;
   }
+
   detail(items) {
     const navigationExtras: NavigationExtras = {
       queryParams: {

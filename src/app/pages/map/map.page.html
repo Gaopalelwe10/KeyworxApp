@@ -50,24 +50,25 @@
 
             </ion-slide>
 
-            <ion-slide *ngIf="propertyList?.length == 0 ">
-                <ion-grid>
-                    <ion-card class="cat">
 
-                        <ion-row>
-
-                            <ion-col>
-                                <ion-card-content>
-                                    There are currently no Properties at your search location try a different location
-                                </ion-card-content>
-                            </ion-col>
-                        </ion-row>
-
-
-                    </ion-card>
-                </ion-grid>
-            </ion-slide>
 
         </ion-slides>
+
+        <ion-card class="NotFound" *ngIf="propertyList?.length == 0 ">
+
+            <ion-row>
+
+                <ion-col>
+                    <ion-card-content>
+                        <p class="centerT">
+                            There are currently no properties found at " {{value}} " try a different location
+                        </p>
+
+                    </ion-card-content>
+                </ion-col>
+            </ion-row>
+
+
+        </ion-card>
     </div>
 </ion-content>
