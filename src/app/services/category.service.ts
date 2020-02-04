@@ -49,6 +49,7 @@ export class CategoryService {
       switchMap(([category,bedrooms, bathrooms, garages, min, max]) =>
         this.afs.collection('properties', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          query = query.where('archived', '==', false);
           if (category) { query = query.where('category', '==', category) };
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
