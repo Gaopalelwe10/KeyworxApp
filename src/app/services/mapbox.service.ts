@@ -36,7 +36,7 @@ export class MapboxService {
   }
 
   propertyList() {
-    return this.afs.collection("properties").valueChanges();
+    return this.afs.collection("properties", ref => ref.where('archived', '==', false)).valueChanges();
   }
   token(){
    return mapboxgl.accessToken = 'pk.eyJ1Ijoibm51bnUiLCJhIjoiY2p4cTIxazB3MG0wYTNncm4wanF0cDVjaiJ9.v0khvZZss9z_U2MroA2PVQ';
