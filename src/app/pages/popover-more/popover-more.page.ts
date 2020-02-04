@@ -45,5 +45,7 @@ export class PopoverMorePage implements OnInit {
     this.composer.open({
       to:'khodani1994@gmail.com'
     })
+
+    this.DismissClick();
   }
 }
