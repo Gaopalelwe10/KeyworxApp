@@ -84,6 +84,7 @@ export class DetailsPage implements OnInit {
       }
     });
  
+  
   }
 
 
@@ -103,6 +104,8 @@ export class DetailsPage implements OnInit {
       this.profileData=data
       console.log(data);
     })
+
+  
   }
 
   async share(){
