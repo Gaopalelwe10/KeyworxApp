@@ -43,19 +43,19 @@ export class PropertyService {
       this.bedroomsFilter$,
       this.bathroomsFilter$,
       this.garagesFilter$,
-      this.archived$,
       this.minFilter$,
       this.maxFilter$
     ).pipe(
       switchMap(([bedrooms, bathrooms, garages, min, max]) =>
         this.afs.collection('properties', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-           query = query.where('archived', '==', false);
-          if (min) { query = query.where('price', '>=', min) };
-          if (max) { query = query.where('price', '<=', max) };
+          query = query.where('archived', '==', false);
+          // if (category) { query = query.where('category', '==', category) };
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
           if (garages) { query = query.where('garage', '==', garages) };
+          if (min) { query = query.where('price', '>=', min) };
+          if (max) { query = query.where('price', '<=', max) };
           return query;
         }).snapshotChanges()
       )
@@ -99,6 +99,7 @@ export class PropertyService {
     //   )
     // );
     return this.afs.collection("properties", ref => ref.where('archived', '==', false)).snapshotChanges()
+
   }
 
   filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min: number, max: number) {
@@ -108,7 +109,7 @@ export class PropertyService {
     console.log(bedrooms)
     this.minFilter$ = new BehaviorSubject(Number(min));
     this.maxFilter$ = new BehaviorSubject(Number(max));
-    console.log("dx" + max)
+
   }
 
   minv

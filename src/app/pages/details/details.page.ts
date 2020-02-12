@@ -56,7 +56,7 @@ export class DetailsPage implements OnInit {
     private render: Renderer2,
     private callNumber: CallNumber
   ) {
-   
+
     this.route.queryParams.subscribe(params => {
       if (params && params.data ){
         this.propertyList= JSON.parse(params.data);
@@ -89,7 +89,8 @@ export class DetailsPage implements OnInit {
 
 
   ngOnInit() {
-   
+    var element = document.getElementById("my-ion-header");
+    element.classList.remove("mystyle");
     this.propertyService.imageList(this.propertyid).subscribe((data)=>{
       this.imageList = data.map(e => {
         return {
@@ -108,6 +109,17 @@ export class DetailsPage implements OnInit {
   
   }
 
+  myScroll(ev) {
+    var element = document.getElementById("my-ion-header");
+
+    if(ev.detail.scrollTop >= 215){
+      element.classList.add("mystyle");
+    }
+    if(ev.detail.scrollTop <215){
+      element.classList.remove("mystyle");
+    }
+
+  }
   async share(){
     let shareRet = await Share.share({
       title: this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx",

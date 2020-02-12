@@ -42,9 +42,13 @@ export class PopoverMorePage implements OnInit {
   }
 
   OpenEmailComposer(){
-    this.composer.open({
-      to:'khodani1994@gmail.com'
-    })
+
+    let email = {
+      to: 'khodani1994@gmail.com',
+      subject: 'How can we help you',
+    }
+    
+    this.composer.open(email);
 
     this.DismissClick();
   }

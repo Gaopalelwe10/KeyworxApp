@@ -18,7 +18,7 @@
     <ion-grid style="height: 100%" *ngIf="data == true && show==true && propertyList?.length >0">
         <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column; text-align: center;">
             <p class="centerT">
-                There are currently no properties found at "{{SeachLocation}}" try a different location
+                There are currently no properties found at <span class="color"> " {{SeachLocation}} " </span> try a different location
             </p>
         </ion-row>
     </ion-grid>
@@ -63,15 +63,15 @@
                         <p>{{items.price | currency:'R'}}</p>
                         <p>{{items.location}}</p>
                         <div>
-                            <i class="fa fa-bed" aria-hidden="true">
-                                          <span class="pad-value">{{items.bedrooms}}</span>
-                                      </i>
-                            <i class="fa fa-bath" aria-hidden="true">
-                                          <span class="pad-value"> {{items.bathrooms}}</span>
-                                      </i>
-                            <i class="fa fa-car" aria-hidden="true">
-                                          <span class="pad-value">  {{items.garage}}</span>
-                                      </i>
+                            <i class="fa fa-bed" aria-hidden="true" *ngIf="items.bedrooms!=0">
+                                <span class="pad-value">{{items.bedrooms}}</span>
+                            </i>
+                            <i class="fa fa-bath" aria-hidden="true" *ngIf="items.bathrooms!=0">
+                                <span class="pad-value"> {{items.bathrooms}}</span>
+                            </i>
+                            <i class="fa fa-car" aria-hidden="true" *ngIf="items.garage!=0"> 
+                                <span class="pad-value">  {{items.garage}}</span>
+                            </i>
                         </div>
                     </div>
                 </ion-card-content>

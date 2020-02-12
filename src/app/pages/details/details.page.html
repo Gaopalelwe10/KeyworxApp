@@ -1,4 +1,4 @@
-<ion-header no-border no-shadow>
+<ion-header no-border no-shadow id="my-ion-header" class="mystyle">
     <ion-toolbar color="primary">
 
         <ion-buttons slot="start">
@@ -19,7 +19,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="myScroll($event)">
 
     <ion-card>
 

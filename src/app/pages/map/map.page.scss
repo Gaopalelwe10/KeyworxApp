@@ -68,3 +68,16 @@ ion-grid {
     padding-top: 20px;
     text-align: center !important;
 }
+
+.swiper-slide-active {
+    ion-card {
+        // border: 1px solid #a02b2d;
+        padding: 1px;
+        margin: 1px;
+        padding-top: 2px;
+    }
+}
+
+.color {
+    color: #a02b2d;
+}

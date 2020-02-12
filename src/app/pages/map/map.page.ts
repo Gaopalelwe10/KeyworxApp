@@ -51,9 +51,11 @@ export class MapPage implements OnInit {
 
   slidesOpt = {
     slidesPerView: 1.2,
-
+    centeredSlides: true,
+    speed: 500
   }
 
+  
   constructor(
     private maboxServe: MapboxService,
     private propertyService: PropertyService,
@@ -66,7 +68,8 @@ export class MapPage implements OnInit {
     if (this.platform.is("ipad")) {
       this.slidesOpt = {
         slidesPerView: 2.1,
-
+        centeredSlides:  true,
+        speed: 500
       }
 
     }

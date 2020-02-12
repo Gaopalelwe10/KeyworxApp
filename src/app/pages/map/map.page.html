@@ -29,15 +29,16 @@
                                         <p>{{details.price | currency:'R'}}</p>
                                         <p>{{details.location | slice:0:12}}...</p>
 
-                                        <i class="fa fa-bed" aria-hidden="true">
-                                                        <span class="pad-value">{{details.bedrooms}}</span>
-                                                    </i>
-                                        <i class="fa fa-bath" aria-hidden="true">
-                                                        <span class="pad-value"> {{details.bathrooms}}</span>
-                                                    </i>
-                                        <i class="fa fa-car" aria-hidden="true"> 
-                                                        <span class="pad-value">  {{details.garage}}</span>
-                                                    </i>
+                                        <i class="fa fa-bed" aria-hidden="true" *ngIf="details.bedrooms!=0">
+                                            <span class="pad-value">{{details.bedrooms}}</span>
+                                        </i>
+                                        <i class="fa fa-bath" aria-hidden="true" *ngIf="details.bathrooms!=0">
+                                            <span class="pad-value"> {{details.bathrooms}}</span>
+                                        </i>
+                                        <i class="fa fa-car" aria-hidden="true" *ngIf="details.garage!=0"> 
+                                            <span class="pad-value">  {{details.garage}}</span>
+                                        </i>
+
                                     </div>
                                 </ion-card-content>
                             </ion-col>
@@ -61,7 +62,7 @@
                 <ion-col>
                     <ion-card-content>
                         <p class="centerT">
-                            There are currently no properties found at " {{value}} " try a different location
+                            There are currently no properties found at <span class="color">" {{value}} "</span> try a different location
                         </p>
 
                     </ion-card-content>

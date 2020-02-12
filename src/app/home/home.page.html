@@ -17,7 +17,7 @@
         <p slot="end" color="medium" (click)="viewFeatuered()">View all</p>
     </ion-item>
 
-    <ion-slides [options]="slidesOptions" *ngIf="data == false">
+    <ion-slides [options]="slidesOptions" *ngIf="data == false || !(propertyList?.length >0)">
         <ion-slide *ngFor="let i of [1,2,3,4,5,6,7] ">
 
             <ion-card class="cat">
@@ -103,15 +103,16 @@
                                 <ion-label class="ion-no-padding ion-no-margin location">{{details.location}}</ion-label>
                             </ion-item> -->
 
-                            <i class="fa fa-bed" aria-hidden="true">
-                                                <span class="pad-value">{{details.bedrooms}}</span>
-                                            </i>
-                            <i class="fa fa-bath" aria-hidden="true">
-                                                <span class="pad-value"> {{details.bathrooms}}</span>
-                                            </i>
-                            <i class="fa fa-car" aria-hidden="true"> 
-                                                <span class="pad-value">  {{details.garage}}</span>
-                                            </i>
+
+                            <i class="fa fa-bed" aria-hidden="true" *ngIf="details.bedrooms!=0">
+                                <span class="pad-value">{{details.bedrooms}}</span>
+                            </i>
+                            <i class="fa fa-bath" aria-hidden="true" *ngIf="details.bathrooms!=0">
+                                <span class="pad-value"> {{details.bathrooms}}</span>
+                            </i>
+                            <i class="fa fa-car" aria-hidden="true" *ngIf="details.garage!=0"> 
+                                <span class="pad-value">  {{details.garage}}</span>
+                            </i>
                         </div>
                     </ion-card-content>
                 </div>
@@ -119,7 +120,7 @@
         </ion-slide>
     </ion-slides>
 
-    <ion-slides [options]="slidesOptions" *ngIf="data == false">
+    <ion-slides [options]="slidesOptions" *ngIf="data == false || !(propertyList?.length >0)">
         <ion-slide *ngFor="let i of [1,2,3,4,5,6,7] ">
 
             <ion-card class="cat">

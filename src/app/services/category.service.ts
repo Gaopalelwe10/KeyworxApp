@@ -39,14 +39,14 @@ export class CategoryService {
   filterproperty() {
     // return this.afs.collection('properties', ref=>ref.orderBy('location')).valueChanges();
     return this.items$ = combineLatest(
-      this.categoryFilter$,
+      // this.categoryFilter$,
       this.bedroomsFilter$,
       this.bathroomsFilter$,
       this.garagesFilter$,
       this.minFilter$,
       this.maxFilter$
     ).pipe(
-      switchMap(([category,bedrooms, bathrooms, garages, min, max]) =>
+      switchMap(([bedrooms, bathrooms, garages, min, max]) =>
         this.afs.collection('properties', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
           query = query.where('archived', '==', false);
@@ -71,6 +71,7 @@ export class CategoryService {
     this.minFilter$ = new BehaviorSubject(Number(min));
     this.maxFilter$ = new BehaviorSubject(Number(max));
     console.log("dx" + max)
+  
   }
   categoryV
   minv

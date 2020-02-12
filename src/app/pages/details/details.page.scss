@@ -4,6 +4,24 @@ ion-toolbar {
     --ion-color-base: transparent !important;
 }
 
+:host {
+    .mystyle {
+        ion-toolbar {
+            --background: #a02b2d !important;
+            --background-color: #a02b2d !important;
+            --ion-color-base: #a02b2d !important;
+        }
+        .like {
+            cursor: pointer;
+            font-size: 20px;
+            &.liked {
+                font-weight: bold;
+                color: black;
+            }
+        }
+    }
+}
+
 ion-buttons {
     padding-left: 2px;
     padding-right: 2px;
