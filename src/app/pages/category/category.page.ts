@@ -28,8 +28,10 @@ export class CategoryPage implements OnInit {
   }
 
   ngOnInit() {
+  
   }
   ionViewWillEnter() {
+    this.hide(0)
     this.categoryService.filterproperty().subscribe((data: any) => {
       this.propertyList = data.map(e => {
         return {
@@ -82,24 +84,41 @@ export class CategoryPage implements OnInit {
       });
       this.data = true;
       console.log(this.propertyList)
-      this.propertyAfterFilter()
+    
     })
+    this.SeachLocation = this.categoryService.searchL
+    this.show = false
+    if(this.SeachLocation == null || this.SeachLocation == ''){
+      this.hide(2) 
+      this.propertyAfterFilter()
+    }else{ 
+      this.propertyAfterFilter()
+    }
+
   }
   initializeItems(): void {
     this.propertyList = this.propertyListLoaded;
   }
 
+  hide(v) {
+    this.count = v
+  }
+  propertyAfterFilter(){
+    setTimeout(()=>{
+      if (this.count != 2  || this.count !="2") {
+        console.log("i jjj")
+        this.show = true
+      }else{
+        console.log("sad")
+      }
+     
+    },1000);   
+  }
+  
   fliter() {
     this.router.navigateByUrl("filter-category")
   }
 
-  propertyAfterFilter(){
-    setTimeout(()=>{
-      if (this.count != 2) {
-        this.show = true
-      }
-    },1000);   
-  }
   detail(items) {
     // this.router.navigate(['/details'], {
     //   queryParams: {
@@ -119,9 +138,7 @@ export class CategoryPage implements OnInit {
   }
 
 
-  hide(v) {
-    this.count = v
-  }
+ 
   react(key, val) {
     const userID = this.profileService.getUID();
     if (val != 0) {

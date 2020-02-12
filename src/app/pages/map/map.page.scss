@@ -12,9 +12,9 @@
 }
 
 ion-card {
-    width: 90% !important;
+    // width: 90% !important;
     --background: #ffffff;
-    height: 100px;
+    // height: 100px;
     ion-col {
         width: 90% !important;
         height: 90px;
@@ -48,4 +48,36 @@ ion-card {
         font-weight: bold;
         color: #a02b2d;
     }
+}
+
+ion-slide {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+ion-grid {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.NotFound {
+    width: 95% !important;
+}
+
+.centerT {
+    padding-top: 20px;
+    text-align: center !important;
+}
+
+.swiper-slide-active {
+    ion-card {
+        // border: 1px solid #a02b2d;
+        padding: 1px;
+        margin: 1px;
+        padding-top: 2px;
+    }
+}
+
+.color {
+    color: #a02b2d;
 }

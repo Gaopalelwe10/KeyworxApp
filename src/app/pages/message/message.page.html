@@ -2,70 +2,12 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Message</ion-title>
+    </ion-buttons> 
+    <ion-title>Message the Agent</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" >
-
-  <!-- <form [formGroup]="messageForm">
-
-    <ion-item>
-      <ion-label position="floating">Name</ion-label>
-      <ion-input type="text" formControlName="name" required></ion-input>
-    </ion-item>
-    <div class="error" *ngIf="messageForm.get('name').hasError('required') && messageForm.get('name').touched">
-      Please input your name
-    </div>
-    <div class="error" *ngIf="messageForm.get('name').hasError('minlength') && messageForm.get('name').touched">
-      Minimum 4 characters
-    </div>
-    <div class="error" *ngIf="messageForm.get('name').hasError('maxlength') && messageForm.get('name').touched">
-      Maximum 30 characters
-    </div>
-
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
-    <div class="error" *ngIf="messageForm.get('email').hasError('required') && messageForm.get('email').touched">
-      Please input your email
-    </div>
-    <div class="error" *ngIf="messageForm.get('email').hasError('pattern') && messageForm.get('email').touched">
-      Email address invalid
-    </div>
-
-    <ion-item>
-      <ion-label position="floating">Number</ion-label>
-      <ion-input type="text" formControlName="number"></ion-input>
-    </ion-item>
-    <div class="error" *ngIf="messageForm.get('number').hasError('required') && messageForm.get('number').touched">
-      Please input your number
-    </div>
-
-    <div class="error" *ngIf="messageForm.get('number').hasError('minlength') && messageForm.get('number').touched">
-      Minimum 10 characters
-    </div>
-
-    <div class="error" *ngIf="messageForm.get('number').hasError('maxlength') && messageForm.get('number').touched">
-      Maximum 10 characters
-    </div>
-
-    <ion-item>
-      <ion-label position="floating">Message</ion-label>
-      <ion-textarea formControlName="message"></ion-textarea>
-    </ion-item>
-
-    <div class="error" *ngIf="messageForm.get('message').hasError('required') && messageForm.get('message').touched">
-      Please input your message
-    </div>
-
-    <br>
-    <ion-button expand="block" color="primary" [disabled]="!messageForm.valid" (click)="message(store)">Send
-      Message</ion-button>
-
-  </form> -->
+<ion-content class="ion-padding">
 
   <ion-item >
     <ion-label position="stacked">Name</ion-label>

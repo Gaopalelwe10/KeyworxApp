@@ -6,16 +6,16 @@ ion-header {
     --background: #a02b2d;
 }
 
-.column {
-    float: left;
-    width: 25%;
-    padding: 10px;
-}
-
 .row:after {
     content: "";
     display: table;
     clear: both;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
 }
 
 @media screen and (max-width: 1650px) {

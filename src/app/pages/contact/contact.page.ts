@@ -10,7 +10,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 export class ContactPage implements OnInit {
  
 
-  constructor(  public composer:EmailComposer
+  constructor(  
+    public composer:EmailComposer
     ) {
     
     

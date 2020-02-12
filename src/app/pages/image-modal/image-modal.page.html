@@ -1,23 +1,27 @@
+<ion-header no-border no-shadow id="my-ion-header" class="mystyle">
+    <ion-toolbar color="primary">
+
+        <ion-item class="close-fake" lines="none" text-center>
+            <ion-button (click)="close()" fill="clear" color="light">
+                <ion-icon name="close" slot="start"></ion-icon>
+                Back
+            </ion-button>
+
+            <ion-button (click)="zoom(true)" fill="clear" color="light">
+                <ion-icon name="add" slot="start"></ion-icon>
+                In
+            </ion-button>
+
+            <ion-button (click)="zoom(false)" fill="clear" color="light">
+                <ion-icon name="remove" slot="start"></ion-icon>
+                Out
+            </ion-button>
+
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
+
 <ion-content>
-    <ion-item class="close-fake" lines="none" text-center>
-        <ion-button slot="end" (click)="close()" fill="clear" color="Light">
-            <ion-icon name="close" slot="start"></ion-icon>
-            <!-- Back -->
-        </ion-button>
-
-
-        <ion-button (click)="zoom(true)" fill="clear" color="Light">
-            <ion-icon name="add" slot="start"></ion-icon>
-            <!-- In -->
-        </ion-button>
-
-
-        <ion-button (click)="zoom(false)" fill="clear" color="Light">
-            <ion-icon name="remove" slot="start"></ion-icon>
-            <!-- Out -->
-        </ion-button>
-
-    </ion-item>
 
     <ion-slides [options]="sliderOpts" #slider>
         <ion-slide>

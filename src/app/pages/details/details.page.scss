@@ -4,10 +4,28 @@ ion-toolbar {
     --ion-color-base: transparent !important;
 }
 
-ion-buttons {
-    ion-icon {
-        font-size: 20px;
+:host {
+    .mystyle {
+        ion-toolbar {
+            --background: #a02b2d !important;
+            --background-color: #a02b2d !important;
+            --ion-color-base: #a02b2d !important;
+        }
+        .like {
+            cursor: pointer;
+            font-size: 20px;
+            &.liked {
+                font-weight: bold;
+                color: black;
+            }
+        }
     }
+}
+
+ion-buttons {
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 30px !important;
 }
 
 ion-card {
@@ -35,11 +53,6 @@ ion-card-content {
     }
 }
 
-img {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
 hr {
     background-color: gray;
     width: 100%;
@@ -61,6 +74,10 @@ ion-card {
         background: #a02b2d;
         color: white;
         padding: 4px;
+    }
+    img {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 }
 

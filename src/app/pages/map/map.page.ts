@@ -50,10 +50,12 @@ export class MapPage implements OnInit {
   data = false;
 
   slidesOpt = {
-    slidesPerView: 1.1,
-
+    slidesPerView: 1.2,
+    centeredSlides: true,
+    speed: 500
   }
 
+  
   constructor(
     private maboxServe: MapboxService,
     private propertyService: PropertyService,
@@ -66,13 +68,32 @@ export class MapPage implements OnInit {
     if (this.platform.is("ipad")) {
       this.slidesOpt = {
         slidesPerView: 2.1,
-
+        centeredSlides:  true,
+        speed: 500
       }
 
     }
     this.mapboxAccessToken = this.maboxServe.token();
 
    
+   
+
+  }
+
+  ngOnInit() {
+
+  }
+  
+  ionViewDidEnter() {
+    this.initializeMapBox();
+    this.initializeSlides()
+  }
+
+  initializeItems(): void {
+    this.propertyList = this.propertyListLoaded;
+  }
+
+  initializeSlides(){
     this.propertyService.propertyList().subscribe((data: any) => {
     
       this.propertyList = data.map(e => {
@@ -129,22 +150,7 @@ export class MapPage implements OnInit {
       this.data = true;
     })
 
-
   }
-
-  ngOnInit() {
-
-  }
-  
-  ionViewDidEnter() {
-    this.initializeMapBox();
-
-  }
-
-  initializeItems(): void {
-    this.propertyList = this.propertyListLoaded;
-  }
-
   initializeMapBox() {
     // or "const mapboxgl = require('mapbox-gl');"
 
@@ -212,8 +218,8 @@ export class MapPage implements OnInit {
         console.log(element.lng, element.lat)
         var marker = new mapboxgl.Marker(el)
           .setLngLat([element.lng, element.lat])
-          .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML('<p>' + element.location + '</p>'))
+          .setPopup(new mapboxgl.Popup({ offset: 25 }, ) // add popups
+            .setHTML('<p> ' + element.location +  +'</p>'))
           .addTo(this.map);
       });
     })
@@ -221,6 +227,9 @@ export class MapPage implements OnInit {
 
   }
 
+  index(){
+    console.log("hh")
+  }
   detail(items) {
     const navigationExtras: NavigationExtras = {
       queryParams: {
@@ -239,7 +248,8 @@ export class MapPage implements OnInit {
       this.favouriteService.removefavourite(key, userID)
     }
   }
-
+ found=0
+ show ="true"
   search(evt) {
     this.initializeItems();
 
@@ -252,11 +262,24 @@ export class MapPage implements OnInit {
     this.propertyList = this.propertyList.filter(currentProperty => {
       if (currentProperty.location && searchTerm) {
         if (currentProperty.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+          this.found+=1
+          
           return true;
         }
+      
         return false;
       }
     });
-
+    
+    if(this.found >=1){
+      this.show = "true";
+      console.log("found" + this.found)
+    }
+    if(this.found ==0){
+      console.log("Not found")
+      this.show = "false";
+    }
+   console.log("show " + this.show)
+    this.found=0;
   }
 }

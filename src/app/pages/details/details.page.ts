@@ -6,6 +6,7 @@ import { PropertyService } from 'src/app/services/property.service';
 import { FavouriteService } from 'src/app/services/favourite.service';
 
 import { Plugins } from '@capacitor/core';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 const { Share } = Plugins;
 
 @Component({
@@ -52,9 +53,10 @@ export class DetailsPage implements OnInit {
     private modalController: ModalController,
     private route: ActivatedRoute,
     private favouriteService: FavouriteService,
-    private render: Renderer2
+    private render: Renderer2,
+    private callNumber: CallNumber
   ) {
-   
+
     this.route.queryParams.subscribe(params => {
       if (params && params.data ){
         this.propertyList= JSON.parse(params.data);
@@ -81,29 +83,14 @@ export class DetailsPage implements OnInit {
           }
       }
     });
-    // this.route.queryParams
-    //   .subscribe(params => {
-    //     this.propertyid=params.propertyid;
-    //     this.items.propertyid= params.propertyid;
-    //     this.items.mainImage = params.mainImage;
-    //     this.items.location = params.location;
-    //     this.items.price = params.price;
-    //     this.items.bedrooms = params.bedrooms;
-    //     this.items.description = params.description;
-    //     this.items.bathrooms = params.bathrooms;
-    //     this.items.garage = params.garage;
-    //     console.log(this.items.mainImage, this.items.location,
-    //       this.items.price, this.items.description)
-    //   });
+ 
+  
   }
 
 
   ngOnInit() {
-    // this.propertyService.getpropertyDetails(this.propertyid).subscribe((data:any) => {
-    //   this.propertyList=data
-    //   console.log("working")
-    //   console.log(this.propertyList);
-    // })
+    var element = document.getElementById("my-ion-header");
+    element.classList.remove("mystyle");
     this.propertyService.imageList(this.propertyid).subscribe((data)=>{
       this.imageList = data.map(e => {
         return {
@@ -119,34 +106,30 @@ export class DetailsPage implements OnInit {
       console.log(data);
     })
 
-    //    this.observer = new IntersectionObserver((entries) => {
-
-    //   entries.forEach((entry: any) => {
-
-    //     if(entry.isIntersecting){
-    //       console.log("add")
-    //       this.render.addClass(this.contentArea.nativeElement,"no-transfrom")
-    //     } else {
-    //       this.render.removeClass(this.contentArea.nativeElement,"no-transfrom")
-    //       console.log("rev")
-    //     }
-    //   })
-
-    // });
-    // this.observer.observe(this.triggerElement.nativeElement);
   
   }
 
+  myScroll(ev) {
+    var element = document.getElementById("my-ion-header");
+
+    if(ev.detail.scrollTop >= 215){
+      element.classList.add("mystyle");
+    }
+    if(ev.detail.scrollTop <215){
+      element.classList.remove("mystyle");
+    }
+
+  }
   async share(){
-    // let shareRet = await Share.share({
-    //   title: 'See cool stuff',
-    //   text: 'Really awesome thing you need to see right meow',
-    //   url: 'http://ionicframework.com/',
-    //   dialogTitle: 'Share with buddies'
-    // });
+    let shareRet = await Share.share({
+      title: this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx",
+      text: "I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on  Keyworx App. Check it out:",
+      url:this.propertyList.mainImage,
+      dialogTitle: 'Share with buddies'
+    });
 
     console.log(this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx")
-    console.log("I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on the Keyworx App. Check it out:" )
+    console.log("I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on Keyworx App. Check it out:" )
   }
 
   image(items) {
@@ -159,12 +142,7 @@ export class DetailsPage implements OnInit {
   }
 
   view(i){
-    // this.router.navigate(['/images'], {
-    //   queryParams: {
-    //     array: JSON.stringify(this.imageList),
-       
-    //   }
-    // });
+  
     console.log("index")
     console.log(i)
     const navigationExtras: NavigationExtras = {
@@ -187,7 +165,7 @@ export class DetailsPage implements OnInit {
 
 
     this.router.navigate(['message'], navigationExtras );
-    // this.router.navigateByUrl("message")
+ 
   }
 
   react(key, val) {
@@ -197,5 +175,13 @@ export class DetailsPage implements OnInit {
     } else {
       this.favouriteService.removefavourite(key, userID)
     }
+  }
+
+  callAgent(){
+
+    this.callNumber.callNumber(this.profileData.number, true).
+    then(res => console.log('Launched dialer!', res)).
+    catch(err => console.log('Error launching dialer', err));
+  
   }
 }

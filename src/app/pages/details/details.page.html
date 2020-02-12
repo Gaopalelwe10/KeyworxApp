@@ -1,4 +1,4 @@
-<ion-header no-border no-shadow>
+<ion-header no-border no-shadow id="my-ion-header" class="mystyle">
     <ion-toolbar color="primary">
 
         <ion-buttons slot="start">
@@ -8,7 +8,7 @@
         <!-- <ion-title>Details</ion-title> -->
 
         <ion-buttons slot="end" class="action" class="like" (click)="react(propertyList.key, propertyList.userReaction)" [class.liked]="propertyList.userReaction != null">
-            <ion-icon name="heart" style="zoom:1.5;"></ion-icon>&nbsp;&nbsp;
+            <ion-icon name="heart" class="ion-icons"></ion-icon>
         </ion-buttons>
 
         <ion-buttons slot="end" (click)="share()">
@@ -19,7 +19,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content fullscreen [scrollEvents]="true" (ionScroll)="myScroll($event)">
 
     <ion-card>
 
@@ -74,13 +74,13 @@
                 <p>{{propertyList?.price | currency:'R'}}</p>
                 <p> {{propertyList?.location}}</p>
 
-                <i class="fa fa-bed" aria-hidden="true">
+                <i class="fa fa-bed" aria-hidden="true" *ngIf="propertyList.bedrooms!=0">
                         <span class="pad-value">{{propertyList?.bedrooms}} Bed</span>
                     </i>
-                <i class="fa fa-bath" aria-hidden="true">
+                <i class="fa fa-bath" aria-hidden="true" *ngIf="propertyList.bathrooms!=0">
                         <span class="pad-value"> {{propertyList?.bathrooms}} Bath</span>
                     </i>
-                <i class="fa fa-car" aria-hidden="true">
+                <i class="fa fa-car" aria-hidden="true" *ngIf="propertyList.garage!=0">
                         <span class="pad-value"> {{propertyList?.garage}} Garage</span>
                     </i>
             </div>
@@ -101,8 +101,12 @@
 
 
     <ion-card>
-        <ion-card-content>
-            {{propertyList?.description}}
+        <ion-card-content class="textArea">
+            <div class="ion-text-start">
+                <ion-textarea readonly disabled='true'>
+                    {{propertyList?.description}}
+                </ion-textarea>
+            </div>
         </ion-card-content>
     </ion-card>
 
@@ -169,15 +173,15 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button color="primary" expand="full">
+                <ion-button color="primary" expand="full" (click)="callAgent()">
                     <ion-icon name="call"></ion-icon>
-                    Call
+                    &nbsp; Call
                 </ion-button>
             </ion-col>
             <ion-col>
                 <ion-button color="primary" expand="full" (click)="message()">
                     <ion-icon name="mail"></ion-icon>
-                    Message
+                    &nbsp; Message
                 </ion-button>
             </ion-col>
         </ion-row>

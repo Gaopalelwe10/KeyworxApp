@@ -74,3 +74,8 @@
     cursor: pointer;
     padding: 0;
 }
+
+.textArea textarea {
+    height: 0px !important;
+    display: none !important;
+}
