@@ -13,13 +13,13 @@
     <br>
     <ion-item>
         <ion-label position="stacked">Purchase Price</ion-label>
-        <ion-input [(ngModel)]="p">R</ion-input>
+        <ion-input type='number' [(ngModel)]="p" placeholder="10000000">R &nbsp; </ion-input>
     </ion-item>
 
 
     <ion-item>
         <ion-label position="stacked">Interest rate</ion-label>
-        <ion-input [(ngModel)]="i" placeholder="%"></ion-input>
+        <ion-input type='number' [(ngModel)]="i" placeholder="20.5%"></ion-input>
     </ion-item>
 
 
@@ -35,7 +35,7 @@
     <!-- <form [formGroup]="calculator"> -->
     <ion-item>
         <ion-label position="stacked">Deposit</ion-label>
-        <ion-input [(ngModel)]="deposit"></ion-input>
+        <ion-input type='number' [(ngModel)]="deposit">R &nbsp;</ion-input>
     </ion-item>
     <!-- <div class="error" *ngIf="calculator.get('deposit').hasError('minlength') && calculator.get('deposit').touched">
             Minimum 1 characters

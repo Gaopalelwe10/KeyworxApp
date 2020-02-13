@@ -15,7 +15,7 @@ export class FullscreenPage implements OnInit {
   i: number
   t: number
   amt: number
-  p: number = 0
+  p: number
   r: number
   n: number
   deposit: number = 0

@@ -142,14 +142,6 @@ export class HomePage implements OnInit{
   }
 
   detail(items) {
-    // this.router.navigate(['/details'], {
-    //   queryParams: {
-    //     mainImage: items.mainImage,
-    //     uid: items.uid, propertyid: items.propertyid,
-    //     location: items.location, price: items.price, description: items.description
-    //   }
-    // });
-
     const navigationExtras: NavigationExtras = {
       queryParams: {
         data: JSON.stringify(items),
