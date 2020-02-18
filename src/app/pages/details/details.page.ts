@@ -22,17 +22,17 @@ export class DetailsPage implements OnInit {
   propertyid
   propertyList: any;
 
-  items = {
-    mainImage: "",
-    location: "",
-    description: "",
-    price: "",
-    bedrooms: "",
-    bathrooms: "",
-    garage: "",
-    propertyid:"",
+  // items = {
+  //   mainImage: "",
+  //   location: "",
+  //   description: "",
+  //   price: "",
+  //   bedrooms: "",
+  //   bathrooms: "",
+  //   garage: "",
+  //   propertyid:"",
 
-  }
+  // }
   imageList 
 
   slidesOptions = {
@@ -183,5 +183,22 @@ export class DetailsPage implements OnInit {
     then(res => console.log('Launched dialer!', res)).
     catch(err => console.log('Error launching dialer', err));
   
+  }
+
+  bond(items) {
+    // this.router.navigate(['/fullscreen'], {
+    //   queryParams: {
+    //     uid: items.uid, propertyid:items.propertyid,
+    //     price:items.price
+    //   }
+    // });
+
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        data: JSON.stringify(items),
+
+      }
+    };
+    this.router.navigate(['fullscreen'], navigationExtras);
   }
 }

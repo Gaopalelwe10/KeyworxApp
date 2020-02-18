@@ -12,10 +12,12 @@ export class FullscreenPage implements OnInit {
   pic = {
     downloadURL: "",
   }
+
+  
   i: number
   t: number
   amt: number
-  p: number = 0
+  p
   r: number
   n: number
   deposit: number = 0
@@ -24,26 +26,51 @@ export class FullscreenPage implements OnInit {
   d: number
   c: number
   total: number
-
+  propertyList: any;
+  propertyid: any;
+  agentUid: any;
+  
+  // items = {
+  //   uid:"",
+  //   propertyid:"",
+  //   price:""
+  // }
   constructor(private route: ActivatedRoute,  
       // private fb: FormBuilder,
 
   ) {
 
-    this.route.queryParams
-      .subscribe(params => {
-        this.pic.downloadURL = params.downloadURL;
-        console.log(this.pic.downloadURL)
-      });
-      // this.calculator = fb.group({
-      //   deposit: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.minLength(1), Validators.maxLength(10), Validators.required])],
-      //   // email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
-       
-  
-      // });
+    // this.route.queryParams
+    //   .subscribe(params => {
+    //     this.items.uid = params.uid;
+    //      this.items.propertyid = params.propertyid;
+    //     this.items.price = params.price;
+    //     console.log(this.items.uid, this.items.propertyid,
+    //       this.items.price )
+    //   });
+      this.route.queryParams.subscribe(params => {
+        if (params && params.data ){
+          this.propertyList= JSON.parse(params.data);
+          this.propertyid=this.propertyList.propertyid
+          this.agentUid=this.propertyList.uid;
+          console.log(this.propertyList)
+          console.log(params)
+        
+        }});
+     
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params && params.data ){
+        this.propertyList= JSON.parse(params.data);
+        this.propertyid=this.propertyList.propertyid
+        this.agentUid=this.propertyList.uid;
+        console.log(this.propertyList)
+      
+      }});
+
+    
     this.r = (this.i / 100) / 12;
     this.n = this.t * 12;
   }
