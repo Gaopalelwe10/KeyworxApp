@@ -141,9 +141,6 @@ export class DetailsPage implements OnInit {
     });
   }
 
-  trimeString(str){
-    return str.replace(/^\s+|\s+$/g,'');
-  }
   view(i){
   
     console.log("index")
