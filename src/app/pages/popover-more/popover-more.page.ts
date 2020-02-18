@@ -23,7 +23,7 @@ export class PopoverMorePage implements OnInit {
 
   logout(){
     this.profileService.logout().then(()=>{
-      
+      localStorage.clear()
     });
     this.DismissClick();
   }

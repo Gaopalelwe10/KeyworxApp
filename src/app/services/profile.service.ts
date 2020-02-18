@@ -24,9 +24,10 @@ export class ProfileService {
     afAuth.auth.onAuthStateChanged((user) => {
       if (user) {
         this.nav.navigateRoot("tabs/home");
-      } else {
-        this.nav.navigateRoot("");
-      }
+      } 
+      // else {
+      //   this.nav.navigateRoot("login");
+      // }
     })
   }
 
@@ -47,12 +48,15 @@ export class ProfileService {
    
   async signup(registerdetails, password) {
     const loading = this.loadingCtrl.create({
-      message: 'Registering, Please wait...'
+      // message: 'Registering, Please wait...'
+      cssClass: 'custom-loader',
+      spinner: "crescent",
     });
     (await loading).present();
     await this.afAuth.auth.createUserWithEmailAndPassword(registerdetails.email,password).then(async (success) => {
       registerdetails.uid=this.afAuth.auth.currentUser.uid
       console.log(success);
+      localStorage.setItem("user", registerdetails.email);
       (await loading).dismiss();
       this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).set(registerdetails).then( data=>{
       
