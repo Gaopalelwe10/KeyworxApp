@@ -1,17 +1,21 @@
 #logo {
-  position: relative;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 15px;
-  width: 100%;
-
-  img {
-    padding-left: 15px;
-    padding-right: 15px;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 15px;
-  }
+    width: 100%;
+    img {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 15px;
+    }
 }
+
 .error {
-  color: red;
-  text-align: left;
+    color: red;
+    text-align: left;
+}
+
+ion-content {
+    background: url('https://firebasestorage.googleapis.com/v0/b/keyworkx.appspot.com/o/PIC0duwn5r5c60m?alt=media&token=d6215e70-a89f-48d6-a04d-7c855536f9e7');
 }
