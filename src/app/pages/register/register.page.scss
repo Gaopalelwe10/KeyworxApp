@@ -4,14 +4,25 @@
     padding-right: 10px;
     padding-top: 15px;
     width: 100%;
-  
     img {
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 15px;
     }
-  }
-  .error{
-      color: red;
-      text-align: left;
-  }
+}
+
+.error {
+    color: red;
+    text-align: left;
+}
+
+.bgp {
+    --background: url('../../../assets/img/pexels-photo-186077.jpeg')0 0/230% 100% no-repeat rgba(0, 0, 0, 0.342);
+}
+
+.mmm {
+    position: relative;
+    -webkit-text-fill-color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.445);
+    height: 100%;
+}
