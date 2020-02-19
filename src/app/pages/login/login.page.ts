@@ -48,6 +48,7 @@ export class LoginPage implements OnInit {
     (await loading).present();
 
     this.profileService.login(this.loginForm.value.email, this.loginForm.value.password).then(async () => {
+      localStorage.setItem("user", this.loginForm.value.email);
       (await loading).dismiss();
     });
 

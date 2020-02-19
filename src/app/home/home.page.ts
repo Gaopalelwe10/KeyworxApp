@@ -126,15 +126,9 @@ export class HomePage implements OnInit{
     this.textSearch="sale"
   }
 
-
-
-  ionViewDidEnter() {
-    
-  }
-
-
   fliter() {
-    this.router.navigateByUrl("filter")
+    // this.router.navigateByUrl("filter")
+    this.navC.navigateForward("filter")
   }
 
   logout() {
@@ -142,30 +136,24 @@ export class HomePage implements OnInit{
   }
 
   detail(items) {
-    // this.router.navigate(['/details'], {
-    //   queryParams: {
-    //     mainImage: items.mainImage,
-    //     uid: items.uid, propertyid: items.propertyid,
-    //     location: items.location, price: items.price, description: items.description
-    //   }
-    // });
-
     const navigationExtras: NavigationExtras = {
       queryParams: {
         data: JSON.stringify(items),
 
       }
     };
-    this.router.navigate(['details'], navigationExtras);
+    // this.router.navigate(['details'], navigationExtras);
+    this.navC.navigateForward(['details'],navigationExtras)
   }
 
   viewFeatuered() {
-      this.router.navigateByUrl("filteroutput")
-    
+      // this.router.navigateByUrl("filteroutput")
+      this.navC.navigateForward("filteroutput")
   }
 
   view() {
-    this.router.navigateByUrl('category')
+    this.navC.navigateForward("category")
+    // this.router.navigateByUrl('category')
   }
 
 

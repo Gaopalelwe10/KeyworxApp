@@ -11,7 +11,7 @@
 
     </ion-toolbar>
     <ion-toolbar>
-        <ion-searchbar (ionInput)="search($event)" [(ngModel)]="selectedAddress"></ion-searchbar>
+        <ion-searchbar (ionInput)="search($event)" [(ngModel)]="selectedAddress" placeholder="Address"></ion-searchbar>
 
         <!-- <ion-input type="text" formControlName="Address" (ionInput)="search($event)" [value]="selectedAddress" clearInput></ion-input> -->
     </ion-toolbar>
@@ -85,6 +85,13 @@
         <div *ngFor="let value of list">
             <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">Any</ion-button>
             <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} + </ion-button>
+
+            <!-- <ion-row>
+                <ion-col *ngFor="let value of list" size="2">
+                    <ion-button *ngIf="value == 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">Any</ion-button>
+                    <ion-button *ngIf="value != 0" shape="round" [ngClass]="{'my-css-class': bedrooms === value}" (click)="BedButton(value)">{{value}} + </ion-button>
+                </ion-col>
+            </ion-row> -->
         </div>
     </ion-item>
 
