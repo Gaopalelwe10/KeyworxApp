@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header no-border no-shadow id=\"my-ion-header\" class=\"mystyle\">\r\n    <ion-toolbar color=\"primary\">\r\n\r\n        <ion-item class=\"close-fake\" lines=\"none\" text-center>\r\n            <ion-button (click)=\"close()\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n                Back\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"add\" slot=\"start\"></ion-icon>\r\n                In\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"remove\" slot=\"start\"></ion-icon>\r\n                Out\r\n            </ion-button>\r\n\r\n        </ion-item>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-left\">&#10094;</a> -->\r\n                <img src=\"{{pic.downloadURL}}\" style='width: 100%; ' size=\"100%\" accept=\".png,.jpg\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-right\">&#10095;</a> -->\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header no-border no-shadow id=\"my-ion-header\" class=\"mystyle\">\r\n    <ion-toolbar>\r\n\r\n        <ion-item class=\"close-fake\" lines=\"none\" text-center>\r\n            <ion-button (click)=\"close()\" fill=\"clear\" color=\"primary\">\r\n                <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n                Back \r\n            </ion-button>\r\n            \r\n            <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"add\" slot=\"start\"></ion-icon>\r\n                In\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"remove\" slot=\"start\"></ion-icon>\r\n                Out\r\n            </ion-button>\r\n\r\n        </ion-item>\r\n    </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-left\">&#10094;</a> -->\r\n                <img src=\"{{pic.downloadURL}}\" style='width: 100%; ' size=\"100%\" accept=\".png,.jpg\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-right\">&#10095;</a> -->\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n\r\n    <ion-fab horizontal=\"end\" vertical=\"top\" slot=\"fixed\">\r\n        <ion-fab-button color=\"primary\" size=\"small\" (click)=\"close()\" class=\"size\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-fab-button>\r\n    </ion-fab>\r\n\r\n\r\n    <!-- <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(true)\" class=\"size\">\r\n                    <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(false)\" class=\"size\">\r\n                    <ion-icon name=\"remove-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-fab> -->\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -1132,7 +1132,7 @@ var ImageModalPageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".close-fake {\n  --background: transparent;\n}\n.close-fake ion-icon {\n  font-size: 2rem;\n}\n:host ion-content {\n  top: 0;\n  position: absolute;\n}\nion-slides {\n  height: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvaW1hZ2UtbW9kYWwvQzpcXFVzZXJzXFxDb2RlVHJpYmVcXERlc2t0b3BcXENvZGVUcmliZVxcaW9uaWNcXEtleXdvcnhBcHAvc3JjXFxhcHBcXHBhZ2VzXFxpbWFnZS1tb2RhbFxcaW1hZ2UtbW9kYWwucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9pbWFnZS1tb2RhbC9pbWFnZS1tb2RhbC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtBQ0NKO0FEQUk7RUFDSSxlQUFBO0FDRVI7QURTSTtFQUVJLE1BQUE7RUFDQSxrQkFBQTtBQ1BSO0FEV0E7RUFDSSxZQUFBO0FDUkoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9pbWFnZS1tb2RhbC9pbWFnZS1tb2RhbC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2xvc2UtZmFrZSB7XHJcbiAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4gICAgaW9uLWljb24ge1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMnJlbTtcclxuICAgIH1cclxuICAgIC8vIG1hcmdpbi10b3A6IDQwcHg7XHJcbn1cclxuXHJcbi8vIGlvbi10b29sYmFyIHtcclxuLy8gICAgIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XHJcbi8vICAgICAtLWJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG4vLyAgICAgLS1pb24tY29sb3ItYmFzZTogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcclxuLy8gfVxyXG46aG9zdCB7XHJcbiAgICBpb24tY29udGVudCB7XHJcbiAgICAgICAgLy8gLS1iYWNrZ3JvdW5kOiByZ2JhKDU4LCA1MywgNTksIDAuMzE1KTtcclxuICAgICAgICB0b3A6IDA7XHJcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgfVxyXG59XHJcblxyXG5pb24tc2xpZGVzIHtcclxuICAgIGhlaWdodDogMTAwJTtcclxufSIsIi5jbG9zZS1mYWtlIHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbn1cbi5jbG9zZS1mYWtlIGlvbi1pY29uIHtcbiAgZm9udC1zaXplOiAycmVtO1xufVxuXG46aG9zdCBpb24tY29udGVudCB7XG4gIHRvcDogMDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xufVxuXG5pb24tc2xpZGVzIHtcbiAgaGVpZ2h0OiAxMDAlO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".close-fake {\n  --background: transparent;\n}\n.close-fake ion-icon {\n  font-size: 2rem;\n}\n:host ion-content {\n  top: 0;\n  position: absolute;\n}\nion-slides {\n  height: 100%;\n}\nion-fab {\n  font-size: 10px;\n}\n.size {\n  width: 35px !important;\n  height: 35px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvaW1hZ2UtbW9kYWwvQzpcXFVzZXJzXFxDb2RlVHJpYmVcXERlc2t0b3BcXENvZGVUcmliZVxcaW9uaWNcXEtleXdvcnhBcHAvc3JjXFxhcHBcXHBhZ2VzXFxpbWFnZS1tb2RhbFxcaW1hZ2UtbW9kYWwucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9pbWFnZS1tb2RhbC9pbWFnZS1tb2RhbC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx5QkFBQTtBQ0NKO0FEQUk7RUFDSSxlQUFBO0FDRVI7QURTSTtFQUVJLE1BQUE7RUFDQSxrQkFBQTtBQ1BSO0FEV0E7RUFDSSxZQUFBO0FDUko7QURXQTtFQUNJLGVBQUE7QUNSSjtBRFdBO0VBQ0ksc0JBQUE7RUFDQSx1QkFBQTtBQ1JKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvaW1hZ2UtbW9kYWwvaW1hZ2UtbW9kYWwucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNsb3NlLWZha2Uge1xyXG4gICAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcclxuICAgIGlvbi1pY29uIHtcclxuICAgICAgICBmb250LXNpemU6IDJyZW07XHJcbiAgICB9XHJcbiAgICAvLyBtYXJnaW4tdG9wOiA0MHB4O1xyXG59XHJcblxyXG4vLyBpb24tdG9vbGJhciB7XHJcbi8vICAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG4vLyAgICAgLS1iYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxuLy8gICAgIC0taW9uLWNvbG9yLWJhc2U6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XHJcbi8vIH1cclxuOmhvc3Qge1xyXG4gICAgaW9uLWNvbnRlbnQge1xyXG4gICAgICAgIC8vIC0tYmFja2dyb3VuZDogcmdiYSg1OCwgNTMsIDU5LCAwLjMxNSk7XHJcbiAgICAgICAgdG9wOiAwO1xyXG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIH1cclxufVxyXG5cclxuaW9uLXNsaWRlcyB7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuXHJcbmlvbi1mYWIge1xyXG4gICAgZm9udC1zaXplOiAxMHB4O1xyXG59XHJcblxyXG4uc2l6ZSB7XHJcbiAgICB3aWR0aDogMzVweCAhaW1wb3J0YW50O1xyXG4gICAgaGVpZ2h0OiAzNXB4ICFpbXBvcnRhbnQ7XHJcbn0iLCIuY2xvc2UtZmFrZSB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG59XG4uY2xvc2UtZmFrZSBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMnJlbTtcbn1cblxuOmhvc3QgaW9uLWNvbnRlbnQge1xuICB0b3A6IDA7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuaW9uLXNsaWRlcyB7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuaW9uLWZhYiB7XG4gIGZvbnQtc2l6ZTogMTBweDtcbn1cblxuLnNpemUge1xuICB3aWR0aDogMzVweCAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDM1cHggIWltcG9ydGFudDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1342,9 +1342,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var PopoverMorePage = /** @class */ (function () {
-    function PopoverMorePage(profileService, popoverController, router, composer) {
+    function PopoverMorePage(profileService, popoverController, navC, router, composer) {
         this.profileService = profileService;
         this.popoverController = popoverController;
+        this.navC = navC;
         this.router = router;
         this.composer = composer;
     }
@@ -1369,7 +1370,8 @@ var PopoverMorePage = /** @class */ (function () {
         });
     };
     PopoverMorePage.prototype.repayments = function () {
-        this.router.navigateByUrl("fullscreen");
+        // this.router.navigateByUrl("fullscreen")
+        this.navC.navigateForward("fullscreen");
         this.DismissClick();
     };
     PopoverMorePage.prototype.contact = function () {
@@ -1387,6 +1389,7 @@ var PopoverMorePage = /** @class */ (function () {
     PopoverMorePage.ctorParameters = function () { return [
         { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_2__["ProfileService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["PopoverController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
         { type: _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_5__["EmailComposer"] }
     ]; };
@@ -1398,6 +1401,7 @@ var PopoverMorePage = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_2__["ProfileService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["PopoverController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
             _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_5__["EmailComposer"]])
     ], PopoverMorePage);
@@ -1563,6 +1567,7 @@ var ProfileService = /** @class */ (function () {
                                         case 0:
                                             registerdetails.uid = this.afAuth.auth.currentUser.uid;
                                             console.log(success);
+                                            localStorage.setItem("user", registerdetails.email);
                                             return [4 /*yield*/, loading];
                                         case 1:
                                             (_a.sent()).dismiss();

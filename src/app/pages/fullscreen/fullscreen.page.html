@@ -10,46 +10,56 @@
 </ion-header>
 
 <ion-content>
-    <br>
-    <ion-item>
-        <ion-label position="stacked">Purchase Price</ion-label>
-        <ion-input [(ngModel)]="p">R {{propertyList?.price}}</ion-input>
-    </ion-item>
+    <form [formGroup]="bondCalulatorForm">
+        <br>
+        <ion-item>
+            <ion-label position="stacked">Purchase Price</ion-label>
+            <ion-input formControlName="p" [(ngModel)]="p" required>R {{propertyList?.price}}</ion-input>
+        </ion-item>
 
-
-    <ion-item>
-        <ion-label position="stacked">Interest rate</ion-label>
-        <ion-input type='number' [(ngModel)]="i" placeholder="20.5%"></ion-input>
-    </ion-item>
-
-
-    <ion-item>
-        <ion-label position="stacked">Years to repay</ion-label>
-        <ion-select [(ngModel)]="t" placeholder="e.g 20">
-            <ion-select-option value="5">5</ion-select-option>
-            <ion-select-option value="10">10</ion-select-option>
-            <ion-select-option value="20">20</ion-select-option>
-            <ion-select-option value="30">30</ion-select-option>
-        </ion-select>
-    </ion-item>
-    <!-- <form [formGroup]="calculator"> -->
-    <ion-item>
-        <ion-label position="stacked">Deposit</ion-label>
-        <ion-input type='number' [(ngModel)]="deposit">R &nbsp;</ion-input>
-    </ion-item>
-    <!-- <div class="error" *ngIf="calculator.get('deposit').hasError('minlength') && calculator.get('deposit').touched">
-            Minimum 1 characters
+        <div class="error" *ngIf="bondCalulatorForm.get('p').hasError('required') && bondCalulatorForm.get('p').touched">
+            This field is required
         </div>
-        <div class="error" *ngIf="calculator.get('deposit').hasError('maxlength') && calculator.get('deposit').touched">
-            Maximum 10 characters
+        <ion-item>
+            <ion-label position="stacked">Interest rate</ion-label>
+            <ion-input type='number' formControlName="i" [(ngModel)]="i" placeholder="20.5%" required></ion-input>
+        </ion-item>
+        <div class="error" *ngIf="bondCalulatorForm.get('i').hasError('required') && bondCalulatorForm.get('i').touched">
+            This field is required
         </div>
-    </form> -->
 
-    <div class="ion-padding">
-        <ion-button expand="block" class="ion-no-margin" (click)="calculate()" onclick="document.getElementById('id01').style.display='block'">
-            Calculate
-        </ion-button>
-    </div>
+        <ion-item>
+            <ion-label position="stacked">Years to repay</ion-label>
+            <ion-select formControlName="t" [(ngModel)]="t" placeholder="e.g 20" required>
+                <ion-select-option value="5">5</ion-select-option>
+                <ion-select-option value="10">10</ion-select-option>
+                <ion-select-option value="20">20</ion-select-option>
+                <ion-select-option value="30">30</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <div class="error" *ngIf="bondCalulatorForm.get('t').hasError('required') && bondCalulatorForm.get('t').touched">
+            This field is required
+        </div>
+        <!-- <form [formGroup]="calculator"> -->
+        <ion-item>
+            <ion-label position="stacked">Deposit</ion-label>
+            <ion-input type='number' formControlName="deposit" [(ngModel)]="deposit">R &nbsp;</ion-input>
+        </ion-item>
+        <!-- <div class="error" *ngIf="calculator.get('deposit').hasError('minlength') && calculator.get('deposit').touched">
+                Minimum 1 characters
+            </div>
+            <div class="error" *ngIf="calculator.get('deposit').hasError('maxlength') && calculator.get('deposit').touched">
+                Maximum 10 characters
+            </div>
+        </form> -->
+
+        <div class="ion-padding">
+            <ion-button expand="block" class="ion-no-margin" [disabled]="!bondCalulatorForm.valid" (click)="calculate()" onclick="document.getElementById('id01').style.display='block'">
+                Calculate
+            </ion-button>
+        </div>
+    </form>
+
     <div id="id01" class="w3-modal">
         <div class="w3-modal-content">
             <div class="w3-container">

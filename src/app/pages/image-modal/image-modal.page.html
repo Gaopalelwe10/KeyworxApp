@@ -1,25 +1,25 @@
-<ion-header no-border no-shadow id="my-ion-header" class="mystyle">
+<!-- <ion-header no-border no-shadow id="my-ion-header" class="mystyle">
     <ion-toolbar>
 
         <ion-item class="close-fake" lines="none" text-center>
             <ion-button (click)="close()" fill="clear" color="primary">
                 <ion-icon name="close" slot="start"></ion-icon>
-                <!-- Back  -->
+                Back 
             </ion-button>
-            <!-- 
+            
             <ion-button (click)="zoom(true)" fill="clear" color="light">
                 <ion-icon name="add" slot="start"></ion-icon>
                 In
-            </ion-button> -->
+            </ion-button>
 
-            <!-- <ion-button (click)="zoom(false)" fill="clear" color="light">
+            <ion-button (click)="zoom(false)" fill="clear" color="light">
                 <ion-icon name="remove" slot="start"></ion-icon>
                 Out
-            </ion-button> -->
+            </ion-button>
 
         </ion-item>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
 
@@ -39,4 +39,29 @@
         </ion-slide>
 
     </ion-slides>
+
+    <ion-fab horizontal="end" vertical="top" slot="fixed">
+        <ion-fab-button color="primary" size="small" (click)="close()" class="size">
+            <ion-icon name="close"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+
+    <!-- <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-row>
+            <ion-col>
+                <ion-fab-button color="primary" size="small" (click)="zoom(true)" class="size">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-fab-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-fab-button color="primary" size="small" (click)="zoom(false)" class="size">
+                    <ion-icon name="remove-circle-outline"></ion-icon>
+                </ion-fab-button>
+            </ion-col>
+        </ion-row>
+    </ion-fab> -->
+
 </ion-content>

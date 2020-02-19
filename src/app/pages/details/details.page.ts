@@ -15,9 +15,9 @@ const { Share } = Plugins;
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  @ViewChild('slides', {static:true}) slides: IonSlides;
-  @ViewChild (IonContent, {read:ElementRef, static:true}) contentArea:ElementRef
-  @ViewChild ("triggerElement",{read: ElementRef, static:true}) triggerElement:ElementRef;
+  @ViewChild('slides', { static: true }) slides: IonSlides;
+  @ViewChild(IonContent, { read: ElementRef, static: true }) contentArea: ElementRef
+  @ViewChild("triggerElement", { read: ElementRef, static: true }) triggerElement: ElementRef;
   observer: IntersectionObserver;
   propertyid
   propertyList: any;
@@ -30,10 +30,10 @@ export class DetailsPage implements OnInit {
     bedrooms: "",
     bathrooms: "",
     garage: "",
-    propertyid:"",
+    propertyid: "",
 
   }
-  imageList 
+  imageList
 
   slidesOptions = {
     initialSlide: 1,
@@ -46,7 +46,7 @@ export class DetailsPage implements OnInit {
   array
   favouriteList
   agentUid
-  profileData:any;
+  profileData: any;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
@@ -58,14 +58,14 @@ export class DetailsPage implements OnInit {
   ) {
 
     this.route.queryParams.subscribe(params => {
-      if (params && params.data ){
-        this.propertyList= JSON.parse(params.data);
-        this.propertyid=this.propertyList.propertyid
-        this.agentUid=this.propertyList.uid;
+      if (params && params.data) {
+        this.propertyList = JSON.parse(params.data);
+        this.propertyid = this.propertyList.propertyid
+        this.agentUid = this.propertyList.uid;
         console.log(this.propertyList)
-      
+
       }
-      
+
     });
     this.favouriteService.getfavourite().subscribe((data: any) => {
       this.favouriteList = data.map(e => {
@@ -76,73 +76,73 @@ export class DetailsPage implements OnInit {
       });
 
       for (const reactionInfo of this.favouriteList) {
-          if (reactionInfo.key ===  this.propertyid) {
-            this.favouriteService.count( this.propertyid).subscribe((data: any) => {
-              this.propertyList.userReaction = this.favouriteService.userfavourite(data);
-            })
-          }
+        if (reactionInfo.key === this.propertyid) {
+          this.favouriteService.count(this.propertyid).subscribe((data: any) => {
+            this.propertyList.userReaction = this.favouriteService.userfavourite(data);
+          })
+        }
       }
     });
- 
-  
+
+
   }
 
 
   ngOnInit() {
     var element = document.getElementById("my-ion-header");
     element.classList.remove("mystyle");
-    this.propertyService.imageList(this.propertyid).subscribe((data)=>{
+    this.propertyService.imageList(this.propertyid).subscribe((data) => {
       this.imageList = data.map(e => {
         return {
           key: e.payload.doc.id,
           ...e.payload.doc.data()
         }
       })
-      
+
       console.log(this.imageList);
     })
-    this.profileService.agentProfile(this.agentUid).subscribe((data)=>{
-      this.profileData=data
+    this.profileService.agentProfile(this.agentUid).subscribe((data) => {
+      this.profileData = data
       console.log(data);
     })
 
-  
+
   }
 
   myScroll(ev) {
     var element = document.getElementById("my-ion-header");
 
-    if(ev.detail.scrollTop >= 215){
+    if (ev.detail.scrollTop >= 215) {
       element.classList.add("mystyle");
     }
-    if(ev.detail.scrollTop <215){
+    if (ev.detail.scrollTop < 215) {
       element.classList.remove("mystyle");
     }
 
   }
-  async share(){
+  async share() {
     let shareRet = await Share.share({
-      title: this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx",
+      title: this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " for Sale in " + this.propertyList.location + " on Keyworkx",
       text: "I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on  Keyworx App. Check it out:",
-      url:this.propertyList.mainImage,
+      url: this.propertyList.mainImage,
       dialogTitle: 'Share with buddies'
     });
 
-    console.log(this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty +" for Sale in " + this.propertyList.location +" on Keyworkx")
-    console.log("I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on Keyworx App. Check it out:" )
+    console.log(this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " for Sale in " + this.propertyList.location + " on Keyworkx")
+    console.log("I found this " + this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " on Keyworx App. Check it out:")
   }
 
   image(items) {
     this.router.navigate(['/images'], {
       queryParams: {
         propertyid: items.propertyid,
-       
+
       }
     });
   }
 
-  view(i){
-  
+  view(i) {
+
     console.log("index")
     console.log(i)
     const navigationExtras: NavigationExtras = {
@@ -153,10 +153,14 @@ export class DetailsPage implements OnInit {
     };
 
 
-    this.router.navigate(['images'], navigationExtras );
+    this.router.navigate(['images'], navigationExtras);
   }
 
-  message(){
+  repayments(value) {
+    console.log(value.price)
+    this.router.navigate(["fullscreen"],{queryParams:{price:value.price}})
+  }
+  message() {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         propertyList: JSON.stringify(this.propertyList),
@@ -164,8 +168,8 @@ export class DetailsPage implements OnInit {
     };
 
 
-    this.router.navigate(['message'], navigationExtras );
- 
+    this.router.navigate(['message'], navigationExtras);
+
   }
 
   react(key, val) {
@@ -177,11 +181,11 @@ export class DetailsPage implements OnInit {
     }
   }
 
-  callAgent(){
+  callAgent() {
 
     this.callNumber.callNumber(this.profileData.number, true).
-    then(res => console.log('Launched dialer!', res)).
-    catch(err => console.log('Error launching dialer', err));
-  
+      then(res => console.log('Launched dialer!', res)).
+      catch(err => console.log('Error launching dialer', err));
+
   }
 }

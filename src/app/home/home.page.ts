@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
 import { PropertyService } from '../services/property.service';
 import { Router, NavigationExtras } from '@angular/router';
-import { Platform, NavController,  } from '@ionic/angular';
+import { Platform, NavController, } from '@ionic/angular';
 import { FavouriteService } from '../services/favourite.service';
 import { CategoryService } from '../services/category.service';
 import { ActionSheetController } from '@ionic/angular';
@@ -13,12 +13,12 @@ import { ActionSheetController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
- 
+export class HomePage implements OnInit {
+
   propertyList;
   propertyPopularList;
   favouriteList;
-  
+
   slidesOptions = {
     slidesPerView: 2.3,
   }
@@ -30,22 +30,22 @@ export class HomePage implements OnInit{
   }
   userReaction = null
 
- 
+
   data = false;
 
   textSearch;
 
 
-
+  loaded: boolean = false;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
     public platform: Platform,
     private favouriteService: FavouriteService,
     private categoryService: CategoryService,
-    public actionSheetController: ActionSheetController  ,
+    public actionSheetController: ActionSheetController,
     private navC: NavController,
-    
+
   ) {
 
     if (this.platform.is("ipad")) {
@@ -61,7 +61,7 @@ export class HomePage implements OnInit{
     }
 
     this.propertyService.propertyList().subscribe((data: any) => {
-      this.propertyPopularList=data.map(e => {
+      this.propertyPopularList = data.map(e => {
         return {
           key: e.payload.doc.id,
           ...e.payload.doc.data()
@@ -73,7 +73,7 @@ export class HomePage implements OnInit{
           ...e.payload.doc.data()
         }
       }).reverse()
-    
+
 
       this.favouriteService.getfavourite().subscribe((data: any) => {
         this.favouriteList = data.map(e => {
@@ -120,12 +120,17 @@ export class HomePage implements OnInit{
       console.log(this.propertyPopularList)
       this.data = true;
     });
-    
+
   }
-  ngOnInit(){
-    this.textSearch="sale"
+  ngOnInit() {
+    this.textSearch = "sale"
   }
 
+  imageLoaded() {
+    console.log('loaded')
+  }
+
+  
   fliter() {
     // this.router.navigateByUrl("filter")
     this.navC.navigateForward("filter")
@@ -143,12 +148,12 @@ export class HomePage implements OnInit{
       }
     };
     // this.router.navigate(['details'], navigationExtras);
-    this.navC.navigateForward(['details'],navigationExtras)
+    this.navC.navigateForward(['details'], navigationExtras)
   }
 
   viewFeatuered() {
-      // this.router.navigateByUrl("filteroutput")
-      this.navC.navigateForward("filteroutput")
+    // this.router.navigateByUrl("filteroutput")
+    this.navC.navigateForward("filteroutput")
   }
 
   view() {
@@ -166,6 +171,6 @@ export class HomePage implements OnInit{
     }
   }
 
- 
-  
+
+
 }

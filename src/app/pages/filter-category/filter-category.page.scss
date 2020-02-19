@@ -1,51 +1,72 @@
 ion-toolber {
     --background: transparent !important;
-  }
-  
-  ion-item {
+}
+
+ion-item {
     ion-button {
-      padding-right: 5px;
-      // width: 50px;
-      height: 50px;
-      // width: 150px;
-      // height: 40px;
-      // --background: white !important;
+        padding-right: 5px;
+        // width: 50px;
+        height: 50px;
+        // width: 150px;
+        // height: 40px;
+        // --background: white !important;
     }
-  }
-  .lastbutton {
+}
+
+.lastbutton {
     padding-right: 10px;
-  }
-  ion-button.active {
+}
+
+ion-button.active {
     // background-color: blue;
     --background: #a02b2d !important;
     --color: #ffffff !important;
     --color-activated: #ffffff !important;
-  }
-  .my-css-class {
-      --background: #a02b2d !important;
-      --color: #ffffff !important;
-      --color-activated: #ffffff !important;
-  }
-  :host {
+}
+
+.my-css-class-bed {
+    --background: url('/assets/img/bed.png') no-repeat center !important;
+    // --background: #a02b2d !important;
+    --color: transparent !important;
+    --color-activated: transparent!important;
+    // color: transparent;
+}
+
+.my-css-class-bath {
+    --background: url('/assets/img/bath.png') no-repeat center !important;
+    // --background: #a02b2d !important;
+    --color: transparent !important;
+    --color-activated: transparent!important;
+    // color: transparent;
+}
+
+.my-css-class-garage {
+    --background: url('/assets/img/garage.png') no-repeat center !important;
+    // --background: #a02b2d !important;
+    --color: transparent !important;
+    --color-activated: transparent!important;
+    // color: transparent;
+}
+
+ :host {
     ion-item {
-      ion-button {
-        --background-activated: #ffffff;
-      //   --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.3),
-      //     0 2px 2px 0 rgba(0, 0, 0, 0.4), 0 1px 5px 0 rgba(0, 0, 0, 0.14);
-  
-          --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 9), 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
-      }
-      ion-button {
-        --background: #ffffff;
-        --background-focused: #ffffff;
-        --color-activated: #ffffff;
-        --color: black;
-        --color-focused: #ffffff;
-      }
+        ion-button {
+            --background-activated: #ffffff;
+            //   --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.3),
+            //     0 2px 2px 0 rgba(0, 0, 0, 0.4), 0 1px 5px 0 rgba(0, 0, 0, 0.14);
+            --box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 9), 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.4);
+        }
+        ion-button {
+            --background: #ffffff;
+            --background-focused: #ffffff;
+            --color-activated: #ffffff;
+            --color: black;
+            --color-focused: #ffffff;
+        }
     }
-  }
-  
-  hr{
-      padding: 0;
-      margin: 0;
-  }
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+}

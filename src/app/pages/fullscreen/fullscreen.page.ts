@@ -13,7 +13,7 @@ export class FullscreenPage implements OnInit {
     downloadURL: "",
   }
 
-  
+  bondCalulatorForm:FormGroup
   i: number
   t: number
   amt: number
@@ -21,7 +21,7 @@ export class FullscreenPage implements OnInit {
   r: number
   n: number
   deposit: number = 0
-  M: number 
+  M: number
   a: number
   d: number
   c: number
@@ -29,15 +29,14 @@ export class FullscreenPage implements OnInit {
   propertyList: any;
   propertyid: any;
   agentUid: any;
-  
+
   // items = {
   //   uid:"",
   //   propertyid:"",
   //   price:""
   // }
-  constructor(private route: ActivatedRoute,  
-      // private fb: FormBuilder,
-
+  constructor(private routeA: ActivatedRoute, private fb :FormBuilder
+    // private fb: FormBuilder,
   ) {
 
     // this.route.queryParams
@@ -48,29 +47,41 @@ export class FullscreenPage implements OnInit {
     //     console.log(this.items.uid, this.items.propertyid,
     //       this.items.price )
     //   });
-      this.route.queryParams.subscribe(params => {
-        if (params && params.data ){
-          this.propertyList= JSON.parse(params.data);
-          this.propertyid=this.propertyList.propertyid
-          this.agentUid=this.propertyList.uid;
-          console.log(this.propertyList)
-          console.log(params)
-        
-        }});
-     
+    this.bondCalulatorForm = fb.group({
+      p:  ['', Validators.required],
+      i: ['', Validators.required],
+      t:['', Validators.required],
+      deposit:['']
+    });
+    this.routeA.queryParams.subscribe(params => {
+      if (params && params.data) {
+        this.propertyList = JSON.parse(params.data);
+        this.propertyid = this.propertyList.propertyid
+        this.agentUid = this.propertyList.uid;
+        console.log(this.propertyList)
+        console.log(params)
+
+      }
+    });
+
+    this.routeA.queryParams.subscribe(params => {
+      this.p = params.price;
+    });
+
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params && params.data ){
-        this.propertyList= JSON.parse(params.data);
-        this.propertyid=this.propertyList.propertyid
-        this.agentUid=this.propertyList.uid;
+    this.routeA.queryParams.subscribe(params => {
+      if (params && params.data) {
+        this.propertyList = JSON.parse(params.data);
+        this.propertyid = this.propertyList.propertyid
+        this.agentUid = this.propertyList.uid;
         console.log(this.propertyList)
-      
-      }});
 
-    
+      }
+    });
+
+
     this.r = (this.i / 100) / 12;
     this.n = this.t * 12;
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
@@ -14,6 +14,7 @@ export class PopoverMorePage implements OnInit {
   constructor(
     private profileService: ProfileService,
     private popoverController:PopoverController,
+    private navC : NavController,
     private router:Router, 
     public composer:EmailComposer
   ) { }
@@ -32,7 +33,8 @@ export class PopoverMorePage implements OnInit {
   }
 
   repayments(){
-    this.router.navigateByUrl("fullscreen")
+    // this.router.navigateByUrl("fullscreen")
+    this.navC.navigateForward("fullscreen")
     this.DismissClick();
   }
 
