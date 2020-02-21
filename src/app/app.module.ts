@@ -19,6 +19,9 @@ import { ImageModalPageModule } from './pages/image-modal/image-modal.module';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { HttpClientModule } from '@angular/common/http'
+import { MessagePage } from './pages/message/message.page';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessagePageModule } from './pages/message/message.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4CMD51Wz_G564J0h4HJeFG27-UI12Kkw",
@@ -32,7 +35,7 @@ const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, TabsPage],
+  declarations: [AppComponent, TabsPage, ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -45,7 +48,9 @@ const firebaseConfig = {
     NgxIonicImageViewerModule,
     PopoverMorePageModule,
     HttpClientModule,
-    ImageModalPageModule
+    ImageModalPageModule,
+    ReactiveFormsModule,
+    MessagePageModule
   ],
 
   providers: [

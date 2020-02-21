@@ -7,7 +7,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { ProfileService } from 'src/app/services/profile.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController, NavParams, ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -24,6 +24,8 @@ export class MessagePage implements OnInit {
   propertyid;
   agentUid;
 
+  name;
+  email
   
 
   private User: AngularFirestoreDocument
@@ -47,18 +49,28 @@ export class MessagePage implements OnInit {
     private afAuth: AngularFireAuth,
     private emailComposer: EmailComposer,
     private route: ActivatedRoute,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private modalCtrl: ModalController,
+    private navParams: NavParams,
+    public toastController: ToastController
   ) {
 
-    this.route.queryParams.subscribe(params => {
-      if (params && params.propertyList) {
-        this.propertyList = JSON.parse(params.propertyList);
-        this.propertyid = this.propertyList.propertyid
-        this.agentUid = this.propertyList.uid;
-        console.log(this.propertyList)
-      }
+    this.propertyList= JSON.parse(this.navParams.get('propertyList'));
+    this.propertyid = this.propertyList.propertyid
+    this.agentUid = this.propertyList.uid;
+    console.log(this.propertyid);
+    console.log(this.agentUid)
+    console.log(this.propertyList)
 
-    })
+    // this.route.queryParams.subscribe(params => {
+    //   if (params && params.propertyList) {
+    //     this.propertyList = JSON.parse(params.propertyList);
+    //     this.propertyid = this.propertyList.propertyid
+    //     this.agentUid = this.propertyList.uid;
+    //     console.log(this.propertyList)
+    //   }
+
+    // })
 
     this.messageForm = fb.group({
       name: ['', Validators.compose([Validators.minLength(4), Validators.maxLength(30), Validators.required])],
@@ -71,6 +83,8 @@ export class MessagePage implements OnInit {
 
     this.messServ.getUser(uid).subscribe(data => {
       this.userList = data;
+      this.name=data.name;
+      this.email=data.email;
       console.log(data)
     })
 
@@ -90,22 +104,37 @@ export class MessagePage implements OnInit {
       number: this.store.number,
       message: this.store.message,
       isRead: this.store.isRead,
-      AgentUid: this.propertyList.uid,
-      propertyid: this.propertyList.propertyid,
+      AgentUid: this.agentUid,
+      propertyid: this.propertyid,
       date: Date.now(),
+    }).then(async ()=>{
+      console.log(this.store)
+
+      const toast = await this.toastController.create({
+        color: 'primary',
+        duration: 2000,
+        message: 'Message successfully sent',
+        // showCloseButton: true
+      });
+      toast.present();
+      this.close()
     });
-    console.log(this.store)
+
    
-    let email = {
-      to: 'codersgroup2020@gmail.com',
-      attachments: [
-        this.currentImage
-      ],
-      subject: 'property',
-      body: this.store.message,
-      isHtml: true
-    };
-    this.emailComposer.open(email);
+    // let email = {
+    //   to: 'codersgroup2020@gmail.com',
+    //   attachments: [
+    //     this.currentImage
+    //   ],
+    //   subject: 'property',
+    //   body: this.store.message,
+    //   isHtml: true
+    // };
+    // this.emailComposer.open(email);
+  }
+
+  close() {
+    this.modalCtrl.dismiss();
   }
 
 }

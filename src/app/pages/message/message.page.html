@@ -1,35 +1,54 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons> 
-    <ion-title>Message the Agent</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+
+        <ion-title>Message the Agent</ion-title>
+
+        <ion-buttons slot="end" (click)="close()">
+            <ion-icon name="close"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
 
-  <ion-item >
-    <ion-label position="stacked">Name</ion-label>
-    <ion-input readonly type="text" >{{userList?.name}}</ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Email</ion-label>
-    <ion-input readonly type="email" >{{userList?.email}}</ion-input>
-  </ion-item>
+    <form [formGroup]="messageForm">
+        <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input readonly type="text" formControlName="name" [(ngModel)]="name"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Contact Number</ion-label>
-    <ion-input required maxlength="10" type="tel" [(ngModel)]="store.number"></ion-input>
-  </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input readonly type="email" formControlName="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-label position="stacked">Message</ion-label>
-    <ion-input required type="text" [(ngModel)]="store.message"></ion-input>
-  </ion-item>
+        <ion-item>
+            <ion-label position="stacked">Contact Number</ion-label>
+            <ion-input required maxlength="10" type="tel" formControlName="number" [(ngModel)]="store.number"></ion-input>
+        </ion-item>
+        <div *ngIf="messageForm.controls.number.invalid && messageForm.controls.number.dirty">
+        </div>
 
-  <ion-button expand="block" color="primary" (click)="message(store)">Send
-    Message</ion-button>
+        <div class="error" *ngIf="messageForm.get('number').hasError('required') && messageForm.get('number').touched">
+            Please enter your contact number
+        </div>
+        <div class="error" *ngIf="messageForm.get('number').hasError('minlength') && messageForm.get('number').touched">
+            Minimum 10 numbers
+        </div>
 
+        <div class="error" *ngIf="messageForm.get('number').hasError('maxlength') && messageForm.get('number').touched">
+            Maximum 10 numbers
+        </div>
+        <ion-item>
+            <ion-label position="stacked">Message</ion-label>
+            <ion-textarea required type="text" formControlName="message" [(ngModel)]="store.message"></ion-textarea>
+        </ion-item>
+        <div class="error" *ngIf="messageForm.get('message').hasError('required') && messageForm.get('message').touched">
+            Please provide a message
+        </div>
+        <ion-button expand="block" color="primary" [disabled]="!messageForm.valid" (click)="message(store)">Send Message
+        </ion-button>
+
+    </form>
 </ion-content>

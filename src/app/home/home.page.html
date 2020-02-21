@@ -55,8 +55,8 @@
         <ion-slide *ngFor="let details of propertyList">
             <ion-card class="cat">
                 <div>
-                    <!-- <img src="{{details.mainImage}}" (click)="detail(details)"> -->
-                    <ion-img [src]="details.mainImage"></ion-img>
+                    <img src="{{details.mainImage}}" (click)="detail(details)">
+                    <!-- <ion-img [src]="details.mainImage" (click)="detail(details)"></ion-img> -->
                     <ion-card-content slot="start">
                         <div class="action" class="like" (click)="react(details.key, details.userReaction)" [class.liked]="details.userReaction != null">
                             <ion-icon class="ion-float-right" name="heart"></ion-icon>
@@ -92,8 +92,9 @@
         <ion-slide *ngFor="let details of propertyPopularList | propertyFilterPipe:{ property: 'reactionCount', descending: true }">
             <ion-card class="cat">
                 <div>
-                    <!-- <img src="{{details.mainImage}}" (click)="detail(details)"> -->
-                    <ion-img [src]="details.mainImage" (ionImgDidLoad)="imageLoaded()"></ion-img>
+                    <!-- <ion-img [src]="details.mainImage" (click)="detail(details)"></ion-img> -->
+                    <img src="{{details.mainImage}}" (click)="detail(details)">
+                    <!-- <ion-img [src]="details.mainImage" (ionImgDidLoad)="imageLoaded()"></ion-img> -->
                     <!-- <ion-spinner></ion-spinner> -->
                     <ion-card-content slot="start">
                         <div class="action" class="like" (click)="react(details.key, details.userReaction)" [class.liked]="details.userReaction != null">

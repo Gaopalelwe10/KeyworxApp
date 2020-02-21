@@ -6,12 +6,20 @@ ion-header {
     --background: #a02b2d;
 }
 
+ion-buttons {
+    // padding-left: 2px;
+    padding-right: 2px;
+    font-size: 25px !important;
+}
+
 .column {
     float: left;
     width: 25%;
-    padding: 10px;
 }
 
+// .sc-ion-card-ios-h {
+//     margin-bottom: 6px;
+// }
 .row:after {
     content: "";
     display: table;
@@ -22,7 +30,6 @@ ion-header {
     .column {
         float: left;
         width: 33.33%;
-        padding: 10px;
     }
 }
 
@@ -30,7 +37,6 @@ ion-header {
     .column {
         float: left;
         width: 50%;
-        padding: 10px;
     }
 }
 
@@ -38,7 +44,6 @@ ion-header {
     .column {
         float: left;
         width: 100%;
-        padding: 10px;
     }
 }
 

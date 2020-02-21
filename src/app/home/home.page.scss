@@ -14,13 +14,13 @@ ion-title {
         // background-size: auto 100%;
         // background-repeat: no-repeat;
         width: 100% !important;
-        height: 90px;
+        height: 90px !important;
     }
     img {
         // background-size: auto 100%;
         // background-repeat: no-repeat;
         width: 100% !important;
-        height: 90px;
+        height: 90px !important;
     }
     i {
         font-size: 13px;
@@ -39,10 +39,6 @@ ion-title {
     }
 }
 
-.img-loaded+ion-spinner {
-    display: none;
-}
-
 // .center in my case to make the spinner at the center
 .center {
     margin-left: auto;
@@ -55,19 +51,6 @@ ion-card-content {
     margin-right: 3px;
     padding-left: 3px;
     padding-right: 3px;
-}
-
-img-loaded {
-    background-color: transparent;
-    border: 0;
-    ion-img {
-        opacity: 1;
-        visibility: visible;
-    }
-    .spinner {
-        display: none;
-        visibility: hidden;
-    }
 }
 
 .catt {

@@ -135,5 +135,7 @@
     <orderEntry type="library" name="Gradle: android.arch.core:runtime:1.1.1@aar" level="project" />
     <orderEntry type="module" module-name="capacitor-android" />
     <orderEntry type="module" module-name="capacitor-cordova-android-plugins" />
+    <orderEntry type="module" module-name="capacitor-android" />
+    <orderEntry type="module" module-name="capacitor-cordova-android-plugins" />
   </component>
 </module>
