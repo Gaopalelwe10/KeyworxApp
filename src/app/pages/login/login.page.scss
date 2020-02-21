@@ -16,6 +16,13 @@
     text-align: left;
 }
 
-ion-content {
-    background: url('https://firebasestorage.googleapis.com/v0/b/keyworkx.appspot.com/o/PIC0duwn5r5c60m?alt=media&token=d6215e70-a89f-48d6-a04d-7c855536f9e7');
+.bgp {
+    --background: url('../../../assets/img/pexels-photo-186077.jpeg')0 0/230% 100% no-repeat rgba(0, 0, 0, 0.342);
+}
+
+.mmm {
+    position: relative;
+    -webkit-text-fill-color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.445);
+    height: 100%;
 }
