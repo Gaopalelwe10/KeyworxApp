@@ -466,6 +466,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/message/message.page.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/message/message.page.html ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n\r\n        <ion-title>Message the Agent</ion-title>\r\n\r\n        <ion-buttons slot=\"end\" (click)=\"close()\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n    <form [formGroup]=\"messageForm\">\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Name</ion-label>\r\n            <ion-input readonly type=\"text\" formControlName=\"name\" [(ngModel)]=\"name\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Email</ion-label>\r\n            <ion-input readonly type=\"email\" formControlName=\"email\" [(ngModel)]=\"email\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Contact Number</ion-label>\r\n            <ion-input required maxlength=\"10\" type=\"tel\" formControlName=\"number\" [(ngModel)]=\"store.number\"></ion-input>\r\n        </ion-item>\r\n        <div *ngIf=\"messageForm.controls.number.invalid && messageForm.controls.number.dirty\">\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('required') && messageForm.get('number').touched\">\r\n            Please enter your contact number\r\n        </div>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('minlength') && messageForm.get('number').touched\">\r\n            Minimum 10 numbers\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('maxlength') && messageForm.get('number').touched\">\r\n            Maximum 10 numbers\r\n        </div>\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Message</ion-label>\r\n            <ion-textarea required type=\"text\" formControlName=\"message\" [(ngModel)]=\"store.message\"></ion-textarea>\r\n        </ion-item>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('message').hasError('required') && messageForm.get('message').touched\">\r\n            Please provide a message\r\n        </div>\r\n        <ion-button expand=\"block\" color=\"primary\" [disabled]=\"!messageForm.valid\" (click)=\"message(store)\">Send Message\r\n        </ion-button>\r\n\r\n    </form>\r\n</ion-content>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popover-more/popover-more.page.html":
 /*!*************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popover-more/popover-more.page.html ***!
@@ -753,8 +766,8 @@ var routes = [
         path: 'tabs',
         component: _pages_tabs_tabs_page__WEBPACK_IMPORTED_MODULE_3__["TabsPage"], children: [
             { path: 'home', loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
-            { path: 'liked', loadChildren: function () { return Promise.all(/*! import() | pages-liked-liked-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("common"), __webpack_require__.e("pages-liked-liked-module")]).then(__webpack_require__.bind(null, /*! ./pages/liked/liked.module */ "./src/app/pages/liked/liked.module.ts")).then(function (m) { return m.LikedPageModule; }); } },
-            { path: 'map', loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); } },
+            { path: 'liked', loadChildren: function () { return Promise.all(/*! import() | pages-liked-liked-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("pages-liked-liked-module")]).then(__webpack_require__.bind(null, /*! ./pages/liked/liked.module */ "./src/app/pages/liked/liked.module.ts")).then(function (m) { return m.LikedPageModule; }); } },
+            { path: 'map', loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); } },
         ]
     },
     {
@@ -763,15 +776,15 @@ var routes = [
     },
     {
         path: 'filter',
-        loadChildren: function () { return Promise.all(/*! import() | pages-filter-filter-module */[__webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-filter-filter-module")]).then(__webpack_require__.bind(null, /*! ./pages/filter/filter.module */ "./src/app/pages/filter/filter.module.ts")).then(function (m) { return m.FilterPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-filter-filter-module */[__webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-filter-filter-module")]).then(__webpack_require__.bind(null, /*! ./pages/filter/filter.module */ "./src/app/pages/filter/filter.module.ts")).then(function (m) { return m.FilterPageModule; }); }
     },
     {
         path: 'details',
-        loadChildren: function () { return Promise.all(/*! import() | pages-details-details-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("common"), __webpack_require__.e("pages-details-details-module")]).then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-details-details-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("pages-details-details-module")]).then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
     },
     {
         path: 'images',
-        loadChildren: function () { return Promise.all(/*! import() | pages-images-images-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-images-images-module")]).then(__webpack_require__.bind(null, /*! ./pages/images/images.module */ "./src/app/pages/images/images.module.ts")).then(function (m) { return m.ImagesPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | pages-images-images-module */ "pages-images-images-module").then(__webpack_require__.bind(null, /*! ./pages/images/images.module */ "./src/app/pages/images/images.module.ts")).then(function (m) { return m.ImagesPageModule; }); }
     },
     {
         path: 'fullscreen',
@@ -783,7 +796,7 @@ var routes = [
     },
     {
         path: 'message',
-        loadChildren: function () { return Promise.all(/*! import() | pages-message-message-module */[__webpack_require__.e("common"), __webpack_require__.e("pages-message-message-module")]).then(__webpack_require__.bind(null, /*! ./pages/message/message.module */ "./src/app/pages/message/message.module.ts")).then(function (m) { return m.MessagePageModule; }); }
+        loadChildren: function () { return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./pages/message/message.module */ "./src/app/pages/message/message.module.ts")).then(function (m) { return m.MessagePageModule; }); }
     },
     {
         path: 'category',
@@ -791,7 +804,7 @@ var routes = [
     },
     {
         path: 'featured',
-        loadChildren: function () { return Promise.all(/*! import() | pages-featured-featured-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("common"), __webpack_require__.e("pages-featured-featured-module")]).then(__webpack_require__.bind(null, /*! ./pages/featured/featured.module */ "./src/app/pages/featured/featured.module.ts")).then(function (m) { return m.FeaturedPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-featured-featured-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("pages-featured-featured-module")]).then(__webpack_require__.bind(null, /*! ./pages/featured/featured.module */ "./src/app/pages/featured/featured.module.ts")).then(function (m) { return m.FeaturedPageModule; }); }
     },
     {
         path: 'popover-more',
@@ -803,7 +816,7 @@ var routes = [
     },
     {
         path: 'map',
-        loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("common"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); }
     },
     {
         path: 'contact',
@@ -971,6 +984,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/email-composer/ngx */ "./node_modules/@ionic-native/email-composer/ngx/index.js");
 /* harmony import */ var _ionic_native_call_number_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/call-number/ngx */ "./node_modules/@ionic-native/call-number/ngx/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _pages_message_message_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/message/message.module */ "./src/app/pages/message/message.module.ts");
+
+
 
 
 
@@ -1006,7 +1023,7 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _pages_tabs_tabs_page__WEBPACK_IMPORTED_MODULE_13__["TabsPage"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _pages_tabs_tabs_page__WEBPACK_IMPORTED_MODULE_13__["TabsPage"],],
             entryComponents: [],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
@@ -1019,7 +1036,9 @@ var AppModule = /** @class */ (function () {
                 ngx_ionic_image_viewer__WEBPACK_IMPORTED_MODULE_14__["NgxIonicImageViewerModule"],
                 _pages_popover_more_popover_more_module__WEBPACK_IMPORTED_MODULE_15__["PopoverMorePageModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_19__["HttpClientModule"],
-                _pages_image_modal_image_modal_module__WEBPACK_IMPORTED_MODULE_16__["ImageModalPageModule"]
+                _pages_image_modal_image_modal_module__WEBPACK_IMPORTED_MODULE_16__["ImageModalPageModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_20__["ReactiveFormsModule"],
+                _pages_message_message_module__WEBPACK_IMPORTED_MODULE_21__["MessagePageModule"]
             ],
             providers: [
                 _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_17__["EmailComposer"],
@@ -1215,6 +1234,272 @@ var ImageModalPage = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
     ], ImageModalPage);
     return ImageModalPage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/message/message-routing.module.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/pages/message/message-routing.module.ts ***!
+  \*********************************************************/
+/*! exports provided: MessagePageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagePageRoutingModule", function() { return MessagePageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _message_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./message.page */ "./src/app/pages/message/message.page.ts");
+
+
+
+
+var routes = [
+    {
+        path: '',
+        component: _message_page__WEBPACK_IMPORTED_MODULE_3__["MessagePage"]
+    }
+];
+var MessagePageRoutingModule = /** @class */ (function () {
+    function MessagePageRoutingModule() {
+    }
+    MessagePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+        })
+    ], MessagePageRoutingModule);
+    return MessagePageRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/message/message.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/pages/message/message.module.ts ***!
+  \*************************************************/
+/*! exports provided: MessagePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagePageModule", function() { return MessagePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _message_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./message-routing.module */ "./src/app/pages/message/message-routing.module.ts");
+/* harmony import */ var _message_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./message.page */ "./src/app/pages/message/message.page.ts");
+
+
+
+
+
+
+
+var MessagePageModule = /** @class */ (function () {
+    function MessagePageModule() {
+    }
+    MessagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+                _message_routing_module__WEBPACK_IMPORTED_MODULE_5__["MessagePageRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"]
+            ],
+            declarations: [_message_page__WEBPACK_IMPORTED_MODULE_6__["MessagePage"]]
+        })
+    ], MessagePageModule);
+    return MessagePageModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/message/message.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/pages/message/message.page.scss ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".error {\n  color: red;\n}\n\nion-buttons {\n  padding-left: 2px;\n  padding-right: 2px;\n  font-size: 25px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWVzc2FnZS9DOlxcVXNlcnNcXENvZGVUcmliZVxcRGVza3RvcFxcQ29kZVRyaWJlXFxpb25pY1xcS2V5d29yeEFwcC9zcmNcXGFwcFxccGFnZXNcXG1lc3NhZ2VcXG1lc3NhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9tZXNzYWdlL21lc3NhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksVUFBQTtBQ0NKOztBREVBO0VBQ0ksaUJBQUE7RUFDQSxrQkFBQTtFQUNBLDBCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9tZXNzYWdlL21lc3NhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmVycm9yIHtcclxuICAgIGNvbG9yOiByZWQ7XHJcbn1cclxuXHJcbmlvbi1idXR0b25zIHtcclxuICAgIHBhZGRpbmctbGVmdDogMnB4O1xyXG4gICAgcGFkZGluZy1yaWdodDogMnB4O1xyXG4gICAgZm9udC1zaXplOiAyNXB4ICFpbXBvcnRhbnQ7XHJcbn0iLCIuZXJyb3Ige1xuICBjb2xvcjogcmVkO1xufVxuXG5pb24tYnV0dG9ucyB7XG4gIHBhZGRpbmctbGVmdDogMnB4O1xuICBwYWRkaW5nLXJpZ2h0OiAycHg7XG4gIGZvbnQtc2l6ZTogMjVweCAhaW1wb3J0YW50O1xufSJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/message/message.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/pages/message/message.page.ts ***!
+  \***********************************************/
+/*! exports provided: MessagePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagePage", function() { return MessagePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+/* harmony import */ var src_app_services_message_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/message.service */ "./src/app/services/message.service.ts");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/email-composer/ngx */ "./node_modules/@ionic-native/email-composer/ngx/index.js");
+/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
+/* harmony import */ var src_app_services_property_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/services/property.service */ "./src/app/services/property.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+
+
+
+
+
+
+var MessagePage = /** @class */ (function () {
+    function MessagePage(fb, afs, messServ, profileServ, propertyServ, afAuth, emailComposer, route, alertController, modalCtrl, navParams, toastController) {
+        var _this = this;
+        this.fb = fb;
+        this.afs = afs;
+        this.messServ = messServ;
+        this.profileServ = profileServ;
+        this.propertyServ = propertyServ;
+        this.afAuth = afAuth;
+        this.emailComposer = emailComposer;
+        this.route = route;
+        this.alertController = alertController;
+        this.modalCtrl = modalCtrl;
+        this.navParams = navParams;
+        this.toastController = toastController;
+        this.currentImage = null;
+        this.store = {
+            name: '',
+            email: '',
+            number: '',
+            message: '',
+            uid: '',
+            isRead: false,
+        };
+        this.propertyList = JSON.parse(this.navParams.get('propertyList'));
+        this.propertyid = this.propertyList.propertyid;
+        this.agentUid = this.propertyList.uid;
+        console.log(this.propertyid);
+        console.log(this.agentUid);
+        console.log(this.propertyList);
+        // this.route.queryParams.subscribe(params => {
+        //   if (params && params.propertyList) {
+        //     this.propertyList = JSON.parse(params.propertyList);
+        //     this.propertyid = this.propertyList.propertyid
+        //     this.agentUid = this.propertyList.uid;
+        //     console.log(this.propertyList)
+        //   }
+        // })
+        this.messageForm = fb.group({
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(4), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(30), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])],
+            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])],
+            number: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(10), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(10), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])],
+            message: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        });
+        var uid = this.profileServ.getUID();
+        this.messServ.getUser(uid).subscribe(function (data) {
+            _this.userList = data;
+            _this.name = data.name;
+            _this.email = data.email;
+            console.log(data);
+        });
+    }
+    MessagePage.prototype.ngOnInit = function () {
+    };
+    MessagePage.prototype.message = function (store) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.profileServ.getUID();
+                //  return this.afs.collection("properties").doc(propertyid).set(property)
+                this.afs.collection('message').add({
+                    name: this.userList.name,
+                    email: this.userList.email,
+                    number: this.store.number,
+                    message: this.store.message,
+                    isRead: this.store.isRead,
+                    AgentUid: this.agentUid,
+                    propertyid: this.propertyid,
+                    date: Date.now(),
+                }).then(function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                    var toast;
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                console.log(this.store);
+                                return [4 /*yield*/, this.toastController.create({
+                                        color: 'primary',
+                                        duration: 2000,
+                                        message: 'Message successfully sent',
+                                    })];
+                            case 1:
+                                toast = _a.sent();
+                                toast.present();
+                                this.close();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [2 /*return*/];
+            });
+        });
+    };
+    MessagePage.prototype.close = function () {
+        this.modalCtrl.dismiss();
+    };
+    MessagePage.ctorParameters = function () { return [
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"] },
+        { type: src_app_services_message_service__WEBPACK_IMPORTED_MODULE_4__["MessageService"] },
+        { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_7__["ProfileService"] },
+        { type: src_app_services_property_service__WEBPACK_IMPORTED_MODULE_8__["PropertyService"] },
+        { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] },
+        { type: _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_6__["EmailComposer"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__["ActivatedRoute"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["AlertController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ModalController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["NavParams"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ToastController"] }
+    ]; };
+    MessagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-message',
+            template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./message.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/message/message.page.html")).default,
+            styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./message.page.scss */ "./src/app/pages/message/message.page.scss")).default]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"],
+            src_app_services_message_service__WEBPACK_IMPORTED_MODULE_4__["MessageService"],
+            src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_7__["ProfileService"],
+            src_app_services_property_service__WEBPACK_IMPORTED_MODULE_8__["PropertyService"],
+            _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"],
+            _ionic_native_email_composer_ngx__WEBPACK_IMPORTED_MODULE_6__["EmailComposer"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_9__["ActivatedRoute"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["AlertController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ModalController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["NavParams"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__["ToastController"]])
+    ], MessagePage);
+    return MessagePage;
 }());
 
 
@@ -1484,6 +1769,46 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/message.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/message.service.ts ***!
+  \*********************************************/
+/*! exports provided: MessageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageService", function() { return MessageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+
+
+
+var MessageService = /** @class */ (function () {
+    function MessageService(afs) {
+        this.afs = afs;
+    }
+    MessageService.prototype.getUser = function (key) {
+        this.userDoc = this.afs.doc('users/' + key);
+        return this.userDoc.valueChanges();
+    };
+    MessageService.ctorParameters = function () { return [
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+    ]; };
+    MessageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
+    ], MessageService);
+    return MessageService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/profile.service.ts":
 /*!*********************************************!*\
   !*** ./src/app/services/profile.service.ts ***!
@@ -1656,6 +1981,232 @@ var ProfileService = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"]])
     ], ProfileService);
     return ProfileService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/property.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/property.service.ts ***!
+  \**********************************************/
+/*! exports provided: PropertyService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PropertyService", function() { return PropertyService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/index.js");
+/* harmony import */ var _profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./profile.service */ "./src/app/services/profile.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+
+
+
+
+var PropertyService = /** @class */ (function () {
+    function PropertyService(afs, alertCtrl, storage, profileService) {
+        this.afs = afs;
+        this.alertCtrl = alertCtrl;
+        this.storage = storage;
+        this.profileService = profileService;
+        this.bedroomsFilter$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](null);
+        this.bathroomsFilter$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](null);
+        this.garagesFilter$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](null);
+        this.archived$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](false);
+        this.minFilter$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](0);
+        this.maxFilter$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](1000000000000000);
+    }
+    PropertyService.prototype.filterproperty = function () {
+        var _this = this;
+        // return this.afs.collection('properties', ref=>ref.orderBy('location')).valueChanges();
+        return this.items$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["combineLatest"])(this.bedroomsFilter$, this.bathroomsFilter$, this.garagesFilter$, this.minFilter$, this.maxFilter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (_a) {
+            var bedrooms = _a[0], bathrooms = _a[1], garages = _a[2], min = _a[3], max = _a[4];
+            return _this.afs.collection('properties', function (ref) {
+                var query = ref;
+                query = query.where('archived', '==', false);
+                // if (category) { query = query.where('category', '==', category) };
+                if (bedrooms) {
+                    query = query.where('bedrooms', '==', bedrooms);
+                }
+                ;
+                if (bathrooms) {
+                    query = query.where('bathrooms', '==', bathrooms);
+                }
+                ;
+                if (garages) {
+                    query = query.where('garage', '==', garages);
+                }
+                ;
+                if (min) {
+                    query = query.where('price', '>=', min);
+                }
+                ;
+                if (max) {
+                    query = query.where('price', '<=', max);
+                }
+                ;
+                return query;
+            }).snapshotChanges();
+        }));
+    };
+    PropertyService.prototype.addproperty = function (propertyid, property) {
+        return this.afs.collection("properties").doc(propertyid).set(property);
+    };
+    PropertyService.prototype.imageList = function (propertyid) {
+        return this.afs.collection("properties").doc(propertyid).collection("images").snapshotChanges();
+    };
+    PropertyService.prototype.getpropertyDetails = function (propertyid) {
+        return this.afs.collection("properties").doc(propertyid).valueChanges();
+    };
+    PropertyService.prototype.getpropertyFavourite = function (propertyid) {
+        return this.afs.collection("properties").doc(propertyid).snapshotChanges();
+    };
+    PropertyService.prototype.propertyList = function () {
+        // return this.items$ = combineLatest(
+        //   this.bedroomsFilter$,
+        //   this.bathroomsFilter$,
+        //   this.garagesFilter$,
+        //   this.minFilter$,
+        //   this.maxFilter$
+        // ).pipe(
+        //   switchMap(([bedrooms, bathrooms, garages, min, max]) =>
+        //     this.afs.collection('properties', ref => {
+        //       let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+        //       if (min) { query = query.where('price', '>=', min) };
+        //       if (max) { query = query.where('price', '<=', max) };
+        //       if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
+        //       if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
+        //       if (garages) { query = query.where('garage', '==', garages) };
+        //       return query;
+        //     }).snapshotChanges()
+        //   )
+        // );
+        return this.afs.collection("properties", function (ref) { return ref.where('archived', '==', false); }).snapshotChanges();
+    };
+    PropertyService.prototype.filterBySize = function (bedrooms, bathrooms, garages, min, max) {
+        this.bedroomsFilter$.next(bedrooms);
+        this.bathroomsFilter$.next((bathrooms));
+        this.garagesFilter$.next((garages));
+        console.log(bedrooms);
+        this.minFilter$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](Number(min));
+        this.maxFilter$ = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](Number(max));
+    };
+    Object.defineProperty(PropertyService.prototype, "location", {
+        get: function () {
+            if (this.searchL == null || this.searchL == '') {
+                return this.searchL = '';
+            }
+            else {
+                return this.searchL = this.searchL;
+            }
+        },
+        set: function (location) {
+            this.searchL = location;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PropertyService.prototype, "min", {
+        get: function () {
+            if (this.minv == null) {
+                return this.minv = 0;
+            }
+            else {
+                return this.minv = this.minv;
+            }
+        },
+        set: function (min) {
+            this.minv = min;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PropertyService.prototype, "max", {
+        get: function () {
+            if (this.maxv == null) {
+                return this.maxv = 1000000000000000000;
+            }
+            else {
+                return this.maxv = this.maxv;
+            }
+        },
+        set: function (max) {
+            this.maxv = max;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PropertyService.prototype, "bed", {
+        get: function () {
+            if (this.bedv == null) {
+                return this.bedv = 0;
+            }
+            else {
+                return this.bedv = this.bedv;
+            }
+        },
+        set: function (bed) {
+            this.bedv = bed;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PropertyService.prototype, "bath", {
+        get: function () {
+            if (this.bathv == null) {
+                return this.bathv = 0;
+            }
+            else {
+                return this.bathv = this.bathv;
+            }
+        },
+        set: function (bath) {
+            this.bathv = bath;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PropertyService.prototype, "garage", {
+        get: function () {
+            if (this.garagev == null) {
+                return this.garagev = 0;
+            }
+            else {
+                return this.garagev = this.garagev;
+            }
+        },
+        set: function (garage) {
+            this.garagev = garage;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PropertyService.ctorParameters = function () { return [
+        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] },
+        { type: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_4__["AngularFireStorage"] },
+        { type: _profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"] }
+    ]; };
+    PropertyService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"],
+            _angular_fire_storage__WEBPACK_IMPORTED_MODULE_4__["AngularFireStorage"],
+            _profile_service__WEBPACK_IMPORTED_MODULE_5__["ProfileService"]])
+    ], PropertyService);
+    return PropertyService;
 }());
 
 
