@@ -17,12 +17,24 @@
 }
 
 .bgp {
-    --background: url('../../../assets/img/pexels-photo-186077.jpeg')0 0/230% 100% no-repeat rgba(0, 0, 0, 0.342);
+    --background: url('../../../assets/img/Capture.PNG')0 0/120% 110% no-repeat rgba(65, 64, 64, 0.11);
 }
 
 .mmm {
     position: relative;
-    -webkit-text-fill-color: aliceblue;
-    background-color: rgba(0, 0, 0, 0.445);
+    // -webkit-text-fill-color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.507);
     height: 100%;
+}
+
+ion-label {
+    -webkit-text-fill-color: aliceblue;
+}
+
+a {
+    -webkit-text-fill-color: aliceblue;
+}
+
+p {
+    -webkit-text-fill-color: rgb(182, 175, 175);
 }

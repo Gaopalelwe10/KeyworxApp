@@ -14,6 +14,9 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  agentUid(agentUid: any) {
+    throw new Error("Method not implemented.");
+  }
 
   propertyList;
   propertyPopularList;
@@ -26,7 +29,7 @@ export class HomePage implements OnInit {
   slidesOpt = {
     slidesPerView: 1.2,
     centerSlides: true,
-    // spaceBetween: 10,
+    autoplay:true,
   }
   userReaction = null
 
@@ -37,6 +40,7 @@ export class HomePage implements OnInit {
 
 
   loaded: boolean = false;
+  profileData: unknown;
   constructor(private router: Router,
     private propertyService: PropertyService,
     private profileService: ProfileService,
@@ -56,7 +60,7 @@ export class HomePage implements OnInit {
       this.slidesOpt = {
         slidesPerView: 2.2,
         centerSlides: true,
-        // spaceBetween: 10,
+        autoplay:true,
       }
     }
 
