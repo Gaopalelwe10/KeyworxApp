@@ -7,6 +7,7 @@ import { FavouriteService } from 'src/app/services/favourite.service';
 
 import { Plugins } from '@capacitor/core';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { MessagePage } from '../message/message.page';
 const { Share } = Plugins;
 
 @Component({
@@ -169,6 +170,28 @@ export class DetailsPage implements OnInit {
 
 
     this.router.navigate(['message'], navigationExtras);
+
+  }
+
+  async messageModel() {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        propertyList: JSON.stringify(this.propertyList),
+      }
+    };
+
+
+    // this.router.navigate(['message'], navigationExtras);
+
+    const modal = await this.modalController.create({
+      component: MessagePage,
+      componentProps: {
+        propertyList: JSON.stringify(this.propertyList)
+      
+      },
+    });
+
+    return await modal.present();
 
   }
 
