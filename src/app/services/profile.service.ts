@@ -102,4 +102,5 @@ export class ProfileService {
   agentProfile(agentUid){
     return this.afs.collection('agent').doc(agentUid).valueChanges();
 }
+
 }
