@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header no-border no-shadow id=\"my-ion-header\" class=\"mystyle\">\r\n    <ion-toolbar>\r\n\r\n        <ion-item class=\"close-fake\" lines=\"none\" text-center>\r\n            <ion-button (click)=\"close()\" fill=\"clear\" color=\"primary\">\r\n                <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n                Back \r\n            </ion-button>\r\n            \r\n            <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"add\" slot=\"start\"></ion-icon>\r\n                In\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"remove\" slot=\"start\"></ion-icon>\r\n                Out\r\n            </ion-button>\r\n\r\n        </ion-item>\r\n    </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-left\">&#10094;</a> -->\r\n                <img src=\"{{pic.downloadURL}}\" style='width: 100%; ' size=\"100%\" accept=\".png,.jpg\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-right\">&#10095;</a> -->\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n\r\n    <ion-fab horizontal=\"end\" vertical=\"top\" slot=\"fixed\">\r\n        <ion-fab-button color=\"primary\" size=\"small\" (click)=\"close()\" class=\"size\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-fab-button>\r\n    </ion-fab>\r\n\r\n\r\n    <!-- <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(true)\" class=\"size\">\r\n                    <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(false)\" class=\"size\">\r\n                    <ion-icon name=\"remove-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-fab> -->\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header no-border no-shadow id=\"my-ion-header\" class=\"mystyle\">\r\n    <ion-toolbar>\r\n\r\n        <ion-item class=\"close-fake\" lines=\"none\" text-center>\r\n            <ion-button (click)=\"close()\" fill=\"clear\" color=\"primary\">\r\n                <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n                Back \r\n            </ion-button>\r\n            \r\n            <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"add\" slot=\"start\"></ion-icon>\r\n                In\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"remove\" slot=\"start\"></ion-icon>\r\n                Out\r\n            </ion-button>\r\n\r\n        </ion-item>\r\n    </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-left\">&#10094;</a> -->\r\n                <img src=\"{{pic.downloadURL}}\" style='width: 100%; ' size=\"100%\" accept=\".png,.jpg\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-right\">&#10095;</a> -->\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n\r\n    <ion-fab horizontal=\"start\" vertical=\"top\" slot=\"fixed\">\r\n        <ion-fab-button color=\"primary\" size=\"small\" (click)=\"close()\" class=\"size\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-fab-button>\r\n    </ion-fab>\r\n\r\n\r\n    <!-- <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(true)\" class=\"size\">\r\n                    <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(false)\" class=\"size\">\r\n                    <ion-icon name=\"remove-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-fab> -->\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -871,22 +871,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
+// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 
 
-
-var Network = _capacitor_core__WEBPACK_IMPORTED_MODULE_5__["Plugins"].Network;
+var Network = _capacitor_core__WEBPACK_IMPORTED_MODULE_4__["Plugins"].Network, SplashScreen = _capacitor_core__WEBPACK_IMPORTED_MODULE_4__["Plugins"].SplashScreen;
+// const { SplashScreen } = Plugins;
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, splashScreen, statusBar, router) {
+    function AppComponent(platform, 
+    // private splashScreen: SplashScreen,
+    statusBar, router) {
         this.platform = platform;
-        this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.router = router;
         this.initializeApp();
@@ -913,28 +914,26 @@ var AppComponent = /** @class */ (function () {
             });
         });
     };
-    AppComponent.prototype.checkUser = function (networkStatus) {
-        // localStorage.getItem("user");
-        if (networkStatus.connected) {
-            this.router.navigateByUrl("tabs/home");
-        }
-        else {
-            this.router.navigateByUrl("loader");
-        }
-    };
+    // checkUser(networkStatus) {
+    //   // localStorage.getItem("user");
+    //   if (networkStatus.connected) {
+    //     this.router.navigateByUrl("tabs/home");
+    //   } else {
+    //     this.router.navigateByUrl("loader");
+    //   }
+    // }
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
             _this.statusBar.styleLightContent();
-            _this.splashScreen.hide();
+            SplashScreen.hide();
         });
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
-        { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
-        { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+        { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_3__["StatusBar"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -943,9 +942,8 @@ var AppComponent = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
-            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_3__["StatusBar"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -2092,6 +2090,9 @@ var PropertyService = /** @class */ (function () {
         //   )
         // );
         return this.afs.collection("properties", function (ref) { return ref.where('archived', '==', false); }).snapshotChanges();
+    };
+    PropertyService.prototype.propertyListPopular = function () {
+        return this.afs.collection("properties", function (ref) { return ref.where('archived', '==', false).where('reactionCount', '>=', 2); }).snapshotChanges();
     };
     PropertyService.prototype.filterBySize = function (bedrooms, bathrooms, garages, min, max) {
         this.bedroomsFilter$.next(bedrooms);

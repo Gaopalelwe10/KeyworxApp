@@ -153,7 +153,7 @@ var HomePage = /** @class */ (function () {
                     var _loop_1 = function (property) {
                         if (reactionInfo.key === property.key) {
                             _this.favouriteService.count(property.key).subscribe(function (data) {
-                                property.reactionCount = _this.favouriteService.countfavourite(data)[0];
+                                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
                                 property.userReaction = _this.favouriteService.userfavourite(data);
                             });
                         }
@@ -168,7 +168,7 @@ var HomePage = /** @class */ (function () {
                     var _loop_2 = function (property) {
                         if (reactionInfo.key === property.key) {
                             _this.favouriteService.count(property.key).subscribe(function (data) {
-                                property.reactionCount = _this.favouriteService.countfavourite(data)[0];
+                                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
                                 property.userReaction = _this.favouriteService.userfavourite(data);
                             });
                         }

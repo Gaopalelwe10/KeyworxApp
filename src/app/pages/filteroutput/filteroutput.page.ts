@@ -90,6 +90,7 @@ export class FilteroutputPage implements OnInit {
       console.log(this.propertyList)
       this.data = true;
     })
+    
     this.SeachLocation = this.propertyService.searchL
     this.show = false
     if(this.SeachLocation == null || this.SeachLocation == ''){

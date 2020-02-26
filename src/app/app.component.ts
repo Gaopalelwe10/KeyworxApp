@@ -8,6 +8,7 @@ import { Plugins, PluginListenerHandle, NetworkStatus } from "@capacitor/core";
 import { Router } from '@angular/router';
 const { Network } = Plugins;
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -15,8 +16,8 @@ const { Network } = Plugins;
 })
 export class AppComponent {
 
-  private networkListener: PluginListenerHandle;
-  private networkStatus: NetworkStatus;
+  networkListener: PluginListenerHandle;
+  networkStatus: NetworkStatus;
   user
   constructor(
     private platform: Platform,
@@ -45,15 +46,15 @@ export class AppComponent {
     }
   }
 
-  checkUser(networkStatus) {
+  // checkUser(networkStatus) {
 
-    // localStorage.getItem("user");
-    if (networkStatus.connected) {
-      this.router.navigateByUrl("tabs/home");
-    } else {
-      this.router.navigateByUrl("loader");
-    }
-  }
+  //   // localStorage.getItem("user");
+  //   if (networkStatus.connected) {
+  //     this.router.navigateByUrl("tabs/home");
+  //   } else {
+  //     this.router.navigateByUrl("loader");
+  //   }
+  // }
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

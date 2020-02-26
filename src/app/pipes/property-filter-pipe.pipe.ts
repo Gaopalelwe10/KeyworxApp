@@ -14,7 +14,7 @@ export class PropertyFilterPipePipe implements PipeTransform {
   //   return array.filter(item => {
   //     return item.category.toLowerCase().includes(text.toLowerCase());
   //   });
-    
+
   // }
 
   transform(value: any[], criteria: SortCriteria): any[] {
@@ -22,10 +22,10 @@ export class PropertyFilterPipePipe implements PipeTransform {
     console.log(value);
     if (!value || !criteria)
       return value;
-    
+
     let p: string = criteria.property;
 
-    let sortFn:(a: any, b: any) => any = (a, b) => {
+    let sortFn: (a: any, b: any) => any = (a, b) => {
       let value: number = 0;
       if (a[p] === undefined) value = -1;
       else if (b[p] === undefined) value = 1;
@@ -33,7 +33,15 @@ export class PropertyFilterPipePipe implements PipeTransform {
       return criteria.descending ? (value * -1) : value;
     };
 
-    value.sort(sortFn);
+    value.sort(sortFn)
+
+    // return value.sort(sortFn).filter(item => {
+
+    //   // this.data.splice(index, 1);
+    //   // return value.splice(value.indexOf(item.reactionCount > 0, 1));
+    //   return item.reactionCount > 0;
+    // });
+
     return value;
   }
   // transform(value: any[], order = '', column: string = ''): any[] {

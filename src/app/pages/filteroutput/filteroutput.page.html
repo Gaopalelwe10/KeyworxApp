@@ -1,8 +1,11 @@
 <ion-header>
     <ion-toolbar color="primary">
 
-        <ion-buttons slot="start" (click)="home()">
+        <!-- <ion-buttons slot="start" (click)="home()">
             <ion-icon name="arrow-back"></ion-icon>
+        </ion-buttons> -->
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
         </ion-buttons>
 
         <ion-title align="center">PROMOTED HOUSE</ion-title>
@@ -68,6 +71,38 @@
                                 <span class="pad-value">  {{items.garage}}</span>
                             </i>
                         </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="data == false">
+        <div class="column" *ngFor="let i of [1,2,3,4]">
+            <ion-card class="catt">
+                <ion-skeleton-text animated style="width: 100%; height: 170px;"></ion-skeleton-text>
+                <ion-card-content>
+
+                    <ion-skeleton-text animated style="width: 5%; float: right;"></ion-skeleton-text>
+
+                    <div>
+                        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+
+                        <ion-grid class="ion-no-padding">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+
+                            </ion-row>
+                        </ion-grid>
                     </div>
                 </ion-card-content>
             </ion-card>

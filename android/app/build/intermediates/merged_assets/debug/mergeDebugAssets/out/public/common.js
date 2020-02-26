@@ -565,6 +565,11 @@ var PropertyFilterPipePipe = /** @class */ (function () {
             return criteria.descending ? (value * -1) : value;
         };
         value.sort(sortFn);
+        // return value.sort(sortFn).filter(item => {
+        //   // this.data.splice(index, 1);
+        //   // return value.splice(value.indexOf(item.reactionCount > 0, 1));
+        //   return item.reactionCount > 0;
+        // });
         return value;
     };
     PropertyFilterPipePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -622,6 +627,7 @@ var CategoryService = /** @class */ (function () {
             return _this.afs.collection('properties', function (ref) {
                 var query = ref;
                 query = query.where('archived', '==', false);
+                // query = query.where('reactionCount', '>', "0");
                 // if (category) { query = query.where('category', '==', category) };
                 if (bedrooms) {
                     query = query.where('bedrooms', '==', bedrooms);
@@ -636,7 +642,7 @@ var CategoryService = /** @class */ (function () {
                 }
                 ;
                 if (min) {
-                    query = query.where('price', '>=', min);
+                    query = query.where('price', '==', min);
                 }
                 ;
                 if (max) {

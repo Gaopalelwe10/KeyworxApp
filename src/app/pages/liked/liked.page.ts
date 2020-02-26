@@ -13,6 +13,10 @@ export class LikedPage implements OnInit {
   favouriteList
   propertyList
   infolist: any[]
+
+  data = false;
+  show = false
+  count;
   constructor(
     private favouriteService: FavouriteService,
     private propertyService: PropertyService,
@@ -53,12 +57,20 @@ export class LikedPage implements OnInit {
       });
 
       console.log(this.propertyList)
+      this.data = true;
     })
   }
-
+  
   ngOnInit() {
   }
 
+  hide(v) {
+    this.count = v
+
+    // if (this.count == 2) {
+    //   this.show = true
+    // }
+  }
   react(key, val) {
     const userID = this.profileService.getUID();
     if (val != 0) {
@@ -72,9 +84,9 @@ export class LikedPage implements OnInit {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         data: JSON.stringify(items),
-        
+
       }
     };
-    this.router.navigate(['details'], navigationExtras );
+    this.router.navigate(['details'], navigationExtras);
   }
 }
