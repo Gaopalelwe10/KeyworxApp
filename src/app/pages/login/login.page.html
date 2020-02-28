@@ -12,7 +12,7 @@
 
                         <ion-item color="transparent" class="group">
                             <ion-label position="floating">Email</ion-label>
-                            <ion-input color="medium" type="email" formControlName="email"></ion-input>
+                            <ion-input type="email" formControlName="email"></ion-input>
                         </ion-item>
                         <div class="error" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
                             Please input your email
