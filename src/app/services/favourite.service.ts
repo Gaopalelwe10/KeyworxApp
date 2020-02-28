@@ -31,6 +31,15 @@ export class FavouriteService {
     })
   }
 
+  // updatefavourite(propertyId, userid, reaction = 0) {
+  //   const data = { [userid]: reaction }
+  //   this.afs.collection("properties").doc(propertyId).collection('favourite').doc(propertyId).update(data).then((data) => {
+
+  //   }).catch(() => {
+  //     this.afs.collection("properties").doc(propertyId).collection('favourite').doc(propertyId).set(data)
+  //   })
+  // }
+
   count(propertyId) {
     return this.afs.collection('favourite').doc(propertyId).valueChanges()
   }
@@ -43,6 +52,11 @@ export class FavouriteService {
     const data = { [userid]: firebase.firestore.FieldValue.delete() }
     return this.afs.collection('favourite').doc(propertyId).update(data);
   }
+
+  // removefavourite(propertyId, userid) {
+  //   const data = { [userid]: firebase.firestore.FieldValue.delete() }
+  //   return  this.afs.collection("properties").doc(propertyId).collection('favourite').doc(propertyId).update(data);
+  // }
 
   userfavourite(favourite: Array<any>) {
     const userID =this.profileService.getUID()

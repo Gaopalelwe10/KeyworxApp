@@ -475,7 +475,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n\r\n        <ion-title>Message the Agent</ion-title>\r\n\r\n        <ion-buttons slot=\"end\" (click)=\"close()\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n    <form [formGroup]=\"messageForm\">\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Name</ion-label>\r\n            <ion-input readonly type=\"text\" formControlName=\"name\" [(ngModel)]=\"name\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Email</ion-label>\r\n            <ion-input readonly type=\"email\" formControlName=\"email\" [(ngModel)]=\"email\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Contact Number</ion-label>\r\n            <ion-input required maxlength=\"10\" type=\"tel\" formControlName=\"number\" [(ngModel)]=\"store.number\"></ion-input>\r\n        </ion-item>\r\n        <div *ngIf=\"messageForm.controls.number.invalid && messageForm.controls.number.dirty\">\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('required') && messageForm.get('number').touched\">\r\n            Please enter your contact number\r\n        </div>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('minlength') && messageForm.get('number').touched\">\r\n            Minimum 10 numbers\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('maxlength') && messageForm.get('number').touched\">\r\n            Maximum 10 numbers\r\n        </div>\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Message</ion-label>\r\n            <ion-textarea required type=\"text\" formControlName=\"message\" [(ngModel)]=\"store.message\"></ion-textarea>\r\n        </ion-item>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('message').hasError('required') && messageForm.get('message').touched\">\r\n            Please provide a message\r\n        </div>\r\n        <ion-button expand=\"block\" color=\"primary\" [disabled]=\"!messageForm.valid\" (click)=\"message(store)\">Send Message\r\n        </ion-button>\r\n\r\n    </form>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n\r\n        <ion-title>Message the Agent</ion-title>\r\n\r\n        <ion-buttons slot=\"start\" (click)=\"close()\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n    <form [formGroup]=\"messageForm\">\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Name</ion-label>\r\n            <ion-input readonly type=\"text\" formControlName=\"name\" [(ngModel)]=\"name\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Email</ion-label>\r\n            <ion-input readonly type=\"email\" formControlName=\"email\" [(ngModel)]=\"email\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Contact Number</ion-label>\r\n            <ion-input required maxlength=\"10\" type=\"tel\" formControlName=\"number\" [(ngModel)]=\"store.number\"></ion-input>\r\n        </ion-item>\r\n        <div *ngIf=\"messageForm.controls.number.invalid && messageForm.controls.number.dirty\">\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('required') && messageForm.get('number').touched\">\r\n            Please enter your contact number\r\n        </div>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('minlength') && messageForm.get('number').touched\">\r\n            Minimum 10 numbers\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('maxlength') && messageForm.get('number').touched\">\r\n            Maximum 10 numbers\r\n        </div>\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Message</ion-label>\r\n            <ion-textarea required type=\"text\" formControlName=\"message\" [(ngModel)]=\"store.message\"></ion-textarea>\r\n        </ion-item>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('message').hasError('required') && messageForm.get('message').touched\">\r\n            Please provide a message\r\n        </div>\r\n        <ion-button expand=\"block\" color=\"primary\" [disabled]=\"!messageForm.valid\" (click)=\"message(store)\">Send Message\r\n        </ion-button>\r\n\r\n    </form>\r\n</ion-content>");
 
 /***/ }),
 
@@ -767,7 +767,7 @@ var routes = [
         component: _pages_tabs_tabs_page__WEBPACK_IMPORTED_MODULE_3__["TabsPage"], children: [
             { path: 'home', loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
             { path: 'liked', loadChildren: function () { return Promise.all(/*! import() | pages-liked-liked-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("pages-liked-liked-module")]).then(__webpack_require__.bind(null, /*! ./pages/liked/liked.module */ "./src/app/pages/liked/liked.module.ts")).then(function (m) { return m.LikedPageModule; }); } },
-            { path: 'map', loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); } },
+            { path: 'map', loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); } },
         ]
     },
     {
@@ -776,11 +776,11 @@ var routes = [
     },
     {
         path: 'filter',
-        loadChildren: function () { return Promise.all(/*! import() | pages-filter-filter-module */[__webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-filter-filter-module")]).then(__webpack_require__.bind(null, /*! ./pages/filter/filter.module */ "./src/app/pages/filter/filter.module.ts")).then(function (m) { return m.FilterPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-filter-filter-module */[__webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-filter-filter-module")]).then(__webpack_require__.bind(null, /*! ./pages/filter/filter.module */ "./src/app/pages/filter/filter.module.ts")).then(function (m) { return m.FilterPageModule; }); }
     },
     {
         path: 'details',
-        loadChildren: function () { return Promise.all(/*! import() | pages-details-details-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("pages-details-details-module")]).then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-details-details-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-details-details-module")]).then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
     },
     {
         path: 'images',
@@ -816,7 +816,7 @@ var routes = [
     },
     {
         path: 'map',
-        loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); }
     },
     {
         path: 'contact',
@@ -871,23 +871,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
-// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 
+// import { Plugins, PluginListenerHandle, NetworkStatus } from "@capacitor/core";
 
-var Network = _capacitor_core__WEBPACK_IMPORTED_MODULE_4__["Plugins"].Network, SplashScreen = _capacitor_core__WEBPACK_IMPORTED_MODULE_4__["Plugins"].SplashScreen;
-// const { SplashScreen } = Plugins;
+// const { Network } = Plugins;
 var AppComponent = /** @class */ (function () {
-    function AppComponent(platform, 
-    // private splashScreen: SplashScreen,
-    statusBar, router) {
+    function AppComponent(platform, splashScreen, statusBar, router) {
         this.platform = platform;
+        this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.router = router;
         this.initializeApp();
@@ -927,12 +925,13 @@ var AppComponent = /** @class */ (function () {
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
             _this.statusBar.styleLightContent();
-            SplashScreen.hide();
+            _this.splashScreen.hide();
         });
     };
     AppComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
-        { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_3__["StatusBar"] },
+        { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
+        { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -942,7 +941,8 @@ var AppComponent = /** @class */ (function () {
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")).default]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
-            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_3__["StatusBar"],
+            _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
+            _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], AppComponent);
     return AppComponent;

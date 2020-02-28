@@ -4,9 +4,9 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { Plugins, PluginListenerHandle, NetworkStatus } from "@capacitor/core";
+// import { Plugins, PluginListenerHandle, NetworkStatus } from "@capacitor/core";
 import { Router } from '@angular/router';
-const { Network } = Plugins;
+// const { Network } = Plugins;
 
 
 @Component({
@@ -16,8 +16,8 @@ const { Network } = Plugins;
 })
 export class AppComponent {
 
-  networkListener: PluginListenerHandle;
-  networkStatus: NetworkStatus;
+  // networkListener: PluginListenerHandle;
+  // networkStatus: NetworkStatus;
   user
   constructor(
     private platform: Platform,

@@ -103,6 +103,11 @@ export class CategoryPage implements OnInit {
   hide(v) {
     this.count = v
   }
+
+  substring(str){ 
+    let slug = str.indexOf(',', str.indexOf(',') + 1)
+    return str.substring(0,slug)
+  }
   propertyAfterFilter(){
     setTimeout(()=>{
       if (this.count != 2  || this.count !="2") {

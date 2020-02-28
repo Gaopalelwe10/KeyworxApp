@@ -209,6 +209,10 @@ var CategoryPage = /** @class */ (function () {
     CategoryPage.prototype.hide = function (v) {
         this.count = v;
     };
+    CategoryPage.prototype.substring = function (str) {
+        var slug = str.indexOf(',', str.indexOf(',') + 1);
+        return str.substring(0, slug);
+    };
     CategoryPage.prototype.propertyAfterFilter = function () {
         var _this = this;
         setTimeout(function () {
