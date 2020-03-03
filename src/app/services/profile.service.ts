@@ -36,8 +36,8 @@ export class ProfileService {
       console.log(success);
     }).catch((err) => {
       this.alertCtrl.create({
-        // message: 'You can not order more than six',
-        subHeader: err.message,
+        message: err.message,
+        // subHeader: err.message,
         buttons: ['Ok'],
         cssClass: 'custom-alert',
       }).then(
@@ -83,6 +83,7 @@ export class ProfileService {
   async logout() {
     await this.afAuth.auth.signOut().then((success) => {
       console.log(success);
+      localStorage.clear()
       console.log("success");
       this.nav.navigateRoot("login");
     }).catch((error) => {

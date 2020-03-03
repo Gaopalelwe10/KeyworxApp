@@ -54,8 +54,8 @@ export class MapPage implements OnInit {
     centeredSlides: true,
     speed: 500
   }
+  markers = [];
 
-  
   constructor(
     private maboxServe: MapboxService,
     private propertyService: PropertyService,
@@ -68,34 +68,89 @@ export class MapPage implements OnInit {
     if (this.platform.is("ipad")) {
       this.slidesOpt = {
         slidesPerView: 2.1,
-        centeredSlides:  true,
+        centeredSlides: true,
         speed: 500
       }
 
     }
     this.mapboxAccessToken = this.maboxServe.token();
 
-   
-   
+
+
 
   }
 
   ngOnInit() {
 
   }
-  
+
   ionViewDidEnter() {
     this.initializeMapBox();
-    this.initializeSlides()
   }
 
   initializeItems(): void {
     this.propertyList = this.propertyListLoaded;
   }
 
-  initializeSlides(){
+  
+  initializeMapBox() {
+    // or "const mapboxgl = require('mapbox-gl');"
+
+    this.map = new mapboxgl.Map({
+      container: this.mapNativeElement.nativeElement,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      zoom: 10,
+      // center: [lng, lat],
+      center: [28.218370, -25.731340]
+    });
+
+    this.geocoder = new MapboxGeocoder({ // Initialize the geocoder
+      accessToken: this.mapboxAccessToken, // Set the access token
+      mapboxgl: mapboxgl, // Set the mapbox-gl instance
+      marker: {
+        color: 'orange'
+      },
+      placeholder: 'Search for places ', // Placeholder text for the search bar
+
+    });
+
+
+    this.map.addControl(this.geocoder);
+
+    this.geocoder.on('result', (ev) => {
+      console.log(ev.result.text)
+      this.value = ev.result.text;
+      this.search(ev.result.text)
+      console.log("valu ll" + this.value)
+      console.log("me")
+      // map.getSource('single-point').setData(ev.result.geometry);
+
+    });
+
+
+    Geolocation.getCurrentPosition().then((response) => {
+
+      this.startPosition = response.coords;
+      this.map.setCenter([this.startPosition.longitude, this.startPosition.latitude]);
+
+      const el = document.createElement('div');
+      el.className = 'marker';
+      el.style.backgroundImage = 'url(assets/img/pin.png)';
+      el.style.width = '24px';
+      el.style.height = '24px';
+
+      var marker = new mapboxgl.Marker(el)
+        .setLngLat([this.startPosition.longitude, this.startPosition.latitude])
+        .setPopup(new mapboxgl.Popup({ offset: 25 })
+          .setHTML('<p>' + 'You are here' + '</p> '))
+        .addTo(this.map);
+    })
+
+
+    // load coodinates from database
+
     this.propertyService.propertyList().subscribe((data: any) => {
-    
+
       this.propertyList = data.map(e => {
         return {
           key: e.payload.doc.id,
@@ -103,7 +158,8 @@ export class MapPage implements OnInit {
         }
       })
 
-      this.propertyListLoaded=data.map(e => {
+      this.maker()
+      this.propertyListLoaded = data.map(e => {
         return {
           key: e.payload.doc.id,
           ...e.payload.doc.data()
@@ -150,85 +206,58 @@ export class MapPage implements OnInit {
       this.data = true;
     })
 
+    // this.maboxServe.propertyList().subscribe((markers: any) => {
+    //   markers.forEach((element, index) => {
+
+    //     const el = document.createElement('div');
+    //     el.className = 'marker';
+    //     el.style.backgroundImage = 'url(assets/img/placeholder.png)';
+    //     el.style.width = '24px';
+    //     el.style.height = '24px';
+    //     el.addEventListener('click', () => {
+    //       this.slideTo(7)
+    //     });
+    //     console.log(element.lng, element.lat)
+    //     var marker = new mapboxgl.Marker(el)
+    //       .setLngLat([element.lng, element.lat])
+    //       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    //         .setHTML('<p> ' + element.location + +'</p>'))
+    //       .addTo(this.map);
+    //   });
+    // })
+
+
   }
-  initializeMapBox() {
-    // or "const mapboxgl = require('mapbox-gl');"
-
-    this.map = new mapboxgl.Map({
-      container: this.mapNativeElement.nativeElement,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      zoom: 10,
-      // center: [lng, lat],
-      center: [28.218370, -25.731340]
-    });
-
-    this.geocoder = new MapboxGeocoder({ // Initialize the geocoder
-      accessToken: this.mapboxAccessToken, // Set the access token
-      mapboxgl: mapboxgl, // Set the mapbox-gl instance
-      marker: {
-        color: 'orange'
-      },
-      placeholder: 'Search for places ', // Placeholder text for the search bar
-     
-    });
 
 
-    this.map.addControl(this.geocoder);
+  slideTo(i) {
+    this.slides.slideTo(i);
+  }
+  
+  maker() {
 
-    this.geocoder.on('result', (ev) => {
-      console.log(ev.result.text)
-      this.value = ev.result.text;
-      this.search(ev.result.text)
-      console.log("valu ll" + this.value)
-      console.log("me")
-      // map.getSource('single-point').setData(ev.result.geometry);
-
-    });
-
-
-    Geolocation.getCurrentPosition().then((response) => {
-
-      this.startPosition = response.coords;
-      this.map.setCenter([this.startPosition.longitude, this.startPosition.latitude]);
-
+    this.propertyList.forEach((element, index) => {
       const el = document.createElement('div');
       el.className = 'marker';
-      el.style.backgroundImage = 'url(assets/img/pin.png)';
+      el.style.backgroundImage = 'url(assets/img/placeholder.png)';
       el.style.width = '24px';
       el.style.height = '24px';
-
-      var marker = new mapboxgl.Marker(el)
-        .setLngLat([this.startPosition.longitude, this.startPosition.latitude])
-        .setPopup(new mapboxgl.Popup({ offset: 25 })
-          .setHTML('<p>' + 'You are here' + '</p> '))
-        .addTo(this.map);
-    })
-
-
-    // load coodinates from database
-    this.maboxServe.propertyList().subscribe((markers: any) => {
-      markers.forEach(element => {
-
-        const el = document.createElement('div');
-        el.className = 'marker';
-        el.style.backgroundImage = 'url(assets/img/placeholder.png)';
-        el.style.width = '24px';
-        el.style.height = '24px';
-
-        console.log(element.lng, element.lat)
-        var marker = new mapboxgl.Marker(el)
-          .setLngLat([element.lng, element.lat])
-          .setPopup(new mapboxgl.Popup({ offset: 25 }, ) // add popups
-            .setHTML('<p> ' + element.location +  +'</p>'))
-          .addTo(this.map);
+      el.addEventListener('click', () => {
+        this.slideTo(index)
       });
-    })
-
+      console.log(element.lng, element.lat)
+      var marker = new mapboxgl.Marker(el)
+        .setLngLat([element.lng, element.lat])
+        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML('<p>' + element.location +'</p>'))
+        .addTo(this.map);
+      this.markers.push(marker)
+    });
 
   }
-
-  index(){
-    console.log("hh")
+  removeMaker() {
+    this.markers.forEach((marker) => marker.remove());
+    this.markers = [];
   }
   detail(items) {
     const navigationExtras: NavigationExtras = {
@@ -248,11 +277,11 @@ export class MapPage implements OnInit {
       this.favouriteService.removefavourite(key, userID)
     }
   }
- found=0
- show ="true"
+  found = 0
+  show = "true"
   search(evt) {
     this.initializeItems();
-
+    this.removeMaker()
     const searchTerm = evt
 
     if (!searchTerm) {
@@ -262,24 +291,25 @@ export class MapPage implements OnInit {
     this.propertyList = this.propertyList.filter(currentProperty => {
       if (currentProperty.location && searchTerm) {
         if (currentProperty.location.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-          this.found+=1
-          
+          this.found += 1
+
           return true;
         }
-      
+
         return false;
       }
     });
-    
-    if(this.found >=1){
+
+    if (this.found >= 1) {
       this.show = "true";
+      this.maker()
       console.log("found" + this.found)
     }
-    if(this.found ==0){
+    if (this.found == 0) {
       console.log("Not found")
       this.show = "false";
     }
-   console.log("show " + this.show)
-    this.found=0;
+    console.log("show " + this.show)
+    this.found = 0;
   }
 }
