@@ -42,7 +42,7 @@
 
 
 
-                <form [formGroup]="forgotpasswordForm" *ngIf="!isForgotPassword">
+                <form class="ff" [formGroup]="forgotpasswordForm" *ngIf="!isForgotPassword">
                     <ion-item color="transparent" class="group">
                         <ion-label position="floating">Enter Email</ion-label>
                         <ion-input type="email" formControlName="email"></ion-input>
