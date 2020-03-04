@@ -92,6 +92,7 @@
 
     <ion-slides [options]="slidesOptions">
         <ion-slide *ngFor="let details of propertyPopularList | propertyFilterPipe:{ property: 'reactionCount', descending: true }">
+            <!-- <ion-slide *ngFor="let details of propertyPopularList"> -->
             <ion-card class="cat">
                 <div>
                     <!-- <ion-img [src]="details.mainImage" (click)="detail(details)"></ion-img> -->

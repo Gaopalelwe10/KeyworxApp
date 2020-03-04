@@ -50,12 +50,14 @@ export class CategoryService {
         this.afs.collection('properties', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
           query = query.where('archived', '==', false);
+          // query = query.where('reactionCount', '>', "0");
           // if (category) { query = query.where('category', '==', category) };
           if (bedrooms) { query = query.where('bedrooms', '==', bedrooms) };
           if (bathrooms) { query = query.where('bathrooms', '==', bathrooms) };
           if (garages) { query = query.where('garage', '==', garages) };
-          if (min) { query = query.where('price', '>=', min) };
+          if (min) { query = query.where('price', '==', min)};
           if (max) { query = query.where('price', '<=', max) };
+          
           return query;
         }).snapshotChanges()
       )

@@ -102,6 +102,11 @@ export class PropertyService {
 
   }
 
+  propertyListPopular() {
+    return this.afs.collection("properties", ref => ref.where('archived', '==', false).where('reactionCount','>=', 2)).snapshotChanges()
+  }
+
+
   filterBySize(bedrooms: string | null, bathrooms: string | null, garages: string | null, min: number, max: number) {
     this.bedroomsFilter$.next(bedrooms);
     this.bathroomsFilter$.next((bathrooms));

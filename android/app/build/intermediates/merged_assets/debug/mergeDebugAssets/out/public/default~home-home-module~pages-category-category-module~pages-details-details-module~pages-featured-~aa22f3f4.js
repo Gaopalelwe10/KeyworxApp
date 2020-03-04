@@ -39983,6 +39983,13 @@ var FavouriteService = /** @class */ (function () {
             _this.afs.collection('favourite').doc(propertyId).set(data);
         });
     };
+    // updatefavourite(propertyId, userid, reaction = 0) {
+    //   const data = { [userid]: reaction }
+    //   this.afs.collection("properties").doc(propertyId).collection('favourite').doc(propertyId).update(data).then((data) => {
+    //   }).catch(() => {
+    //     this.afs.collection("properties").doc(propertyId).collection('favourite').doc(propertyId).set(data)
+    //   })
+    // }
     FavouriteService.prototype.count = function (propertyId) {
         return this.afs.collection('favourite').doc(propertyId).valueChanges();
     };
@@ -39994,6 +40001,10 @@ var FavouriteService = /** @class */ (function () {
         var data = (_a = {}, _a[userid] = firebase__WEBPACK_IMPORTED_MODULE_5__["firestore"].FieldValue.delete(), _a);
         return this.afs.collection('favourite').doc(propertyId).update(data);
     };
+    // removefavourite(propertyId, userid) {
+    //   const data = { [userid]: firebase.firestore.FieldValue.delete() }
+    //   return  this.afs.collection("properties").doc(propertyId).collection('favourite').doc(propertyId).update(data);
+    // }
     FavouriteService.prototype.userfavourite = function (favourite) {
         var userID = this.profileService.getUID();
         return lodash__WEBPACK_IMPORTED_MODULE_4__["get"](favourite, userID);

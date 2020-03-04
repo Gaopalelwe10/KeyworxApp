@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="57ecafc2-e84f-46db-a86c-73fed6b51048" name="Default Changelist" comment="">
+    <list default="true" id="cd2dc9c7-e2b5-47fe-815c-c1974475c370" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
@@ -21,31 +21,25 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/x5sBCEpYJLGBn3tafJf8cjard04=" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/x5sBCEpYJLGBn3tafJf8cjard04=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-category-category-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-category-category-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-category-category-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-category-category-module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-login-login-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-login-login-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-login-login-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-login-login-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-register-register-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-register-register-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-register-register-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_assets/debug/mergeDebugAssets/out/public/pages-register-register-module.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/common.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/common.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/main.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-category-category-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-category-category-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-category-category-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-category-category-module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-details-details-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-details-details-module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-details-details-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-details-details-module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-filteroutput-filteroutput-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-filteroutput-filteroutput-module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-filteroutput-filteroutput-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-filteroutput-filteroutput-module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-liked-liked-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-liked-liked-module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-liked-liked-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-liked-liked-module.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-login-login-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-login-login-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-login-login-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-login-login-module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-message-message-module.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-message-message-module.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-register-register-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-register-register-module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/pages-register-register-module.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/pages-register-register-module.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/runtime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/assets/public/runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/public/runtime.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/capacitor-cordova-android-plugins/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
     </list>
@@ -58,7 +52,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="1MF75E09ZA1LV0EDR1D" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_25" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -81,15 +75,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="1MF75E09ZA1LV0EDR1D" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-02-21T12:18:46.318Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5X_API_25" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-02-28T08:11:02.569Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
@@ -173,11 +167,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="57ecafc2-e84f-46db-a86c-73fed6b51048" name="Default Changelist" comment="" />
-      <created>1582112829029</created>
+      <changelist id="cd2dc9c7-e2b5-47fe-815c-c1974475c370" name="Default Changelist" comment="" />
+      <created>1582810296985</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1582112829029</updated>
+      <updated>1582810296985</updated>
     </task>
     <servers />
   </component>
@@ -193,7 +187,7 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.32936078" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
@@ -201,7 +195,7 @@
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
       <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />

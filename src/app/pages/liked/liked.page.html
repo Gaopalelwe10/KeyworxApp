@@ -7,37 +7,81 @@
 
 <ion-content>
 
-    <div *ngFor="let favourite of favouriteList">
-        <div class="row">
-            <div class="column" *ngFor="let items of propertyList">
+    <ion-grid style="height: 100%" *ngIf="data == true && show == false">
+        <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%; flex-direction: column; text-align: center;">
 
-                <ion-card class="card" *ngIf="favourite.key === items.key">
-                    <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">
+            <p class="centerT">
+                You currently don't have properties liked, Your liked properties will appear here.
+            </p>
+        </ion-row>
+    </ion-grid>
 
-                    <ion-card-content>
-                        <div class="action" class="like" (click)="react(items.key, items.userReaction)" [class.liked]="items.userReaction != null">
-                            <ion-icon class="ion-float-right" name="heart"></ion-icon>
-                        </div>
-                        <div (click)="detail(items)">
-                            <p>{{items.price | currency:'R'}}</p>
-                            <p>{{items.location}}</p>
-                            <i class="fa fa-bed" aria-hidden="true" *ngIf="items.bedrooms!=0">
-                                <span class="pad-value">{{items.bedrooms}}</span>
-                            </i>
-                            <i class="fa fa-bath" aria-hidden="true" *ngIf="items.bathrooms!=0">
-                                <span class="pad-value"> {{items.bathrooms}}</span>
-                            </i>
-                            <i class="fa fa-car" aria-hidden="true" *ngIf="items.garage!=0"> 
-                                <span class="pad-value">  {{items.garage}}</span>
-                            </i>
-                        </div>
-                    </ion-card-content>
-                </ion-card>
+
+    <div *ngIf="data==true">
+        <div *ngFor="let favourite of favouriteList">
+            <div class="row">
+
+                <div class="column" *ngFor="let items of propertyList">
+
+                    <ion-card class="card" *ngIf="favourite.key === items.key">
+                        {{this.hide(2)}}
+                        <img src="{{items.mainImage}}" style="width:100%" (click)="detail(items)">
+
+                        <ion-card-content>
+                            <div class="action" class="like" (click)="react(items.key, items.userReaction)" [class.liked]="items.userReaction != null">
+                                <ion-icon class="ion-float-right" name="heart"></ion-icon>
+                            </div>
+                            <div (click)="detail(items)">
+                                <p>{{items.price | currency:'R'}}</p>
+                                <p>{{items.location}}</p>
+                                <i class="fa fa-bed" aria-hidden="true" *ngIf="items.bedrooms!=0">
+                                    <span class="pad-value">{{items.bedrooms}}</span>
+                                </i>
+                                <i class="fa fa-bath" aria-hidden="true" *ngIf="items.bathrooms!=0">
+                                    <span class="pad-value"> {{items.bathrooms}}</span>
+                                </i>
+                                <i class="fa fa-car" aria-hidden="true" *ngIf="items.garage!=0"> 
+                                    <span class="pad-value">  {{items.garage}}</span>
+                                </i>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 
 
+    <div class="row" *ngIf="data == false">
+        <div class="column" *ngFor="let i of [1,2,3,4]">
+            <ion-card class="catt">
+                <ion-skeleton-text animated style="width: 100%; height: 170px;"></ion-skeleton-text>
+                <ion-card-content>
 
+                    <ion-skeleton-text animated style="width: 5%; float: right;"></ion-skeleton-text>
+
+                    <div>
+                        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+
+                        <ion-grid class="ion-no-padding">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+                                </ion-col>
+
+                            </ion-row>
+                        </ion-grid>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
 </ion-content>

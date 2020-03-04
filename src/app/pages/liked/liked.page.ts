@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FavouriteService } from 'src/app/services/favourite.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -13,11 +13,16 @@ export class LikedPage implements OnInit {
   favouriteList
   propertyList
   infolist: any[]
+
+  data = false;
+  show :boolean=false;
+  count;
   constructor(
     private favouriteService: FavouriteService,
     private propertyService: PropertyService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    private cdref: ChangeDetectorRef
   ) {
 
 
@@ -35,7 +40,8 @@ export class LikedPage implements OnInit {
             ...e.payload.doc.data()
           }
         });
-
+        // this.show = false
+        this.count = 0
         for (const reactionInfo of this.favouriteList) {
 
           for (const property of this.propertyList) {
@@ -43,22 +49,40 @@ export class LikedPage implements OnInit {
 
               this.favouriteService.count(property.key).subscribe((data: any) => {
                 property.userReaction = this.favouriteService.userfavourite(data);
+                  this.count = 2              
+                // this.show = true
               })
 
+            } else{
+              // this.count = 0
             }
           }
-
         }
-
       });
-
+      this.data = true;
       console.log(this.propertyList)
+      
+      if (this.count == 2) {
+        this.show = true
+      }else{
+        this.show = false
+      }
     })
   }
 
   ngOnInit() {
+  
   }
+  ngAfterContentChecked() {
+    this.cdref.detectChanges();
+  }
+  hide(v) {
+    this.count = v
 
+    if (this.count == 2) {
+      this.show = true
+    }
+  }
   react(key, val) {
     const userID = this.profileService.getUID();
     if (val != 0) {
@@ -72,9 +96,9 @@ export class LikedPage implements OnInit {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         data: JSON.stringify(items),
-        
+
       }
     };
-    this.router.navigate(['details'], navigationExtras );
+    this.router.navigate(['details'], navigationExtras);
   }
 }

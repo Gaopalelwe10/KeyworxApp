@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header no-border no-shadow id=\"my-ion-header\" class=\"mystyle\">\r\n    <ion-toolbar>\r\n\r\n        <ion-item class=\"close-fake\" lines=\"none\" text-center>\r\n            <ion-button (click)=\"close()\" fill=\"clear\" color=\"primary\">\r\n                <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n                Back \r\n            </ion-button>\r\n            \r\n            <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"add\" slot=\"start\"></ion-icon>\r\n                In\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"remove\" slot=\"start\"></ion-icon>\r\n                Out\r\n            </ion-button>\r\n\r\n        </ion-item>\r\n    </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-left\">&#10094;</a> -->\r\n                <img src=\"{{pic.downloadURL}}\" style='width: 100%; ' size=\"100%\" accept=\".png,.jpg\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-right\">&#10095;</a> -->\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n\r\n    <ion-fab horizontal=\"end\" vertical=\"top\" slot=\"fixed\">\r\n        <ion-fab-button color=\"primary\" size=\"small\" (click)=\"close()\" class=\"size\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-fab-button>\r\n    </ion-fab>\r\n\r\n\r\n    <!-- <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(true)\" class=\"size\">\r\n                    <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(false)\" class=\"size\">\r\n                    <ion-icon name=\"remove-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-fab> -->\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header no-border no-shadow id=\"my-ion-header\" class=\"mystyle\">\r\n    <ion-toolbar>\r\n\r\n        <ion-item class=\"close-fake\" lines=\"none\" text-center>\r\n            <ion-button (click)=\"close()\" fill=\"clear\" color=\"primary\">\r\n                <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n                Back \r\n            </ion-button>\r\n            \r\n            <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"add\" slot=\"start\"></ion-icon>\r\n                In\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"remove\" slot=\"start\"></ion-icon>\r\n                Out\r\n            </ion-button>\r\n\r\n        </ion-item>\r\n    </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-left\">&#10094;</a> -->\r\n                <img src=\"{{pic.downloadURL}}\" style='width: 100%; ' size=\"100%\" accept=\".png,.jpg\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-right\">&#10095;</a> -->\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n\r\n    <ion-fab horizontal=\"start\" vertical=\"top\" slot=\"fixed\">\r\n        <ion-fab-button color=\"primary\" size=\"small\" (click)=\"close()\" class=\"size\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-fab-button>\r\n    </ion-fab>\r\n\r\n\r\n    <!-- <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(true)\" class=\"size\">\r\n                    <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(false)\" class=\"size\">\r\n                    <ion-icon name=\"remove-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-fab> -->\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -475,7 +475,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n\r\n        <ion-title>Message the Agent</ion-title>\r\n\r\n        <ion-buttons slot=\"end\" (click)=\"close()\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n    <form [formGroup]=\"messageForm\">\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Name</ion-label>\r\n            <ion-input readonly type=\"text\" formControlName=\"name\" [(ngModel)]=\"name\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Email</ion-label>\r\n            <ion-input readonly type=\"email\" formControlName=\"email\" [(ngModel)]=\"email\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Contact Number</ion-label>\r\n            <ion-input required maxlength=\"10\" type=\"tel\" formControlName=\"number\" [(ngModel)]=\"store.number\"></ion-input>\r\n        </ion-item>\r\n        <div *ngIf=\"messageForm.controls.number.invalid && messageForm.controls.number.dirty\">\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('required') && messageForm.get('number').touched\">\r\n            Please enter your contact number\r\n        </div>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('minlength') && messageForm.get('number').touched\">\r\n            Minimum 10 numbers\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('maxlength') && messageForm.get('number').touched\">\r\n            Maximum 10 numbers\r\n        </div>\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Message</ion-label>\r\n            <ion-textarea required type=\"text\" formControlName=\"message\" [(ngModel)]=\"store.message\"></ion-textarea>\r\n        </ion-item>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('message').hasError('required') && messageForm.get('message').touched\">\r\n            Please provide a message\r\n        </div>\r\n        <ion-button expand=\"block\" color=\"primary\" [disabled]=\"!messageForm.valid\" (click)=\"message(store)\">Send Message\r\n        </ion-button>\r\n\r\n    </form>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n\r\n        <ion-title>Message the Agent</ion-title>\r\n\r\n        <ion-buttons slot=\"start\" (click)=\"close()\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n    <form [formGroup]=\"messageForm\">\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Name</ion-label>\r\n            <ion-input readonly type=\"text\" formControlName=\"name\" [(ngModel)]=\"name\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Email</ion-label>\r\n            <ion-input readonly type=\"email\" formControlName=\"email\" [(ngModel)]=\"email\"></ion-input>\r\n        </ion-item>\r\n\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Contact Number</ion-label>\r\n            <ion-input required maxlength=\"10\" type=\"tel\" formControlName=\"number\" [(ngModel)]=\"store.number\"></ion-input>\r\n        </ion-item>\r\n        <div *ngIf=\"messageForm.controls.number.invalid && messageForm.controls.number.dirty\">\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('required') && messageForm.get('number').touched\">\r\n            Please enter your contact number\r\n        </div>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('minlength') && messageForm.get('number').touched\">\r\n            Minimum 10 numbers\r\n        </div>\r\n\r\n        <div class=\"error\" *ngIf=\"messageForm.get('number').hasError('maxlength') && messageForm.get('number').touched\">\r\n            Maximum 10 numbers\r\n        </div>\r\n        <ion-item>\r\n            <ion-label position=\"stacked\">Message</ion-label>\r\n            <ion-textarea required type=\"text\" formControlName=\"message\" [(ngModel)]=\"store.message\"></ion-textarea>\r\n        </ion-item>\r\n        <div class=\"error\" *ngIf=\"messageForm.get('message').hasError('required') && messageForm.get('message').touched\">\r\n            Please provide a message\r\n        </div>\r\n        <ion-button expand=\"block\" color=\"primary\" [disabled]=\"!messageForm.valid\" (click)=\"message(store)\">Send Message\r\n        </ion-button>\r\n\r\n    </form>\r\n</ion-content>");
 
 /***/ }),
 
@@ -767,7 +767,7 @@ var routes = [
         component: _pages_tabs_tabs_page__WEBPACK_IMPORTED_MODULE_3__["TabsPage"], children: [
             { path: 'home', loadChildren: function () { return Promise.all(/*! import() | home-home-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("common"), __webpack_require__.e("home-home-module")]).then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); } },
             { path: 'liked', loadChildren: function () { return Promise.all(/*! import() | pages-liked-liked-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("pages-liked-liked-module")]).then(__webpack_require__.bind(null, /*! ./pages/liked/liked.module */ "./src/app/pages/liked/liked.module.ts")).then(function (m) { return m.LikedPageModule; }); } },
-            { path: 'map', loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); } },
+            { path: 'map', loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); } },
         ]
     },
     {
@@ -776,11 +776,11 @@ var routes = [
     },
     {
         path: 'filter',
-        loadChildren: function () { return Promise.all(/*! import() | pages-filter-filter-module */[__webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-filter-filter-module")]).then(__webpack_require__.bind(null, /*! ./pages/filter/filter.module */ "./src/app/pages/filter/filter.module.ts")).then(function (m) { return m.FilterPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-filter-filter-module */[__webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-filter-filter-module")]).then(__webpack_require__.bind(null, /*! ./pages/filter/filter.module */ "./src/app/pages/filter/filter.module.ts")).then(function (m) { return m.FilterPageModule; }); }
     },
     {
         path: 'details',
-        loadChildren: function () { return Promise.all(/*! import() | pages-details-details-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("pages-details-details-module")]).then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-details-details-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-details-details-module")]).then(__webpack_require__.bind(null, /*! ./pages/details/details.module */ "./src/app/pages/details/details.module.ts")).then(function (m) { return m.DetailsPageModule; }); }
     },
     {
         path: 'images',
@@ -816,7 +816,7 @@ var routes = [
     },
     {
         path: 'map',
-        loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); }
+        loadChildren: function () { return Promise.all(/*! import() | pages-map-map-module */[__webpack_require__.e("default~home-home-module~pages-category-category-module~pages-details-details-module~pages-featured-~aa22f3f4"), __webpack_require__.e("default~pages-filter-category-filter-category-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("default~pages-details-details-module~pages-filter-filter-module~pages-map-map-module"), __webpack_require__.e("pages-map-map-module")]).then(__webpack_require__.bind(null, /*! ./pages/map/map.module */ "./src/app/pages/map/map.module.ts")).then(function (m) { return m.MapPageModule; }); }
     },
     {
         path: 'contact',
@@ -873,16 +873,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
 
 
+// import { Plugins, PluginListenerHandle, NetworkStatus } from "@capacitor/core";
 
-
-var Network = _capacitor_core__WEBPACK_IMPORTED_MODULE_5__["Plugins"].Network;
+// const { Network } = Plugins;
 var AppComponent = /** @class */ (function () {
     function AppComponent(platform, splashScreen, statusBar, router) {
         this.platform = platform;
@@ -913,15 +912,14 @@ var AppComponent = /** @class */ (function () {
             });
         });
     };
-    AppComponent.prototype.checkUser = function (networkStatus) {
-        // localStorage.getItem("user");
-        if (networkStatus.connected) {
-            this.router.navigateByUrl("tabs/home");
-        }
-        else {
-            this.router.navigateByUrl("loader");
-        }
-    };
+    // checkUser(networkStatus) {
+    //   // localStorage.getItem("user");
+    //   if (networkStatus.connected) {
+    //     this.router.navigateByUrl("tabs/home");
+    //   } else {
+    //     this.router.navigateByUrl("loader");
+    //   }
+    // }
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
@@ -934,7 +932,7 @@ var AppComponent = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -945,7 +943,7 @@ var AppComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -2092,6 +2090,9 @@ var PropertyService = /** @class */ (function () {
         //   )
         // );
         return this.afs.collection("properties", function (ref) { return ref.where('archived', '==', false); }).snapshotChanges();
+    };
+    PropertyService.prototype.propertyListPopular = function () {
+        return this.afs.collection("properties", function (ref) { return ref.where('archived', '==', false).where('reactionCount', '>=', 2); }).snapshotChanges();
     };
     PropertyService.prototype.filterBySize = function (bedrooms, bathrooms, garages, min, max) {
         this.bedroomsFilter$.next(bedrooms);
