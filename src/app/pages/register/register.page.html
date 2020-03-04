@@ -7,19 +7,19 @@
                     <img src="../../../assets/img/darker_logo.png" alt="Avatar" class="imgC" width="280" height="130">
                 </div>
                 <br><br>
-                <form [formGroup]="register">
+                <form [formGroup]="register" class="ff">
                     <ion-item color="transparent" class="group">
                         <ion-label position="floating">Name</ion-label>
                         <ion-input color="medium" type="text" formControlName="name" required></ion-input>
                     </ion-item>
                     <div class="error" *ngIf="register.get('name').hasError('required') && register.get('name').touched">
-                        Please input your name
+                        &nbsp;&nbsp;&nbsp; <b>Please input your name</b>
                     </div>
                     <div class="error" *ngIf="register.get('name').hasError('minlength') && register.get('name').touched">
-                        Minimum 4 characters
+                        &nbsp;&nbsp;&nbsp; <b>Minimum 4 characters</b>
                     </div>
                     <div class="error" *ngIf="register.get('name').hasError('maxlength') && register.get('name').touched">
-                        Maximum 30 characters
+                        &nbsp;&nbsp;&nbsp; <b>Maximum 30 characters</b>
                     </div>
 
                     <ion-item color="transparent" class="group">
@@ -27,10 +27,10 @@
                         <ion-input color="medium" type="email" formControlName="email"></ion-input>
                     </ion-item>
                     <div class="error" *ngIf="register.get('email').hasError('required') && register.get('email').touched">
-                        Please input your email
+                        &nbsp;&nbsp;&nbsp; <b>Please input your email</b>
                     </div>
                     <div class="error" *ngIf="register.get('email').hasError('pattern') && register.get('email').touched">
-                        Email address invalid
+                        &nbsp;&nbsp;&nbsp; <b>Email address invalid</b>
                     </div>
 
                     <ion-item color="transparent" class="group">
@@ -38,15 +38,15 @@
                         <ion-input color="medium" type="password" formControlName="password"></ion-input>
                     </ion-item>
                     <div class="error" *ngIf="register.get('password').hasError('required') && register.get('password').touched">
-                        Please input your password
+                        &nbsp;&nbsp;&nbsp; <b>Please input your password</b>
                     </div>
 
                     <div class="error" *ngIf="register.get('password').hasError('minlength') && register.get('password').touched">
-                        Minimum 6 characters
+                        &nbsp;&nbsp;&nbsp;<b> Minimum 6 characters</b>
                     </div>
 
                     <div class="error" *ngIf="register.get('password').hasError('maxlength') && register.get('password').touched">
-                        Maximum 12 characters
+                        &nbsp;&nbsp;&nbsp; <b>Maximum 12 characters</b>
                     </div>
 
                     <ion-item color="transparent" class="group">
@@ -55,15 +55,15 @@
                     </ion-item>
 
                     <div class="error" *ngIf="register.get('cpassword').hasError('required') && register.get('cpassword').touched">
-                        Please confirm you password
+                        &nbsp;&nbsp;&nbsp; <b>Please confirm you password</b>
                     </div>
 
                     <div class="error" *ngIf="register.get('cpassword').hasError('minlength') && register.get('cpassword').touched">
-                        Minimum 6 characters
+                        &nbsp;&nbsp;&nbsp; <b>Minimum 6 characters</b>
                     </div>
 
                     <div class="error" *ngIf="register.get('cpassword').hasError('maxlength') && register.get('cpassword').touched">
-                        Maximum 12 characters
+                        &nbsp;&nbsp;&nbsp; <b>Maximum 12 characters</b>
                     </div>
 
                     <div class="error" *ngIf="register.get('cpassword').hasError('mustMatch') ">Passwords must match</div>
