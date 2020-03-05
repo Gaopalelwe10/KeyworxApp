@@ -20,11 +20,11 @@ export class ProfileService {
     private alertCtrl: AlertController,
     private storage: AngularFireStorage,
     private loadingCtrl: LoadingController
-  ) { 
+  ) {
     afAuth.auth.onAuthStateChanged((user) => {
       if (user) {
         this.nav.navigateRoot("tabs/home");
-      } 
+      }
       // else {
       //   this.nav.navigateRoot("login");
       // }
@@ -45,7 +45,7 @@ export class ProfileService {
       );
     })
   }
-   
+
   async signup(registerdetails, password) {
     const loading = this.loadingCtrl.create({
       // message: 'Registering, Please wait...'
@@ -53,19 +53,19 @@ export class ProfileService {
       spinner: "crescent",
     });
     (await loading).present();
-    await this.afAuth.auth.createUserWithEmailAndPassword(registerdetails.email,password).then(async (success) => {
-      registerdetails.uid=this.afAuth.auth.currentUser.uid
+    await this.afAuth.auth.createUserWithEmailAndPassword(registerdetails.email, password).then(async (success) => {
+      registerdetails.uid = this.afAuth.auth.currentUser.uid
       console.log(success);
       localStorage.setItem("user", registerdetails.email);
       (await loading).dismiss();
-      this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).set(registerdetails).then( data=>{
-      
+      this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).set(registerdetails).then(data => {
+
       })
-    
+
     }).catch(async (err) => {
 
       (await loading).dismiss();
-      
+
       this.alertCtrl.create({
         subHeader: err.message,
         buttons: ['Ok']
@@ -79,7 +79,7 @@ export class ProfileService {
   async sendPasswordResetEmail(passwordResetEmail: string) {
     return await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
   }
-  
+
   async logout() {
     await this.afAuth.auth.signOut().then((success) => {
       console.log(success);
@@ -95,13 +95,34 @@ export class ProfileService {
     return this.afAuth.auth.currentUser.uid;
   }
 
-  getUser(key){
+  getUser(key) {
     this.userDoc = this.afs.doc<User>('users/' + key);
     return this.userDoc.valueChanges();
   }
 
-  agentProfile(agentUid){
+  agentProfile(agentUid) {
     return this.afs.collection('agent').doc(agentUid).valueChanges();
-}
+  }
 
+
+  async addAdmin(registerdetails, password) {
+    return await this.afAuth.auth.createUserWithEmailAndPassword(registerdetails.email, password).then(user => {
+      // const firebase = require('firebase');
+      // const firebaseFunction = firebase.functions();
+      // const adminRole = firebaseFunction.httpsCallable('addAdmin');
+      // return adminRole({ email: registerdetails.email }).then(result => {
+
+      //   registerdetails.uid = this.afAuth.auth.currentUser.uid
+      //   registerdetails.role="admin"
+      //   localStorage.setItem("user", registerdetails.email);
+      //   // (await loading).dismiss();
+      //   this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).set(registerdetails).then(data => {
+  
+      //   })
+
+      //   return result;
+
+      // });
+    });
+  }
 }

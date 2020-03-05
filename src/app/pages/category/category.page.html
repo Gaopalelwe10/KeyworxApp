@@ -48,7 +48,7 @@
             </ion-card>
         </div> -->
 
-        <div class="column" *ngFor="let items of propertyList  | propertyFilterPipe:{ property: 'reactionCount', descending: true }  |  categoryFilterPipe: SeachLocation">
+        <div class="column" *ngFor="let items of propertyList  | propertyFilterPipe:{ property: 'reactionCount', descending: true }">
             <!-- <div class="column" *ngFor="let items of propertyList  | categoryFilterPipe: SeachLocation"> -->
             {{this.hide(2)}}
             <ion-card class="card">

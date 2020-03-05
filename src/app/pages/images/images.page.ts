@@ -52,6 +52,7 @@ export class ImagesPage implements OnInit {
   pic = {
     downloadURL: "",
   }
+  data =false
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyService,
@@ -66,7 +67,8 @@ export class ImagesPage implements OnInit {
         this.imageList = JSON.parse(params.imageList);
 
         console.log(this.imageList)
-        console.log(this.index)
+        // console.log(this.index)
+        this.data =true
       }
 
     });

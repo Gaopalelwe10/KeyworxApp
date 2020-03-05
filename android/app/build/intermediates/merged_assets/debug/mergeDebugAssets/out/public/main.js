@@ -1636,7 +1636,6 @@ var PopoverMorePage = /** @class */ (function () {
     };
     PopoverMorePage.prototype.logout = function () {
         this.profileService.logout().then(function () {
-            localStorage.clear();
         });
         this.DismissClick();
     };
@@ -1856,8 +1855,8 @@ var ProfileService = /** @class */ (function () {
                             console.log(success);
                         }).catch(function (err) {
                             _this.alertCtrl.create({
-                                // message: 'You can not order more than six',
-                                subHeader: err.message,
+                                message: err.message,
+                                // subHeader: err.message,
                                 buttons: ['Ok'],
                                 cssClass: 'custom-alert',
                             }).then(function (alert) { return alert.present(); });
@@ -1937,6 +1936,7 @@ var ProfileService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.afAuth.auth.signOut().then(function (success) {
                             console.log(success);
+                            localStorage.clear();
                             console.log("success");
                             _this.nav.navigateRoot("login");
                         }).catch(function (error) {

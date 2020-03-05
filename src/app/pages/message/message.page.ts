@@ -18,7 +18,7 @@ import { AlertController, ModalController, NavParams, ToastController } from '@i
 export class MessagePage implements OnInit {
   messageForm: FormGroup;
   userList;
-  propertyList;
+  propertyList: any;
   currentUser;
   users: any;
   propertyid;
@@ -26,8 +26,8 @@ export class MessagePage implements OnInit {
 
   name;
   email
-  
 
+  subject
   private User: AngularFirestoreDocument
   currentImage = null;
 
@@ -55,11 +55,16 @@ export class MessagePage implements OnInit {
     public toastController: ToastController
   ) {
 
-    this.propertyList= JSON.parse(this.navParams.get('propertyList'));
+    this.propertyList = JSON.parse(this.navParams.get('propertyList'));
     this.propertyid = this.propertyList.propertyid
     this.agentUid = this.propertyList.uid;
     console.log(this.propertyid);
     console.log(this.agentUid)
+
+    let slug = (this.propertyList.location).indexOf(',', (this.propertyList.location).indexOf(',') + 1)
+    this.subject = this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " for Sale in " + this.propertyList.location.substring(0, slug)
+
+
     console.log(this.propertyList)
 
     // this.route.queryParams.subscribe(params => {
@@ -83,8 +88,8 @@ export class MessagePage implements OnInit {
 
     this.messServ.getUser(uid).subscribe(data => {
       this.userList = data;
-      this.name=data.name;
-      this.email=data.email;
+      this.name = data.name;
+      this.email = data.email;
       console.log(data)
     })
 
@@ -97,6 +102,7 @@ export class MessagePage implements OnInit {
   async message(store) {
     this.profileServ.getUID();
     //  return this.afs.collection("properties").doc(propertyid).set(property)
+    console.log(this.subject)
 
     this.afs.collection('message').add({
       name: this.userList.name,
@@ -106,8 +112,9 @@ export class MessagePage implements OnInit {
       isRead: this.store.isRead,
       AgentUid: this.agentUid,
       propertyid: this.propertyid,
+      subject: this.subject,
       date: Date.now(),
-    }).then(async ()=>{
+    }).then(async () => {
       console.log(this.store)
 
       const toast = await this.toastController.create({
@@ -120,7 +127,7 @@ export class MessagePage implements OnInit {
       this.close()
     });
 
-   
+
     // let email = {
     //   to: 'codersgroup2020@gmail.com',
     //   attachments: [
