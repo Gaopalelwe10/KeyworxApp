@@ -1,26 +1,3 @@
-<!-- <ion-header no-border no-shadow id="my-ion-header" class="mystyle">
-    <ion-toolbar>
-
-        <ion-item class="close-fake" lines="none" text-center>
-            <ion-button (click)="close()" fill="clear" color="primary">
-                <ion-icon name="close" slot="start"></ion-icon>
-                Back 
-            </ion-button>
-            
-            <ion-button (click)="zoom(true)" fill="clear" color="light">
-                <ion-icon name="add" slot="start"></ion-icon>
-                In
-            </ion-button>
-
-            <ion-button (click)="zoom(false)" fill="clear" color="light">
-                <ion-icon name="remove" slot="start"></ion-icon>
-                Out
-            </ion-button>
-
-        </ion-item>
-    </ion-toolbar>
-</ion-header> -->
-
 <ion-content>
 
     <ion-slides [options]="sliderOpts" #slider>
@@ -32,9 +9,7 @@
 
         <ion-slide *ngFor="let pic of imageList" class="ion-padding">
             <div class="swiper-zoom-container">
-                <!-- <a class="w3-button w3-black w3-display-left">&#10094;</a> -->
-                <img src="{{pic.downloadURL}}" style='width: 100%; ' size="100%" accept=".png,.jpg">
-                <!-- <a class="w3-button w3-black w3-display-right">&#10095;</a> -->
+                <img src="{{pic.downloadURL}}">
             </div>
         </ion-slide>
 

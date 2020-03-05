@@ -12,18 +12,19 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class RegisterPage implements OnInit {
   register: FormGroup;
-  registerdetails={
-    name:'',
-    email:'',
-    uid:'',
-    created:0,
+  registerdetails = {
+    name: '',
+    email: '',
+    uid: '',
+    created: 0,
+    role: 'client'
   }
   constructor(
     private fb: FormBuilder,
     private route: Router,
     public loadingCtrl: LoadingController,
     private profileService: ProfileService
-  ) { 
+  ) {
     this.register = fb.group({
       name: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30), Validators.required])],
       email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-.]+$'), Validators.required])],
@@ -38,12 +39,12 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  PersonRegister(){
-    this.registerdetails.name=this.register.value.name;
-    this.registerdetails.email=this.register.value.email;
-    this.registerdetails.created= Date.now()
+  PersonRegister() {
+    this.registerdetails.name = this.register.value.name;
+    this.registerdetails.email = this.register.value.email;
+    this.registerdetails.created = Date.now()
 
-    this.profileService.signup(this.registerdetails,this.register.value.password)
+    this.profileService.addAdmin(this.registerdetails, this.register.value.password)
   }
   login() {
     this.route.navigateByUrl('login');

@@ -6,6 +6,8 @@ const functions = require('firebase-functions');
 // exports.helloWorld = functions.https.onRequest((request, response) => {
 //  response.send("Hello from Firebase!");
 // });
+
+
 let _ = require('lodash');
 const admin = require('firebase-admin');
 admin.initializeApp();
@@ -65,3 +67,5 @@ exports.aggregateReactionsUpdate = functions.firestore
             });
 
     });
+
+    

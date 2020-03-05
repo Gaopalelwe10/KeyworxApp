@@ -4723,7 +4723,7 @@ module.exports = function (size) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-title>map</ion-title>\n    </ion-toolbar>\n</ion-header> -->\n\n<ion-content>\n    <div #map id=\"map\"></div>\n    <div id='geocoder' class='geocoder'></div>\n\n\n    <div class=\"bot\">\n        <ion-slides [options]=\"slidesOpt\">\n            <ion-slide *ngFor=\"let details of propertyList;let i = index\">\n\n                <ion-grid>\n                    <ion-card class=\"cat\">\n\n                        <ion-row>\n                            <ion-col>\n                                <img src=\"{{details.mainImage}}\" (click)=\"detail(details)\">\n                            </ion-col>\n                            <ion-col>\n                                <ion-card-content>\n                                    <div class=\"action\" class=\"like\" (click)=\"react(details.key, details.userReaction)\" [class.liked]=\"details.userReaction != null\">\n                                        <ion-icon class=\"ion-float-right\" name=\"heart\"></ion-icon>\n                                    </div>\n                                    <div (click)=\"detail(details)\">\n                                        <p>{{details.price | currency:'R'}}</p>\n                                        <p>{{details.location | slice:0:12}}...</p>\n\n                                        <i class=\"fa fa-bed\" aria-hidden=\"true\" *ngIf=\"details.bedrooms!=0\">\n                                            <span class=\"pad-value\">{{details.bedrooms}}</span>\n                                        </i>\n                                        <i class=\"fa fa-bath\" aria-hidden=\"true\" *ngIf=\"details.bathrooms!=0\">\n                                            <span class=\"pad-value\"> {{details.bathrooms}}</span>\n                                        </i>\n                                        <i class=\"fa fa-car\" aria-hidden=\"true\" *ngIf=\"details.garage!=0\"> \n                                            <span class=\"pad-value\">  {{details.garage}}</span>\n                                        </i>\n\n                                    </div>\n                                </ion-card-content>\n                            </ion-col>\n                        </ion-row>\n\n\n                    </ion-card>\n                </ion-grid>\n\n\n            </ion-slide>\n\n\n\n        </ion-slides>\n\n        <ion-card class=\"NotFound\" *ngIf=\"propertyList?.length == 0 \">\n\n            <ion-row>\n\n                <ion-col>\n                    <ion-card-content>\n                        <p class=\"centerT\">\n                            There are currently no properties found at <span class=\"color\">\" {{value}} \"</span> try a different location\n                        </p>\n\n                    </ion-card-content>\n                </ion-col>\n            </ion-row>\n\n\n        </ion-card>\n    </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\n    <ion-toolbar color=\"primary\">\n        <ion-title>map</ion-title>\n    </ion-toolbar>\n</ion-header> -->\n\n<ion-content>\n    <div #map id=\"map\"></div>\n    <div id='geocoder' class='geocoder'></div>\n\n\n    <div class=\"bot\">\n        <ion-slides [options]=\"slidesOpt\" #slides>\n            <ion-slide *ngFor=\"let details of propertyList;let i = index\">\n\n                <ion-grid>\n                    <ion-card class=\"cat\">\n\n                        <ion-row>\n                            <ion-col>\n                                <img src=\"{{details.mainImage}}\" (click)=\"detail(details)\">\n                            </ion-col>\n                            <ion-col>\n                                <ion-card-content>\n                                    <div class=\"action\" class=\"like\" (click)=\"react(details.key, details.userReaction)\" [class.liked]=\"details.userReaction != null\">\n                                        <ion-icon class=\"ion-float-right\" name=\"heart\"></ion-icon>\n                                    </div>\n                                    <div (click)=\"detail(details)\">\n                                        <p>{{details.price | currency:'R'}}</p>\n                                        <p>{{details.location | slice:0:12}}...</p>\n\n                                        <i class=\"fa fa-bed\" aria-hidden=\"true\" *ngIf=\"details.bedrooms!=0\">\n                                            <span class=\"pad-value\">{{details.bedrooms}}</span>\n                                        </i>\n                                        <i class=\"fa fa-bath\" aria-hidden=\"true\" *ngIf=\"details.bathrooms!=0\">\n                                            <span class=\"pad-value\"> {{details.bathrooms}}</span>\n                                        </i>\n                                        <i class=\"fa fa-car\" aria-hidden=\"true\" *ngIf=\"details.garage!=0\"> \n                                            <span class=\"pad-value\">  {{details.garage}}</span>\n                                        </i>\n\n                                    </div>\n                                </ion-card-content>\n                            </ion-col>\n                        </ion-row>\n\n\n                    </ion-card>\n                </ion-grid>\n\n\n            </ion-slide>\n\n\n\n        </ion-slides>\n\n        <ion-card class=\"NotFound\" *ngIf=\"propertyList?.length == 0 \">\n\n            <ion-row>\n\n                <ion-col>\n                    <ion-card-content>\n                        <p class=\"centerT\">\n                            There are currently no properties found at <span class=\"color\">\" {{value}} \"</span> try a different location\n                        </p>\n\n                    </ion-card-content>\n                </ion-col>\n            </ion-row>\n\n\n        </ion-card>\n    </div>\n</ion-content>");
 
 /***/ }),
 
@@ -5429,6 +5429,7 @@ var MapPage = /** @class */ (function () {
             centeredSlides: true,
             speed: 500
         };
+        this.markers = [];
         this.found = 0;
         this.show = "true";
         if (this.platform.is("ipad")) {
@@ -5444,55 +5445,9 @@ var MapPage = /** @class */ (function () {
     };
     MapPage.prototype.ionViewDidEnter = function () {
         this.initializeMapBox();
-        this.initializeSlides();
     };
     MapPage.prototype.initializeItems = function () {
         this.propertyList = this.propertyListLoaded;
-    };
-    MapPage.prototype.initializeSlides = function () {
-        var _this = this;
-        this.propertyService.propertyList().subscribe(function (data) {
-            _this.propertyList = data.map(function (e) {
-                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
-            });
-            _this.propertyListLoaded = data.map(function (e) {
-                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
-            });
-            _this.favouriteService.getfavouriteUser().subscribe(function (data) {
-                _this.favouriteList = data.map(function (e) {
-                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
-                });
-                for (var _i = 0, _a = _this.favouriteList; _i < _a.length; _i++) {
-                    var reactionInfo = _a[_i];
-                    var _loop_1 = function (property) {
-                        if (reactionInfo.key === property.key) {
-                            _this.favouriteService.count(property.key).subscribe(function (data) {
-                                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
-                                property.userReaction = _this.favouriteService.userfavourite(data);
-                            });
-                        }
-                    };
-                    for (var _b = 0, _c = _this.propertyList; _b < _c.length; _b++) {
-                        var property = _c[_b];
-                        _loop_1(property);
-                    }
-                    var _loop_2 = function (property) {
-                        if (reactionInfo.key === property.key) {
-                            _this.favouriteService.count(property.key).subscribe(function (data) {
-                                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
-                                property.userReaction = _this.favouriteService.userfavourite(data);
-                            });
-                        }
-                    };
-                    for (var _d = 0, _e = _this.propertyListLoaded; _d < _e.length; _d++) {
-                        var property = _e[_d];
-                        _loop_2(property);
-                    }
-                }
-            });
-            console.log(_this.propertyList);
-            _this.data = true;
-        });
     };
     MapPage.prototype.initializeMapBox = function () {
         // or "const mapboxgl = require('mapbox-gl');"
@@ -5536,24 +5491,94 @@ var MapPage = /** @class */ (function () {
                 .addTo(_this.map);
         });
         // load coodinates from database
-        this.maboxServe.propertyList().subscribe(function (markers) {
-            markers.forEach(function (element) {
-                var el = document.createElement('div');
-                el.className = 'marker';
-                el.style.backgroundImage = 'url(assets/img/placeholder.png)';
-                el.style.width = '24px';
-                el.style.height = '24px';
-                console.log(element.lng, element.lat);
-                var marker = new mapbox_gl__WEBPACK_IMPORTED_MODULE_3___default.a.Marker(el)
-                    .setLngLat([element.lng, element.lat])
-                    .setPopup(new mapbox_gl__WEBPACK_IMPORTED_MODULE_3___default.a.Popup({ offset: 25 }) // add popups
-                    .setHTML('<p> ' + element.location + +'</p>'))
-                    .addTo(_this.map);
+        this.propertyService.propertyList().subscribe(function (data) {
+            _this.propertyList = data.map(function (e) {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
             });
+            _this.maker();
+            _this.propertyListLoaded = data.map(function (e) {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
+            });
+            _this.favouriteService.getfavouriteUser().subscribe(function (data) {
+                _this.favouriteList = data.map(function (e) {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
+                });
+                for (var _i = 0, _a = _this.favouriteList; _i < _a.length; _i++) {
+                    var reactionInfo = _a[_i];
+                    var _loop_1 = function (property) {
+                        if (reactionInfo.key === property.key) {
+                            _this.favouriteService.count(property.key).subscribe(function (data) {
+                                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                                property.userReaction = _this.favouriteService.userfavourite(data);
+                            });
+                        }
+                    };
+                    for (var _b = 0, _c = _this.propertyList; _b < _c.length; _b++) {
+                        var property = _c[_b];
+                        _loop_1(property);
+                    }
+                    var _loop_2 = function (property) {
+                        if (reactionInfo.key === property.key) {
+                            _this.favouriteService.count(property.key).subscribe(function (data) {
+                                // property.reactionCount = this.favouriteService.countfavourite(data)[0];
+                                property.userReaction = _this.favouriteService.userfavourite(data);
+                            });
+                        }
+                    };
+                    for (var _d = 0, _e = _this.propertyListLoaded; _d < _e.length; _d++) {
+                        var property = _e[_d];
+                        _loop_2(property);
+                    }
+                }
+            });
+            console.log(_this.propertyList);
+            _this.data = true;
+        });
+        // this.maboxServe.propertyList().subscribe((markers: any) => {
+        //   markers.forEach((element, index) => {
+        //     const el = document.createElement('div');
+        //     el.className = 'marker';
+        //     el.style.backgroundImage = 'url(assets/img/placeholder.png)';
+        //     el.style.width = '24px';
+        //     el.style.height = '24px';
+        //     el.addEventListener('click', () => {
+        //       this.slideTo(7)
+        //     });
+        //     console.log(element.lng, element.lat)
+        //     var marker = new mapboxgl.Marker(el)
+        //       .setLngLat([element.lng, element.lat])
+        //       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+        //         .setHTML('<p> ' + element.location + +'</p>'))
+        //       .addTo(this.map);
+        //   });
+        // })
+    };
+    MapPage.prototype.slideTo = function (i) {
+        this.slides.slideTo(i);
+    };
+    MapPage.prototype.maker = function () {
+        var _this = this;
+        this.propertyList.forEach(function (element, index) {
+            var el = document.createElement('div');
+            el.className = 'marker';
+            el.style.backgroundImage = 'url(assets/img/placeholder.png)';
+            el.style.width = '24px';
+            el.style.height = '24px';
+            el.addEventListener('click', function () {
+                _this.slideTo(index);
+            });
+            console.log(element.lng, element.lat);
+            var marker = new mapbox_gl__WEBPACK_IMPORTED_MODULE_3___default.a.Marker(el)
+                .setLngLat([element.lng, element.lat])
+                .setPopup(new mapbox_gl__WEBPACK_IMPORTED_MODULE_3___default.a.Popup({ offset: 25 }) // add popups
+                .setHTML('<p>' + element.location + '</p>'))
+                .addTo(_this.map);
+            _this.markers.push(marker);
         });
     };
-    MapPage.prototype.index = function () {
-        console.log("hh");
+    MapPage.prototype.removeMaker = function () {
+        this.markers.forEach(function (marker) { return marker.remove(); });
+        this.markers = [];
     };
     MapPage.prototype.detail = function (items) {
         var navigationExtras = {
@@ -5575,6 +5600,7 @@ var MapPage = /** @class */ (function () {
     MapPage.prototype.search = function (evt) {
         var _this = this;
         this.initializeItems();
+        this.removeMaker();
         var searchTerm = evt;
         if (!searchTerm) {
             return;
@@ -5590,6 +5616,7 @@ var MapPage = /** @class */ (function () {
         });
         if (this.found >= 1) {
             this.show = "true";
+            this.maker();
             console.log("found" + this.found);
         }
         if (this.found == 0) {
