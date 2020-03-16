@@ -34,7 +34,7 @@
                     &nbsp;&nbsp;&nbsp; <b>Maximum 12 characters</b>
                 </div>
                 <br>
-                <ion-button expand="block" color="primary" [disabled]="!loginForm.valid" (click)="login()">login</ion-button>
+                <ion-button expand="block" color="primary" (click)="login()">login</ion-button>
                 <p> <a (click)="isForgotPassword = false">Forgot Password?</a></p>
                 <p> <a (click)="registerPage()">Sign Up</a></p>
             </div>
@@ -60,7 +60,7 @@
                         <ion-button expand="block" color="primary" (click)="isForgotPassword = true">Cancel</ion-button>
                     </ion-col>
                     <ion-col>
-                        <ion-button expand="block" color="primary" [disabled]="!forgotpasswordForm.valid" (click)="reset()">Reset</ion-button>
+                        <ion-button expand="block" color="primary" (click)="reset()">Reset</ion-button>
                     </ion-col>
                 </ion-row>
             </ion-grid>
