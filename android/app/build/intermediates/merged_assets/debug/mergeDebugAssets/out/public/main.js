@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header no-border no-shadow id=\"my-ion-header\" class=\"mystyle\">\r\n    <ion-toolbar>\r\n\r\n        <ion-item class=\"close-fake\" lines=\"none\" text-center>\r\n            <ion-button (click)=\"close()\" fill=\"clear\" color=\"primary\">\r\n                <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n                Back \r\n            </ion-button>\r\n            \r\n            <ion-button (click)=\"zoom(true)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"add\" slot=\"start\"></ion-icon>\r\n                In\r\n            </ion-button>\r\n\r\n            <ion-button (click)=\"zoom(false)\" fill=\"clear\" color=\"light\">\r\n                <ion-icon name=\"remove\" slot=\"start\"></ion-icon>\r\n                Out\r\n            </ion-button>\r\n\r\n        </ion-item>\r\n    </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-left\">&#10094;</a> -->\r\n                <img src=\"{{pic.downloadURL}}\" style='width: 100%; ' size=\"100%\" accept=\".png,.jpg\">\r\n                <!-- <a class=\"w3-button w3-black w3-display-right\">&#10095;</a> -->\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n\r\n    <ion-fab horizontal=\"start\" vertical=\"top\" slot=\"fixed\">\r\n        <ion-fab-button color=\"primary\" size=\"small\" (click)=\"close()\" class=\"size\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-fab-button>\r\n    </ion-fab>\r\n\r\n\r\n    <!-- <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(true)\" class=\"size\">\r\n                    <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(false)\" class=\"size\">\r\n                    <ion-icon name=\"remove-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-fab> -->\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide>\r\n            <div class=\"swiper-zoom-container\" class=\"ion-padding\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n        <ion-slide *ngFor=\"let pic of imageList\" class=\"ion-padding\">\r\n            <div class=\"swiper-zoom-container\">\r\n                <img src=\"{{pic.downloadURL}}\">\r\n            </div>\r\n        </ion-slide>\r\n\r\n    </ion-slides>\r\n\r\n    <ion-fab horizontal=\"start\" vertical=\"top\" slot=\"fixed\">\r\n        <ion-fab-button color=\"primary\" size=\"small\" (click)=\"close()\" class=\"size\">\r\n            <ion-icon name=\"close\"></ion-icon>\r\n        </ion-fab-button>\r\n    </ion-fab>\r\n\r\n\r\n    <!-- <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(true)\" class=\"size\">\r\n                    <ion-icon name=\"add-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-row>\r\n            <ion-col>\r\n                <ion-fab-button color=\"primary\" size=\"small\" (click)=\"zoom(false)\" class=\"size\">\r\n                    <ion-icon name=\"remove-circle-outline\"></ion-icon>\r\n                </ion-fab-button>\r\n            </ion-col>\r\n        </ion-row>\r\n    </ion-fab> -->\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -1195,20 +1195,20 @@ var ImageModalPage = /** @class */ (function () {
                 _this.index = JSON.parse(params.index);
                 _this.imageList = JSON.parse(params.imageList);
                 console.log(_this.imageList);
-                console.log(_this.index);
+                // console.log(this.index)
             }
         });
     }
     ImageModalPage.prototype.ngOnInit = function () {
-        this.pic = this.navParams.get('pic');
     };
     ImageModalPage.prototype.zoom = function (zoomin) {
+        console.log("am zooming");
         var zoom = this.slider.nativeElement.swiper.zoom;
         if (zoomin) {
-            zoom.in(1);
+            zoom.in();
         }
         else {
-            zoom.out(1);
+            zoom.out();
         }
     };
     ImageModalPage.prototype.close = function () {
@@ -1398,6 +1398,8 @@ var MessagePage = /** @class */ (function () {
         this.agentUid = this.propertyList.uid;
         console.log(this.propertyid);
         console.log(this.agentUid);
+        var slug = (this.propertyList.location).indexOf(',', (this.propertyList.location).indexOf(',') + 1);
+        this.subject = this.propertyList.bedrooms + "  Bedroom " + this.propertyList.typeofproperty + " for Sale in " + this.propertyList.location.substring(0, slug);
         console.log(this.propertyList);
         // this.route.queryParams.subscribe(params => {
         //   if (params && params.propertyList) {
@@ -1429,6 +1431,7 @@ var MessagePage = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 this.profileServ.getUID();
                 //  return this.afs.collection("properties").doc(propertyid).set(property)
+                console.log(this.subject);
                 this.afs.collection('message').add({
                     name: this.userList.name,
                     email: this.userList.email,
@@ -1437,6 +1440,7 @@ var MessagePage = /** @class */ (function () {
                     isRead: this.store.isRead,
                     AgentUid: this.agentUid,
                     propertyid: this.propertyid,
+                    subject: this.subject,
                     date: Date.now(),
                 }).then(function () { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
                     var toast;
@@ -1958,6 +1962,29 @@ var ProfileService = /** @class */ (function () {
     };
     ProfileService.prototype.agentProfile = function (agentUid) {
         return this.afs.collection('agent').doc(agentUid).valueChanges();
+    };
+    ProfileService.prototype.addAdmin = function (registerdetails, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.afAuth.auth.createUserWithEmailAndPassword(registerdetails.email, password).then(function (user) {
+                            // const firebase = require('firebase');
+                            // const firebaseFunction = firebase.functions();
+                            // const adminRole = firebaseFunction.httpsCallable('addAdmin');
+                            // return adminRole({ email: registerdetails.email }).then(result => {
+                            //   registerdetails.uid = this.afAuth.auth.currentUser.uid
+                            //   registerdetails.role="admin"
+                            //   localStorage.setItem("user", registerdetails.email);
+                            //   // (await loading).dismiss();
+                            //   this.afs.collection('users').doc(this.afAuth.auth.currentUser.uid).set(registerdetails).then(data => {
+                            //   })
+                            //   return result;
+                            // });
+                        })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
     };
     ProfileService.ctorParameters = function () { return [
         { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
